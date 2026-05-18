@@ -6,13 +6,15 @@
   <meta name="robots" content="noindex,nofollow" />
   <title>採用LP（仮TOP） — Enjin</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <style>
     html, body { font-family: 'Noto Sans JP', sans-serif; }
     .font-mincho { font-family: 'Noto Serif JP', serif; }
+    .font-logo { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
     .text-enjin-red { color: #c8102e; }
     .bg-enjin-red { background-color: #c8102e; }
     .border-enjin-red { border-color: #c8102e; }
+    .stroke-enjin-red { stroke: #c8102e; }
     .ph {
       background:
         repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 14px, transparent 14px 28px),
@@ -26,15 +28,39 @@
         linear-gradient(135deg, #e5e7eb 0%, #cbd5e1 100%);
       color:#475569;
     }
+    /* Custom Enjin logo styling (近似) */
+    .enjin-logo {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+      color: #1a1a1a;
+    }
+    .enjin-logo .e { color: #c8102e; font-weight: 600; }
+    .enjin-logo .j {
+      display: inline-block;
+      transform: translateY(2px);
+    }
+    /* Building photo background (Unsplash) — with dark fallback */
+    .group-bg {
+      background-color: #0d0d0d;
+      background-image:
+        linear-gradient(rgba(15,15,15,0.85), rgba(15,15,15,0.75)),
+        url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=70');
+      background-size: cover;
+      background-position: center;
+    }
+    /* SVG icon defaults */
+    .icon { width: 40px; height: 40px; stroke: #c8102e; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; margin: 0 auto; }
+    .icon-sm { width: 28px; height: 28px; }
+    .icon-lg { width: 48px; height: 48px; }
   </style>
 </head>
 <body class="text-gray-900 bg-white">
 
   <!-- ============== Header / Nav ============== -->
   <header class="px-8 py-5 flex items-center justify-between bg-white sticky top-0 z-50 border-b border-gray-100">
-    <div class="font-mincho font-bold text-3xl tracking-tight">
-      <span class="text-enjin-red">E</span>njin
-    </div>
+    <div class="enjin-logo"><span class="e">E</span>n<span class="j">j</span>in</div>
     <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium">
       <a href="#message" class="hover:text-enjin-red">メッセージ</a>
       <a href="#president-qa" class="hover:text-enjin-red">社長に聞いてみた</a>
@@ -43,24 +69,24 @@
       <a href="#members" class="hover:text-enjin-red">働く人たち</a>
       <a href="#events" class="hover:text-enjin-red">イベント</a>
       <a href="#flow" class="hover:text-enjin-red">選考情報</a>
-      <a href="#faq" class="hover:text-enjin-red">公式ある質問</a>
+      <a href="#faq" class="hover:text-enjin-red">よくある質問</a>
       <a href="#" class="bg-enjin-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:bg-red-700">エントリー →</a>
     </nav>
   </header>
 
   <!-- ============== Hero ============== -->
-  <section id="message" class="px-8 lg:px-16 py-10 lg:py-16 grid lg:grid-cols-[1fr_1.3fr] gap-10 items-center">
+  <section id="message" class="px-8 lg:px-16 py-10 lg:py-12 grid lg:grid-cols-[1fr_1.4fr] gap-10 items-center max-w-[1600px] mx-auto">
     <div>
-      <h1 class="font-mincho font-bold text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-10">
+      <h1 class="font-mincho font-bold text-5xl lg:text-7xl leading-[1.05] tracking-tight mb-8">
         まずは、<br />やってみる。
       </h1>
-      <p class="font-mincho text-xl lg:text-2xl leading-relaxed mb-6">
+      <p class="font-mincho text-lg lg:text-xl leading-relaxed mb-6">
         進みながら考える。<br />
         スピードある挑戦が、未来を変える。
       </p>
-      <div class="text-sm leading-loose text-gray-700 mb-10 space-y-0">
+      <div class="text-[13px] leading-loose text-gray-700 mb-8 space-y-0">
         <p>完璧を求める日もあり、まず一歩、踏み出せ。</p>
-        <p>迷う日々でも何もせないも、きっとある。</p>
+        <p>迷う日も、何もしない日も、きっとある。</p>
         <p>それでも、私たちは動き続ける。</p>
         <p>その積み重ねが、いつか誰かの力になる。</p>
       </div>
@@ -68,14 +94,14 @@
         求む、未完成の人格者。
       </p>
     </div>
-    <div class="ph aspect-[4/3] lg:aspect-[5/4] rounded-sm">
+    <div class="ph aspect-[5/4] rounded-sm">
       [ HERO IMAGE：GINZA SIX 前を歩くビジネスパーソン4人 ]
     </div>
   </section>
 
   <!-- ============== 社長に聞いてみた Q&A ============== -->
   <section id="president-qa" class="bg-gray-50 px-8 lg:px-16 py-20">
-    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12">
+    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto">
       <div>
         <h2 class="font-mincho font-bold text-5xl lg:text-6xl text-enjin-red leading-tight mb-6">
           社長に<br />聞いてみた。
@@ -84,7 +110,6 @@
         <div class="w-12 h-0.5 bg-enjin-red mt-4"></div>
       </div>
       <div class="space-y-5">
-        <!-- Q1 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q1</span>
           <p>採用にとって学歴や資格などは重要ですか？</p>
@@ -92,7 +117,6 @@
           <p>不問です。今の行動と成長意欲がある方が重要です。</p>
         </div>
         <div class="border-b border-gray-200"></div>
-        <!-- Q2 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q2</span>
           <p>社会は他者との関係性が鍵と聞きます。<br />関係構築のためにどういった人物であるべきですか？</p>
@@ -100,7 +124,6 @@
           <p>割り勘負けしない、先にギブできる器。<br />見返りを求めず情報提供できる人ですね。</p>
         </div>
         <div class="border-b border-gray-200"></div>
-        <!-- Q3 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q3</span>
           <p>自己の成長について社長の考えをお聞かせください。</p>
@@ -108,28 +131,25 @@
           <p>現状に満足せず、自らをアップデートし続ける<br />自己変革意識が成長の鍵です。</p>
         </div>
         <div class="border-b border-gray-200"></div>
-        <!-- Q4 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q4</span>
           <p>社長が思う人格者とはどんな人ですか？</p>
           <span class="font-mincho font-bold text-xl text-gray-400">A</span>
-          <p>かけられた型には憧れない逆理想をでしょうか。</p>
+          <p>型にはまらず、自分の理想を貫ける人でしょうか。</p>
         </div>
         <div class="border-b border-gray-200"></div>
-        <!-- Q5 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q5</span>
           <p>自分のライバルとなる他者がいた時に<br />どう立ち向かうといいですか？</p>
           <span class="font-mincho font-bold text-xl text-gray-400">A</span>
-          <p>まずライバルは自分、他者の成功を妬まず<br />成功の種をできるかどうかです。</p>
+          <p>まずライバルは自分。他者の成功を妬まず、<br />成功の種をいかに撒けるかが大事です。</p>
         </div>
         <div class="border-b border-gray-200"></div>
-        <!-- Q6 -->
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
           <span class="font-mincho font-bold text-xl text-enjin-red">Q6</span>
-          <p>コスパ、タイパなど効率率は重要ですか？</p>
+          <p>コスパ、タイパなど効率は重要ですか？</p>
           <span class="font-mincho font-bold text-xl text-gray-400">A</span>
-          <p>もちろん成果を出すために必要な場合もありますが、<br />人を出し抜いたり不公平な戦略を人は期待せず。<br />フェアさは大事です。</p>
+          <p>もちろん成果を出すために必要な場合もありますが、<br />人を出し抜いたり、不公平な戦略は人から期待されません。<br />フェアさが何より大事です。</p>
         </div>
       </div>
     </div>
@@ -137,44 +157,74 @@
 
   <!-- ============== PRESIDENT'S VALUES ============== -->
   <section class="px-8 lg:px-16 py-20 bg-white">
-    <div class="text-center mb-12">
+    <div class="text-center mb-14">
       <p class="text-xs tracking-[0.3em] text-gray-500 mb-3">PRESIDENT'S VALUES</p>
       <h2 class="font-mincho font-bold text-3xl lg:text-4xl">
         社長の<span class="text-enjin-red">5</span>つの価値観
       </h2>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+
+      <!-- フェア (scale) -->
       <div class="text-center">
-        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">👥</div>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+          <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+          <path d="M7 21h10"/>
+          <path d="M12 3v18"/>
+          <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
+        </svg>
         <h3 class="font-mincho font-bold text-lg mb-3">フェア</h3>
-        <p class="text-xs leading-relaxed text-gray-600">バイアスを持たない誠実な勝負心。<br />人と斜め轢くことが向学的な勤行合いもし、フェアであることが、信頼の土台。</p>
+        <p class="text-xs leading-relaxed text-gray-600">バイアスを持たず、誠実に勝負する。<br />フェアであることが、信頼の土台。</p>
       </div>
+
+      <!-- アクション (zap) -->
       <div class="text-center">
-        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">🏃</div>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
         <h3 class="font-mincho font-bold text-lg mb-3">アクション</h3>
-        <p class="text-xs leading-relaxed text-gray-600">思考を行動に変える。<br />考えるだけでは何も変わらない。まず動く、そしてやり切ることに価値がある。</p>
+        <p class="text-xs leading-relaxed text-gray-600">思考を行動に変える。<br />考えるだけでは何も変わらない。まず動き、やり切ることに価値がある。</p>
       </div>
+
+      <!-- シンクロ (refresh-cw) -->
       <div class="text-center">
-        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">💡</div>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M21 3v5h-5"/>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 16H3v5"/>
+        </svg>
         <h3 class="font-mincho font-bold text-lg mb-3">シンクロ</h3>
-        <p class="text-xs leading-relaxed text-gray-600">共鳴・共に生きる。<br />同じ方向を向き、互いの強みを活かす。チームの力が、個人の可能性を最大化する。</p>
+        <p class="text-xs leading-relaxed text-gray-600">共鳴・共に生きる。<br />同じ方向を向き、互いの強みを活かす。チームの力が、個人を最大化する。</p>
       </div>
+
+      <!-- ギブ (heart-handshake) -->
       <div class="text-center">
-        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">🤝</div>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>
+          <path d="m18 15-2-2"/>
+          <path d="m15 18-2-2"/>
+        </svg>
         <h3 class="font-mincho font-bold text-lg mb-3">ギブ</h3>
-        <p class="text-xs leading-relaxed text-gray-600">利己的な行動への循環。<br />先に与えることで、信頼と機会が返ってくる。見返りを求めない姿勢が、未来をつくる。</p>
+        <p class="text-xs leading-relaxed text-gray-600">利他的な行動の循環。<br />先に与えることで、信頼と機会が返ってくる。見返りを求めない姿勢が、未来をつくる。</p>
       </div>
+
+      <!-- マネー哲学 (trending-up) -->
       <div class="text-center">
-        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">💴</div>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+          <polyline points="16 7 22 7 22 13"/>
+        </svg>
         <h3 class="font-mincho font-bold text-lg mb-3">マネー哲学</h3>
-        <p class="text-xs leading-relaxed text-gray-600">長期的視点の追求。<br />一時の利益ではなく、未来の価値を生み出す。持続的な成長についた判断を大切にする。</p>
+        <p class="text-xs leading-relaxed text-gray-600">長期視点の追求。<br />一時の利益ではなく、未来の価値を生み出す持続的な判断を大切にする。</p>
       </div>
     </div>
   </section>
 
   <!-- ============== GROUP OVERVIEW ============== -->
-  <section id="group" class="relative px-8 lg:px-16 py-20 text-white">
-    <div class="absolute inset-0 ph"></div>
+  <section id="group" class="relative px-8 lg:px-16 py-20 text-white group-bg">
     <div class="relative max-w-6xl mx-auto">
       <div class="text-center mb-3">
         <p class="text-xs tracking-[0.3em] text-gray-300">GROUP OVERVIEW</p>
@@ -182,28 +232,41 @@
       <h2 class="text-center font-mincho font-bold text-3xl lg:text-4xl mb-3">Enjinグループ事業構造</h2>
       <p class="text-center text-sm text-gray-200 mb-12">4つの事業領域 × グループ会社で中小企業の成長を多角的に支援</p>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-black/40 p-4">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-black/30 p-4 backdrop-blur-sm">
         <!-- PR -->
         <div class="bg-white text-gray-900 p-5 text-center">
-          <div class="text-enjin-red text-2xl mb-2">🔑</div>
+          <svg class="icon icon-sm mb-3" viewBox="0 0 24 24">
+            <circle cx="7.5" cy="15.5" r="5.5"/>
+            <path d="m21 2-9.6 9.6"/>
+            <path d="m15.5 7.5 3 3L22 7l-3-3"/>
+          </svg>
           <p class="text-[10px] tracking-widest text-gray-500 mb-1">PUBLIC RELATIONS</p>
           <h3 class="font-bold text-base mb-3">PR事業</h3>
           <p class="text-xs text-gray-600 mb-5 leading-relaxed">戦略PR・メディアプラットフォームを通じた中小企業のブランディング支援</p>
-          <p class="font-mincho text-lg font-bold mb-1"><span class="text-enjin-red">E</span>njin</p>
+          <p class="enjin-logo text-lg mb-1" style="font-size:18px;"><span class="e">E</span>n<span class="j">j</span>in</p>
           <p class="text-[10px] text-gray-500">AZ.WORLD.COM<br />Japan Public Relations Company</p>
         </div>
         <!-- TOURISM -->
         <div class="bg-stone-100 text-gray-900 p-5 text-center">
-          <div class="text-stone-600 text-2xl mb-2">⛰️</div>
+          <svg class="icon icon-sm mb-3" viewBox="0 0 24 24" style="stroke:#78716c;">
+            <path d="m8 3 4 8 5-5 5 15H2L8 3z"/>
+          </svg>
           <p class="text-[10px] tracking-widest text-gray-500 mb-1">TOURISM</p>
           <h3 class="font-bold text-base mb-3">観光事業</h3>
-          <p class="text-xs text-gray-600 mb-5 leading-relaxed">観光元人と組織もしむるインバウンド・地方創生ビジネス</p>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">観光地の人と組織を結ぶインバウンド・地方創生ビジネス</p>
           <p class="font-mincho text-lg font-bold mb-1">En Journey</p>
-          <p class="text-[10px] text-green-700 font-bold">🌿 Hotarus</p>
+          <p class="text-[10px] text-green-700 font-bold">Hotarus</p>
         </div>
         <!-- REAL ESTATE -->
         <div class="bg-amber-50 text-gray-900 p-5 text-center">
-          <div class="text-amber-700 text-2xl mb-2">🏢</div>
+          <svg class="icon icon-sm mb-3" viewBox="0 0 24 24" style="stroke:#b45309;">
+            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
+            <path d="M9 22v-4h6v4"/>
+            <path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/>
+            <path d="M12 10h.01"/><path d="M12 14h.01"/>
+            <path d="M16 10h.01"/><path d="M16 14h.01"/>
+            <path d="M8 10h.01"/><path d="M8 14h.01"/>
+          </svg>
           <p class="text-[10px] tracking-widest text-gray-500 mb-1">REAL ESTATE</p>
           <h3 class="font-bold text-base mb-3">不動産事業</h3>
           <p class="text-xs text-gray-600 mb-5 leading-relaxed">不動産仲介・管理を通じた資産形成支援</p>
@@ -212,11 +275,14 @@
         </div>
         <!-- FINANCIAL -->
         <div class="bg-sky-50 text-gray-900 p-5 text-center">
-          <div class="text-sky-700 text-2xl mb-2">💳</div>
+          <svg class="icon icon-sm mb-3" viewBox="0 0 24 24" style="stroke:#0369a1;">
+            <rect width="20" height="14" x="2" y="5" rx="2"/>
+            <line x1="2" x2="22" y1="10" y2="10"/>
+          </svg>
           <p class="text-[10px] tracking-widest text-gray-500 mb-1">FINANCIAL SERVICES</p>
           <h3 class="font-bold text-base mb-3">金融事業</h3>
-          <p class="text-xs text-gray-600 mb-5 leading-relaxed">ファクタリング・融込い保険調達・アセットマネジメントによる金融ソリューション</p>
-          <p class="font-mincho text-lg font-bold mb-1"><span class="text-enjin-red">E</span>njin<span class="text-xs"> Payment Service</span></p>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">ファクタリング・融資・保険調達・アセットマネジメントによる金融ソリューション</p>
+          <p class="enjin-logo mb-1" style="font-size:18px;"><span class="e">E</span>n<span class="j">j</span>in<span class="text-xs"> Payment Service</span></p>
           <p class="text-[10px] text-gray-700"><span class="text-enjin-red font-bold">E</span>njin Asset Management</p>
         </div>
       </div>
@@ -228,18 +294,18 @@
 
   <!-- ============== JOB TYPES ============== -->
   <section id="jobs" class="px-8 lg:px-16 py-20">
-    <div class="mb-8">
+    <div class="mb-8 max-w-6xl mx-auto">
       <p class="text-sm font-bold mb-2">職種紹介</p>
       <h2 class="font-mincho font-bold text-4xl lg:text-5xl">才能を、解き放て。</h2>
     </div>
-    <div class="grid lg:grid-cols-2 gap-8">
+    <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
       <!-- 営業職 -->
       <div class="bg-white border border-gray-200">
         <div class="grid grid-cols-[1.2fr_1fr]">
           <div class="p-6">
             <div class="inline-block bg-enjin-red text-white text-xs font-bold px-3 py-1 mb-4">営業職</div>
             <h3 class="font-mincho font-bold text-2xl mb-4 leading-tight">正解を売るな。<br />未来を動かせ。</h3>
-            <p class="text-xs text-gray-600 leading-relaxed mb-4">圧倒的な当事者意識と、圧倒的な成果で、クライアントの課題を突破する。</p>
+            <p class="text-xs text-gray-600 leading-relaxed mb-4">圧倒的な当事者意識と圧倒的な成果で、クライアントの課題を突破する。</p>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="text-[10px] border border-gray-300 px-2 py-1">ヒアリング</span>
               <span class="text-[10px] border border-gray-300 px-2 py-1">提案</span>
@@ -274,35 +340,17 @@
 
   <!-- ============== MEMBERS ============== -->
   <section id="members" class="px-8 lg:px-16 py-20 bg-gray-50">
-    <div class="mb-8">
+    <div class="mb-8 max-w-6xl mx-auto">
       <p class="text-sm font-bold mb-2">働く人たち</p>
       <p class="text-xs text-gray-600">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
     </div>
-    <div class="grid grid-cols-2 lg:grid-cols-7 gap-4">
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2015年入社</p>
-      </div>
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2021年入社</p>
-      </div>
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2020年入社</p>
-      </div>
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2023年入社</p>
-      </div>
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2018年入社</p>
-      </div>
-      <div class="text-center">
-        <div class="ph aspect-square mb-2"></div>
-        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2019年入社</p>
-      </div>
+    <div class="grid grid-cols-2 lg:grid-cols-7 gap-4 max-w-6xl mx-auto">
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2015年入社</p></div>
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2021年入社</p></div>
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2020年入社</p></div>
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2023年入社</p></div>
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2018年入社</p></div>
+      <div class="text-center"><div class="ph aspect-square mb-2"></div><p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2019年入社</p></div>
       <div class="bg-enjin-red text-white flex items-center justify-center text-xs font-bold p-4 text-center cursor-pointer hover:bg-red-700">
         働く人たちを見る →
       </div>
@@ -311,51 +359,110 @@
 
   <!-- ============== 制度・福利厚生 ============== -->
   <section class="px-8 lg:px-16 py-20">
-    <div class="mb-10">
+    <div class="mb-10 max-w-6xl mx-auto">
       <p class="text-sm font-bold mb-2">制度・福利厚生</p>
       <p class="text-xs text-gray-600">挑戦を後押しし、成長を支える環境があります。</p>
     </div>
-    <div class="grid lg:grid-cols-[2fr_1fr] gap-8">
+    <div class="grid lg:grid-cols-[2fr_1fr] gap-8 max-w-6xl mx-auto">
       <div class="grid grid-cols-3 lg:grid-cols-6 gap-3">
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">🏆</div>
+
+        <!-- HIGH REWARD: trophy -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+          </svg>
           <p class="text-[11px] font-bold leading-tight">HIGH REWARD<br /><span class="font-normal text-gray-500">成果連動型制度</span></p>
-        </div>
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">🚀</div>
+        </a>
+
+        <!-- 超現場の体験: rocket -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
           <p class="text-[11px] font-bold leading-tight">超現場の体験<br /><span class="font-normal text-gray-500">若手登用制度</span></p>
-        </div>
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">🎁</div>
-          <p class="text-[11px] font-bold leading-tight">福利厚生試験<br /><span class="font-normal text-gray-500">各種制度</span></p>
-        </div>
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">👥</div>
+        </a>
+
+        <!-- 福利厚生: gift -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <rect x="3" y="8" width="18" height="4" rx="1"/>
+            <path d="M12 8v13"/>
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/>
+          </svg>
+          <p class="text-[11px] font-bold leading-tight">福利厚生制度<br /><span class="font-normal text-gray-500">各種サポート</span></p>
+        </a>
+
+        <!-- インターンシップ: users -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
           <p class="text-[11px] font-bold leading-tight">インターンシップ<br /><span class="font-normal text-gray-500">挑戦型プログラム</span></p>
-        </div>
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">📋</div>
-          <p class="text-[11px] font-bold leading-tight">選考情報<br /><span class="font-normal text-gray-500">選考・選考の流れ</span></p>
-        </div>
-        <div class="border border-gray-200 p-4 text-center">
-          <div class="text-enjin-red text-2xl mb-2">💬</div>
+        </a>
+
+        <!-- 選考情報: clipboard -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <path d="M9 12h6"/>
+            <path d="M9 16h6"/>
+          </svg>
+          <p class="text-[11px] font-bold leading-tight">選考情報<br /><span class="font-normal text-gray-500">選考の流れ</span></p>
+        </a>
+
+        <!-- よくある質問: help-circle -->
+        <a href="#" class="border border-gray-200 p-4 text-center block hover:border-enjin-red transition">
+          <svg class="icon icon-sm mb-2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
           <p class="text-[11px] font-bold leading-tight">よくある質問<br /><span class="font-normal text-gray-500">Q&amp;A</span></p>
-        </div>
+        </a>
+
       </div>
       <div class="ph light aspect-[4/3]">[ オフィス内観 写真 ]</div>
     </div>
   </section>
 
   <!-- ============== Bottom Nav ============== -->
-  <section class="px-8 lg:px-16 py-8 border-t border-gray-100">
+  <section class="px-8 lg:px-16 py-8 border-t border-gray-100 max-w-6xl mx-auto">
     <div class="grid grid-cols-2 lg:grid-cols-7 gap-3 text-xs">
-      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">イベント / 選考情報 / よくある質問</a>
-      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">👥 インターンシップ</a>
-      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">📄 選考情報</a>
-      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">❓ よくある質問</a>
-      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3">📷 Instagram</a>
-      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3">▶ YouTube</a>
-      <a href="#" class="flex items-center justify-center bg-gray-900 text-white p-3">↑ ページTOPへ</a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">イベント情報</a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red gap-2">
+        <svg class="icon icon-sm" style="width:14px;height:14px;" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        インターンシップ
+      </a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red gap-2">
+        <svg class="icon icon-sm" style="width:14px;height:14px;" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>
+        選考情報
+      </a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red gap-2">
+        <svg class="icon icon-sm" style="width:14px;height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        よくある質問
+      </a>
+      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3 gap-2">
+        <svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3 gap-2">
+        <svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+        YouTube
+      </a>
+      <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="flex items-center justify-center bg-gray-900 text-white p-3">↑ ページTOPへ</a>
     </div>
   </section>
 
