@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script>(function(){if(sessionStorage.getItem('rlpt_auth')==='ok')return;var s=document.documentElement.style;s.visibility='hidden';document.addEventListener('DOMContentLoaded',function(){var o=document.createElement('div');o.id='rlpt_gate';o.style.cssText='position:fixed;inset:0;background:#0d0d0d;color:#fff;display:flex;align-items:center;justify-content:center;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,sans-serif;';o.innerHTML='<form id="rlpt_f" style="text-align:center;padding:24px;"><div style="margin-bottom:8px;font-size:13px;letter-spacing:.2em;color:#888;">RECRUIT LP MOCK (TEST)</div><div style="margin-bottom:24px;font-size:20px;font-weight:600;">パスワードを入力</div><input id="rlpt_p" type="password" autocomplete="off" style="padding:12px 14px;font-size:16px;width:260px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;outline:none;"/><div><button style="margin-top:16px;padding:10px 28px;font-size:15px;cursor:pointer;border:none;border-radius:6px;background:#c00;color:#fff;font-weight:600;">入る</button></div><div id="rlpt_e" style="margin-top:14px;color:#f66;font-size:13px;min-height:18px;"></div></form>';document.body.appendChild(o);s.visibility='visible';var f=document.getElementById('rlpt_f'),p=document.getElementById('rlpt_p'),e=document.getElementById('rlpt_e');p.focus();f.onsubmit=function(ev){ev.preventDefault();if(p.value==='pass0621'){sessionStorage.setItem('rlpt_auth','ok');o.remove();}else{e.textContent='パスワードが違います';p.value='';p.focus();}};});})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>採用LP（仮TOP） — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    html, body { font-family: 'Noto Sans JP', sans-serif; }
+    .font-mincho { font-family: 'Noto Serif JP', serif; }
+    .text-enjin-red { color: #c8102e; }
+    .bg-enjin-red { background-color: #c8102e; }
+    .border-enjin-red { border-color: #c8102e; }
+    .ph {
+      background:
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 14px, transparent 14px 28px),
+        linear-gradient(135deg, #3a3a3a 0%, #1c1c1c 100%);
+      display:flex; align-items:center; justify-content:center;
+      color:#9ca3af; font-size:12px; letter-spacing:.08em;
+    }
+    .ph.light {
+      background:
+        repeating-linear-gradient(135deg, rgba(0,0,0,0.04) 0 14px, transparent 14px 28px),
+        linear-gradient(135deg, #e5e7eb 0%, #cbd5e1 100%);
+      color:#475569;
+    }
+  </style>
+</head>
+<body class="text-gray-900 bg-white">
+
+  <!-- ============== Header / Nav ============== -->
+  <header class="px-8 py-5 flex items-center justify-between bg-white sticky top-0 z-50 border-b border-gray-100">
+    <div class="font-mincho font-bold text-3xl tracking-tight">
+      <span class="text-enjin-red">E</span>njin
+    </div>
+    <nav class="hidden lg:flex items-center gap-7 text-[13px] font-medium">
+      <a href="#message" class="hover:text-enjin-red">メッセージ</a>
+      <a href="#president-qa" class="hover:text-enjin-red">社長に聞いてみた</a>
+      <a href="#group" class="hover:text-enjin-red">グループ紹介</a>
+      <a href="#jobs" class="hover:text-enjin-red">職種紹介</a>
+      <a href="#members" class="hover:text-enjin-red">働く人たち</a>
+      <a href="#events" class="hover:text-enjin-red">イベント</a>
+      <a href="#flow" class="hover:text-enjin-red">選考情報</a>
+      <a href="#faq" class="hover:text-enjin-red">公式ある質問</a>
+      <a href="#" class="bg-enjin-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:bg-red-700">エントリー →</a>
+    </nav>
+  </header>
+
+  <!-- ============== Hero ============== -->
+  <section id="message" class="px-8 lg:px-16 py-10 lg:py-16 grid lg:grid-cols-[1fr_1.3fr] gap-10 items-center">
+    <div>
+      <h1 class="font-mincho font-bold text-6xl lg:text-8xl leading-[1.05] tracking-tight mb-10">
+        まずは、<br />やってみる。
+      </h1>
+      <p class="font-mincho text-xl lg:text-2xl leading-relaxed mb-6">
+        進みながら考える。<br />
+        スピードある挑戦が、未来を変える。
+      </p>
+      <div class="text-sm leading-loose text-gray-700 mb-10 space-y-0">
+        <p>完璧を求める日もあり、まず一歩、踏み出せ。</p>
+        <p>迷う日々でも何もせないも、きっとある。</p>
+        <p>それでも、私たちは動き続ける。</p>
+        <p>その積み重ねが、いつか誰かの力になる。</p>
+      </div>
+      <p class="font-mincho font-bold text-3xl lg:text-4xl text-enjin-red tracking-wide">
+        求む、未完成の人格者。
+      </p>
+    </div>
+    <div class="ph aspect-[4/3] lg:aspect-[5/4] rounded-sm">
+      [ HERO IMAGE：GINZA SIX 前を歩くビジネスパーソン4人 ]
+    </div>
+  </section>
+
+  <!-- ============== 社長に聞いてみた Q&A ============== -->
+  <section id="president-qa" class="bg-gray-50 px-8 lg:px-16 py-20">
+    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12">
+      <div>
+        <h2 class="font-mincho font-bold text-5xl lg:text-6xl text-enjin-red leading-tight mb-6">
+          社長に<br />聞いてみた。
+        </h2>
+        <p class="text-sm font-medium">面接では聞けない、<br />ぶっちゃけ話。</p>
+        <div class="w-12 h-0.5 bg-enjin-red mt-4"></div>
+      </div>
+      <div class="space-y-5">
+        <!-- Q1 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q1</span>
+          <p>採用にとって学歴や資格などは重要ですか？</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>不問です。今の行動と成長意欲がある方が重要です。</p>
+        </div>
+        <div class="border-b border-gray-200"></div>
+        <!-- Q2 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q2</span>
+          <p>社会は他者との関係性が鍵と聞きます。<br />関係構築のためにどういった人物であるべきですか？</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>割り勘負けしない、先にギブできる器。<br />見返りを求めず情報提供できる人ですね。</p>
+        </div>
+        <div class="border-b border-gray-200"></div>
+        <!-- Q3 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q3</span>
+          <p>自己の成長について社長の考えをお聞かせください。</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>現状に満足せず、自らをアップデートし続ける<br />自己変革意識が成長の鍵です。</p>
+        </div>
+        <div class="border-b border-gray-200"></div>
+        <!-- Q4 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q4</span>
+          <p>社長が思う人格者とはどんな人ですか？</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>かけられた型には憧れない逆理想をでしょうか。</p>
+        </div>
+        <div class="border-b border-gray-200"></div>
+        <!-- Q5 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q5</span>
+          <p>自分のライバルとなる他者がいた時に<br />どう立ち向かうといいですか？</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>まずライバルは自分、他者の成功を妬まず<br />成功の種をできるかどうかです。</p>
+        </div>
+        <div class="border-b border-gray-200"></div>
+        <!-- Q6 -->
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm">
+          <span class="font-mincho font-bold text-xl text-enjin-red">Q6</span>
+          <p>コスパ、タイパなど効率率は重要ですか？</p>
+          <span class="font-mincho font-bold text-xl text-gray-400">A</span>
+          <p>もちろん成果を出すために必要な場合もありますが、<br />人を出し抜いたり不公平な戦略を人は期待せず。<br />フェアさは大事です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== PRESIDENT'S VALUES ============== -->
+  <section class="px-8 lg:px-16 py-20 bg-white">
+    <div class="text-center mb-12">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3">PRESIDENT'S VALUES</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-4xl">
+        社長の<span class="text-enjin-red">5</span>つの価値観
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">👥</div>
+        <h3 class="font-mincho font-bold text-lg mb-3">フェア</h3>
+        <p class="text-xs leading-relaxed text-gray-600">バイアスを持たない誠実な勝負心。<br />人と斜め轢くことが向学的な勤行合いもし、フェアであることが、信頼の土台。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">🏃</div>
+        <h3 class="font-mincho font-bold text-lg mb-3">アクション</h3>
+        <p class="text-xs leading-relaxed text-gray-600">思考を行動に変える。<br />考えるだけでは何も変わらない。まず動く、そしてやり切ることに価値がある。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">💡</div>
+        <h3 class="font-mincho font-bold text-lg mb-3">シンクロ</h3>
+        <p class="text-xs leading-relaxed text-gray-600">共鳴・共に生きる。<br />同じ方向を向き、互いの強みを活かす。チームの力が、個人の可能性を最大化する。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">🤝</div>
+        <h3 class="font-mincho font-bold text-lg mb-3">ギブ</h3>
+        <p class="text-xs leading-relaxed text-gray-600">利己的な行動への循環。<br />先に与えることで、信頼と機会が返ってくる。見返りを求めない姿勢が、未来をつくる。</p>
+      </div>
+      <div class="text-center">
+        <div class="w-12 h-12 mx-auto mb-4 text-enjin-red flex items-center justify-center text-3xl">💴</div>
+        <h3 class="font-mincho font-bold text-lg mb-3">マネー哲学</h3>
+        <p class="text-xs leading-relaxed text-gray-600">長期的視点の追求。<br />一時の利益ではなく、未来の価値を生み出す。持続的な成長についた判断を大切にする。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== GROUP OVERVIEW ============== -->
+  <section id="group" class="relative px-8 lg:px-16 py-20 text-white">
+    <div class="absolute inset-0 ph"></div>
+    <div class="relative max-w-6xl mx-auto">
+      <div class="text-center mb-3">
+        <p class="text-xs tracking-[0.3em] text-gray-300">GROUP OVERVIEW</p>
+      </div>
+      <h2 class="text-center font-mincho font-bold text-3xl lg:text-4xl mb-3">Enjinグループ事業構造</h2>
+      <p class="text-center text-sm text-gray-200 mb-12">4つの事業領域 × グループ会社で中小企業の成長を多角的に支援</p>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 bg-black/40 p-4">
+        <!-- PR -->
+        <div class="bg-white text-gray-900 p-5 text-center">
+          <div class="text-enjin-red text-2xl mb-2">🔑</div>
+          <p class="text-[10px] tracking-widest text-gray-500 mb-1">PUBLIC RELATIONS</p>
+          <h3 class="font-bold text-base mb-3">PR事業</h3>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">戦略PR・メディアプラットフォームを通じた中小企業のブランディング支援</p>
+          <p class="font-mincho text-lg font-bold mb-1"><span class="text-enjin-red">E</span>njin</p>
+          <p class="text-[10px] text-gray-500">AZ.WORLD.COM<br />Japan Public Relations Company</p>
+        </div>
+        <!-- TOURISM -->
+        <div class="bg-stone-100 text-gray-900 p-5 text-center">
+          <div class="text-stone-600 text-2xl mb-2">⛰️</div>
+          <p class="text-[10px] tracking-widest text-gray-500 mb-1">TOURISM</p>
+          <h3 class="font-bold text-base mb-3">観光事業</h3>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">観光元人と組織もしむるインバウンド・地方創生ビジネス</p>
+          <p class="font-mincho text-lg font-bold mb-1">En Journey</p>
+          <p class="text-[10px] text-green-700 font-bold">🌿 Hotarus</p>
+        </div>
+        <!-- REAL ESTATE -->
+        <div class="bg-amber-50 text-gray-900 p-5 text-center">
+          <div class="text-amber-700 text-2xl mb-2">🏢</div>
+          <p class="text-[10px] tracking-widest text-gray-500 mb-1">REAL ESTATE</p>
+          <h3 class="font-bold text-base mb-3">不動産事業</h3>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">不動産仲介・管理を通じた資産形成支援</p>
+          <p class="font-mincho text-lg font-bold mb-1">CROSSROAD</p>
+          <p class="text-[10px] text-gray-700">En Casa</p>
+        </div>
+        <!-- FINANCIAL -->
+        <div class="bg-sky-50 text-gray-900 p-5 text-center">
+          <div class="text-sky-700 text-2xl mb-2">💳</div>
+          <p class="text-[10px] tracking-widest text-gray-500 mb-1">FINANCIAL SERVICES</p>
+          <h3 class="font-bold text-base mb-3">金融事業</h3>
+          <p class="text-xs text-gray-600 mb-5 leading-relaxed">ファクタリング・融込い保険調達・アセットマネジメントによる金融ソリューション</p>
+          <p class="font-mincho text-lg font-bold mb-1"><span class="text-enjin-red">E</span>njin<span class="text-xs"> Payment Service</span></p>
+          <p class="text-[10px] text-gray-700"><span class="text-enjin-red font-bold">E</span>njin Asset Management</p>
+        </div>
+      </div>
+      <div class="bg-enjin-red text-white text-center text-xs py-3 mt-0 px-4">
+        創業時Enjin　既存クライアント約2,500社を中心とした顧客基盤を活用し、事業間のクロスセルにより継続的LTVを最大化
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== JOB TYPES ============== -->
+  <section id="jobs" class="px-8 lg:px-16 py-20">
+    <div class="mb-8">
+      <p class="text-sm font-bold mb-2">職種紹介</p>
+      <h2 class="font-mincho font-bold text-4xl lg:text-5xl">才能を、解き放て。</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8">
+      <!-- 営業職 -->
+      <div class="bg-white border border-gray-200">
+        <div class="grid grid-cols-[1.2fr_1fr]">
+          <div class="p-6">
+            <div class="inline-block bg-enjin-red text-white text-xs font-bold px-3 py-1 mb-4">営業職</div>
+            <h3 class="font-mincho font-bold text-2xl mb-4 leading-tight">正解を売るな。<br />未来を動かせ。</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mb-4">圧倒的な当事者意識と、圧倒的な成果で、クライアントの課題を突破する。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-[10px] border border-gray-300 px-2 py-1">ヒアリング</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">提案</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">クロージング</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">フォロー</span>
+            </div>
+            <a href="#" class="inline-block bg-enjin-red text-white text-xs font-bold px-5 py-2">営業職の詳細を見る</a>
+          </div>
+          <div class="ph">[ 営業職 写真 ]</div>
+        </div>
+      </div>
+      <!-- 企画職 -->
+      <div class="bg-white border border-gray-200">
+        <div class="grid grid-cols-[1.2fr_1fr]">
+          <div class="p-6">
+            <div class="inline-block bg-enjin-red text-white text-xs font-bold px-3 py-1 mb-4">企画職</div>
+            <h3 class="font-mincho font-bold text-2xl mb-4 leading-tight">視座を、<br />変革せよ。</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mb-4">考え抜き、巻き込み、ゼロから価値をつくる。ビジネスの成長を加速させる。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-[10px] border border-gray-300 px-2 py-1">分析</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">設計</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">構築</span>
+              <span class="text-[10px] border border-gray-300 px-2 py-1">実行</span>
+            </div>
+            <a href="#" class="inline-block bg-enjin-red text-white text-xs font-bold px-5 py-2">企画職の詳細を見る</a>
+          </div>
+          <div class="ph">[ 企画職 写真 ]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== MEMBERS ============== -->
+  <section id="members" class="px-8 lg:px-16 py-20 bg-gray-50">
+    <div class="mb-8">
+      <p class="text-sm font-bold mb-2">働く人たち</p>
+      <p class="text-xs text-gray-600">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-7 gap-4">
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2015年入社</p>
+      </div>
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2021年入社</p>
+      </div>
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2020年入社</p>
+      </div>
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2023年入社</p>
+      </div>
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">営業職</span>　2018年入社</p>
+      </div>
+      <div class="text-center">
+        <div class="ph aspect-square mb-2"></div>
+        <p class="text-xs"><span class="text-enjin-red font-bold">企画職</span>　2019年入社</p>
+      </div>
+      <div class="bg-enjin-red text-white flex items-center justify-center text-xs font-bold p-4 text-center cursor-pointer hover:bg-red-700">
+        働く人たちを見る →
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 制度・福利厚生 ============== -->
+  <section class="px-8 lg:px-16 py-20">
+    <div class="mb-10">
+      <p class="text-sm font-bold mb-2">制度・福利厚生</p>
+      <p class="text-xs text-gray-600">挑戦を後押しし、成長を支える環境があります。</p>
+    </div>
+    <div class="grid lg:grid-cols-[2fr_1fr] gap-8">
+      <div class="grid grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">🏆</div>
+          <p class="text-[11px] font-bold leading-tight">HIGH REWARD<br /><span class="font-normal text-gray-500">成果連動型制度</span></p>
+        </div>
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">🚀</div>
+          <p class="text-[11px] font-bold leading-tight">超現場の体験<br /><span class="font-normal text-gray-500">若手登用制度</span></p>
+        </div>
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">🎁</div>
+          <p class="text-[11px] font-bold leading-tight">福利厚生試験<br /><span class="font-normal text-gray-500">各種制度</span></p>
+        </div>
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">👥</div>
+          <p class="text-[11px] font-bold leading-tight">インターンシップ<br /><span class="font-normal text-gray-500">挑戦型プログラム</span></p>
+        </div>
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">📋</div>
+          <p class="text-[11px] font-bold leading-tight">選考情報<br /><span class="font-normal text-gray-500">選考・選考の流れ</span></p>
+        </div>
+        <div class="border border-gray-200 p-4 text-center">
+          <div class="text-enjin-red text-2xl mb-2">💬</div>
+          <p class="text-[11px] font-bold leading-tight">よくある質問<br /><span class="font-normal text-gray-500">Q&amp;A</span></p>
+        </div>
+      </div>
+      <div class="ph light aspect-[4/3]">[ オフィス内観 写真 ]</div>
+    </div>
+  </section>
+
+  <!-- ============== Bottom Nav ============== -->
+  <section class="px-8 lg:px-16 py-8 border-t border-gray-100">
+    <div class="grid grid-cols-2 lg:grid-cols-7 gap-3 text-xs">
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">イベント / 選考情報 / よくある質問</a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">👥 インターンシップ</a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">📄 選考情報</a>
+      <a href="#" class="flex items-center justify-center border border-gray-200 p-3 hover:border-enjin-red">❓ よくある質問</a>
+      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3">📷 Instagram</a>
+      <a href="#" class="flex items-center justify-center bg-enjin-red text-white p-3">▶ YouTube</a>
+      <a href="#" class="flex items-center justify-center bg-gray-900 text-white p-3">↑ ページTOPへ</a>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-400 text-xs py-8 text-center">
+    <p>© Enjin Group — RECRUIT LP MOCK (仮TOPページ / 内部レビュー用)</p>
+    <p class="mt-2 text-gray-600">画像は全てプレースホルダーです。本番素材で差し替え予定。</p>
+  </footer>
+
+</body>
+</html>
