@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script>(function(){if(sessionStorage.getItem('rlpt_auth')==='ok')return;var s=document.documentElement.style;s.visibility='hidden';document.addEventListener('DOMContentLoaded',function(){var o=document.createElement('div');o.id='rlpt_gate';o.style.cssText='position:fixed;inset:0;background:#0d0d0d;color:#fff;display:flex;align-items:center;justify-content:center;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,sans-serif;';o.innerHTML='<form id="rlpt_f" style="text-align:center;padding:24px;"><div style="margin-bottom:8px;font-size:13px;letter-spacing:.2em;color:#888;">RECRUIT LP MOCK (TEST)</div><div style="margin-bottom:24px;font-size:20px;font-weight:600;">パスワードを入力</div><input id="rlpt_p" type="password" autocomplete="off" style="padding:12px 14px;font-size:16px;width:260px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;outline:none;"/><div><button style="margin-top:16px;padding:10px 28px;font-size:15px;cursor:pointer;border:none;border-radius:6px;background:#c00;color:#fff;font-weight:600;">入る</button></div><div id="rlpt_e" style="margin-top:14px;color:#f66;font-size:13px;min-height:18px;"></div></form>';document.body.appendChild(o);s.visibility='visible';var f=document.getElementById('rlpt_f'),p=document.getElementById('rlpt_p'),e=document.getElementById('rlpt_e');p.focus();f.onsubmit=function(ev){ev.preventDefault();if(p.value==='pass0621'){sessionStorage.setItem('rlpt_auth','ok');o.remove();}else{e.textContent='パスワードが違います';p.value='';p.focus();}};});})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>採用LP（仮TOP v2 / モーション版） — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { font-family: 'Noto Sans JP', sans-serif; }
+
+    /* ====== Motion ====== */
+    @keyframes kenBurns {
+      0%   { transform: scale(1.02) translate(0,0); }
+      100% { transform: scale(1.12) translate(-1%,1%); }
+    }
+    .ken-burns { overflow: hidden; position: relative; }
+    .ken-burns > .kb-img {
+      position: absolute; inset: 0;
+      animation: kenBurns 16s ease-in-out infinite alternate;
+      transform-origin: center center;
+      background-size: cover; background-position: center;
+    }
+
+    @keyframes lineUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stagger > * { opacity: 0; animation: lineUp 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+    .stagger > *:nth-child(1) { animation-delay: 0.15s; }
+    .stagger > *:nth-child(2) { animation-delay: 0.35s; }
+    .stagger > *:nth-child(3) { animation-delay: 0.55s; }
+    .stagger > *:nth-child(4) { animation-delay: 0.75s; }
+    .stagger > *:nth-child(5) { animation-delay: 0.95s; }
+    .stagger > *:nth-child(6) { animation-delay: 1.15s; }
+    .stagger > *:nth-child(7) { animation-delay: 1.35s; }
+    .stagger > *:nth-child(8) { animation-delay: 1.55s; }
+
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.9s cubic-bezier(.22,1,.36,1), transform 0.9s cubic-bezier(.22,1,.36,1);
+      will-change: opacity, transform;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @keyframes underlineGrow {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+    .deco-line.in {
+      transform-origin: left center;
+      animation: underlineGrow 0.8s cubic-bezier(.22,1,.36,1) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ken-burns > .kb-img, .stagger > *, .reveal, .deco-line.in {
+        animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+    }
+
+    .font-mincho { font-family: 'Noto Serif JP', serif; }
+    .text-enjin-red { color: #c8102e; }
+    .bg-enjin-red { background-color: #c8102e; }
+    .border-enjin-red { border-color: #c8102e; }
+    .photo { background-color:#1c1c1c; background-size:cover; background-position:center; background-repeat:no-repeat; }
+    .ph-light { background:linear-gradient(135deg,#e5e7eb,#cbd5e1); display:flex; align-items:center; justify-content:center; color:#475569; font-size:11px; }
+    .enjin-logo { font-family:'Outfit',sans-serif; font-weight:500; font-size:28px; letter-spacing:-0.04em; color:#1a1a1a; }
+    .enjin-logo .e { color:#c8102e; font-weight:600; }
+    .enjin-logo .j { display:inline-block; transform:translateY(2px); }
+    .icon { width:40px; height:40px; stroke:#c8102e; stroke-width:1.5; fill:none; stroke-linecap:round; stroke-linejoin:round; margin:0 auto; }
+    .icon-sm { width:28px; height:28px; }
+    .reconsider-badge {
+      position:absolute; top:14px; right:14px;
+      background:rgba(200,16,46,0.92); color:#fff; font-size:10px; font-weight:700;
+      padding:4px 10px; letter-spacing:0.1em; z-index:5;
+    }
+    /* Section number badge */
+    .sec-no {
+      display:inline-block; font-family:'Outfit',sans-serif; font-weight:300;
+      color:#c8102e; font-size:14px; letter-spacing:0.2em;
+      padding-right:14px; border-right:1px solid #c8102e; margin-right:14px;
+      vertical-align:middle;
+    }
+    /* Diagonal red accent line decoration */
+    .deco-line {
+      display:block; width:60px; height:2px; background:#c8102e; margin:0 auto;
+    }
+    /* Mid CTA strip - dark band with image */
+    .mid-cta {
+      background-color:#0d0d0d; background-size:cover; background-position:center;
+      background-blend-mode:multiply;
+    }
+    /* Horizontal scroll slider */
+    .h-slider {
+      display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory;
+      padding-bottom:1rem; -webkit-overflow-scrolling:touch;
+    }
+    .h-slider::-webkit-scrollbar { height:6px; }
+    .h-slider::-webkit-scrollbar-track { background:#eee; }
+    .h-slider::-webkit-scrollbar-thumb { background:#c8102e; border-radius:3px; }
+    .h-slider > * { flex:0 0 auto; scroll-snap-align:start; }
+    /* Subtle diagonal background pattern for tactile feel */
+    .deco-bg {
+      background-image: repeating-linear-gradient(45deg, rgba(200,16,46,0.03) 0 1px, transparent 1px 16px);
+    }
+  </style>
+</head>
+<body class="text-gray-900 bg-white">
+
+  <!-- ============ 01 Header / Nav ============ -->
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white sticky top-0 z-50 border-b border-gray-100">
+    <a href="top.html" class="enjin-logo"><span class="e">E</span>n<span class="j">j</span>in</a>
+    <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+      <a href="#about" class="hover:text-enjin-red">企業情報</a>
+      <a href="#qa" class="hover:text-enjin-red">社長に聞いてみた</a>
+      <a href="#jobs" class="hover:text-enjin-red">職種紹介</a>
+      <a href="#members" class="hover:text-enjin-red">働くひとたち</a>
+      <a href="#benefits" class="hover:text-enjin-red">福利厚生</a>
+      <a href="#news" class="hover:text-enjin-red">お知らせ</a>
+      <a href="#faq" class="hover:text-enjin-red">よくある質問</a>
+      <a href="#entry" class="bg-enjin-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:bg-red-700">エントリー　→</a>
+    </nav>
+  </header>
+
+  <!-- ============ 02 Hero ============ -->
+  <section id="about" class="px-6 lg:px-16 py-10 lg:py-14 grid lg:grid-cols-[1fr_1.3fr] gap-10 items-center max-w-[1600px] mx-auto">
+    <div class="stagger">
+      <h1 class="font-mincho font-bold text-4xl lg:text-6xl leading-[1.15] tracking-tight mb-10">
+        ぜんぶ欲しい<br />
+        <span class="text-enjin-red">欲望</span>は、<br />
+        最強の動機だ。
+      </h1>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">けがれなき20代。</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">だからこそ、全部掴める余白がある。</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">強い心と、健康な身体。</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">本気でぶつかり合える、人間関係。</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">やり切り分だけ、評価は還る。</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">Enjinは、利己を極めた先に</p>
+      <p class="font-mincho text-sm lg:text-base leading-loose text-gray-800">圧倒的な利他を生む。</p>
+    </div>
+    <div class="relative">
+      <div class="reconsider-badge">［ メインビジュアル 再考中 ］</div>
+      <div class="ken-burns aspect-[5/4] rounded-sm shadow-2xl">
+        <div class="kb-img" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20portrait%20of%20four%20stylish%20young%20Japanese%20business%20professionals%20in%20their%20mid%2020s%2C%20two%20men%20wearing%20perfectly%20tailored%20dark%20charcoal%20suits%20and%20two%20women%20in%20elegant%20business%20attire%2C%20walking%20together%20confidently%20with%20bright%20natural%20smiles%2C%20in%20front%20of%20the%20luxurious%20GINZA%20SIX%20shopping%20complex%20facade%20in%20Tokyo%20Ginza%20district%2C%20golden%20hour%20warm%20natural%20light%2C%20shallow%20depth%20of%20field%20with%20creamy%20bokeh%20background%2C%20shot%20on%20Sony%20A7R%20V%20with%2050mm%20F1.4%20lens%2C%20professional%20fashion%20magazine%20editorial%20photography%2C%20Vogue%20style%2C%20hyper%20detailed%2C%20sharp%20focus%20on%20subjects%2C%20ultra%20realistic%2C%208K%2C%20masterpiece?model=flux&width=1600&height=1280&nologo=true&enhance=true&seed=801');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Mid CTA strip 01 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.85),rgba(13,13,13,0.85)),url('https://image.pollinations.ai/prompt/Tokyo%20skyline%20cityscape%20at%20dusk%20dramatic%20dark%20editorial%20photography%20wide%20panoramic%20view?model=flux&width=1600&height=400&nologo=true&seed=901');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">利己を極めた先に、圧倒的な利他を生む。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
+  <!-- ============ 03 PRESIDENT'S VALUES ============ -->
+  <section class="reveal px-6 lg:px-16 py-20 bg-white">
+    <div class="text-center mb-14">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">01</span>PRESIDENT'S VALUES</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4">
+        社長が大事にしている<span class="text-enjin-red">5</span>つの価値観
+      </h2>
+      <span class="deco-line"></span>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+
+      <div class="text-center">
+        <h3 class="font-mincho font-bold text-lg text-enjin-red mb-2">フェア</h3>
+        <p class="text-[11px] text-gray-700 mb-4 leading-relaxed">バイアスを持たない<br/>誠実な価値観</p>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+          <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
+          <path d="M7 21h10"/><path d="M12 3v18"/>
+          <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
+        </svg>
+        <p class="text-[10px] text-gray-500 tracking-widest mb-3">フェア</p>
+        <p class="text-xs leading-relaxed text-gray-700">自分が得することばかり考える行動は、能力が高くても評価しません。</p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="font-mincho font-bold text-lg text-enjin-red mb-2">アクション</h3>
+        <p class="text-[11px] text-gray-700 mb-4 leading-relaxed">思考を現実に<br/>変える価値観</p>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        <p class="text-[10px] text-gray-500 tracking-widest mb-3">アクション</p>
+        <p class="text-xs leading-relaxed text-gray-700">完璧な準備より、不完全でも「打席数」を増やす人を高く評価します。</p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="font-mincho font-bold text-lg text-enjin-red mb-2">シンクロ</h3>
+        <p class="text-[11px] text-gray-700 mb-4 leading-relaxed">誰とやるか<br/>つながる共鳴・共に走る価値観</p>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+          <path d="M21 3v5h-5"/>
+          <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+          <path d="M8 16H3v5"/>
+        </svg>
+        <p class="text-[10px] text-gray-500 tracking-widest mb-3">シンクロ</p>
+        <p class="text-xs leading-relaxed text-gray-700">計画の精度よりも、価値観を共有し共に走れる人物を重視します。</p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="font-mincho font-bold text-lg text-enjin-red mb-2">ギブ</h3>
+        <p class="text-[11px] text-gray-700 mb-4 leading-relaxed">利己の充足を起点に<br/>利他的価値観の貢献循環</p>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/>
+          <path d="m18 15-2-2"/><path d="m15 18-2-2"/>
+        </svg>
+        <p class="text-[10px] text-gray-500 tracking-widest mb-3">ギブ</p>
+        <p class="text-xs leading-relaxed text-gray-700">ギバー（与える人）同士が共鳴し合うことで、組織全体が底上げされます。</p>
+      </div>
+
+      <div class="text-center">
+        <h3 class="font-mincho font-bold text-lg text-enjin-red mb-2">マネー哲学</h3>
+        <p class="text-[11px] text-gray-700 mb-4 leading-relaxed">数年後の自分たちへの<br/>投資的価値観</p>
+        <svg class="icon mb-4" viewBox="0 0 24 24">
+          <circle cx="8" cy="8" r="6"/>
+          <path d="M18.09 10.37A6 6 0 1 1 10.34 18"/>
+          <path d="M7 6h1v4"/>
+          <path d="m16.71 13.88.7.71-2.82 2.82"/>
+        </svg>
+        <p class="text-[10px] text-gray-500 tracking-widest mb-3">マネー哲学</p>
+        <p class="text-xs leading-relaxed text-gray-700">短期利益ではなく、長期的な信頼関係を築けるパートナーを求めます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 社長に聞いてみた Q&A ============ -->
+  <section id="qa" class="reveal bg-gray-50 px-6 lg:px-16 py-20">
+    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto">
+      <div>
+        <p class="text-xs tracking-[0.3em] text-gray-500 mb-4"><span class="sec-no">02</span>PRESIDENT Q&amp;A</p>
+        <h2 class="font-mincho font-bold text-5xl lg:text-6xl text-enjin-red leading-tight mb-6">
+          社長に<br />聞いてみた。
+        </h2>
+        <p class="text-sm font-medium leading-relaxed">面接では聞けない。<br />ぶっちゃけ話。</p>
+        <div class="w-12 h-0.5 bg-enjin-red mt-4"></div>
+      </div>
+      <div class="space-y-3">
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q1</span>
+          <p class="leading-relaxed">採用にとって学歴や資格などは重要ですか？</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">不問です。今の行動と成長意欲がある方が重要です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q2</span>
+          <p class="leading-relaxed">即時戦力のためにどういった人材であるべきですか？</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">割り勘負けしない、先にギブできる意識。見返りを求めず循環提供できる人です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q3</span>
+          <p class="leading-relaxed">成長について社長の考えをお聞かせください。</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">現状に満足せず、自らをアップデートし続ける。自己変革意識が成長の鍵です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q4</span>
+          <p class="leading-relaxed">社長が思う人格者とはどんな人ですか？</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">受けた恩は忘れない義理堅い人、理想を追い続ける人。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q5</span>
+          <p class="leading-relaxed">ライバルとなる他者がいた時にどう立ち向かうといいですか？</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">まずライバルは自分。他者の成功を糧にして自分の進化につなげることです。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm bg-white p-4 rounded">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q6</span>
+          <p class="leading-relaxed">コスパ、タイパなど効率は重要ですか？</p>
+          <span class="font-mincho font-bold text-base text-gray-400">A</span>
+          <p class="leading-relaxed bg-red-50 -m-1 p-3 rounded">成果に必要ですが、不公平な戦略とは認めません。フェアは大事です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 職種紹介 ============ -->
+  <section id="jobs" class="reveal px-6 lg:px-16 py-16">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">03</span>JOB CATEGORIES</p>
+      <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-6">職種</h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="sales.html" class="bg-gray-50 hover:bg-gray-100 hover:border-enjin-red border border-gray-200 p-5 flex items-center justify-between transition">
+          <span class="text-sm font-medium">PRコンサルティング ／<br />営業</span>
+          <span class="text-enjin-red text-lg">›</span>
+        </a>
+        <a href="stub.html?role=planner" class="bg-gray-50 hover:bg-gray-100 hover:border-enjin-red border border-gray-200 p-5 flex items-center justify-between transition">
+          <span class="text-sm font-medium">企画 ／ プランナー</span>
+          <span class="text-enjin-red text-lg">›</span>
+        </a>
+        <a href="stub.html?role=hr" class="bg-gray-50 hover:bg-gray-100 hover:border-enjin-red border border-gray-200 p-5 flex items-center justify-between transition">
+          <span class="text-sm font-medium">HR</span>
+          <span class="text-enjin-red text-lg">›</span>
+        </a>
+        <a href="stub.html?role=accounting" class="bg-gray-50 hover:bg-gray-100 hover:border-enjin-red border border-gray-200 p-5 flex items-center justify-between transition">
+          <span class="text-sm font-medium">経理</span>
+          <span class="text-enjin-red text-lg">›</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Mid CTA strip 02 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.82),rgba(13,13,13,0.82)),url('https://image.pollinations.ai/prompt/Modern%20Tokyo%20office%20interior%20lit%20warmly%20at%20night%20people%20working%20silhouettes%20wide%20dramatic%20editorial%20photography?model=flux&width=1600&height=400&nologo=true&seed=902');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">自分の手で、自分のキャリアを動かしていく。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
+  <!-- ============ 06 働くひとたち ============ -->
+  <section id="members" class="reveal px-6 lg:px-16 py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">04</span>MEMBERS</p>
+      <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+          <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">働くひとたち</h2>
+          <p class="text-xs text-gray-600">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+        </div>
+        <p class="text-[10px] text-gray-400 tracking-widest hidden lg:block">← SCROLL →</p>
+      </div>
+      <div class="h-slider">
+        <div class="text-center w-44 lg:w-48">
+          <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20confident%20Japanese%20businessman%20in%20his%20early%2030s%20wearing%20dark%20suit%20smiling%20warmly%20natural%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=31');"></div>
+          <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
+          <p class="text-[11px] text-gray-600 mt-1.5">2019年入社</p>
+        </div>
+        <div class="text-center w-44 lg:w-48">
+          <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20Japanese%20businesswoman%20in%20her%20late%2020s%20wearing%20white%20blouse%20smiling%20friendly%20modern%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=32');"></div>
+          <div class="bg-enjin-red text-white text-xs font-bold py-1.5">企画職</div>
+          <p class="text-[11px] text-gray-600 mt-1.5">2021年入社</p>
+        </div>
+        <div class="text-center w-44 lg:w-48">
+          <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20energetic%20Japanese%20businessman%20in%20his%20late%2020s%20wearing%20navy%20suit%20smiling%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=33');"></div>
+          <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
+          <p class="text-[11px] text-gray-600 mt-1.5">2020年入社</p>
+        </div>
+        <div class="text-center w-44 lg:w-48">
+          <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20young%20Japanese%20businesswoman%20fresh%20graduate%20in%20business%20casual%20attire%20smiling%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=34');"></div>
+          <div class="bg-enjin-red text-white text-xs font-bold py-1.5">企画職</div>
+          <p class="text-[11px] text-gray-600 mt-1.5">2023年入社</p>
+        </div>
+        <div class="text-center w-44 lg:w-48">
+          <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20mature%20Japanese%20businessman%20in%20his%20mid%2030s%20wearing%20dark%20suit%20confident%20gaze%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=35');"></div>
+          <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
+          <p class="text-[11px] text-gray-600 mt-1.5">2019年入社</p>
+        </div>
+        <a href="#" class="bg-enjin-red text-white flex items-center justify-center text-sm font-bold p-4 text-center hover:bg-red-700 transition w-44 lg:w-48">
+          社員の本音を見る →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Mid CTA strip 03 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.82),rgba(13,13,13,0.82)),url('https://image.pollinations.ai/prompt/Silhouette%20group%20Japanese%20business%20people%20backs%20looking%20at%20Tokyo%20cityscape%20golden%20hour%20sunset%20dramatic%20editorial%20photography%20wide?model=flux&width=1600&height=400&nologo=true&seed=903');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">あなたの一歩が、誰かの未来をつくる。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
+  <!-- ============ 07 制度・福利厚生 ============ -->
+  <section id="benefits" class="reveal px-6 lg:px-16 py-16">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">05</span>BENEFITS &amp; INFO</p>
+      <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">制度・福利厚生</h2>
+      <p class="text-xs text-gray-600 mb-8">挑戦を後押しし、成長を支える環境があります。</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="#" class="bg-white border border-gray-200 p-8 text-center hover:border-enjin-red transition">
+          <h3 class="font-bold text-sm mb-2">福利厚生制度</h3>
+          <p class="text-[11px] text-gray-500">各種福利厚生制度</p>
+        </a>
+        <a href="#" class="bg-white border border-gray-200 p-8 text-center hover:border-enjin-red transition">
+          <h3 class="font-bold text-sm mb-2">インターンシップ</h3>
+          <p class="text-[11px] text-gray-500">採用プログラム</p>
+        </a>
+        <a href="#news" class="bg-white border border-gray-200 p-8 text-center hover:border-enjin-red transition">
+          <h3 class="font-bold text-sm mb-2">お知らせ<br />（選考情報）</h3>
+          <p class="text-[11px] text-gray-500">選考・選考の段階</p>
+        </a>
+        <a href="#faq" class="bg-white border border-gray-200 p-8 text-center hover:border-enjin-red transition">
+          <h3 class="font-bold text-sm mb-2">よくある質問</h3>
+          <p class="text-[11px] text-gray-500">Q&amp;A</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 Footer ============ -->
+  <footer id="entry" class="bg-gray-50 px-6 lg:px-16 py-16 border-t border-gray-200">
+    <div class="max-w-3xl mx-auto bg-white p-8 lg:p-10 shadow-sm border border-gray-100">
+      <h3 class="font-mincho font-bold text-xl text-center mb-6">採用に関するお問い合わせ</h3>
+      <div class="text-center mb-3">
+        <p class="text-sm">
+          <span class="inline-block border border-gray-400 text-xs px-2 py-0.5 mr-2 align-middle">TEL</span>
+          <span class="font-bold text-xl lg:text-2xl align-middle">03-4590-0808</span>
+          <span class="text-xs text-gray-600 ml-2 align-middle">（受付時間 9:30〜18:30 ※）</span>
+        </p>
+      </div>
+      <p class="text-[11px] text-gray-500 text-center leading-relaxed mb-8">
+        ※土・日曜日、祝日、年末年始、ゴールデンウィーク期間は翌営業日以降の対応とさせていただきます
+      </p>
+      <div class="text-center mb-8">
+        <a href="mailto:#" class="inline-block border border-gray-400 px-8 py-3 text-sm hover:border-enjin-red hover:text-enjin-red transition">
+          メールでのお問い合わせはこちら　›
+        </a>
+      </div>
+      <div class="border-t border-gray-200 pt-6">
+        <p class="text-center text-xs text-gray-600 mb-4">採用SNSはこちら</p>
+        <div class="flex items-center justify-center gap-4">
+          <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-enjin-red transition">
+            <svg style="width:18px;height:18px;stroke:#1a1a1a;fill:none;stroke-width:1.8;" viewBox="0 0 24 24">
+              <rect width="20" height="20" x="2" y="2" rx="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-enjin-red transition">
+            <span class="font-bold text-lg">𝕏</span>
+          </a>
+          <a href="#" class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:border-enjin-red transition">
+            <svg style="width:20px;height:20px;stroke:#1a1a1a;fill:none;stroke-width:1.8;" viewBox="0 0 24 24">
+              <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
+              <path d="m10 15 5-3-5-3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-10 pt-6 border-t border-gray-200 text-xs text-gray-500 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP MOCK / 内部レビュー用 — 画像はAI生成の仮画像です</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal-on-scroll using IntersectionObserver
+    (function(){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      document.querySelectorAll('.reveal, .deco-line').forEach(function(el){ io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
