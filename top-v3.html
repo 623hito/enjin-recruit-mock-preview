@@ -127,6 +127,20 @@
     /* Glow on hero text */
     .hero-h1 { text-shadow: 0 0 80px rgba(232,35,63,0.25); }
 
+    /* === Hero white-chip label (centered) === */
+    .eng-chip {
+      display: inline-block;
+      background: #f5f5f5; color: #0a0a0a;
+      padding: 8px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700; font-size: 12px;
+      letter-spacing: 0.18em;
+    }
+
+    /* Hero ticker placement (closer to viewport edges) */
+    .ticker-edge-top { top: 4%; }
+    .ticker-edge-bottom { bottom: 4%; }
+
     /* Layer ordering */
     .layer-z1 { position: relative; z-index: 1; }
     .layer-z2 { position: relative; z-index: 2; }
@@ -281,41 +295,37 @@
     </div>
   </header>
 
-  <!-- ============ Hero (text only, no image) ============ -->
-  <section id="about" class="relative min-h-screen flex flex-col justify-center px-6 lg:px-16 pt-32 pb-16 overflow-hidden">
-    <!-- Layered ghost bg text -->
-    <div class="ghost-bg" style="top:8%; left:-6%;">欲望</div>
-    <div class="ghost-bg" style="bottom:6%; right:-8%;">動機</div>
-
-    <!-- Hero ticker rows behind text -->
-    <div class="absolute inset-x-0 top-[14%] ticker-row layer-z1" aria-hidden="true">
+  <!-- ============ Hero (centered layout) ============ -->
+  <section id="about" class="relative min-h-screen flex flex-col justify-center items-center text-center px-6 lg:px-16 pt-24 pb-16 overflow-hidden">
+    <!-- Hero ticker rows close to viewport edges -->
+    <div class="absolute inset-x-0 ticker-row layer-z1 ticker-edge-top" aria-hidden="true">
       <span class="ticker">ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;</span>
     </div>
-    <div class="absolute inset-x-0 bottom-[14%] ticker-row layer-z1" aria-hidden="true">
+    <div class="absolute inset-x-0 ticker-row layer-z1 ticker-edge-bottom" aria-hidden="true">
       <span class="ticker reverse">UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;</span>
     </div>
 
-    <!-- Main hero content (text only) -->
+    <!-- Main hero content (centered) -->
     <div class="relative z-10 max-w-5xl mx-auto w-full">
-      <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
-      <div class="stagger">
-        <h1 class="hero-h1 font-mincho font-bold text-6xl md:text-8xl lg:text-[10rem] leading-[0.95] tracking-tight mb-12">
+      <div class="stagger flex flex-col items-center">
+        <p class="eng-chip mb-8">RECRUIT&nbsp;／&nbsp;ENJIN&nbsp;GROUP&nbsp;2027</p>
+        <h1 class="hero-h1 font-mincho font-bold text-5xl md:text-7xl lg:text-9xl leading-[0.95] tracking-tight mb-10">
           ぜんぶ欲しい<br />
           <span class="text-enjin-red">欲望</span>は、<br />
           最強の動機だ。
         </h1>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">けがれなき20代。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">強い心と、健康な身体。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">Enjinは、利己を極めた先に</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">圧倒的な利他を生む。</p>
+        <div class="font-mincho text-sm lg:text-base leading-loose text-white/85 space-y-1">
+          <p>けがれなき20代。</p>
+          <p>だからこそ、全部掴める余白がある。</p>
+          <p>強い心と、健康な身体。本気でぶつかり合える、人間関係。</p>
+          <p>やり切り分だけ、評価は還る。</p>
+          <p>Enjinは、<span class="text-enjin-red">利己を極めた先</span>に圧倒的な利他を生む。</p>
+        </div>
       </div>
     </div>
 
     <!-- Scroll hint -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-white/40 font-outfit animate-pulse">SCROLL ↓</div>
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-white/40 font-outfit animate-pulse z-10">SCROLL ↓</div>
   </section>
 
   <!-- ============ Big JP marquee divider ============ -->
