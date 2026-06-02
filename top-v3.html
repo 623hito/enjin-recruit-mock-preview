@@ -131,6 +131,34 @@
     .layer-z1 { position: relative; z-index: 1; }
     .layer-z2 { position: relative; z-index: 2; }
 
+    /* Photo cells (integrated with dark theme) */
+    .photo {
+      background-color:#1c1c1c; background-size:cover; background-position:center; background-repeat:no-repeat;
+    }
+    .photo-darken { position: relative; overflow: hidden; }
+    .photo-darken::before {
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(10,10,10,0.45), rgba(232,35,63,0.10));
+      pointer-events:none; z-index:1;
+    }
+    @keyframes kenBurns {
+      0%   { transform: scale(1.02); }
+      100% { transform: scale(1.12); }
+    }
+    .ken-burns { overflow:hidden; position:relative; }
+    .ken-burns > .kb-img {
+      position:absolute; inset:0;
+      animation: kenBurns 18s ease-in-out infinite alternate;
+      animation-play-state: paused;
+      background-size:cover; background-position:center;
+    }
+    body.motion-on .ken-burns > .kb-img { animation-play-state: running; }
+    .reconsider-badge {
+      position:absolute; top:14px; right:14px;
+      background:rgba(232,35,63,0.92); color:#fff; font-size:10px; font-weight:700;
+      padding:4px 10px; letter-spacing:0.1em; z-index:5;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .stagger > *, .ticker, .ticker-jp, .reveal, .deco-line.in, .aurora {
         animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important;
@@ -174,22 +202,30 @@
       <span class="ticker reverse">UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;</span>
     </div>
 
-    <!-- Main hero content -->
-    <div class="relative z-10 max-w-5xl mx-auto w-full">
-      <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
-      <div class="stagger">
-        <h1 class="hero-h1 font-mincho font-bold text-6xl md:text-8xl lg:text-[10rem] leading-[0.95] tracking-tight mb-12">
-          ぜんぶ欲しい<br />
-          <span class="text-enjin-red">欲望</span>は、<br />
-          最強の動機だ。
-        </h1>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">けがれなき20代。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">強い心と、健康な身体。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">Enjinは、利己を極めた先に</p>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">圧倒的な利他を生む。</p>
+    <!-- Main hero content (text + photo) -->
+    <div class="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+      <div>
+        <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
+        <div class="stagger">
+          <h1 class="hero-h1 font-mincho font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-10">
+            ぜんぶ欲しい<br />
+            <span class="text-enjin-red">欲望</span>は、<br />
+            最強の動機だ。
+          </h1>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">けがれなき20代。</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">強い心と、健康な身体。</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">Enjinは、利己を極めた先に</p>
+          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">圧倒的な利他を生む。</p>
+        </div>
+      </div>
+      <div class="photo-darken">
+        <div class="reconsider-badge">［ メインビジュアル 再考中 ］</div>
+        <div class="ken-burns aspect-[5/4] shadow-2xl">
+          <div class="kb-img" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20portrait%20of%20four%20stylish%20young%20Japanese%20business%20professionals%20in%20their%20mid%2020s%2C%20two%20men%20wearing%20perfectly%20tailored%20dark%20charcoal%20suits%20and%20two%20women%20in%20elegant%20business%20attire%2C%20walking%20together%20confidently%20with%20bright%20natural%20smiles%2C%20in%20front%20of%20the%20luxurious%20GINZA%20SIX%20shopping%20complex%20facade%20in%20Tokyo%20Ginza%20district%2C%20golden%20hour%20warm%20natural%20light%2C%20shallow%20depth%20of%20field%20with%20creamy%20bokeh%20background%2C%20professional%20fashion%20magazine%20editorial%20photography%2C%20Vogue%20style%2C%20hyper%20detailed%2C%20sharp%20focus%2C%20ultra%20realistic%2C%208K?model=flux&width=1600&height=1280&nologo=true&enhance=true&seed=801');"></div>
+        </div>
       </div>
     </div>
 
@@ -364,29 +400,37 @@
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">働くひとたち</h2>
       <p class="text-xs text-white/60 mb-12">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
-        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
-          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;01</p>
-          <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
-          <p class="font-mincho text-2xl font-bold mb-2">2019</p>
-          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        <div class="border border-white/15 hover:border-enjin-red transition overflow-hidden">
+          <div class="photo-darken aspect-square photo" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20confident%20Japanese%20businessman%20in%20his%20early%2030s%20wearing%20dark%20suit%20smiling%20warmly%20editorial%20photography?model=flux&width=500&height=500&nologo=true&seed=31');"></div>
+          <div class="p-4">
+            <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-2">MEMBER&nbsp;／&nbsp;01</p>
+            <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
+            <p class="font-mincho text-xl font-bold">2019<span class="text-[10px] text-white/50 ml-1 font-sans tracking-widest">JOINED</span></p>
+          </div>
         </div>
-        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
-          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;02</p>
-          <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
-          <p class="font-mincho text-2xl font-bold mb-2">2021</p>
-          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        <div class="border border-white/15 hover:border-enjin-red transition overflow-hidden">
+          <div class="photo-darken aspect-square photo" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20Japanese%20businesswoman%20in%20her%20late%2020s%20wearing%20white%20blouse%20smiling%20friendly%20editorial%20photography?model=flux&width=500&height=500&nologo=true&seed=32');"></div>
+          <div class="p-4">
+            <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-2">MEMBER&nbsp;／&nbsp;02</p>
+            <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
+            <p class="font-mincho text-xl font-bold">2021<span class="text-[10px] text-white/50 ml-1 font-sans tracking-widest">JOINED</span></p>
+          </div>
         </div>
-        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
-          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;03</p>
-          <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
-          <p class="font-mincho text-2xl font-bold mb-2">2020</p>
-          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        <div class="border border-white/15 hover:border-enjin-red transition overflow-hidden">
+          <div class="photo-darken aspect-square photo" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20energetic%20Japanese%20businessman%20in%20his%20late%2020s%20wearing%20navy%20suit%20smiling%20editorial%20photography?model=flux&width=500&height=500&nologo=true&seed=33');"></div>
+          <div class="p-4">
+            <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-2">MEMBER&nbsp;／&nbsp;03</p>
+            <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
+            <p class="font-mincho text-xl font-bold">2020<span class="text-[10px] text-white/50 ml-1 font-sans tracking-widest">JOINED</span></p>
+          </div>
         </div>
-        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
-          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;04</p>
-          <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
-          <p class="font-mincho text-2xl font-bold mb-2">2023</p>
-          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        <div class="border border-white/15 hover:border-enjin-red transition overflow-hidden">
+          <div class="photo-darken aspect-square photo" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20young%20Japanese%20businesswoman%20fresh%20graduate%20in%20business%20casual%20attire%20smiling%20editorial%20photography?model=flux&width=500&height=500&nologo=true&seed=34');"></div>
+          <div class="p-4">
+            <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-2">MEMBER&nbsp;／&nbsp;04</p>
+            <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
+            <p class="font-mincho text-xl font-bold">2023<span class="text-[10px] text-white/50 ml-1 font-sans tracking-widest">JOINED</span></p>
+          </div>
         </div>
         <a href="#" class="bg-enjin-red text-white p-5 flex flex-col justify-between hover:bg-red-700 transition">
           <p class="font-outfit text-[10px] tracking-widest mb-3 text-white/80">MORE</p>

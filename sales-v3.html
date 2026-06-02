@@ -108,6 +108,29 @@
 
     .layer-z2 { position:relative; z-index:2; }
 
+    /* Photo cells integrated with dark theme */
+    .photo { background-color:#1c1c1c; background-size:cover; background-position:center; background-repeat:no-repeat; }
+    .photo-darken { position:relative; overflow:hidden; }
+    .photo-darken::before {
+      content:""; position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(10,10,10,0.45), rgba(232,35,63,0.10));
+      pointer-events:none; z-index:1;
+    }
+    @keyframes kenBurns { 0% { transform: scale(1.02); } 100% { transform: scale(1.12); } }
+    .ken-burns { overflow:hidden; position:relative; }
+    .ken-burns > .kb-img {
+      position:absolute; inset:0;
+      animation: kenBurns 18s ease-in-out infinite alternate;
+      animation-play-state: paused;
+      background-size:cover; background-position:center;
+    }
+    body.motion-on .ken-burns > .kb-img { animation-play-state: running; }
+    .reconsider-badge {
+      position:absolute; top:14px; right:14px;
+      background:rgba(232,35,63,0.92); color:#fff; font-size:10px; font-weight:700;
+      padding:4px 10px; letter-spacing:0.1em; z-index:5;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .stagger > *, .ticker, .ticker-jp, .reveal, .deco-line.in, .aurora {
         animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important;
@@ -154,14 +177,14 @@
       <span class="ticker">SALES&nbsp;／&nbsp;PR&nbsp;CONSULTING&nbsp;／&nbsp;2027&nbsp;／&nbsp;SALES&nbsp;／&nbsp;PR&nbsp;CONSULTING&nbsp;／&nbsp;2027&nbsp;／&nbsp;</span>
     </div>
 
-    <div class="relative z-10 max-w-5xl mx-auto w-full mt-6 grid lg:grid-cols-[40px_1fr] gap-6">
+    <div class="relative z-10 max-w-6xl mx-auto w-full mt-6 grid lg:grid-cols-[40px_1fr_1fr] gap-6 items-center">
       <div class="v-label hidden lg:block">SALES&nbsp;／&nbsp;01</div>
       <div class="stagger">
         <p class="text-enjin-red text-sm font-bold mb-6 tracking-[0.3em]">営業職</p>
-        <h1 class="font-mincho font-bold text-5xl md:text-7xl lg:text-9xl leading-[0.95] tracking-tight mb-12">
+        <h1 class="font-mincho font-bold text-5xl md:text-6xl lg:text-8xl leading-[0.95] tracking-tight mb-10">
           20代で<br /><span class="text-enjin-red">最高峰</span>を<br />経験。
         </h1>
-        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85 mb-8">
+        <p class="font-mincho text-sm lg:text-base leading-loose text-white/85 mb-8">
           最高峰の山は誰もが登れるわけではないが、<br />Enjinでは20代でも。
         </p>
         <div class="flex flex-wrap gap-2">
@@ -169,6 +192,12 @@
           <span class="border border-white/30 text-white/80 text-xs px-3 py-1.5">#圧倒的実績</span>
           <span class="border border-white/30 text-white/80 text-xs px-3 py-1.5">#実力主義</span>
           <span class="bg-enjin-red text-white text-xs px-3 py-1.5 font-bold">#高収入</span>
+        </div>
+      </div>
+      <div class="photo-darken">
+        <div class="reconsider-badge">［ メインビジュアル 再考中 ］</div>
+        <div class="ken-burns aspect-[5/4] shadow-2xl">
+          <div class="kb-img" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20portrait%20of%20four%20ambitious%20young%20Japanese%20salespeople%20in%20their%20mid%2020s%20wearing%20perfectly%20tailored%20dark%20suits%20walking%20confidently%20through%20Tokyo%20Marunouchi%20business%20district%20at%20golden%20hour%2C%20glass%20skyscrapers%20background%2C%20warm%20natural%20backlight%2C%20shallow%20depth%20of%20field%20creamy%20bokeh%2C%20Vogue%20style%2C%20hyper%20detailed%2C%20sharp%20focus%2C%20ultra%20realistic%2C%208K?model=flux&width=1600&height=1280&nologo=true&enhance=true&seed=802');"></div>
         </div>
       </div>
     </div>
@@ -184,25 +213,30 @@
   <!-- ============ ABOUT SALES ============ -->
   <section class="reveal relative px-6 lg:px-16 py-24 layer-z2">
     <div class="ghost-en" style="top:-2%; right:-4%;">ABOUT</div>
-    <div class="max-w-5xl mx-auto relative z-10 grid lg:grid-cols-[40px_1fr] gap-8">
+    <div class="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-[40px_1fr] gap-8">
       <div class="v-label hidden lg:block">ABOUT&nbsp;SALES&nbsp;／&nbsp;02</div>
       <div>
         <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">02</span>ABOUT SALES</p>
         <h2 class="font-mincho font-bold text-4xl lg:text-6xl mb-12">営業職とは</h2>
 
-        <div class="space-y-12">
-          <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
-            <span class="bg-enjin-red text-white font-outfit font-bold text-sm w-12 h-12 flex items-center justify-center flex-shrink-0">01</span>
-            <div>
-              <h3 class="font-mincho font-bold text-2xl lg:text-3xl leading-snug mb-4">20代からプレジデントクラスへ</h3>
-              <p class="text-sm text-white/75 leading-loose">企業の決裁者やトップリーダーに対し、直接提案を行う。それが営業職の日常です。20代から「経営の視点」に触れ、最高峰の交渉力を磨くことができます。</p>
-            </div>
+        <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+          <div class="photo-darken">
+            <div class="photo aspect-[4/3] shadow-xl" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20photo%20of%20Japanese%20business%20team%20three%20people%20mixed%20gender%20mid%2020s%20discussing%20strategy%20in%20modern%20Tokyo%20office%20with%20laptops%20and%20documents%20natural%20window%20light%20Vogue%20style%20hyper%20detailed%20sharp%20focus%208K?model=flux&width=1200&height=900&nologo=true&enhance=true&seed=852');"></div>
           </div>
-          <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
-            <span class="bg-enjin-red text-white font-outfit font-bold text-sm w-12 h-12 flex items-center justify-center flex-shrink-0">02</span>
-            <div>
-              <h3 class="font-mincho font-bold text-2xl lg:text-3xl leading-snug mb-4">高度な営業スタイルが、潜在的才能を開花させる</h3>
-              <p class="text-sm text-white/75 leading-loose">難易度の高い課題解決を通じて、あなた自身も気づいていない「潜在的な本質」が目覚めます。営業職は、単なる稼ぐだけではない、人間力を引き出す才能の実験場でもあります。</p>
+          <div class="space-y-12">
+            <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
+              <span class="bg-enjin-red text-white font-outfit font-bold text-sm w-12 h-12 flex items-center justify-center flex-shrink-0">01</span>
+              <div>
+                <h3 class="font-mincho font-bold text-xl lg:text-2xl leading-snug mb-3">20代からプレジデントクラスへ</h3>
+                <p class="text-sm text-white/75 leading-loose">企業の決裁者やトップリーダーに対し、直接提案を行う。それが営業職の日常です。20代から「経営の視点」に触れ、最高峰の交渉力を磨くことができます。</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
+              <span class="bg-enjin-red text-white font-outfit font-bold text-sm w-12 h-12 flex items-center justify-center flex-shrink-0">02</span>
+              <div>
+                <h3 class="font-mincho font-bold text-xl lg:text-2xl leading-snug mb-3">高度な営業スタイルが、潜在的才能を開花させる</h3>
+                <p class="text-sm text-white/75 leading-loose">難易度の高い課題解決を通じて、あなた自身も気づいていない「潜在的な本質」が目覚めます。営業職は、単なる稼ぐだけではない、人間力を引き出す才能の実験場でもあります。</p>
+              </div>
             </div>
           </div>
         </div>
@@ -253,15 +287,20 @@
   <!-- ============ 経営者と向き合い ============ -->
   <section class="reveal relative px-6 lg:px-16 py-24 layer-z2">
     <div class="ghost-en" style="top:-4%; left:-4%;">VISION</div>
-    <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <p class="text-xs tracking-[0.3em] text-white/60 mb-6"><span class="sec-no">04</span>VISION</p>
-      <h2 class="font-mincho font-bold text-4xl lg:text-6xl leading-tight mb-10">
-        経営者と向き合い、<br/>未来を<span class="text-enjin-red">創る</span>。
-      </h2>
-      <div class="text-base lg:text-lg text-white/80 leading-loose space-y-2 font-mincho">
-        <p>提案先は、経営者（決裁者）。</p>
-        <p>事業課題の核心に切り込み、未来の成長戦略を描く。</p>
-        <p class="text-enjin-red font-bold">あなたの提案が、企業の未来を左右する。</p>
+    <div class="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
+      <div class="photo-darken">
+        <div class="photo aspect-[4/3] shadow-2xl" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20photo%20of%20Japanese%20business%20meeting%20senior%20executive%20and%20young%20salesman%20in%20his%20mid%2020s%20talking%20across%20table%20in%20modern%20Tokyo%20skyscraper%20office%20with%20city%20view%20at%20golden%20hour%20warm%20natural%20light%20Vogue%20style%20hyper%20detailed%208K?model=flux&width=1200&height=900&nologo=true&enhance=true&seed=853');"></div>
+      </div>
+      <div>
+        <p class="text-xs tracking-[0.3em] text-white/60 mb-6"><span class="sec-no">04</span>VISION</p>
+        <h2 class="font-mincho font-bold text-3xl lg:text-5xl leading-tight mb-8">
+          経営者と向き合い、<br/>未来を<span class="text-enjin-red">創る</span>。
+        </h2>
+        <div class="text-sm lg:text-base text-white/80 leading-loose space-y-2 font-mincho">
+          <p>提案先は、経営者（決裁者）。</p>
+          <p>事業課題の核心に切り込み、未来の成長戦略を描く。</p>
+          <p class="text-enjin-red font-bold">あなたの提案が、企業の未来を左右する。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -313,8 +352,9 @@
     </div>
   </section>
 
-  <!-- ============ Bottom CTA banner ============ -->
+  <!-- ============ Bottom CTA banner with silhouette photo bg ============ -->
   <section class="reveal relative py-32 px-6 lg:px-16 layer-z2 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0" style="background-image:linear-gradient(rgba(10,10,10,0.70),rgba(10,10,10,0.55)),url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20wide%20shot%20silhouette%20of%20multiple%20Japanese%20business%20employees%20backs%20looking%20at%20Tokyo%20cityscape%20at%20sunset%20golden%20hour%20dramatic%20clouds%20Vogue%20style%20hyper%20detailed%208K?model=flux&width=1920&height=600&nologo=true&enhance=true&seed=854'); background-size:cover; background-position:center;"></div>
     <div class="ghost-bg" style="top:0; left:50%; transform:translateX(-50%);">才能</div>
     <div class="relative z-10 max-w-3xl mx-auto">
       <h2 class="font-mincho font-bold text-4xl lg:text-6xl leading-tight mb-10">
