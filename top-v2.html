@@ -20,15 +20,18 @@
     .ken-burns > .kb-img {
       position: absolute; inset: 0;
       animation: kenBurns 16s ease-in-out infinite alternate;
+      animation-play-state: paused;
       transform-origin: center center;
       background-size: cover; background-position: center;
     }
+    body.motion-on .ken-burns > .kb-img { animation-play-state: running; }
 
     @keyframes lineUp {
       from { opacity: 0; transform: translateY(28px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .stagger > * { opacity: 0; animation: lineUp 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+    .stagger > * { opacity: 0; animation: lineUp 0.9s cubic-bezier(.22,1,.36,1) forwards; animation-play-state: paused; }
+    body.motion-on .stagger > * { animation-play-state: running; }
     .stagger > *:nth-child(1) { animation-delay: 0.15s; }
     .stagger > *:nth-child(2) { animation-delay: 0.35s; }
     .stagger > *:nth-child(3) { animation-delay: 0.55s; }
@@ -438,17 +441,51 @@
   </footer>
 
   <script>
-    // Reveal-on-scroll using IntersectionObserver
     (function(){
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            io.unobserve(e.target);
+      function startMotion() {
+        document.body.classList.add('motion-on');
+        // Reset stagger animations so they replay (in case CSS already ticked while paused).
+        // For paused animations this is a no-op, but harmless if browser cached state.
+        document.querySelectorAll('.stagger > *, .ken-burns > .kb-img').forEach(function(el){
+          el.style.animation = 'none';
+          // force reflow then clear inline override → CSS animation kicks in fresh
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+        // Reveal-on-scroll
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.reveal, .deco-line').forEach(function(el){ io.observe(el); });
+      }
+
+      function init() {
+        var gate = document.getElementById('rlpt_gate');
+        if (!gate) {
+          startMotion();
+          return;
+        }
+        // Wait for gate to be removed by the password handler
+        var mo = new MutationObserver(function(){
+          if (!document.getElementById('rlpt_gate')) {
+            mo.disconnect();
+            // Tiny delay to allow browser repaint
+            setTimeout(startMotion, 50);
           }
         });
-      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-      document.querySelectorAll('.reveal, .deco-line').forEach(function(el){ io.observe(el); });
+        mo.observe(document.body, { childList: true, subtree: false });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
   </script>
 </body>
