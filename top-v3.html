@@ -131,6 +131,44 @@
     .layer-z1 { position: relative; z-index: 1; }
     .layer-z2 { position: relative; z-index: 2; }
 
+    /* === Chapter intro (clear section divider) === */
+    .chapter {
+      position: relative; z-index: 2;
+      padding: 6rem 1.5rem 2.5rem;
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem;
+      align-items: end;
+      border-bottom: 1px solid rgba(232,35,63,0.25);
+    }
+    .chapter-num {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 900; font-size: 7rem;
+      color: #e8233f;
+      line-height: 0.85; letter-spacing: -0.05em;
+      text-shadow: 0 0 60px rgba(232,35,63,0.3);
+    }
+    .chapter-en {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px; letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 0.6rem;
+    }
+    .chapter-jp {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 700; font-size: 2.2rem;
+      line-height: 1.2;
+    }
+    @media (min-width: 1024px) {
+      .chapter { padding: 8rem 4rem 3rem; }
+      .chapter-num { font-size: 11rem; }
+      .chapter-jp { font-size: 3rem; }
+    }
+    @media (max-width: 640px) {
+      .chapter { grid-template-columns: 1fr; gap: 1rem; padding: 4rem 1.5rem 2rem; }
+      .chapter-num { font-size: 5rem; }
+      .chapter-jp { font-size: 1.6rem; }
+    }
+
     /* Photo cells (integrated with dark theme) */
     .photo {
       background-color:#1c1c1c; background-size:cover; background-position:center; background-repeat:no-repeat;
@@ -202,30 +240,22 @@
       <span class="ticker reverse">UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;</span>
     </div>
 
-    <!-- Main hero content (text + photo) -->
-    <div class="relative z-10 max-w-6xl mx-auto w-full grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
-      <div>
-        <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
-        <div class="stagger">
-          <h1 class="hero-h1 font-mincho font-bold text-5xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight mb-10">
-            ぜんぶ欲しい<br />
-            <span class="text-enjin-red">欲望</span>は、<br />
-            最強の動機だ。
-          </h1>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">けがれなき20代。</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">強い心と、健康な身体。</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">Enjinは、利己を極めた先に</p>
-          <p class="font-mincho text-sm lg:text-base leading-loose text-white/85">圧倒的な利他を生む。</p>
-        </div>
-      </div>
-      <div class="photo-darken">
-        <div class="reconsider-badge">［ メインビジュアル 再考中 ］</div>
-        <div class="ken-burns aspect-[5/4] shadow-2xl">
-          <div class="kb-img" style="background-image:url('https://image.pollinations.ai/prompt/Cinematic%20editorial%20portrait%20of%20four%20stylish%20young%20Japanese%20business%20professionals%20in%20their%20mid%2020s%2C%20two%20men%20wearing%20perfectly%20tailored%20dark%20charcoal%20suits%20and%20two%20women%20in%20elegant%20business%20attire%2C%20walking%20together%20confidently%20with%20bright%20natural%20smiles%2C%20in%20front%20of%20the%20luxurious%20GINZA%20SIX%20shopping%20complex%20facade%20in%20Tokyo%20Ginza%20district%2C%20golden%20hour%20warm%20natural%20light%2C%20shallow%20depth%20of%20field%20with%20creamy%20bokeh%20background%2C%20professional%20fashion%20magazine%20editorial%20photography%2C%20Vogue%20style%2C%20hyper%20detailed%2C%20sharp%20focus%2C%20ultra%20realistic%2C%208K?model=flux&width=1600&height=1280&nologo=true&enhance=true&seed=801');"></div>
-        </div>
+    <!-- Main hero content (text only) -->
+    <div class="relative z-10 max-w-5xl mx-auto w-full">
+      <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
+      <div class="stagger">
+        <h1 class="hero-h1 font-mincho font-bold text-6xl md:text-8xl lg:text-[10rem] leading-[0.95] tracking-tight mb-12">
+          ぜんぶ欲しい<br />
+          <span class="text-enjin-red">欲望</span>は、<br />
+          最強の動機だ。
+        </h1>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">けがれなき20代。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">強い心と、健康な身体。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">Enjinは、利己を極めた先に</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">圧倒的な利他を生む。</p>
       </div>
     </div>
 
@@ -238,16 +268,18 @@
     <span class="ticker-jp">未完成の人格者 ／ 未完成の人格者 ／ 未完成の人格者 ／ 未完成の人格者 ／ </span>
   </div>
 
-  <!-- ============ 02 PRESIDENT'S VALUES ============ -->
-  <section class="reveal relative px-6 lg:px-16 py-24 layer-z2">
-    <div class="ghost-bg" style="top:5%; right:-8%; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.04);">価値観</div>
-    <div class="text-center mb-16 relative z-10">
-      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">02</span>PRESIDENT'S VALUES</p>
-      <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-6">
-        社長が大事にしている<span class="text-enjin-red">5</span>つの価値観
-      </h2>
-      <span class="deco-line mx-auto"></span>
+  <!-- ============ Chapter 02 ============ -->
+  <div class="chapter reveal">
+    <div class="chapter-num">02</div>
+    <div>
+      <p class="chapter-en">PRESIDENT'S VALUES</p>
+      <h2 class="chapter-jp">社長が大事にしている<span class="text-enjin-red">5</span>つの価値観</h2>
     </div>
+  </div>
+
+  <!-- ============ 02 PRESIDENT'S VALUES ============ -->
+  <section class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+    <div class="ghost-bg" style="top:5%; right:-8%; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.04);">価値観</div>
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-6xl mx-auto relative z-10">
       <div class="border border-white/15 p-6 hover:border-enjin-red transition">
         <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">01 FAIR</p>
@@ -292,12 +324,20 @@
     <span class="ticker">PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;</span>
   </div>
 
+  <!-- ============ Chapter 03 ============ -->
+  <div class="chapter reveal">
+    <div class="chapter-num">03</div>
+    <div>
+      <p class="chapter-en">PRESIDENT Q&amp;A</p>
+      <h2 class="chapter-jp">面接では聞けない、<span class="text-enjin-red">ぶっちゃけ話</span>。</h2>
+    </div>
+  </div>
+
   <!-- ============ 03 社長に聞いてみた Q&A ============ -->
-  <section id="qa" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+  <section id="qa" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="ghost-bg" style="bottom:0; left:-8%;">本音</div>
     <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto relative z-10">
       <div>
-        <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">03</span>PRESIDENT Q&amp;A</p>
         <h2 class="font-mincho font-bold text-5xl lg:text-7xl text-enjin-red leading-tight mb-6">
           社長に<br />聞いてみた。
         </h2>
@@ -350,10 +390,18 @@
     <span class="ticker reverse">JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;</span>
   </div>
 
+  <!-- ============ Chapter 04 ============ -->
+  <div class="chapter reveal">
+    <div class="chapter-num">04</div>
+    <div>
+      <p class="chapter-en">JOB CATEGORIES</p>
+      <h2 class="chapter-jp">あなたの<span class="text-enjin-red">才能</span>が活きる職種。</h2>
+    </div>
+  </div>
+
   <!-- ============ 04 職種 ============ -->
-  <section id="jobs" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+  <section id="jobs" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
-      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">04</span>JOB CATEGORIES</p>
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-12">職種</h2>
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-3">
         <a href="sales-v3.html" class="group border border-white/15 hover:border-enjin-red p-6 flex items-center justify-between transition">
@@ -393,10 +441,18 @@
     <span class="ticker-jp">利他　／　共鳴　／　行動　／　信頼　／　利他　／　共鳴　／　行動　／　信頼　／　</span>
   </div>
 
-  <!-- ============ 05 働くひとたち（テキストカード） ============ -->
-  <section id="members" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+  <!-- ============ Chapter 05 ============ -->
+  <div class="chapter reveal">
+    <div class="chapter-num">05</div>
+    <div>
+      <p class="chapter-en">MEMBERS</p>
+      <h2 class="chapter-jp">挑戦を<span class="text-enjin-red">楽しむ</span>仲間たち。</h2>
+    </div>
+  </div>
+
+  <!-- ============ 05 働くひとたち ============ -->
+  <section id="members" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
-      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">05</span>MEMBERS</p>
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">働くひとたち</h2>
       <p class="text-xs text-white/60 mb-12">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
@@ -445,10 +501,18 @@
     <span class="ticker">BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;</span>
   </div>
 
+  <!-- ============ Chapter 06 ============ -->
+  <div class="chapter reveal">
+    <div class="chapter-num">06</div>
+    <div>
+      <p class="chapter-en">BENEFITS &amp; INFO</p>
+      <h2 class="chapter-jp">挑戦を<span class="text-enjin-red">後押し</span>する環境。</h2>
+    </div>
+  </div>
+
   <!-- ============ 06 制度・福利厚生 ============ -->
-  <section id="benefits" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+  <section id="benefits" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
-      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">06</span>BENEFITS &amp; INFO</p>
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">制度・福利厚生</h2>
       <p class="text-xs text-white/60 mb-12">挑戦を後押しし、成長を支える環境があります。</p>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
