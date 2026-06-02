@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script>(function(){if(sessionStorage.getItem('rlpt_auth')==='ok')return;var s=document.documentElement.style;s.visibility='hidden';document.addEventListener('DOMContentLoaded',function(){var o=document.createElement('div');o.id='rlpt_gate';o.style.cssText='position:fixed;inset:0;background:#0d0d0d;color:#fff;display:flex;align-items:center;justify-content:center;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,sans-serif;';o.innerHTML='<form id="rlpt_f" style="text-align:center;padding:24px;"><div style="margin-bottom:8px;font-size:13px;letter-spacing:.2em;color:#888;">RECRUIT LP MOCK (TEST)</div><div style="margin-bottom:24px;font-size:20px;font-weight:600;">パスワードを入力</div><input id="rlpt_p" type="password" autocomplete="off" style="padding:12px 14px;font-size:16px;width:260px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;outline:none;"/><div><button style="margin-top:16px;padding:10px 28px;font-size:15px;cursor:pointer;border:none;border-radius:6px;background:#c00;color:#fff;font-weight:600;">入る</button></div><div id="rlpt_e" style="margin-top:14px;color:#f66;font-size:13px;min-height:18px;"></div></form>';document.body.appendChild(o);s.visibility='visible';var f=document.getElementById('rlpt_f'),p=document.getElementById('rlpt_p'),e=document.getElementById('rlpt_e');p.focus();f.onsubmit=function(ev){ev.preventDefault();if(p.value==='pass0621'){sessionStorage.setItem('rlpt_auth','ok');o.remove();}else{e.textContent='パスワードが違います';p.value='';p.focus();}};});})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>採用LP（仮TOP v3 / 文字+モーション） — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    html, body { font-family: 'Noto Sans JP', sans-serif; background:#0a0a0a; color:#fff; }
+    .font-mincho { font-family: 'Noto Serif JP', serif; }
+    .font-outfit { font-family: 'Outfit', sans-serif; }
+    .text-enjin-red { color:#e8233f; }
+    .bg-enjin-red { background-color:#e8233f; }
+    .border-enjin-red { border-color:#e8233f; }
+    .enjin-logo { font-family:'Outfit',sans-serif; font-weight:500; font-size:22px; letter-spacing:-0.04em; color:#fff; }
+    .enjin-logo .e { color:#e8233f; font-weight:600; }
+
+    /* ============ Aurora background ============ */
+    .aurora {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(circle at 20% 25%, rgba(232,35,63,0.30) 0%, transparent 40%),
+        radial-gradient(circle at 75% 70%, rgba(120,40,200,0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(40,80,200,0.20) 0%, transparent 45%),
+        radial-gradient(circle at 90% 20%, rgba(232,35,63,0.18) 0%, transparent 35%);
+      filter: blur(40px);
+      opacity: 0; transition: opacity 1.5s ease;
+      animation: aurora-drift 24s ease-in-out infinite alternate;
+    }
+    body.aurora-on .aurora { opacity: 1; }
+    @keyframes aurora-drift {
+      0%   { transform: translate(0,0) scale(1); }
+      100% { transform: translate(4%,-4%) scale(1.15); }
+    }
+
+    /* ============ Ticker marquee ============ */
+    .ticker-row {
+      position: relative; overflow: hidden; pointer-events: none;
+      user-select: none;
+    }
+    .ticker {
+      display: inline-block; white-space: nowrap;
+      font-family: 'Outfit', sans-serif; font-weight: 900;
+      font-size: 14vw; line-height: 1; color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.10);
+      animation: ticker-scroll 38s linear infinite;
+      animation-play-state: paused;
+    }
+    .ticker.reverse { animation-direction: reverse; animation-duration: 46s; }
+    body.motion-on .ticker { animation-play-state: running; }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .ticker-jp {
+      display: inline-block; white-space: nowrap;
+      font-family: 'Noto Serif JP', serif; font-weight: 900;
+      font-size: 18vw; line-height: 0.9; color: transparent;
+      -webkit-text-stroke: 1px rgba(232,35,63,0.18);
+      animation: ticker-scroll 60s linear infinite;
+      animation-play-state: paused;
+    }
+    body.motion-on .ticker-jp { animation-play-state: running; }
+
+    /* ============ Pill nav ============ */
+    .pill-nav {
+      background: rgba(255,255,255,0.96); color:#0a0a0a;
+      border-radius: 999px; padding: 0.55rem 0.55rem 0.55rem 1.4rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+    }
+    .pill-nav a { color:#0a0a0a; }
+    .pill-nav a:hover { color:#e8233f; }
+    .pill-cta {
+      background: #0a0a0a; color: #fff; border-radius: 999px;
+      padding: 0.55rem 1.2rem; font-weight: 700; font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+    .pill-cta:hover { background:#e8233f; }
+
+    /* ============ Stagger animation ============ */
+    @keyframes lineUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .stagger > * { opacity: 0; animation: lineUp 1s cubic-bezier(.22,1,.36,1) forwards; animation-play-state: paused; }
+    body.motion-on .stagger > * { animation-play-state: running; }
+    .stagger > *:nth-child(1) { animation-delay: 0.20s; }
+    .stagger > *:nth-child(2) { animation-delay: 0.40s; }
+    .stagger > *:nth-child(3) { animation-delay: 0.60s; }
+    .stagger > *:nth-child(4) { animation-delay: 0.80s; }
+    .stagger > *:nth-child(5) { animation-delay: 1.00s; }
+    .stagger > *:nth-child(6) { animation-delay: 1.20s; }
+    .stagger > *:nth-child(7) { animation-delay: 1.40s; }
+    .stagger > *:nth-child(8) { animation-delay: 1.60s; }
+    .stagger > *:nth-child(9) { animation-delay: 1.80s; }
+
+    /* ============ Reveal on scroll ============ */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity 1.2s cubic-bezier(.22,1,.36,1), transform 1.2s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ============ Ghost background letters ============ */
+    .ghost-bg {
+      position: absolute; pointer-events: none; user-select: none;
+      font-family: 'Noto Serif JP', serif; font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1px rgba(232,35,63,0.12);
+      font-size: 30vw; line-height: 0.85; z-index: 0;
+    }
+
+    /* ============ Section number badge ============ */
+    .sec-no {
+      display: inline-block; font-family: 'Outfit', sans-serif; font-weight: 300;
+      color: #e8233f; font-size: 14px; letter-spacing: 0.2em;
+      padding-right: 14px; border-right: 1px solid #e8233f; margin-right: 14px;
+      vertical-align: middle;
+    }
+    .deco-line { display:block; width:60px; height:2px; background:#e8233f; }
+    .deco-line.in { transform-origin:left; animation: ulGrow 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+    @keyframes ulGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* Glow on hero text */
+    .hero-h1 { text-shadow: 0 0 80px rgba(232,35,63,0.25); }
+
+    /* Layer ordering */
+    .layer-z1 { position: relative; z-index: 1; }
+    .layer-z2 { position: relative; z-index: 2; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stagger > *, .ticker, .ticker-jp, .reveal, .deco-line.in, .aurora {
+        animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Aurora animated background (fixed full-screen) -->
+  <div class="aurora"></div>
+
+  <!-- ============ Pill Header ============ -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4 lg:px-8 flex justify-center">
+    <div class="pill-nav flex items-center gap-5">
+      <a href="top-v3.html" class="enjin-logo whitespace-nowrap"><span class="e">E</span>njin</a>
+      <nav class="hidden lg:flex items-center gap-5 text-[12px] font-medium">
+        <a href="#about">企業情報</a>
+        <a href="#qa">社長に聞いてみた</a>
+        <a href="#jobs">職種紹介</a>
+        <a href="#members">働くひとたち</a>
+        <a href="#benefits">福利厚生</a>
+        <a href="#news">お知らせ</a>
+        <a href="#faq">よくある質問</a>
+      </nav>
+      <a href="#entry" class="pill-cta">ENTRY　→</a>
+    </div>
+  </header>
+
+  <!-- ============ Hero (text only, no image) ============ -->
+  <section id="about" class="relative min-h-screen flex flex-col justify-center px-6 lg:px-16 pt-32 pb-16 overflow-hidden">
+    <!-- Layered ghost bg text -->
+    <div class="ghost-bg" style="top:8%; left:-6%;">欲望</div>
+    <div class="ghost-bg" style="bottom:6%; right:-8%;">動機</div>
+
+    <!-- Hero ticker rows behind text -->
+    <div class="absolute inset-x-0 top-[14%] ticker-row layer-z1" aria-hidden="true">
+      <span class="ticker">ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;ENJIN&nbsp;GROUP&nbsp;／&nbsp;RECRUIT&nbsp;／&nbsp;2027&nbsp;／&nbsp;</span>
+    </div>
+    <div class="absolute inset-x-0 bottom-[14%] ticker-row layer-z1" aria-hidden="true">
+      <span class="ticker reverse">UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;UNCOMPLETED&nbsp;HUMANS&nbsp;WANTED&nbsp;／&nbsp;</span>
+    </div>
+
+    <!-- Main hero content -->
+    <div class="relative z-10 max-w-5xl mx-auto w-full">
+      <p class="text-xs tracking-[0.4em] text-enjin-red mb-8 font-outfit">MAIN&nbsp;MESSAGE&nbsp;／&nbsp;01</p>
+      <div class="stagger">
+        <h1 class="hero-h1 font-mincho font-bold text-6xl md:text-8xl lg:text-[10rem] leading-[0.95] tracking-tight mb-12">
+          ぜんぶ欲しい<br />
+          <span class="text-enjin-red">欲望</span>は、<br />
+          最強の動機だ。
+        </h1>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">けがれなき20代。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">だからこそ、全部掴める余白がある。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">強い心と、健康な身体。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">本気でぶつかり合える、人間関係。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">やり切り分だけ、評価は還る。</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">Enjinは、利己を極めた先に</p>
+        <p class="font-mincho text-base lg:text-lg leading-loose text-white/85">圧倒的な利他を生む。</p>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-white/40 font-outfit animate-pulse">SCROLL ↓</div>
+  </section>
+
+  <!-- ============ Big JP marquee divider ============ -->
+  <div class="ticker-row py-10 relative">
+    <span class="ticker-jp">未完成の人格者 ／ 未完成の人格者 ／ 未完成の人格者 ／ 未完成の人格者 ／ </span>
+  </div>
+
+  <!-- ============ 02 PRESIDENT'S VALUES ============ -->
+  <section class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+    <div class="ghost-bg" style="top:5%; right:-8%; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.04);">価値観</div>
+    <div class="text-center mb-16 relative z-10">
+      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">02</span>PRESIDENT'S VALUES</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-6">
+        社長が大事にしている<span class="text-enjin-red">5</span>つの価値観
+      </h2>
+      <span class="deco-line mx-auto"></span>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-6xl mx-auto relative z-10">
+      <div class="border border-white/15 p-6 hover:border-enjin-red transition">
+        <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">01 FAIR</p>
+        <h3 class="font-mincho font-bold text-xl mb-2 text-enjin-red">フェア</h3>
+        <p class="text-[11px] text-white/70 mb-4 leading-relaxed">バイアスを持たない誠実な価値観</p>
+        <div class="w-8 h-px bg-enjin-red mb-4"></div>
+        <p class="text-xs leading-relaxed text-white/70">自分が得することばかり考える行動は、能力が高くても評価しません。</p>
+      </div>
+      <div class="border border-white/15 p-6 hover:border-enjin-red transition">
+        <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">02 ACTION</p>
+        <h3 class="font-mincho font-bold text-xl mb-2 text-enjin-red">アクション</h3>
+        <p class="text-[11px] text-white/70 mb-4 leading-relaxed">思考を現実に変える価値観</p>
+        <div class="w-8 h-px bg-enjin-red mb-4"></div>
+        <p class="text-xs leading-relaxed text-white/70">完璧な準備より、不完全でも「打席数」を増やす人を高く評価します。</p>
+      </div>
+      <div class="border border-white/15 p-6 hover:border-enjin-red transition">
+        <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">03 SYNCHRO</p>
+        <h3 class="font-mincho font-bold text-xl mb-2 text-enjin-red">シンクロ</h3>
+        <p class="text-[11px] text-white/70 mb-4 leading-relaxed">誰とやるか つながる共鳴・共に走る価値観</p>
+        <div class="w-8 h-px bg-enjin-red mb-4"></div>
+        <p class="text-xs leading-relaxed text-white/70">計画の精度よりも、価値観を共有し共に走れる人物を重視します。</p>
+      </div>
+      <div class="border border-white/15 p-6 hover:border-enjin-red transition">
+        <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">04 GIVE</p>
+        <h3 class="font-mincho font-bold text-xl mb-2 text-enjin-red">ギブ</h3>
+        <p class="text-[11px] text-white/70 mb-4 leading-relaxed">利己の充足を起点に 利他的価値観の貢献循環</p>
+        <div class="w-8 h-px bg-enjin-red mb-4"></div>
+        <p class="text-xs leading-relaxed text-white/70">ギバー（与える人）同士が共鳴し合うことで、組織全体が底上げされます。</p>
+      </div>
+      <div class="border border-white/15 p-6 hover:border-enjin-red transition">
+        <p class="font-outfit text-xs tracking-widest text-enjin-red mb-3">05 MONEY</p>
+        <h3 class="font-mincho font-bold text-xl mb-2 text-enjin-red">マネー哲学</h3>
+        <p class="text-[11px] text-white/70 mb-4 leading-relaxed">数年後の自分たちへの 投資的価値観</p>
+        <div class="w-8 h-px bg-enjin-red mb-4"></div>
+        <p class="text-xs leading-relaxed text-white/70">短期利益ではなく、長期的な信頼関係を築けるパートナーを求めます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Marquee divider ============ -->
+  <div class="ticker-row py-6 border-y border-white/10">
+    <span class="ticker">PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;PRESIDENT&nbsp;Q&amp;A&nbsp;／&nbsp;</span>
+  </div>
+
+  <!-- ============ 03 社長に聞いてみた Q&A ============ -->
+  <section id="qa" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+    <div class="ghost-bg" style="bottom:0; left:-8%;">本音</div>
+    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto relative z-10">
+      <div>
+        <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">03</span>PRESIDENT Q&amp;A</p>
+        <h2 class="font-mincho font-bold text-5xl lg:text-7xl text-enjin-red leading-tight mb-6">
+          社長に<br />聞いてみた。
+        </h2>
+        <p class="text-sm leading-relaxed text-white/85">面接では聞けない。<br />ぶっちゃけ話。</p>
+        <div class="w-12 h-0.5 bg-enjin-red mt-4"></div>
+      </div>
+      <div class="space-y-3">
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q1</span>
+          <p class="leading-relaxed text-white/85">採用にとって学歴や資格などは重要ですか？</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">不問です。今の行動と成長意欲がある方が重要です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q2</span>
+          <p class="leading-relaxed text-white/85">即時戦力のためにどういった人材であるべきですか？</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">割り勘負けしない、先にギブできる意識。見返りを求めず循環提供できる人です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q3</span>
+          <p class="leading-relaxed text-white/85">成長について社長の考えをお聞かせください。</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">現状に満足せず、自らをアップデートし続ける。自己変革意識が成長の鍵です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q4</span>
+          <p class="leading-relaxed text-white/85">社長が思う人格者とはどんな人ですか？</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">受けた恩は忘れない義理堅い人、理想を追い続ける人。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q5</span>
+          <p class="leading-relaxed text-white/85">ライバルとなる他者がいた時にどう立ち向かうといいですか？</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">まずライバルは自分。他者の成功を糧にして自分の進化につなげることです。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 items-start text-sm border border-white/10 p-5 hover:border-enjin-red/50 transition">
+          <span class="font-mincho font-bold text-base text-enjin-red">Q6</span>
+          <p class="leading-relaxed text-white/85">コスパ、タイパなど効率は重要ですか？</p>
+          <span class="font-mincho font-bold text-base text-white/40">A</span>
+          <p class="leading-relaxed text-white/85">成果に必要ですが、不公平な戦略とは認めません。フェアは大事です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Marquee divider ============ -->
+  <div class="ticker-row py-6 border-y border-white/10">
+    <span class="ticker reverse">JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;JOB&nbsp;CATEGORIES&nbsp;／&nbsp;</span>
+  </div>
+
+  <!-- ============ 04 職種 ============ -->
+  <section id="jobs" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">04</span>JOB CATEGORIES</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-12">職種</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-3">
+        <a href="sales.html" class="group border border-white/15 hover:border-enjin-red p-6 flex items-center justify-between transition">
+          <div>
+            <p class="font-outfit text-xs text-enjin-red mb-1">01</p>
+            <p class="text-sm font-medium">PRコンサルティング ／ 営業</p>
+          </div>
+          <span class="text-enjin-red text-2xl group-hover:translate-x-1 transition-transform">›</span>
+        </a>
+        <a href="stub.html?role=planner" class="group border border-white/15 hover:border-enjin-red p-6 flex items-center justify-between transition">
+          <div>
+            <p class="font-outfit text-xs text-enjin-red mb-1">02</p>
+            <p class="text-sm font-medium">企画 ／ プランナー</p>
+          </div>
+          <span class="text-enjin-red text-2xl group-hover:translate-x-1 transition-transform">›</span>
+        </a>
+        <a href="stub.html?role=hr" class="group border border-white/15 hover:border-enjin-red p-6 flex items-center justify-between transition">
+          <div>
+            <p class="font-outfit text-xs text-enjin-red mb-1">03</p>
+            <p class="text-sm font-medium">HR</p>
+          </div>
+          <span class="text-enjin-red text-2xl group-hover:translate-x-1 transition-transform">›</span>
+        </a>
+        <a href="stub.html?role=accounting" class="group border border-white/15 hover:border-enjin-red p-6 flex items-center justify-between transition">
+          <div>
+            <p class="font-outfit text-xs text-enjin-red mb-1">04</p>
+            <p class="text-sm font-medium">経理</p>
+          </div>
+          <span class="text-enjin-red text-2xl group-hover:translate-x-1 transition-transform">›</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Big JP marquee ============ -->
+  <div class="ticker-row py-10">
+    <span class="ticker-jp">利他　／　共鳴　／　行動　／　信頼　／　利他　／　共鳴　／　行動　／　信頼　／　</span>
+  </div>
+
+  <!-- ============ 05 働くひとたち（テキストカード） ============ -->
+  <section id="members" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">05</span>MEMBERS</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">働くひとたち</h2>
+      <p class="text-xs text-white/60 mb-12">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
+          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;01</p>
+          <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
+          <p class="font-mincho text-2xl font-bold mb-2">2019</p>
+          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        </div>
+        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
+          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;02</p>
+          <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
+          <p class="font-mincho text-2xl font-bold mb-2">2021</p>
+          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        </div>
+        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
+          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;03</p>
+          <p class="text-enjin-red font-bold text-sm mb-1">営業職</p>
+          <p class="font-mincho text-2xl font-bold mb-2">2020</p>
+          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        </div>
+        <div class="border border-white/15 p-5 hover:border-enjin-red transition">
+          <p class="font-outfit text-[10px] text-white/40 tracking-widest mb-3">MEMBER&nbsp;／&nbsp;04</p>
+          <p class="text-enjin-red font-bold text-sm mb-1">企画職</p>
+          <p class="font-mincho text-2xl font-bold mb-2">2023</p>
+          <p class="text-[10px] text-white/50 tracking-widest">JOINED</p>
+        </div>
+        <a href="#" class="bg-enjin-red text-white p-5 flex flex-col justify-between hover:bg-red-700 transition">
+          <p class="font-outfit text-[10px] tracking-widest mb-3 text-white/80">MORE</p>
+          <p class="font-bold text-sm">社員の本音を見る　→</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Marquee divider ============ -->
+  <div class="ticker-row py-6 border-y border-white/10">
+    <span class="ticker">BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;BENEFITS&nbsp;&amp;&nbsp;INFO&nbsp;／&nbsp;</span>
+  </div>
+
+  <!-- ============ 06 制度・福利厚生 ============ -->
+  <section id="benefits" class="reveal relative px-6 lg:px-16 py-24 layer-z2">
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="text-xs tracking-[0.3em] text-white/60 mb-4"><span class="sec-no">06</span>BENEFITS &amp; INFO</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">制度・福利厚生</h2>
+      <p class="text-xs text-white/60 mb-12">挑戦を後押しし、成長を支える環境があります。</p>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <a href="#" class="border border-white/15 p-8 hover:border-enjin-red transition block">
+          <p class="font-outfit text-xs text-enjin-red mb-3">BENEFIT</p>
+          <h3 class="font-mincho font-bold text-lg mb-2">福利厚生制度</h3>
+          <p class="text-[11px] text-white/60">各種福利厚生制度</p>
+        </a>
+        <a href="#" class="border border-white/15 p-8 hover:border-enjin-red transition block">
+          <p class="font-outfit text-xs text-enjin-red mb-3">PROGRAM</p>
+          <h3 class="font-mincho font-bold text-lg mb-2">インターンシップ</h3>
+          <p class="text-[11px] text-white/60">採用プログラム</p>
+        </a>
+        <a href="#news" class="border border-white/15 p-8 hover:border-enjin-red transition block">
+          <p class="font-outfit text-xs text-enjin-red mb-3">NEWS</p>
+          <h3 class="font-mincho font-bold text-lg mb-2">お知らせ<br/>（選考情報）</h3>
+          <p class="text-[11px] text-white/60">選考・選考の段階</p>
+        </a>
+        <a href="#faq" class="border border-white/15 p-8 hover:border-enjin-red transition block">
+          <p class="font-outfit text-xs text-enjin-red mb-3">FAQ</p>
+          <h3 class="font-mincho font-bold text-lg mb-2">よくある質問</h3>
+          <p class="text-[11px] text-white/60">Q&amp;A</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Big bottom marquee ============ -->
+  <div class="ticker-row py-16 border-y border-white/10">
+    <span class="ticker-jp">求む、未完成の人格者。 ／ 求む、未完成の人格者。 ／ 求む、未完成の人格者。 ／ </span>
+  </div>
+
+  <!-- ============ Footer ============ -->
+  <footer id="entry" class="relative px-6 lg:px-16 py-20 layer-z2">
+    <div class="max-w-3xl mx-auto border border-white/15 p-8 lg:p-12 backdrop-blur-sm bg-black/40">
+      <h3 class="font-mincho font-bold text-2xl text-center mb-8">採用に関するお問い合わせ</h3>
+      <div class="text-center mb-3">
+        <p>
+          <span class="inline-block border border-white/40 text-[10px] px-2 py-0.5 mr-2 align-middle">TEL</span>
+          <span class="font-outfit font-bold text-2xl lg:text-3xl align-middle tracking-wide">03-4590-0808</span>
+        </p>
+        <p class="text-xs text-white/60 mt-2">（受付時間 9:30〜18:30 ※）</p>
+      </div>
+      <p class="text-[11px] text-white/40 text-center leading-relaxed mb-8 mt-4">
+        ※土・日曜日、祝日、年末年始、ゴールデンウィーク期間は翌営業日以降の対応とさせていただきます
+      </p>
+      <div class="text-center mb-10">
+        <a href="mailto:#" class="inline-block border border-white/40 px-8 py-3 text-sm hover:border-enjin-red hover:text-enjin-red transition">メールでのお問い合わせはこちら　›</a>
+      </div>
+      <div class="border-t border-white/10 pt-6">
+        <p class="text-center text-xs text-white/60 mb-4">採用SNSはこちら</p>
+        <div class="flex items-center justify-center gap-6 text-sm">
+          <a href="#" class="hover:text-enjin-red font-outfit tracking-wider">Instagram</a>
+          <span class="text-white/20">／</span>
+          <a href="#" class="hover:text-enjin-red font-outfit tracking-wider">X</a>
+          <span class="text-white/20">／</span>
+          <a href="#" class="hover:text-enjin-red font-outfit tracking-wider">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 text-[11px] text-white/40 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP MOCK v3 ／ 内部レビュー用 ／ 画像不使用バージョン</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      function startMotion() {
+        document.body.classList.add('motion-on');
+        document.body.classList.add('aurora-on');
+        // Reset stagger to ensure they replay
+        document.querySelectorAll('.stagger > *').forEach(function(el){
+          el.style.animation = 'none';
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+        // Reveal-on-scroll
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.10, rootMargin: '0px 0px -80px 0px' });
+        document.querySelectorAll('.reveal, .deco-line').forEach(function(el){ io.observe(el); });
+
+        // Scroll-driven aurora intensity (subtle parallax of opacity)
+        var aurora = document.querySelector('.aurora');
+        if (aurora) {
+          window.addEventListener('scroll', function(){
+            var y = window.scrollY;
+            var max = Math.max(document.body.scrollHeight - window.innerHeight, 1);
+            var p = Math.min(y / max, 1);
+            aurora.style.opacity = (0.6 + p * 0.5).toFixed(2);
+          }, { passive: true });
+        }
+      }
+
+      function init() {
+        var gate = document.getElementById('rlpt_gate');
+        if (!gate) { startMotion(); return; }
+        var mo = new MutationObserver(function(){
+          if (!document.getElementById('rlpt_gate')) {
+            mo.disconnect();
+            setTimeout(startMotion, 50);
+          }
+        });
+        mo.observe(document.body, { childList: true, subtree: false });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else { init(); }
+    })();
+  </script>
+</body>
+</html>
