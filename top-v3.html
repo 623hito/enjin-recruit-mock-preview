@@ -169,6 +169,61 @@
       .chapter-jp { font-size: 1.6rem; }
     }
 
+    /* === Section accents (variety per section) === */
+    .sec-accent { position: relative; isolation: isolate; }
+    .sec-accent::before {
+      content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    }
+    /* Pattern A: warm red corners */
+    .accent-warm::before {
+      background:
+        radial-gradient(ellipse 900px 600px at 85% 15%, rgba(232,35,63,0.18), transparent 55%),
+        radial-gradient(ellipse 700px 500px at 10% 90%, rgba(232,35,63,0.12), transparent 60%);
+    }
+    /* Pattern B: cool gradient (purple/blue) */
+    .accent-cool::before {
+      background:
+        radial-gradient(ellipse 1100px 700px at 15% 25%, rgba(80,60,200,0.20), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 90% 80%, rgba(180,40,200,0.15), transparent 60%);
+    }
+    /* Pattern C: subtle grid */
+    .accent-grid::before {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    /* Pattern D: diagonal stripes (red) */
+    .accent-stripes::before {
+      background:
+        repeating-linear-gradient(135deg, rgba(232,35,63,0.05) 0 2px, transparent 2px 60px),
+        radial-gradient(ellipse 800px 600px at 50% 50%, rgba(232,35,63,0.10), transparent 65%);
+    }
+    /* Pattern E: spotlight center */
+    .accent-spot::before {
+      background:
+        radial-gradient(circle 700px at 50% 50%, rgba(232,35,63,0.18), transparent 70%),
+        linear-gradient(180deg, transparent 0%, rgba(232,35,63,0.04) 100%);
+    }
+    /* Pattern F: lighter section bg (slight lift) */
+    .accent-lift {
+      background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, transparent 100%);
+    }
+
+    /* Chapter intro variants — each chapter gets distinctive background tint */
+    .chapter.chapter-warm { background: linear-gradient(180deg, rgba(232,35,63,0.06), transparent); }
+    .chapter.chapter-cool { background: linear-gradient(180deg, rgba(80,60,200,0.08), transparent); }
+    .chapter.chapter-grid {
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.04), transparent),
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: auto, 60px 60px;
+    }
+    .chapter.chapter-stripes { background:
+      linear-gradient(180deg, rgba(232,35,63,0.08), transparent),
+      repeating-linear-gradient(135deg, rgba(232,35,63,0.03) 0 1px, transparent 1px 30px);
+    }
+    .chapter.chapter-spot { background: radial-gradient(circle 600px at 30% 80%, rgba(232,35,63,0.10), transparent 70%); }
+
     /* Photo cells (integrated with dark theme) */
     .photo {
       background-color:#1c1c1c; background-size:cover; background-position:center; background-repeat:no-repeat;
@@ -269,7 +324,7 @@
   </div>
 
   <!-- ============ Chapter 02 ============ -->
-  <div class="chapter reveal">
+  <div class="chapter chapter-warm reveal">
     <div class="chapter-num">02</div>
     <div>
       <p class="chapter-en">PRESIDENT'S VALUES</p>
@@ -277,8 +332,8 @@
     </div>
   </div>
 
-  <!-- ============ 02 PRESIDENT'S VALUES ============ -->
-  <section class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+  <!-- ============ 02 PRESIDENT'S VALUES (warm) ============ -->
+  <section class="reveal sec-accent accent-warm relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="ghost-bg" style="top:5%; right:-8%; color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.04);">価値観</div>
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-6xl mx-auto relative z-10">
       <div class="border border-white/15 p-6 hover:border-enjin-red transition">
@@ -325,7 +380,7 @@
   </div>
 
   <!-- ============ Chapter 03 ============ -->
-  <div class="chapter reveal">
+  <div class="chapter chapter-cool reveal">
     <div class="chapter-num">03</div>
     <div>
       <p class="chapter-en">PRESIDENT Q&amp;A</p>
@@ -333,8 +388,8 @@
     </div>
   </div>
 
-  <!-- ============ 03 社長に聞いてみた Q&A ============ -->
-  <section id="qa" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+  <!-- ============ 03 社長に聞いてみた Q&A (cool) ============ -->
+  <section id="qa" class="reveal sec-accent accent-cool relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="ghost-bg" style="bottom:0; left:-8%;">本音</div>
     <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto relative z-10">
       <div>
@@ -391,7 +446,7 @@
   </div>
 
   <!-- ============ Chapter 04 ============ -->
-  <div class="chapter reveal">
+  <div class="chapter chapter-grid reveal">
     <div class="chapter-num">04</div>
     <div>
       <p class="chapter-en">JOB CATEGORIES</p>
@@ -399,8 +454,8 @@
     </div>
   </div>
 
-  <!-- ============ 04 職種 ============ -->
-  <section id="jobs" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+  <!-- ============ 04 職種 (grid) ============ -->
+  <section id="jobs" class="reveal sec-accent accent-grid relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-12">職種</h2>
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-3">
@@ -442,7 +497,7 @@
   </div>
 
   <!-- ============ Chapter 05 ============ -->
-  <div class="chapter reveal">
+  <div class="chapter chapter-stripes reveal">
     <div class="chapter-num">05</div>
     <div>
       <p class="chapter-en">MEMBERS</p>
@@ -450,8 +505,8 @@
     </div>
   </div>
 
-  <!-- ============ 05 働くひとたち ============ -->
-  <section id="members" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+  <!-- ============ 05 働くひとたち (stripes) ============ -->
+  <section id="members" class="reveal sec-accent accent-stripes relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">働くひとたち</h2>
       <p class="text-xs text-white/60 mb-12">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
@@ -502,7 +557,7 @@
   </div>
 
   <!-- ============ Chapter 06 ============ -->
-  <div class="chapter reveal">
+  <div class="chapter chapter-spot reveal">
     <div class="chapter-num">06</div>
     <div>
       <p class="chapter-en">BENEFITS &amp; INFO</p>
@@ -510,8 +565,8 @@
     </div>
   </div>
 
-  <!-- ============ 06 制度・福利厚生 ============ -->
-  <section id="benefits" class="reveal relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
+  <!-- ============ 06 制度・福利厚生 (spot) ============ -->
+  <section id="benefits" class="reveal sec-accent accent-spot relative px-6 lg:px-16 pt-12 pb-24 layer-z2">
     <div class="max-w-6xl mx-auto relative z-10">
       <h2 class="font-mincho font-bold text-3xl lg:text-5xl mb-3">制度・福利厚生</h2>
       <p class="text-xs text-white/60 mb-12">挑戦を後押しし、成長を支える環境があります。</p>
