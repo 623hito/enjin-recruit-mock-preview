@@ -25,6 +25,35 @@
       background:rgba(200,16,46,0.92); color:#fff; font-size:10px; font-weight:700;
       padding:4px 10px; letter-spacing:0.1em; z-index:5;
     }
+    /* Section number badge */
+    .sec-no {
+      display:inline-block; font-family:'Outfit',sans-serif; font-weight:300;
+      color:#c8102e; font-size:14px; letter-spacing:0.2em;
+      padding-right:14px; border-right:1px solid #c8102e; margin-right:14px;
+      vertical-align:middle;
+    }
+    /* Diagonal red accent line decoration */
+    .deco-line {
+      display:block; width:60px; height:2px; background:#c8102e; margin:0 auto;
+    }
+    /* Mid CTA strip - dark band with image */
+    .mid-cta {
+      background-color:#0d0d0d; background-size:cover; background-position:center;
+      background-blend-mode:multiply;
+    }
+    /* Horizontal scroll slider */
+    .h-slider {
+      display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory;
+      padding-bottom:1rem; -webkit-overflow-scrolling:touch;
+    }
+    .h-slider::-webkit-scrollbar { height:6px; }
+    .h-slider::-webkit-scrollbar-track { background:#eee; }
+    .h-slider::-webkit-scrollbar-thumb { background:#c8102e; border-radius:3px; }
+    .h-slider > * { flex:0 0 auto; scroll-snap-align:start; }
+    /* Subtle diagonal background pattern for tactile feel */
+    .deco-bg {
+      background-image: repeating-linear-gradient(45deg, rgba(200,16,46,0.03) 0 1px, transparent 1px 16px);
+    }
   </style>
 </head>
 <body class="text-gray-900 bg-white">
@@ -68,13 +97,20 @@
     </div>
   </section>
 
+  <!-- ============ Mid CTA strip 01 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.85),rgba(13,13,13,0.85)),url('https://image.pollinations.ai/prompt/Tokyo%20skyline%20cityscape%20at%20dusk%20dramatic%20dark%20editorial%20photography%20wide%20panoramic%20view?model=flux&width=1600&height=400&nologo=true&seed=901');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">利己を極めた先に、圧倒的な利他を生む。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
   <!-- ============ 03 PRESIDENT'S VALUES ============ -->
   <section class="px-6 lg:px-16 py-20 bg-white">
     <div class="text-center mb-14">
-      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3">PRESIDENT'S VALUES</p>
-      <h2 class="font-mincho font-bold text-3xl lg:text-4xl">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">01</span>PRESIDENT'S VALUES</p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4">
         社長が大事にしている<span class="text-enjin-red">5</span>つの価値観
       </h2>
+      <span class="deco-line"></span>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
 
@@ -145,6 +181,7 @@
   <section id="qa" class="bg-gray-50 px-6 lg:px-16 py-20">
     <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto">
       <div>
+        <p class="text-xs tracking-[0.3em] text-gray-500 mb-4"><span class="sec-no">02</span>PRESIDENT Q&amp;A</p>
         <h2 class="font-mincho font-bold text-5xl lg:text-6xl text-enjin-red leading-tight mb-6">
           社長に<br />聞いてみた。
         </h2>
@@ -195,6 +232,7 @@
   <!-- ============ 05 職種紹介 ============ -->
   <section id="jobs" class="px-6 lg:px-16 py-16">
     <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">03</span>JOB CATEGORIES</p>
       <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-6">職種</h2>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <a href="sales.html" class="bg-gray-50 hover:bg-gray-100 hover:border-enjin-red border border-gray-200 p-5 flex items-center justify-between transition">
@@ -217,47 +255,66 @@
     </div>
   </section>
 
+  <!-- ============ Mid CTA strip 02 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.82),rgba(13,13,13,0.82)),url('https://image.pollinations.ai/prompt/Modern%20Tokyo%20office%20interior%20lit%20warmly%20at%20night%20people%20working%20silhouettes%20wide%20dramatic%20editorial%20photography?model=flux&width=1600&height=400&nologo=true&seed=902');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">自分の手で、自分のキャリアを動かしていく。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
   <!-- ============ 06 働くひとたち ============ -->
   <section id="members" class="px-6 lg:px-16 py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto">
-      <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">働くひとたち</h2>
-      <p class="text-xs text-gray-600 mb-8">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
-      <div class="grid grid-cols-2 lg:grid-cols-6 gap-4">
-        <div class="text-center">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">04</span>MEMBERS</p>
+      <div class="flex items-end justify-between mb-6 flex-wrap gap-3">
+        <div>
+          <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">働くひとたち</h2>
+          <p class="text-xs text-gray-600">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+        </div>
+        <p class="text-[10px] text-gray-400 tracking-widest hidden lg:block">← SCROLL →</p>
+      </div>
+      <div class="h-slider">
+        <div class="text-center w-44 lg:w-48">
           <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20confident%20Japanese%20businessman%20in%20his%20early%2030s%20wearing%20dark%20suit%20smiling%20warmly%20natural%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=31');"></div>
           <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
           <p class="text-[11px] text-gray-600 mt-1.5">2019年入社</p>
         </div>
-        <div class="text-center">
+        <div class="text-center w-44 lg:w-48">
           <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20Japanese%20businesswoman%20in%20her%20late%2020s%20wearing%20white%20blouse%20smiling%20friendly%20modern%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=32');"></div>
           <div class="bg-enjin-red text-white text-xs font-bold py-1.5">企画職</div>
           <p class="text-[11px] text-gray-600 mt-1.5">2021年入社</p>
         </div>
-        <div class="text-center">
+        <div class="text-center w-44 lg:w-48">
           <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20energetic%20Japanese%20businessman%20in%20his%20late%2020s%20wearing%20navy%20suit%20smiling%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=33');"></div>
           <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
           <p class="text-[11px] text-gray-600 mt-1.5">2020年入社</p>
         </div>
-        <div class="text-center">
+        <div class="text-center w-44 lg:w-48">
           <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20young%20Japanese%20businesswoman%20fresh%20graduate%20in%20business%20casual%20attire%20smiling%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=34');"></div>
           <div class="bg-enjin-red text-white text-xs font-bold py-1.5">企画職</div>
           <p class="text-[11px] text-gray-600 mt-1.5">2023年入社</p>
         </div>
-        <div class="text-center">
+        <div class="text-center w-44 lg:w-48">
           <div class="photo aspect-square mb-0" style="background-image:url('https://image.pollinations.ai/prompt/Professional%20headshot%20portrait%20of%20mature%20Japanese%20businessman%20in%20his%20mid%2030s%20wearing%20dark%20suit%20confident%20gaze%20office%20background%20editorial%20photography?width=500&height=500&nologo=true&seed=35');"></div>
           <div class="bg-enjin-red text-white text-xs font-bold py-1.5">営業職</div>
           <p class="text-[11px] text-gray-600 mt-1.5">2019年入社</p>
         </div>
-        <a href="#" class="bg-enjin-red text-white flex items-center justify-center text-sm font-bold p-4 text-center hover:bg-red-700 transition">
+        <a href="#" class="bg-enjin-red text-white flex items-center justify-center text-sm font-bold p-4 text-center hover:bg-red-700 transition w-44 lg:w-48">
           社員の本音を見る →
         </a>
       </div>
     </div>
   </section>
 
+  <!-- ============ Mid CTA strip 03 ============ -->
+  <section class="mid-cta py-12 text-white text-center" style="background-image:linear-gradient(rgba(13,13,13,0.82),rgba(13,13,13,0.82)),url('https://image.pollinations.ai/prompt/Silhouette%20group%20Japanese%20business%20people%20backs%20looking%20at%20Tokyo%20cityscape%20golden%20hour%20sunset%20dramatic%20editorial%20photography%20wide?model=flux&width=1600&height=400&nologo=true&seed=903');">
+    <p class="font-mincho text-xl lg:text-2xl mb-5 leading-relaxed px-4">あなたの一歩が、誰かの未来をつくる。</p>
+    <a href="#entry" class="inline-block border border-white text-white px-8 py-3 text-xs font-bold tracking-wider hover:bg-enjin-red hover:border-enjin-red transition">エントリーへ　→</a>
+  </section>
+
   <!-- ============ 07 制度・福利厚生 ============ -->
   <section id="benefits" class="px-6 lg:px-16 py-16">
     <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">05</span>BENEFITS &amp; INFO</p>
       <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">制度・福利厚生</h2>
       <p class="text-xs text-gray-600 mb-8">挑戦を後押しし、成長を支える環境があります。</p>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
