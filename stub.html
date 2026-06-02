@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script>(function(){if(sessionStorage.getItem('rlpt_auth')==='ok')return;var s=document.documentElement.style;s.visibility='hidden';document.addEventListener('DOMContentLoaded',function(){var o=document.createElement('div');o.id='rlpt_gate';o.style.cssText='position:fixed;inset:0;background:#0d0d0d;color:#fff;display:flex;align-items:center;justify-content:center;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,sans-serif;';o.innerHTML='<form id="rlpt_f" style="text-align:center;padding:24px;"><div style="margin-bottom:8px;font-size:13px;letter-spacing:.2em;color:#888;">RECRUIT LP MOCK (TEST)</div><div style="margin-bottom:24px;font-size:20px;font-weight:600;">パスワードを入力</div><input id="rlpt_p" type="password" autocomplete="off" style="padding:12px 14px;font-size:16px;width:260px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;outline:none;"/><div><button style="margin-top:16px;padding:10px 28px;font-size:15px;cursor:pointer;border:none;border-radius:6px;background:#c00;color:#fff;font-weight:600;">入る</button></div><div id="rlpt_e" style="margin-top:14px;color:#f66;font-size:13px;min-height:18px;"></div></form>';document.body.appendChild(o);s.visibility='visible';var f=document.getElementById('rlpt_f'),p=document.getElementById('rlpt_p'),e=document.getElementById('rlpt_e');p.focus();f.onsubmit=function(ev){ev.preventDefault();if(p.value==='pass0621'){sessionStorage.setItem('rlpt_auth','ok');o.remove();}else{e.textContent='パスワードが違います';p.value='';p.focus();}};});})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>準備中 — 採用LP（仮） — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@500;700;900&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    html, body { font-family: 'Noto Sans JP', sans-serif; }
+    .font-mincho { font-family: 'Noto Serif JP', serif; }
+    .text-enjin-red { color: #c8102e; }
+    .bg-enjin-red { background-color: #c8102e; }
+    .enjin-logo { font-family:'Outfit',sans-serif; font-weight:500; font-size:28px; letter-spacing:-0.04em; color:#1a1a1a; }
+    .enjin-logo .e { color:#c8102e; font-weight:600; }
+    .enjin-logo .j { display:inline-block; transform:translateY(2px); }
+  </style>
+</head>
+<body class="text-gray-900 bg-white min-h-screen flex flex-col">
+
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white border-b border-gray-100">
+    <a href="top.html" class="enjin-logo"><span class="e">E</span>n<span class="j">j</span>in</a>
+    <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+      <a href="top.html#about" class="hover:text-enjin-red">企業情報</a>
+      <a href="top.html#qa" class="hover:text-enjin-red">社長に聞いてみた</a>
+      <a href="top.html#jobs" class="hover:text-enjin-red">職種紹介</a>
+      <a href="top.html#members" class="hover:text-enjin-red">働くひとたち</a>
+      <a href="top.html#benefits" class="hover:text-enjin-red">福利厚生</a>
+      <a href="top.html#news" class="hover:text-enjin-red">お知らせ</a>
+      <a href="top.html#faq" class="hover:text-enjin-red">よくある質問</a>
+      <a href="top.html#entry" class="bg-enjin-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:bg-red-700">エントリー　→</a>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="px-6 lg:px-16 py-3 text-xs text-gray-500 max-w-[1600px] mx-auto w-full">
+    <a href="top.html" class="hover:text-enjin-red">TOP</a>
+    <span class="mx-2">›</span>
+    <a href="top.html#jobs" class="hover:text-enjin-red">職種紹介</a>
+    <span class="mx-2">›</span>
+    <span id="bcRole" class="text-gray-900 font-medium">職種</span>
+  </div>
+
+  <main class="flex-1 flex flex-col items-center justify-center text-center px-6 py-24">
+    <p id="role" class="text-enjin-red text-sm font-bold mb-4 tracking-wider">職種</p>
+    <h1 class="font-mincho font-bold text-4xl lg:text-6xl mb-6">準備中</h1>
+    <p class="text-gray-600 text-sm leading-loose max-w-md mx-auto mb-10">
+      この職種の詳細ページは現在準備中です。<br/>
+      もうしばらくお待ちください。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3">
+      <a href="top.html" class="bg-enjin-red text-white px-6 py-3 text-sm font-bold hover:bg-red-700 transition">
+        ← TOPに戻る
+      </a>
+      <a href="top.html#jobs" class="border border-gray-300 text-gray-700 px-6 py-3 text-sm hover:border-enjin-red hover:text-enjin-red transition">
+        他の職種を見る
+      </a>
+    </div>
+  </main>
+
+  <footer class="bg-gray-50 px-6 lg:px-16 py-8 border-t border-gray-200">
+    <div class="max-w-6xl mx-auto text-xs text-gray-500 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP MOCK / 内部レビュー用</p>
+    </div>
+  </footer>
+
+  <script>
+    const map = {
+      planner: '企画 ／ プランナー',
+      hr: 'HR',
+      accounting: '経理'
+    };
+    const r = new URLSearchParams(location.search).get('role');
+    if (r && map[r]) {
+      const label = map[r];
+      document.getElementById('role').textContent = label;
+      document.getElementById('bcRole').textContent = label;
+      document.title = label + ' — 準備中 — Enjin';
+    }
+  </script>
+</body>
+</html>
