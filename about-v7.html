@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>会社を知る — 採用LP 合作版 v7 — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .font-mincho { font-family:'Noto Serif JP', serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .border-red { border-color:var(--red); } .bg-paper { background:var(--paper); }
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.12em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; }
+    .sec-en-ghost { position:absolute; pointer-events:none; user-select:none; z-index:0; font-family:'Alumni Sans',sans-serif; font-weight:900; color:rgba(191,15,15,0.05); font-size:13vw; line-height:0.8; white-space:nowrap; }
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @keyframes kb { 0%{transform:scale(1.03);} 100%{transform:scale(1.12);} }
+    .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 22s ease-in-out infinite alternate;background-size:cover;background-position:center;}
+    .deco-line{display:block;width:56px;height:3px;background:var(--red);}
+    .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
+    @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;}
+    .hub-link{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;padding:1rem 1.4rem;transition:.2s;background:#fff;}
+    .hub-link:hover{border-color:var(--red);color:var(--red);}
+    @media (prefers-reduced-motion: reduce){ .reveal,.ken-burns>.kb-img,.deco-line.in{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;} }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100">
+    <a href="top-v7.html"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /></a>
+    <nav class="hidden lg:flex items-center gap-5 text-[13px] font-medium">
+      <a href="about-v7.html" class="text-red font-bold">会社を知る</a>
+      <a href="recruitment-v7.html" class="hover:text-red transition">採用情報</a>
+      <a href="environment-v7.html" class="hover:text-red transition">働く環境</a>
+      <a href="members-v7.html" class="hover:text-red transition">ひとを知る</a>
+      <a href="top-v7.html#news" class="hover:text-red transition">お知らせ</a>
+      <a href="top-v7.html#cta" class="bg-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+  </header>
+
+  <!-- Page hero -->
+  <section class="bg-paper px-6 lg:px-16 pt-12 pb-10 relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-10%;right:-3%;">ABOUT US</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="text-[11px] text-gray-400 mb-6"><a href="top-v7.html" class="hover:text-red">TOP</a><span class="mx-2">›</span><span class="text-gray-700">会社を知る</span></p>
+      <p class="eyebrow mb-2">About Us</p>
+      <h1 class="sec-title text-4xl lg:text-5xl mb-4">会社を知る</h1>
+      <span class="deco-line mb-6"></span>
+      <p class="text-sm text-gray-700 leading-loose max-w-2xl">Enjinは、クライアントの魅力や価値を世の中に伝えるお仕事をしています。代表メッセージ・事業紹介・会社概要から、Enjinという会社を知ってください。</p>
+      <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
+        <a href="#message" class="hub-link text-sm"><span>代表メッセージ</span></a>
+        <a href="#business" class="hub-link text-sm"><span>事業紹介</span></a>
+        <a href="#company" class="hub-link text-sm"><span>会社概要</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 代表メッセージ（全文） -->
+  <section id="message" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">MESSAGE</div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <div class="text-center mb-14">
+        <p class="eyebrow mb-2">CEO Message</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">代表メッセージ</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <blockquote class="font-mincho font-bold text-2xl lg:text-3xl leading-relaxed mb-12 text-center">
+        「社会の役に立つ立派な人間を<br />一人でも多く輩出する」
+      </blockquote>
+      <div class="text-sm text-gray-700 leading-loose space-y-6">
+        <p>このパーパス（存在意義）は私たちの企業活動の根幹を成す理念であり、すべての行動において揺るぎない指針となっています。</p>
+        <p>現代社会は急速な技術革新とともに、目まぐるしく変化しています。その中で「社会の役に立つ立派な人間」はますます重要視される一方であり、私たちはこのようなニーズに応えるべく日々研鑽を積んでいます。また、個々人がそのような人財を目指すことは、より豊かで充実した人生を築くことにもつながります。</p>
+        <p>特に近年では、AIやデジタルテクノロジーの進展により、「人」が提供できる価値が大きく変わり、その再定義が求められています。私たちは、こうしたテクノロジーの進化に伴う変化の中で、自分たちは何を提供できるのか？を絶えず考え、進化し続ける必要性を痛感しています。</p>
+        <p>そのためには、時代の変化を敏感に捉え、柔軟に対応する力が求められています。これこそが私たちの原動力であり、私たちの未来を切り開く鍵です。</p>
+      </div>
+      <div class="text-right mt-10">
+        <p class="text-xs text-gray-500">株式会社Enjin 代表取締役社長 グループCEO</p>
+        <p class="font-bold text-2xl mt-1">本田 幸大</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 事業紹介 -->
+  <section id="business" class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">BUSINESS</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-12">
+        <p class="eyebrow mb-2">Business</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">事業紹介</h2>
+        <span class="deco-line mb-6"></span>
+        <p class="text-sm text-gray-700 leading-loose max-w-2xl">一口に「PR」といっても、領域は幅広く、何から手を付ければいいのか分からない——。Enjinは経営者に伴走し、課題解決のためのブランディングPRを実行します。1年目から経営者と直接商談できるのが、Enjinの現場です。</p>
+      </div>
+      <div class="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-center mb-12">
+        <div class="ken-burns aspect-[16/9] shadow-lg"><div class="kb-img" style="background-image:url('images/business.jpg');"></div></div>
+        <div>
+          <h3 class="font-bold text-xl mb-4">PR・ブランディング事業</h3>
+          <p class="text-sm text-gray-700 leading-loose mb-6">全国の経営者と対話し、そのビジョンや魅力を世の中に伝える。新聞やWebで見かける記事の裏側に、Enjinの仕事があります。累計クライアントは約2,500社。</p>
+          <p class="text-xs text-gray-500">※ 事業詳細・実績の掲載内容は制作中です<span class="kari ml-2">仮</span></p>
+        </div>
+      </div>
+      <h3 class="font-bold text-xl mb-4">グループ8社で、多角的に</h3>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="bg-white border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">PR</p><p class="font-bold text-sm">PR・ブランディング</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">TOURISM</p><p class="font-bold text-sm">観光</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">REAL ESTATE</p><p class="font-bold text-sm">不動産</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">FINANCE</p><p class="font-bold text-sm">金融 ほか</p></div>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-4">※ グループ各社の詳細掲載は制作中です<span class="kari ml-2">仮</span></p>
+    </div>
+  </section>
+
+  <!-- 会社概要 -->
+  <section id="company" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">COMPANY</div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Company</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">会社概要・アクセス</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <dl class="divide-y divide-gray-200 border-y border-gray-200 text-sm">
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">社名</dt><dd>株式会社Enjin</dd></div>
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">上場市場</dt><dd>東京証券取引所 グロース市場（証券コード：7370）</dd></div>
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">代表者</dt><dd>代表取締役社長 グループCEO　本田 幸大</dd></div>
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">所在地</dt><dd>東京都中央区銀座5-13-16 ヒューリック銀座イーストビル8F<br /><span class="text-gray-500 text-xs">（7F：スタジオ／受付）</span></dd></div>
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">事業内容</dt><dd>PR・ブランディング支援 ほか（グループ8社：PR・観光・不動産・金融 など）</dd></div>
+        <div class="grid grid-cols-[8rem_1fr] gap-4 py-4"><dt class="font-bold text-gray-500">沿革</dt><dd>2025年に創業20周年<span class="kari ml-2">詳細要確認</span></dd></div>
+      </dl>
+      <div class="mt-8 border border-dashed border-gray-300 p-8 text-center">
+        <p class="font-bold text-gray-400 mb-1">アクセスマップ</p>
+        <p class="text-[10px] text-gray-400">※ Googleマップ埋め込み予定（準備中）</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-red text-white px-6 lg:px-16 py-16 text-center reveal">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="sec-title text-2xl lg:text-3xl leading-tight mb-6">まずは、話を聞きに来ませんか。</h2>
+      <a href="top-v7.html#cta" class="inline-block bg-white text-red px-10 py-4 text-sm font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-paper px-6 lg:px-16 py-10 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto text-[11px] text-gray-400 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP 合作版 v7 ／ 会社を知る ／ 内部レビュー用・文言一部仮</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
+      function init(){document.querySelectorAll('.reveal,.deco-line').forEach(function(el){io.observe(el);});}
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+    })();
+  </script>
+</body>
+</html>

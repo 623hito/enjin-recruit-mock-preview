@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>働く環境を知る — 採用LP 合作版 v7 — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .border-red { border-color:var(--red); } .bg-paper { background:var(--paper); }
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.12em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; }
+    .sec-en-ghost { position:absolute; pointer-events:none; user-select:none; z-index:0; font-family:'Alumni Sans',sans-serif; font-weight:900; color:rgba(191,15,15,0.05); font-size:13vw; line-height:0.8; white-space:nowrap; }
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @keyframes kb { 0%{transform:scale(1.03);} 100%{transform:scale(1.12);} }
+    .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 22s ease-in-out infinite alternate;background-size:cover;background-position:center;}
+    .deco-line{display:block;width:56px;height:3px;background:var(--red);}
+    .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
+    @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;}
+    .hub-link{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;padding:1rem 1.4rem;transition:.2s;background:#fff;}
+    .hub-link:hover{border-color:var(--red);color:var(--red);}
+    .photo{background:#e5e7eb;background-size:cover;background-position:center;}
+    .num-badge{font-family:'Alumni Sans',sans-serif;font-weight:900;color:var(--red);font-size:1.6rem;line-height:1;}
+    @media (prefers-reduced-motion: reduce){ .reveal,.ken-burns>.kb-img,.deco-line.in{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;} }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100">
+    <a href="top-v7.html"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /></a>
+    <nav class="hidden lg:flex items-center gap-5 text-[13px] font-medium">
+      <a href="about-v7.html" class="hover:text-red transition">会社を知る</a>
+      <a href="recruitment-v7.html" class="hover:text-red transition">採用情報</a>
+      <a href="environment-v7.html" class="text-red font-bold">働く環境</a>
+      <a href="members-v7.html" class="hover:text-red transition">ひとを知る</a>
+      <a href="top-v7.html#news" class="hover:text-red transition">お知らせ</a>
+      <a href="top-v7.html#cta" class="bg-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+  </header>
+
+  <!-- Page hero -->
+  <section class="bg-paper px-6 lg:px-16 pt-12 pb-10 relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-10%;right:-3%;">ENVIRONMENT</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="text-[11px] text-gray-400 mb-6"><a href="top-v7.html" class="hover:text-red">TOP</a><span class="mx-2">›</span><span class="text-gray-700">働く環境を知る</span></p>
+      <p class="eyebrow mb-2">Work Environment</p>
+      <h1 class="sec-title text-4xl lg:text-5xl mb-4">働く環境を知る</h1>
+      <span class="deco-line mb-6"></span>
+      <p class="text-sm text-gray-700 leading-loose max-w-2xl">人と人とのつながりを大切にし、お互いに尊重し合いながら切磋琢磨できる<span class="text-red font-bold">OHANA文化</span>が根づいています。会社とメンバーが共に成長していく好循環を生み出すための制度を紹介します。</p>
+      <div class="grid grid-cols-3 gap-3 mt-8 max-w-xl">
+        <a href="#benefit" class="hub-link text-sm"><span>福利厚生</span></a>
+        <a href="#training" class="hub-link text-sm"><span>研修制度</span></a>
+        <a href="#office" class="hub-link text-sm"><span>オフィス</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 福利厚生（OHANA制度） -->
+  <section id="benefit" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">BENEFIT</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Benefit</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">福利厚生</h2>
+        <span class="deco-line mx-auto mb-4"></span>
+        <p class="text-sm text-gray-600">会社とメンバーが共に成長する好循環をつくる、Enjinならではの制度たち。</p>
+      </div>
+
+      <!-- 実写つき3制度 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/ohana_cafe.jpg');"></div>
+          <div class="p-5"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">01</span><h3 class="font-bold text-lg">OHANAカフェ</h3></div><p class="text-xs text-gray-600 leading-relaxed">オフィス内にカフェを完備。ご来社いただいたお客様に提供している本格的なドリンクを、Enjin社員は50円〜と安価に利用できます。メニューは豊富でプロテインなども販売中。</p></div>
+        </div>
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/ohana_trip.jpg');"></div>
+          <div class="p-5"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">02</span><h3 class="font-bold text-lg">OHANA旅</h3></div><p class="text-xs text-gray-600 leading-relaxed">有給を取得してメンバー同士で旅行する場合、旅行にかかわる補助金が支給されます。いつもとは違った環境で、仲間の新たな一面が見られると評判の制度です。</p></div>
+        </div>
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/senpai_meshi.jpg');"></div>
+          <div class="p-5"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">03</span><h3 class="font-bold text-lg">先輩メシ・社内交流会</h3></div><p class="text-xs text-gray-600 leading-relaxed">社員同士の交流を図るイベントをたくさんご用意。夏祭りやBBQなど季節に沿ったイベントを通して、社員同士の仲がより深まります。</p></div>
+        </div>
+      </div>
+
+      <!-- テキスト制度カード -->
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">04</span><h3 class="font-bold text-base">親孝行休暇</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">年に2度、親御さんの誕生日（または命日）に特別休暇の付与と帰省の交通費を補助（5〜8割）。感謝の気持ちをきちんと伝えて欲しいという想いから生まれました。</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">05</span><h3 class="font-bold text-base">家賃補助・住宅手当</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">会社が指定するエリアに居住の場合、住宅手当を支給。通勤負担を減らし、仕事に集中できる環境を。</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">06</span><h3 class="font-bold text-base">ジム代補助</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">強い心と健康な身体づくりをサポート。ジム利用の費用を会社が補助します。</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">07</span><h3 class="font-bold text-base">ランチサポート制度</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">新卒向けのランチ補助制度。先輩や同期との食事の機会を後押しします。</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">08</span><h3 class="font-bold text-base">ホテル割引制度</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">提携ホテルを割引価格で利用可能。リフレッシュも大切な仕事のうち。</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><div class="flex items-baseline gap-3 mb-2"><span class="num-badge">09</span><h3 class="font-bold text-base">宣言チャレンジ制度</h3></div><p class="text-[11px] text-gray-500 leading-relaxed">自ら目標を宣言して挑戦する人を、会社が後押しする制度です。</p></div>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-4">※ 各制度の説明文は現行採用サイト・募集要項をもとに構成（一部要確認）。</p>
+    </div>
+  </section>
+
+  <!-- 研修制度 -->
+  <section id="training" class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">TRAINING</div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Training</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">研修制度</h2>
+        <span class="deco-line mx-auto mb-4"></span>
+        <p class="text-sm text-gray-600">社会人基礎から実務スキルまで、段階的に学び、成長できる研修制度を整えています。</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-3">
+        <div class="bg-white border border-gray-200 p-5 text-center hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-2">STEP 1</p><h3 class="font-bold text-sm">新入社員研修</h3><p class="text-[10px] text-gray-500 mt-2">社会人基礎から実務まで</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-2">MONTHLY</p><h3 class="font-bold text-sm">月次1on1制度</h3><p class="text-[10px] text-gray-500 mt-2">毎月の対話でフォロー</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-2">SKILL</p><h3 class="font-bold text-sm">資格取得支援</h3><p class="text-[10px] text-gray-500 mt-2">※規定あり</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-2">LEADER</p><h3 class="font-bold text-sm">リーダー研修</h3><p class="text-[10px] text-gray-500 mt-2">次のステージへ</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-2">LEGAL</p><h3 class="font-bold text-sm">法務研修</h3><p class="text-[10px] text-gray-500 mt-2">ビジネスの土台を固める</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- オフィス（360VR） -->
+  <section id="office" class="relative reveal">
+    <div class="ken-burns aspect-[16/7] lg:aspect-[16/6]"><div class="kb-img" style="background-image:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('images/office_about.jpg');"></div></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
+      <div>
+        <p class="font-alumni font-bold text-xs text-white/80 tracking-widest mb-2">OFFICE ／ 360° VR</p>
+        <h2 class="sec-title text-2xl lg:text-4xl text-white mb-6" style="text-shadow:0 2px 20px rgba(0,0,0,0.5);">【360°VR体験】<br class="lg:hidden" />空間の魅力をリアルに伝える。</h2>
+        <a href="#" class="inline-block border border-white text-white px-8 py-3 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">VRでオフィスを見る　→ <span class="kari ml-1" style="border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.7);">リンク仮</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-red text-white px-6 lg:px-16 py-16 text-center reveal">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="sec-title text-2xl lg:text-3xl leading-tight mb-6">まずは、話を聞きに来ませんか。</h2>
+      <a href="top-v7.html#cta" class="inline-block bg-white text-red px-10 py-4 text-sm font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-paper px-6 lg:px-16 py-10 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto text-[11px] text-gray-400 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP 合作版 v7 ／ 働く環境を知る ／ 内部レビュー用・文言一部仮</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
+      function init(){document.querySelectorAll('.reveal,.deco-line').forEach(function(el){io.observe(el);});}
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+    })();
+  </script>
+</body>
+</html>
