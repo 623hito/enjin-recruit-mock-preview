@@ -56,6 +56,51 @@
     .accent-warm-l { background: radial-gradient(ellipse 900px 500px at 90% 0%, rgba(200,16,46,0.05), transparent 60%); }
     .accent-grid-l { background-image: linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px); background-size:70px 70px; }
 
+    /* ===== 色気 additions ===== */
+    /* Marker-brush highlight on key words */
+    .brush {
+      background: linear-gradient(105deg, transparent 4%, rgba(200,16,46,0.16) 8%, rgba(200,16,46,0.24) 50%, rgba(200,16,46,0.14) 92%, transparent 96%);
+      padding: 0 0.08em;
+      border-radius: 2px;
+    }
+    /* Huge ghost English behind section headings */
+    .ghost-en-l {
+      position: absolute; pointer-events: none; user-select: none;
+      font-family: 'Outfit', sans-serif; font-weight: 900;
+      color: rgba(200,16,46,0.045);
+      font-size: 15vw; line-height: 0.8; letter-spacing: -0.03em;
+      white-space: nowrap; z-index: 0;
+    }
+    /* Vertical Japanese/English side label */
+    .v-label {
+      writing-mode: vertical-rl;
+      font-family: 'Outfit', sans-serif; font-weight: 500;
+      font-size: 10px; letter-spacing: 0.5em;
+      color: #c8102e;
+    }
+    /* Photo with offset red frame (editorial framing) */
+    .photo-frame { position: relative; }
+    .photo-frame::after {
+      content: ""; position: absolute; inset: 0;
+      transform: translate(14px, 14px);
+      border: 1px solid rgba(200,16,46,0.55);
+      z-index: -1; pointer-events: none;
+    }
+    .photo-frame::before {
+      content: ""; position: absolute;
+      right: -8px; bottom: -8px; width: 45%; height: 45%;
+      background: rgba(200,16,46,0.07);
+      z-index: -2; pointer-events: none;
+    }
+    /* Number with thin outline (fashion magazine style) */
+    .no-outline {
+      font-family: 'Outfit', sans-serif; font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1.5px rgba(200,16,46,0.85);
+      font-size: 3.2rem; line-height: 1;
+    }
+    /* Elegant wide-tracked serif English */
+    .en-serif { font-family: 'Noto Serif JP', serif; font-style: italic; letter-spacing: 0.28em; font-size: 11px; color: #9ca3af; }
+
     .photo { background-color:#e5e7eb; background-size:cover; background-position:center; }
     .kari-badge { display:inline-block; border:1px solid #d1d5db; color:#9ca3af; font-size:10px; padding:2px 8px; letter-spacing:0.1em; vertical-align:middle; }
 
@@ -96,22 +141,26 @@
   </header>
 
   <!-- ============ 01 Hero（元LPレイアウト：左コピー×右実写） ============ -->
-  <section class="relative px-6 lg:px-16 py-10 lg:py-16 grid lg:grid-cols-[1fr_1.35fr] gap-10 items-center max-w-[1600px] mx-auto overflow-hidden">
-    <div class="stagger">
-      <p class="text-xs tracking-[0.35em] text-enjin-red font-outfit mb-6">RECRUIT&nbsp;／&nbsp;ENJIN&nbsp;GROUP</p>
-      <h1 class="font-mincho font-bold text-4xl lg:text-6xl leading-[1.2] tracking-tight mb-6">
-        ぜんぶ欲しいを、<br /><span class="text-enjin-red">諦めるな</span>。
+  <section class="relative px-6 lg:px-16 py-12 lg:py-20 grid lg:grid-cols-[auto_1fr_1.3fr] gap-8 lg:gap-12 items-center max-w-[1600px] mx-auto overflow-hidden">
+    <div class="ghost-en-l" style="bottom:-2%; left:-2%;">AMBITION</div>
+    <div class="v-label hidden lg:block self-start pt-2 relative z-10">ENJIN&nbsp;RECRUIT&nbsp;2027—2028</div>
+    <div class="stagger relative z-10">
+      <p class="en-serif mb-6">— Recruit / Enjin Group</p>
+      <h1 class="font-mincho font-bold text-4xl lg:text-[4.2rem] leading-[1.22] tracking-tight mb-6">
+        ぜんぶ欲しいを、<br /><span class="brush text-enjin-red">諦めるな</span>。
       </h1>
       <p class="mb-6"><span class="kari-badge">コピー仮</span></p>
-      <div class="font-mincho text-sm lg:text-base leading-loose text-gray-700 mb-8">
+      <div class="font-mincho text-sm lg:text-base leading-loose text-gray-700 mb-10">
         <p>けがれなき20代。だからこそ、全部掴める余白がある。</p>
         <p>やり切った分だけ、評価は還る。</p>
         <p>Enjinは、利己を極めた先に圧倒的な利他を生む。</p>
       </div>
-      <a href="#cta" class="inline-block bg-enjin-red text-white px-8 py-4 text-sm font-bold tracking-wider hover:bg-red-700 transition">まずは説明会に申し込む　→</a>
+      <a href="#cta" class="inline-block bg-enjin-red text-white px-8 py-4 text-sm font-bold tracking-wider hover:bg-red-700 transition shadow-lg shadow-red-200">まずは説明会に申し込む　→</a>
     </div>
-    <div class="ken-burns aspect-[16/10] rounded-sm shadow-xl">
-      <div class="kb-img" style="background-image:url('images/main_visual.jpg');"></div>
+    <div class="photo-frame relative z-10">
+      <div class="ken-burns aspect-[16/10]">
+        <div class="kb-img" style="background-image:url('images/main_visual.jpg');"></div>
+      </div>
     </div>
   </section>
 
@@ -121,13 +170,14 @@
   </div>
 
   <!-- ============ 02 代表メッセージ（コア） ============ -->
-  <section id="message" class="reveal accent-warm-l px-6 lg:px-16 py-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">02</span>CEO MESSAGE</p>
-      <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">代表メッセージ</h2>
-      <span class="deco-line mx-auto mb-10"></span>
+  <section id="message" class="reveal accent-warm-l px-6 lg:px-16 py-24 relative overflow-hidden">
+    <div class="ghost-en-l" style="top:4%; right:-4%;">MESSAGE</div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <p class="en-serif mb-3">— CEO Message</p>
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">02</span>代表メッセージ</p>
+      <span class="deco-line mx-auto mb-12"></span>
       <blockquote class="font-mincho font-bold text-2xl lg:text-4xl leading-relaxed mb-8">
-        「社会の役に立つ立派な人間を<br />一人でも多く輩出する」
+        「社会の役に立つ<span class="brush">立派な人間</span>を<br />一人でも多く輩出する」
       </blockquote>
       <p class="text-sm text-gray-600 leading-loose max-w-2xl mx-auto mb-8">
         このパーパス（存在意義）は私たちの企業活動の根幹を成す理念であり、すべての行動において揺るぎない指針となっています。AIやデジタルテクノロジーの進展により「人」が提供できる価値が大きく変わるいま、私たちは何を提供できるのかを絶えず考え、進化し続けます。
@@ -140,9 +190,10 @@
 
   <!-- ============ 03 5つの価値観 ============ -->
   <section id="values" class="reveal bg-gray-50 px-6 lg:px-16 py-20">
-    <div class="text-center mb-12">
-      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">03</span>PRESIDENT'S VALUES</p>
-      <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4">社長が大事にしている<span class="text-enjin-red">5</span>つの価値観</h2>
+    <div class="text-center mb-12 relative">
+      <p class="en-serif mb-3">— President's Values</p>
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">03</span></p>
+      <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4">社長が大事にしている<span class="no-outline align-middle mx-1" style="font-size:2.6rem;">5</span>つの価値観</h2>
       <span class="deco-line mx-auto"></span>
     </div>
     <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -182,13 +233,15 @@
   <!-- ============ 04 社長に聞いてみた（元LPレイアウト） ============ -->
   <section id="qa" class="reveal px-6 lg:px-16 py-20">
     <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto">
-      <div>
-        <p class="text-xs tracking-[0.3em] text-gray-500 mb-4"><span class="sec-no">04</span>PRESIDENT Q&amp;A</p>
+      <div class="relative">
+        <p class="en-serif mb-3">— President Q&amp;A</p>
+        <p class="text-xs tracking-[0.3em] text-gray-500 mb-4"><span class="sec-no">04</span></p>
         <h2 class="font-mincho font-bold text-4xl lg:text-5xl text-enjin-red leading-tight mb-6">
           社長に<br />聞いてみた。
         </h2>
-        <p class="text-sm font-medium leading-relaxed">面接では聞けない、<br />ぶっちゃけ話。</p>
+        <p class="text-sm font-medium leading-relaxed">面接では聞けない、<br /><span class="brush">ぶっちゃけ話</span>。</p>
         <div class="w-12 h-0.5 bg-enjin-red mt-4"></div>
+        <p class="no-outline mt-10 hidden lg:block">Q&amp;A</p>
       </div>
       <div class="space-y-4">
         <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-5 gap-y-1 text-sm items-start">
@@ -320,13 +373,16 @@
   </div>
 
   <!-- ============ 07 働くひとたち（実写） ============ -->
-  <section id="members" class="reveal bg-gray-50 px-6 lg:px-16 py-20">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">07</span>MEMBERS</p>
-      <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-2">働くひとたち</h2>
-      <p class="text-xs text-gray-600 mb-8">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
-      <div class="ken-burns aspect-[16/8] rounded-sm shadow-lg mb-6">
-        <div class="kb-img" style="background-image:url('images/members_20th.jpg');"></div>
+  <section id="members" class="reveal bg-gray-50 px-6 lg:px-16 py-24 relative overflow-hidden">
+    <div class="ghost-en-l" style="top:2%; left:-3%;">MEMBERS</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <p class="en-serif mb-3">— Members</p>
+      <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">07</span>働くひとたち</p>
+      <p class="text-xs text-gray-600 mb-10">さまざまなバックグラウンドを持つ仲間が、<span class="brush">挑戦を楽しんで</span>います。</p>
+      <div class="photo-frame mb-8">
+        <div class="ken-burns aspect-[16/8]">
+          <div class="kb-img" style="background-image:url('images/members_20th.jpg');"></div>
+        </div>
       </div>
       <p class="text-center text-xs text-gray-500 mb-10">創業20周年を迎えたEnjinのメンバー</p>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -437,11 +493,13 @@
   <!-- ============ 10 求める人物像 ============ -->
   <section id="person" class="reveal accent-warm-l px-6 lg:px-16 py-20">
     <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-10">
-        <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">10</span>WHO WE WANT</p>
-        <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4">求む、<span class="text-enjin-red">未完成の人格者</span>。</h2>
+      <div class="text-center mb-10 relative">
+        <div class="ghost-en-l" style="top:-30%; left:50%; transform:translateX(-50%);">WANTED</div>
+        <p class="en-serif mb-3 relative z-10">— Who We Want</p>
+        <p class="text-xs tracking-[0.3em] text-gray-500 mb-3 relative z-10"><span class="sec-no">10</span></p>
+        <h2 class="font-mincho font-bold text-3xl lg:text-4xl mb-4 relative z-10">求む、<span class="brush text-enjin-red">未完成の人格者</span>。</h2>
         <span class="deco-line mx-auto mb-6"></span>
-        <p class="text-sm text-gray-600 leading-loose">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari-badge ml-2">文言仮</span></p>
+        <p class="text-sm text-gray-600 leading-loose relative z-10">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari-badge ml-2">文言仮</span></p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div class="bg-white border border-gray-200 p-6 text-center hover:border-enjin-red transition">
@@ -525,8 +583,10 @@
   </section>
 
   <!-- ============ 13 CTA（赤バンド） ============ -->
-  <section id="cta" class="reveal bg-enjin-red text-white px-6 lg:px-16 py-20 text-center">
-    <div class="max-w-3xl mx-auto">
+  <section id="cta" class="reveal bg-enjin-red text-white px-6 lg:px-16 py-24 text-center relative overflow-hidden">
+    <div class="ghost-en-l" style="top:-8%; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.06);">JOIN&nbsp;US</div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <p class="en-serif mb-4" style="color:rgba(255,255,255,0.6);">— Casual Session</p>
       <h2 class="font-mincho font-bold text-3xl lg:text-4xl leading-tight mb-4">
         まずは、話を聞きに来ませんか。
       </h2>
