@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>お知らせ — 採用LP 合作版 v7 — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.12em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; }
+    .sec-en-ghost { position:absolute; pointer-events:none; user-select:none; z-index:0; font-family:'Alumni Sans',sans-serif; font-weight:900; color:rgba(191,15,15,0.05); font-size:13vw; line-height:0.8; white-space:nowrap; }
+    .deco-line{display:block;width:56px;height:3px;background:var(--red);}
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100">
+    <a href="top-v7.html"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /></a>
+    <nav class="hidden lg:flex items-center gap-5 text-[13px] font-medium">
+      <a href="about-v7.html" class="hover:text-red transition">会社を知る</a>
+      <a href="recruitment-v7.html" class="hover:text-red transition">採用情報</a>
+      <a href="environment-v7.html" class="hover:text-red transition">働く環境</a>
+      <a href="members-v7.html" class="hover:text-red transition">ひとを知る</a>
+      <a href="news-v7.html" class="text-red font-bold">お知らせ</a>
+      <a href="top-v7.html#cta" class="bg-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+  </header>
+
+  <section class="bg-paper px-6 lg:px-16 pt-12 pb-10 relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-10%;right:-3%;">NEWS</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <p class="text-[11px] text-gray-400 mb-6"><a href="top-v7.html" class="hover:text-red">TOP</a><span class="mx-2">›</span><span class="text-gray-700">お知らせ</span></p>
+      <p class="eyebrow mb-2">News</p>
+      <h1 class="sec-title text-4xl lg:text-5xl mb-4">お知らせ</h1>
+      <span class="deco-line"></span>
+    </div>
+  </section>
+
+  <section class="px-6 lg:px-16 py-16 reveal">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex gap-2 mb-8 text-xs">
+        <span class="bg-red text-white px-3 py-1.5 font-bold">すべて</span>
+        <span class="border border-gray-300 text-gray-500 px-3 py-1.5">選考情報</span>
+        <span class="border border-gray-300 text-gray-500 px-3 py-1.5">お知らせ</span>
+      </div>
+      <a href="news-article-v7.html" class="flex items-center gap-6 border-b border-gray-200 py-6 hover:bg-paper transition px-2">
+        <span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.07.XX</span>
+        <span class="text-xs border border-red text-red px-2 py-0.5 whitespace-nowrap">選考情報</span>
+        <span class="text-sm font-medium">【28卒採用】会社説明会の日程を公開しました（ダミー）</span>
+      </a>
+      <a href="news-article-v7.html" class="flex items-center gap-6 border-b border-gray-200 py-6 hover:bg-paper transition px-2">
+        <span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.06.XX</span>
+        <span class="text-xs border border-gray-300 text-gray-500 px-2 py-0.5 whitespace-nowrap">お知らせ</span>
+        <span class="text-sm font-medium">採用サイトをリニューアルしました（ダミー）</span>
+      </a>
+      <a href="news-article-v7.html" class="flex items-center gap-6 border-b border-gray-200 py-6 hover:bg-paper transition px-2">
+        <span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.XX.XX</span>
+        <span class="text-xs border border-red text-red px-2 py-0.5 whitespace-nowrap">選考情報</span>
+        <span class="text-sm font-medium">【27卒採用】第一期選考スタート（元サイト実在記事・移植予定）</span>
+      </a>
+      <p class="text-[11px] text-gray-400 mt-6">※ 記事はダミーです。本番では選考情報・イベント案内をここで更新します。</p>
+    </div>
+  </section>
+
+  <section class="bg-red text-white px-6 lg:px-16 py-16 text-center reveal">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="sec-title text-2xl lg:text-3xl leading-tight mb-6">まずは、話を聞きに来ませんか。</h2>
+      <a href="top-v7.html#cta" class="inline-block bg-white text-red px-10 py-4 text-sm font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+    </div>
+  </section>
+
+  <footer class="bg-paper px-6 lg:px-16 py-10 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto text-[11px] text-gray-400 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP 合作版 v7 ／ お知らせ一覧</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08});
+      document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+    })();
+  </script>
+</body>
+</html>

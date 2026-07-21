@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>営業職 — 採用LP 合作版 v7 — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .font-mincho { font-family:'Noto Serif JP', serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .border-red { border-color:var(--red); } .bg-paper { background:var(--paper); }
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.12em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; }
+    .sec-en-ghost { position:absolute; pointer-events:none; user-select:none; z-index:0; font-family:'Alumni Sans',sans-serif; font-weight:900; color:rgba(191,15,15,0.05); font-size:13vw; line-height:0.8; white-space:nowrap; }
+    @keyframes lineUp { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+    .stagger > * { opacity:0; animation:lineUp 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+    .stagger > *:nth-child(1){animation-delay:.1s;} .stagger > *:nth-child(2){animation-delay:.28s;}
+    .stagger > *:nth-child(3){animation-delay:.46s;} .stagger > *:nth-child(4){animation-delay:.64s;}
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    .deco-line{display:block;width:56px;height:3px;background:var(--red);}
+    .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
+    @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;}
+    @media (prefers-reduced-motion: reduce){ .stagger>*,.reveal,.deco-line.in{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;} }
+  </style>
+</head>
+<body>
+
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100">
+    <a href="top-v7.html"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /></a>
+    <nav class="hidden lg:flex items-center gap-5 text-[13px] font-medium">
+      <a href="about-v7.html" class="hover:text-red transition">会社を知る</a>
+      <a href="recruitment-v7.html" class="text-red font-bold">採用情報</a>
+      <a href="environment-v7.html" class="hover:text-red transition">働く環境</a>
+      <a href="members-v7.html" class="hover:text-red transition">ひとを知る</a>
+      <a href="top-v7.html#cta" class="bg-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-paper px-6 lg:px-16 pt-12 pb-16 relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-6%;right:-3%;">SALES</div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <p class="text-[11px] text-gray-400 mb-8"><a href="top-v7.html" class="hover:text-red">TOP</a><span class="mx-2">›</span><a href="recruitment-v7.html" class="hover:text-red">職種紹介</a><span class="mx-2">›</span><span class="text-gray-700">PRコンサルティング／営業</span></p>
+      <div class="stagger">
+        <p class="eyebrow mb-4">Sales ／ PR Consulting</p>
+        <h1 class="sec-title text-5xl lg:text-7xl leading-[1.05] mb-8"><span class="text-red">20代</span>で<br />最高峰を経験。</h1>
+        <p class="text-sm lg:text-base text-gray-700 leading-loose mb-8">最高峰の山は誰もが登れるわけではないが、Enjinでは20代でも。</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5">#才能解放</span>
+          <span class="border border-gray-300 text-gray-600 text-xs px-3 py-1.5">#圧倒的実績</span>
+          <span class="bg-red text-white text-xs px-3 py-1.5 font-bold">#実力主義</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SALES -->
+  <section class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">ABOUT</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <p class="eyebrow mb-2">About Sales</p>
+      <h2 class="sec-title text-3xl lg:text-4xl mb-3">営業職とは</h2>
+      <span class="deco-line mb-12"></span>
+      <div class="space-y-12">
+        <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
+          <span class="bg-red text-white font-alumni font-black text-lg w-12 h-12 flex items-center justify-center flex-shrink-0">01</span>
+          <div>
+            <h3 class="font-bold text-xl lg:text-2xl leading-snug mb-3">20代からプレジデントクラスへ</h3>
+            <p class="text-sm text-gray-700 leading-loose">企業の決裁者やトップリーダーに対し、直接提案を行う。それが営業職の日常です。20代から「経営の視点」に触れ、最高峰の交渉力を磨くことができます。</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-[auto_1fr] gap-6 items-start">
+          <span class="bg-red text-white font-alumni font-black text-lg w-12 h-12 flex items-center justify-center flex-shrink-0">02</span>
+          <div>
+            <h3 class="font-bold text-xl lg:text-2xl leading-snug mb-3">高度な営業スタイルが、潜在的才能を開花させる</h3>
+            <p class="text-sm text-gray-700 leading-loose">難易度の高い課題解決を通じて、あなた自身も気づいていない「潜在的な本質」が目覚めます。営業職は、単なる稼ぐだけではない、人間力を引き出す才能の実験場でもあります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 営業局の特徴 -->
+  <section class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">FEATURES</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Sales Features</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">営業局の特徴</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-gray-200 p-6 hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-3">FEATURE 01</p><h3 class="font-bold text-lg mb-4 leading-tight">DAY1から<br />最前線</h3><div class="w-7 h-px bg-red mb-4"></div><p class="text-xs text-gray-600 leading-loose">補助業務などの下積みはなし。入社直後からプロフェッショナルとして最前線へ。</p></div>
+        <div class="bg-white border border-gray-200 p-6 hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-3">FEATURE 02</p><h3 class="font-bold text-lg mb-4 leading-tight">圧倒的な<br />裁量</h3><div class="w-7 h-px bg-red mb-4"></div><p class="text-xs text-gray-600 leading-loose">自分の戦略、自分の言葉で契約を獲得。プロセスを自ら設計し、自由で圧倒的なスピード成長を遂げる。</p></div>
+        <div class="bg-white border border-gray-200 p-6 hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-3">FEATURE 03</p><h3 class="font-bold text-lg mb-4 leading-tight">自身の<br />才能</h3><div class="w-7 h-px bg-red mb-4"></div><p class="text-xs text-gray-600 leading-loose">個性やパッションが唯一無二の武器となり、確実な成果へ。</p></div>
+        <div class="bg-white border border-gray-200 p-6 hover:border-red transition"><p class="font-alumni font-bold text-red text-xs tracking-widest mb-3">FEATURE 04</p><h3 class="font-bold text-lg mb-4 leading-tight">「真」の<br />実力主義</h3><div class="w-7 h-px bg-red mb-4"></div><p class="text-xs text-gray-600 leading-loose">獲得した成果は正当に評価として還元。自身の市場価値を最大化できる。<span class="kari ml-1">表現調整中</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 経営者と向き合い -->
+  <section class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">VISION</div>
+    <div class="max-w-3xl mx-auto relative z-10 text-center">
+      <p class="eyebrow mb-2">Vision</p>
+      <h2 class="sec-title text-3xl lg:text-5xl leading-tight mb-8">経営者と向き合い、<br />未来を<span class="text-red">創る</span>。</h2>
+      <div class="text-sm lg:text-base text-gray-700 leading-loose space-y-2">
+        <p>提案先は、経営者（決裁者）。</p>
+        <p>事業課題の核心に切り込み、未来の成長戦略を描く。</p>
+        <p class="text-red font-bold">あなたの提案が、企業の未来を左右する。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US 他社との違い -->
+  <section class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">WHY US?</div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <p class="eyebrow mb-2">Why Us?</p>
+      <h2 class="sec-title text-3xl lg:text-4xl mb-3">他社との違い</h2>
+      <span class="deco-line mb-10"></span>
+      <div class="bg-white border border-gray-200">
+        <div class="grid grid-cols-3 text-xs lg:text-sm bg-gray-900 text-white">
+          <div class="p-4 font-bold text-center">比較項目</div>
+          <div class="p-4 font-bold text-center border-l border-gray-700">一般的な企業の営業</div>
+          <div class="p-4 font-bold text-center border-l border-gray-700 text-white"><span class="text-red" style="color:#ff6b6b;">Enjin 営業局</span></div>
+        </div>
+        <div class="grid grid-cols-3 border-t border-gray-200 text-xs lg:text-sm"><div class="p-4 font-medium">初期キャリア</div><div class="p-4 text-center text-gray-500 border-l border-gray-200">3〜5年の下積み期間</div><div class="p-4 text-center font-bold text-red bg-red/5 border-l border-gray-200">DAY1から最前線</div></div>
+        <div class="grid grid-cols-3 border-t border-gray-200 text-xs lg:text-sm"><div class="p-4 font-medium">対峙する相手</div><div class="p-4 text-center text-gray-500 border-l border-gray-200">中間管理職・担当者</div><div class="p-4 text-center font-bold text-red bg-red/5 border-l border-gray-200">経営者・決裁権者</div></div>
+        <div class="grid grid-cols-3 border-t border-gray-200 text-xs lg:text-sm"><div class="p-4 font-medium">意思決定</div><div class="p-4 text-center text-gray-500 border-l border-gray-200">上司承認・稟議プロセス</div><div class="p-4 text-center font-bold text-red bg-red/5 border-l border-gray-200">個人の裁量と責任</div></div>
+        <div class="grid grid-cols-3 border-t border-gray-200 text-xs lg:text-sm"><div class="p-4 font-medium">成果への報酬</div><div class="p-4 text-center text-gray-500 border-l border-gray-200">固定給中心・評価は年次ベース</div><div class="p-4 text-center font-bold text-red bg-red/5 border-l border-gray-200">成果直結型の評価</div></div>
+        <div class="grid grid-cols-3 border-t border-gray-200 text-xs lg:text-sm"><div class="p-4 font-medium">評価イメージ</div><div class="p-4 text-center text-gray-500 border-l border-gray-200">年功序列・緩やかな昇給</div><div class="p-4 text-center font-bold text-red bg-red/5 border-l border-gray-200">実力主義の評価<span class="kari ml-1">表現調整中</span></div></div>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-3">※ 給与・報酬に関する具体的な数値表現は、実データ確認後に調整予定。</p>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bg-red text-white px-6 lg:px-16 py-20 text-center reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-10%;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.07);">TALENT</div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h2 class="sec-title text-2xl lg:text-4xl leading-tight mb-8">誰にでもある才能。<br />解放するから意味がある。</h2>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="members-v7.html" class="inline-block border border-white text-white px-8 py-4 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">働くひとたち　→</a>
+        <a href="top-v7.html#cta" class="inline-block bg-white text-red px-8 py-4 text-sm font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-paper px-6 lg:px-16 py-10 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto text-[11px] text-gray-400 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP 合作版 v7 ／ 営業職詳細 ／ 内部レビュー用・文言一部仮</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
+      function init(){document.querySelectorAll('.reveal,.deco-line').forEach(function(el){io.observe(el);});}
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+    })();
+  </script>
+</body>
+</html>
