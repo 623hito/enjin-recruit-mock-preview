@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>採用LP 合作版 v7（実サイト忠実ベース） — Enjin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .font-mincho { font-family:'Noto Serif JP', serif; }
+    .text-red { color:var(--red); }
+    .bg-red { background:var(--red); }
+    .border-red { border-color:var(--red); }
+    .bg-paper { background:var(--paper); }
+
+    /* Big athletic English label (like alumni-sans on the real site) */
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.12em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+    .en-huge { font-family:'Alumni Sans', sans-serif; font-weight:900; line-height:0.85; letter-spacing:-0.01em; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; }
+    .sec-en-ghost {
+      position:absolute; pointer-events:none; user-select:none; z-index:0;
+      font-family:'Alumni Sans', sans-serif; font-weight:900;
+      color:rgba(191,15,15,0.05); font-size:13vw; line-height:0.8; white-space:nowrap;
+    }
+
+    /* Motion */
+    @keyframes lineUp { from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+    .stagger > * { opacity:0; animation:lineUp 0.9s cubic-bezier(.22,1,.36,1) forwards; }
+    .stagger > *:nth-child(1){animation-delay:.1s;} .stagger > *:nth-child(2){animation-delay:.28s;}
+    .stagger > *:nth-child(3){animation-delay:.46s;} .stagger > *:nth-child(4){animation-delay:.64s;}
+    .stagger > *:nth-child(5){animation-delay:.82s;}
+    .reveal { opacity:0; transform:translateY(30px); transition:opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @keyframes kb { 0%{transform:scale(1.03);} 100%{transform:scale(1.12);} }
+    .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 22s ease-in-out infinite alternate;background-size:cover;background-position:center;}
+    .deco-line{display:block;width:56px;height:3px;background:var(--red);}
+    .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
+    @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+    .photo{background:#e5e7eb;background-size:cover;background-position:center;}
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;}
+
+    /* Hub card (会社を知る等 の下層リンク) — 元サイト風 */
+    .hub-link{display:flex;align-items:center;justify-content:space-between;border:1px solid #e5e7eb;padding:1rem 1.4rem;transition:.2s;background:#fff;}
+    .hub-link:hover{border-color:var(--red);color:var(--red);}
+    .hub-link .en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.7rem;color:#c9c9c9;letter-spacing:.1em;}
+
+    /* Timeline */
+    .tl{position:relative;padding-left:1.8rem;}
+    .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:rgba(191,15,15,.4);}
+    .tl-item{position:relative;padding-bottom:1.4rem;}
+    .tl-item::before{content:"";position:absolute;left:-1.8rem;top:5px;width:9px;height:9px;margin-left:3px;border-radius:50%;background:var(--red);}
+
+    /* Flow */
+    .flow-step{position:relative;}
+    .flow-step:not(:last-child)::after{content:"→";position:absolute;right:-1.1rem;top:50%;transform:translateY(-50%);color:var(--red);font-weight:700;}
+    @media (max-width:1023px){.flow-step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-1.4rem;transform:translateX(-50%);}}
+
+    /* FAQ */
+    .faq{border-bottom:1px solid #e5e7eb;}
+    .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1rem;padding:1.25rem .5rem;font-weight:500;font-size:.93rem;transition:color .2s;}
+    .faq summary::-webkit-details-marker{display:none;}
+    .faq summary:hover{color:var(--red);}
+    .faq summary .q{font-family:'Alumni Sans',sans-serif;font-weight:900;color:var(--red);font-size:1.3rem;flex-shrink:0;}
+    .faq summary .plus{margin-left:auto;color:var(--red);font-size:1.4rem;font-weight:300;transition:transform .25s;flex-shrink:0;}
+    .faq[open] summary .plus{transform:rotate(45deg);}
+    .faq .a{display:grid;grid-template-columns:auto 1fr;gap:1rem;padding:0 .5rem 1.3rem;font-size:.84rem;color:#4b5563;line-height:1.9;}
+    .faq .a .am{font-family:'Alumni Sans',sans-serif;font-weight:900;color:#c9c9c9;font-size:1.3rem;}
+
+    @media (prefers-reduced-motion: reduce){
+      .stagger>*,.reveal,.ken-burns>.kb-img,.deco-line.in{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ Header（元サイト風：白・ロゴ左・ゴシックナビ） ============ -->
+  <header class="px-6 lg:px-10 py-4 flex items-center justify-between bg-white/95 backdrop-blur sticky top-0 z-50 border-b border-gray-100">
+    <a href="top-v7.html"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /></a>
+    <nav class="hidden lg:flex items-center gap-5 text-[13px] font-medium">
+      <a href="#about" class="hover:text-red transition">会社を知る</a>
+      <a href="#recruit" class="hover:text-red transition">採用情報</a>
+      <a href="#env" class="hover:text-red transition">働く環境</a>
+      <a href="#members" class="hover:text-red transition">ひとを知る</a>
+      <a href="#faq" class="hover:text-red transition">FAQ</a>
+      <a href="#news" class="hover:text-red transition">お知らせ</a>
+      <a href="#cta" class="bg-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+  </header>
+
+  <!-- ============ 01 Hero（実MV full-bleed） ============ -->
+  <section class="relative h-[88vh] min-h-[560px] overflow-hidden">
+    <div class="ken-burns absolute inset-0">
+      <div class="kb-img" style="background-image:url('images/main_visual.jpg');"></div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent"></div>
+    <div class="absolute left-6 lg:left-16 bottom-14 z-10 stagger">
+      <p class="eyebrow mb-3">Recruit ／ Enjin Group 2027-2028</p>
+      <p class="font-mincho font-bold text-2xl lg:text-4xl leading-snug mb-3" style="text-shadow:0 2px 24px rgba(255,255,255,0.6);">
+        ぜんぶ欲しいを、<span class="text-red">諦めるな</span>。<span class="kari ml-1">コピー仮</span>
+      </p>
+      <a href="#cta" class="inline-block bg-red text-white px-8 py-3.5 text-sm font-bold tracking-wider hover:opacity-90 transition mt-2">まずは説明会に申し込む　→</a>
+    </div>
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[10px] tracking-[0.4em] text-gray-500 font-alumni font-bold animate-pulse z-10">SCROLL ↓</div>
+  </section>
+
+  <!-- ============ 02 CONCEPT ："キ"業家（実サイトの看板） ============ -->
+  <section id="concept" class="relative px-6 lg:px-16 py-24 overflow-hidden reveal">
+    <div class="sec-en-ghost" style="top:6%;right:-3%;">CONCEPT</div>
+    <div class="max-w-5xl mx-auto relative z-10">
+      <div class="text-center mb-16">
+        <p class="eyebrow mb-2">Concept</p>
+        <h2 class="sec-title text-3xl lg:text-5xl leading-tight">
+          未来を変える<span class="text-red">“キ”業家</span>、<br class="lg:hidden" />ここから始まる。
+        </h2>
+      </div>
+      <div class="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-16 items-center mb-16">
+        <div class="text-center">
+          <span class="font-mincho font-black text-red leading-none select-none" style="font-size:13rem;line-height:.8;text-shadow:9px 9px 0 rgba(191,15,15,.13);">キ</span>
+        </div>
+        <div class="stagger space-y-5">
+          <div class="flex items-center gap-5">
+            <span class="bg-red text-white font-bold text-xl lg:text-2xl px-4 py-2 whitespace-nowrap">『企業家』</span>
+            <span class="text-sm lg:text-base text-gray-700">として事業マネジメントを担う道</span>
+          </div>
+          <div class="flex items-center gap-5">
+            <span class="bg-red text-white font-bold text-xl lg:text-2xl px-4 py-2 whitespace-nowrap">『起業家』</span>
+            <span class="text-sm lg:text-base text-gray-700">として新事業や独立を目指す道</span>
+          </div>
+          <div class="flex items-center gap-5">
+            <span class="bg-red text-white font-bold text-xl lg:text-2xl px-4 py-2 whitespace-nowrap">『奇業家』</span>
+            <span class="text-sm lg:text-base text-gray-700">として常識にとらわれない働き方を実現する道</span>
+          </div>
+          <p class="text-[11px] text-gray-400 pt-1">※ 3つの「キギョウカ」— どの道を選ぶかは、あなた次第。</p>
+        </div>
+      </div>
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-sm lg:text-base leading-loose text-gray-700 mb-8">
+          Enjinでは1年目から経営者と直接商談し、課題解決のためのブランディングPRを実行。経営者の人生観に触れ、その魅力を発信しながらスキルと視野を広げ、未来を担う“キ”業家としての第一歩を踏み出せます。
+        </p>
+        <p class="font-bold text-xl lg:text-3xl text-red leading-relaxed">あなたらしさを大切にしながら、一緒に未来を描きましょう。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 ABOUT US（会社を知る） ============ -->
+  <section id="about" class="bg-paper px-6 lg:px-16 py-24 reveal">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
+        <div>
+          <p class="eyebrow mb-2">About Us</p>
+          <h2 class="sec-title text-3xl lg:text-4xl mb-3">会社を知る</h2>
+          <span class="deco-line mb-8"></span>
+          <p class="text-sm text-gray-700 leading-loose mb-8">Enjinは、クライアントの魅力や価値を世の中に伝えるお仕事をしています。「社会の役に立つ立派な人間を一人でも多く輩出する」——このパーパスを根幹に、進化し続ける会社です。</p>
+          <div class="grid gap-3">
+            <a href="#" class="hub-link"><span>代表メッセージ</span><span class="en">MESSAGE ›</span></a>
+            <a href="#" class="hub-link"><span>事業紹介（グループ8社）</span><span class="en">BUSINESS ›</span></a>
+            <a href="#footer" class="hub-link"><span>会社概要・アクセス</span><span class="en">COMPANY ›</span></a>
+          </div>
+        </div>
+        <div class="ken-burns aspect-[4/3] shadow-lg">
+          <div class="kb-img" style="background-image:url('images/business.jpg');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 5つの価値観 ============ -->
+  <section id="values" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:4%;left:-3%;">VALUES</div>
+    <div class="relative z-10">
+      <div class="text-center mb-14">
+        <p class="eyebrow mb-2">President's Values</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">社長が大事にしている<span class="text-red">5</span>つの価値観</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition">
+          <p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">01 FAIR</p>
+          <h3 class="font-bold text-lg mb-2">フェア</h3>
+          <p class="text-[11px] text-gray-500 mb-4">損得では動かない</p>
+          <div class="w-7 h-px bg-red mx-auto mb-4"></div>
+          <p class="text-xs leading-relaxed text-gray-600">自分が得することばかり考える行動は、能力が高くても評価しません。</p>
+        </div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition">
+          <p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">02 ACTION</p>
+          <h3 class="font-bold text-lg mb-2">アクション</h3>
+          <p class="text-[11px] text-gray-500 mb-4">未完成でも動ける</p>
+          <div class="w-7 h-px bg-red mx-auto mb-4"></div>
+          <p class="text-xs leading-relaxed text-gray-600">完璧な準備より、不完全でも「打席数」を増やす人を高く評価します。</p>
+        </div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition">
+          <p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">03 SYNCHRO</p>
+          <h3 class="font-bold text-lg mb-2">シンクロ</h3>
+          <p class="text-[11px] text-gray-500 mb-4">誰とやるかで人生は変わる</p>
+          <div class="w-7 h-px bg-red mx-auto mb-4"></div>
+          <p class="text-xs leading-relaxed text-gray-600">計画の精度よりも、価値観を共有し共に走れる人物を重視します。</p>
+        </div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition">
+          <p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">04 GIVE</p>
+          <h3 class="font-bold text-lg mb-2">ギブ</h3>
+          <p class="text-[11px] text-gray-500 mb-4">利己の充足が利他的価値を生む</p>
+          <div class="w-7 h-px bg-red mx-auto mb-4"></div>
+          <p class="text-xs leading-relaxed text-gray-600">ギバー（与える人）同士が共鳴し合うことで、組織全体が底上げされます。</p>
+        </div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition">
+          <p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">05 MONEY</p>
+          <h3 class="font-bold text-lg mb-2">マネー哲学</h3>
+          <p class="text-[11px] text-gray-500 mb-4">お金は循環させてこそ意味がある</p>
+          <div class="w-7 h-px bg-red mx-auto mb-4"></div>
+          <p class="text-xs leading-relaxed text-gray-600">短期利益ではなく、長期的な信頼関係を築けるパートナーを求めます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 社長に聞いてみた ============ -->
+  <section id="qa" class="bg-paper px-6 lg:px-16 py-24 reveal">
+    <div class="grid lg:grid-cols-[1fr_2.5fr] gap-12 max-w-[1400px] mx-auto">
+      <div>
+        <p class="eyebrow mb-2">President Q&amp;A</p>
+        <h2 class="sec-title text-3xl lg:text-4xl text-red leading-tight mb-4">社長に<br />聞いてみた。</h2>
+        <p class="text-sm font-medium leading-relaxed">面接では聞けない、<br />ぶっちゃけ話。</p>
+        <span class="deco-line mt-4"></span>
+      </div>
+      <div class="space-y-4">
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q1</span><p class="leading-relaxed">採用にとって学歴や資格などは重要ですか？</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">不問です。今の行動と成長意欲がある方が重要です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q2</span><p class="leading-relaxed">即時戦力のためにどういった人材であるべきですか？</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">割り勘負けしない、先にギブできる意識。見返りを求めず循環提供できる人です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q3</span><p class="leading-relaxed">成長について社長の考えをお聞かせください。</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">現状に満足せず、自らをアップデートし続ける。自己変革意識が成長の鍵です。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q4</span><p class="leading-relaxed">社長が思う人格者とはどんな人ですか？</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">受けた恩は忘れない義理堅い人、理想を追い続ける人。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q5</span><p class="leading-relaxed">ライバルとなる他者がいた時にどう立ち向かうといいですか？</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">まずライバルは自分。他者の成功を糧にして自分の進化につなげることです。</p>
+        </div>
+        <div class="grid grid-cols-[auto_1fr_auto_1fr] gap-x-4 gap-y-1 text-sm items-start bg-white p-4 border border-gray-100">
+          <span class="font-alumni font-black text-lg text-red">Q6</span><p class="leading-relaxed">コスパ、タイパなど効率は重要ですか？</p>
+          <span class="font-alumni font-black text-lg text-gray-300">A</span><p class="leading-relaxed text-gray-600">成果に必要ですが、不公平な戦略とは認めません。フェアは大事です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 データで見るEnjin ============ -->
+  <section id="data" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">NUMBERS</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Enjin by the Numbers</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">データで見る<span class="text-red">Enjin</span></h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
+        <div class="bg-paper p-6 text-center"><p class="font-alumni font-bold text-xs text-gray-400 tracking-widest mb-1">LISTED</p><p class="font-bold text-2xl lg:text-3xl text-red mb-1">東証上場</p><p class="text-[11px] text-gray-500">グロース市場（7370）</p></div>
+        <div class="bg-paper p-6 text-center"><p class="font-alumni font-bold text-xs text-gray-400 tracking-widest mb-1">ANNIVERSARY</p><p class="font-bold text-2xl lg:text-3xl text-red mb-1">創業<span class="font-alumni">20</span>周年</p><p class="text-[11px] text-gray-500">2025年に20周年</p></div>
+        <div class="bg-paper p-6 text-center"><p class="font-alumni font-bold text-xs text-gray-400 tracking-widest mb-1">CLIENTS</p><p class="font-bold text-2xl lg:text-3xl text-red mb-1"><span class="font-alumni">2,500</span>社</p><p class="text-[11px] text-gray-500">累計クライアント数</p></div>
+        <div class="bg-paper p-6 text-center"><p class="font-alumni font-bold text-xs text-gray-400 tracking-widest mb-1">GROUP</p><p class="font-bold text-2xl lg:text-3xl text-red mb-1">グループ<span class="font-alumni">8</span>社</p><p class="text-[11px] text-gray-500">PR・観光・不動産・金融ほか</p></div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="border border-dashed border-gray-300 p-5 text-center"><p class="font-bold text-base text-gray-400 mb-1">社員数</p><p class="text-[10px] text-gray-400">※データ収集中</p></div>
+        <div class="border border-dashed border-gray-300 p-5 text-center"><p class="font-bold text-base text-gray-400 mb-1">平均年齢</p><p class="text-[10px] text-gray-400">※データ収集中</p></div>
+        <div class="border border-dashed border-gray-300 p-5 text-center"><p class="font-bold text-base text-gray-400 mb-1">男女比</p><p class="text-[10px] text-gray-400">※データ収集中</p></div>
+        <div class="bg-white border border-gray-200 p-5 text-center"><p class="font-bold text-base mb-1">年間休日<span class="font-alumni text-red ml-1">120</span>日以上</p><p class="text-[10px] text-gray-500">完全週休2日・土日祝休み</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 採用情報を知る（職種＋要項＋フロー導線） ============ -->
+  <section id="recruit" class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:4%;left:-3%;">RECRUIT</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-10">
+        <p class="eyebrow mb-2">Recruitment</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">採用情報を知る</h2>
+        <span class="deco-line mb-6"></span>
+        <p class="text-sm text-gray-700 leading-loose">創業20周年の節目に、新たな価値を創造し会社を次のステージへ導く仲間を募集します。（大卒新卒対象）</p>
+      </div>
+      <h3 class="font-bold text-lg mb-4">職種</h3>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+        <a href="sales.html" class="hub-link"><span class="text-sm font-medium">PRコンサル／営業</span><span class="text-red text-lg">›</span></a>
+        <a href="stub.html?role=planner" class="hub-link"><span class="text-sm font-medium">企画／プランナー</span><span class="text-red text-lg">›</span></a>
+        <a href="stub.html?role=hr" class="hub-link"><span class="text-sm font-medium">HR</span><span class="text-red text-lg">›</span></a>
+        <a href="stub.html?role=accounting" class="hub-link"><span class="text-sm font-medium">経理</span><span class="text-red text-lg">›</span></a>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+        <a href="#" class="hub-link"><span>募集要項</span><span class="en">REQUIREMENTS ›</span></a>
+        <a href="#flow" class="hub-link"><span>選考フロー</span><span class="en">FLOW ›</span></a>
+        <a href="#faq" class="hub-link"><span>採用FAQ</span><span class="en">FAQ ›</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 働く環境（OHANA文化・実写） ============ -->
+  <section id="env" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">OHANA</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-10">
+        <p class="eyebrow mb-2">Work Environment</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">働く環境を知る</h2>
+        <span class="deco-line mb-6"></span>
+        <p class="text-sm text-gray-700 leading-loose">人と人とのつながりを大切にし、お互いに尊重し合いながら切磋琢磨できる<span class="text-red font-bold">OHANA文化</span>が根づいています。</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/ohana_cafe.jpg');"></div>
+          <div class="p-5"><p class="font-alumni font-bold text-xs text-red mb-1">OHANA CAFE</p><h3 class="font-bold text-lg mb-2">OHANAカフェ</h3><p class="text-xs text-gray-600 leading-relaxed">オフィス内にカフェを完備。本格ドリンクを50円〜で。お客様にも提供する本格仕様。</p></div>
+        </div>
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/ohana_trip.jpg');"></div>
+          <div class="p-5"><p class="font-alumni font-bold text-xs text-red mb-1">OHANA TRIP</p><h3 class="font-bold text-lg mb-2">OHANA旅</h3><p class="text-xs text-gray-600 leading-relaxed">有給を取ってメンバー同士で旅行すると補助金を支給。仲間の新たな一面が見られる制度。</p></div>
+        </div>
+        <div class="border border-gray-200 overflow-hidden hover:border-red transition">
+          <div class="photo aspect-[16/9]" style="background-image:url('images/senpai_meshi.jpg');"></div>
+          <div class="p-5"><p class="font-alumni font-bold text-xs text-red mb-1">SENPAI MESHI</p><h3 class="font-bold text-lg mb-2">先輩メシ</h3><p class="text-xs text-gray-600 leading-relaxed">社員同士の交流イベントが豊富。夏祭りやBBQなど、季節のイベントで仲が深まる。</p></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="border border-gray-200 p-5 hover:border-red transition"><p class="font-alumni font-bold text-xs text-red mb-1">FAMILY</p><h3 class="font-bold text-base mb-1">親孝行休暇</h3><p class="text-[11px] text-gray-500">親御さんの誕生日に特別休暇＋帰省交通費を補助</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><p class="font-alumni font-bold text-xs text-red mb-1">TRAINING</p><h3 class="font-bold text-base mb-1">研修制度</h3><p class="text-[11px] text-gray-500">新人研修・リーダー研修・資格取得支援・月次1on1</p></div>
+        <div class="border border-gray-200 p-5 hover:border-red transition"><p class="font-alumni font-bold text-xs text-red mb-1">HOUSING</p><h3 class="font-bold text-base mb-1">家賃補助</h3><p class="text-[11px] text-gray-500">指定エリア居住で住宅手当。ジム代補助なども</p></div>
+        <a href="#" class="bg-red text-white p-5 flex flex-col justify-center hover:opacity-90 transition"><p class="font-alumni font-bold text-[11px] tracking-widest mb-1 text-white/80">MORE</p><p class="font-bold text-sm">制度をすべて見る　→</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09 入社したらどうなる？ ============ -->
+  <section id="oneday" class="bg-paper px-6 lg:px-16 py-24 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10">
+        <p class="eyebrow mb-2">A Day ／ First Year</p>
+        <h2 class="sec-title text-2xl lg:text-3xl mb-3">入社したら、どうなる？</h2>
+        <span class="deco-line"></span>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div>
+          <h3 class="font-bold text-lg mb-6">1日のスケジュール <span class="kari">仮</span></h3>
+          <div class="tl text-sm">
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">9:30</p><p class="text-gray-800">出社・朝会（チームで1日の動きを共有）</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">10:00</p><p class="text-gray-800">クライアント商談・提案準備</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">12:00</p><p class="text-gray-800">ランチ（OHANAカフェ・先輩メシ）</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">13:00</p><p class="text-gray-800">経営者との商談・PR戦略ミーティング</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">17:00</p><p class="text-gray-800">振り返り・翌日準備・先輩との1on1</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">18:30</p><p class="text-gray-800">退社</p></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-bold text-lg mb-6">入社後の流れ <span class="kari">仮</span></h3>
+          <div class="tl text-sm">
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 1</p><p class="text-gray-800 font-medium">新入社員研修</p><p class="text-gray-500 text-xs mt-1">社会人基礎から実務スキルまで段階的に学ぶ</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 2</p><p class="text-gray-800 font-medium">配属・OJT</p><p class="text-gray-500 text-xs mt-1">先輩と共に実際の商談へ。月次1on1でフォロー</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 3</p><p class="text-gray-800 font-medium">独り立ち</p><p class="text-gray-500 text-xs mt-1">1年目から経営者と直接商談。裁量を持って挑戦</p></div>
+            <div class="tl-item"><p class="font-alumni font-bold text-red text-sm mb-1">FUTURE</p><p class="text-gray-800 font-medium">“キ”業家への道</p><p class="text-gray-500 text-xs mt-1">企業家・起業家・奇業家 — 3つの道が開かれている</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 求める人物像 ============ -->
+  <section id="person" class="px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:0;left:50%;transform:translateX(-50%);">WANTED</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-10">
+        <p class="eyebrow mb-2">Who We Want</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">求む、<span class="text-red">未完成の人格者</span>。</h2>
+        <span class="deco-line mx-auto mb-6"></span>
+        <p class="text-sm text-gray-600 leading-loose">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari ml-1">文言仮</span></p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition"><p class="font-alumni font-black text-3xl text-red mb-3">01</p><h3 class="font-bold text-lg mb-3">まず、動ける人</h3><p class="text-xs text-gray-600 leading-relaxed">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition"><p class="font-alumni font-black text-3xl text-red mb-3">02</p><h3 class="font-bold text-lg mb-3">先に、ギブできる人</h3><p class="text-xs text-gray-600 leading-relaxed">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
+        <div class="border border-gray-200 p-6 text-center hover:border-red transition"><p class="font-alumni font-black text-3xl text-red mb-3">03</p><h3 class="font-bold text-lg mb-3">共に、走れる人</h3><p class="text-xs text-gray-600 leading-relaxed">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 働くひとたち（実写） ============ -->
+  <section id="members" class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;left:-3%;">MEMBERS</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-8">
+        <p class="eyebrow mb-2">Members</p>
+        <h2 class="sec-title text-2xl lg:text-3xl mb-2">働くひとたち</h2>
+        <p class="text-xs text-gray-600">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+      </div>
+      <div class="ken-burns aspect-[16/8] shadow-lg mb-6"><div class="kb-img" style="background-image:url('images/members_20th.jpg');"></div></div>
+      <p class="text-center text-xs text-gray-500 mb-10">創業20周年を迎えたEnjinのメンバー</p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="border border-dashed border-gray-300 bg-white p-6 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 01</p><p class="font-bold text-lg text-gray-400">社員インタビュー</p><p class="text-[10px] text-gray-400 mt-2">※コンテンツ制作予定（人選中）</p></div>
+        <div class="border border-dashed border-gray-300 bg-white p-6 text-center"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 02</p><p class="font-bold text-lg text-gray-400">社員インタビュー</p><p class="text-[10px] text-gray-400 mt-2">※コンテンツ制作予定（人選中）</p></div>
+        <a href="#" class="bg-red text-white p-6 flex flex-col justify-center items-center hover:opacity-90 transition"><p class="font-alumni font-bold text-xs tracking-widest mb-1 text-white/80">YOUTUBE</p><p class="font-bold text-sm">動画で社員を見る　→</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 OFFICE（360VR・実写） ============ -->
+  <section id="office" class="relative reveal">
+    <div class="ken-burns aspect-[16/7] lg:aspect-[16/6]"><div class="kb-img" style="background-image:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url('images/office_about.jpg');"></div></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
+      <div>
+        <p class="font-alumni font-bold text-xs text-white/80 tracking-widest mb-2">OFFICE ／ 360° VR</p>
+        <h2 class="sec-title text-2xl lg:text-4xl text-white mb-6" style="text-shadow:0 2px 20px rgba(0,0,0,0.5);">【360°VR体験】<br class="lg:hidden" />空間の魅力をリアルに伝える。</h2>
+        <a href="#" class="inline-block border border-white text-white px-8 py-3 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">VRでオフィスを見る　→ <span class="kari ml-1" style="border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.7);">リンク仮</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 選考フロー ============ -->
+  <section id="flow" class="px-6 lg:px-16 py-24 reveal">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">Selection Flow</p>
+        <h2 class="sec-title text-3xl lg:text-4xl mb-3">選考フロー</h2>
+        <span class="deco-line mx-auto mb-4"></span>
+        <p class="text-sm text-gray-600">まずは説明会から。気軽に話を聞きに来てください。</p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-6 mb-6">
+        <div class="flow-step border-2 border-red bg-white p-5 text-center shadow-sm"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 1</p><p class="font-bold text-base">会社説明会</p><p class="text-[10px] text-gray-500 mt-2">まずはラフに話を聞く</p></div>
+        <div class="flow-step border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 2</p><p class="font-bold text-base">エントリー</p><p class="text-[10px] text-gray-500 mt-2">書類選考</p></div>
+        <div class="flow-step border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 3</p><p class="font-bold text-base">一次面接</p><p class="text-[10px] text-gray-500 mt-2">人柄・価値観を中心に</p></div>
+        <div class="flow-step border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 4</p><p class="font-bold text-base">最終面接</p><p class="text-[10px] text-gray-500 mt-2">役員・代表と対話</p></div>
+        <div class="flow-step border border-gray-200 p-5 text-center"><p class="font-alumni font-bold text-red text-sm mb-1">STEP 5</p><p class="font-bold text-base">内定</p><p class="text-[10px] text-gray-500 mt-2">入社前研修へ</p></div>
+      </div>
+      <p class="text-center text-[11px] text-gray-400"><span class="kari">フロー仮</span>　実際のステップ数・所要日数は要確認</p>
+    </div>
+  </section>
+
+  <!-- ============ 14 FAQ ============ -->
+  <section id="faq" class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:2%;right:-3%;">FAQ</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="eyebrow mb-2">FAQ</p>
+        <h2 class="sec-title text-2xl lg:text-3xl mb-3">気になること、先にお答えします。</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+      <div class="bg-white border border-gray-200 px-5 lg:px-8">
+        <details class="faq" open><summary><span class="q">Q</span>未経験・スキルがなくても大丈夫ですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>問題ありません。新入社員研修から実務スキルまで段階的に学べる研修制度があり、月次1on1でのフォロー体制も整えています。大切なのは今のスキルより、これからの成長意欲です。</span></div></details>
+        <details class="faq"><summary><span class="q">Q</span>文系でも応募できますか？対象は誰ですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>文理不問・全学部全学科が対象です。大学・大学院を卒業／修了（見込み）の新卒の方を募集しています。<span class="kari ml-1">要確認</span></span></div></details>
+        <details class="faq"><summary><span class="q">Q</span>勤務地はどこですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>東京都中央区銀座（ヒューリック銀座イーストビル）です。勤務時間は9:30〜18:30、年間休日120日以上・完全週休2日制です。</span></div></details>
+        <details class="faq"><summary><span class="q">Q</span>どんな人が働いていますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>さまざまなバックグラウンドを持つ仲間が集まっています。「先にギブできる」「まず動ける」人が多く、フェアで切磋琢磨できるOHANA文化が根づいています。</span></div></details>
+        <details class="faq"><summary><span class="q">Q</span>選考では何を見られますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>学歴や資格は不問です。人柄・価値観・成長意欲を中心に、一次面接から最終面接（役員・代表）まで、対話を通じてお互いを深く知っていきます。</span></div></details>
+        <details class="faq"><summary><span class="q">Q</span>説明会は選考に関係しますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>関係ありません。会社説明会は選考ではなく、Enjinのリアルをラフに知っていただく場です。まずは気軽に話を聞きに来てください。</span></div></details>
+      </div>
+      <p class="text-center text-[11px] text-gray-400 mt-6">※ 回答内容は一部仮です。正式な内容は募集要項・説明会でご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- ============ 15 News ============ -->
+  <section id="news" class="px-6 lg:px-16 py-24 reveal">
+    <div class="max-w-4xl mx-auto">
+      <p class="eyebrow mb-2">News</p>
+      <h2 class="sec-title text-2xl lg:text-3xl mb-8">お知らせ</h2>
+      <a href="#" class="flex items-center gap-6 border-b border-gray-200 py-5 hover:bg-paper transition px-2"><span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.07.XX</span><span class="text-xs border border-red text-red px-2 py-0.5 whitespace-nowrap">選考情報</span><span class="text-sm">【28卒採用】会社説明会の日程を公開しました（ダミー）</span></a>
+      <a href="#" class="flex items-center gap-6 border-b border-gray-200 py-5 hover:bg-paper transition px-2"><span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.06.XX</span><span class="text-xs border border-gray-300 text-gray-500 px-2 py-0.5 whitespace-nowrap">お知らせ</span><span class="text-sm">採用サイトをリニューアルしました（ダミー）</span></a>
+      <div class="text-center pt-8"><a href="#" class="inline-block border border-gray-400 px-8 py-3 text-sm hover:border-red hover:text-red transition">お知らせ一覧　›</a></div>
+    </div>
+  </section>
+
+  <!-- ============ 16 CTA ============ -->
+  <section id="cta" class="bg-red text-white px-6 lg:px-16 py-24 text-center reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:-10%;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.07);">JOIN US</div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <p class="font-alumni font-bold text-sm tracking-widest text-white/70 mb-3">CASUAL SESSION</p>
+      <h2 class="sec-title text-3xl lg:text-4xl leading-tight mb-4">まずは、話を聞きに来ませんか。</h2>
+      <p class="text-sm text-white/85 mb-10">選考ではありません。Enjinのリアルを、ラフに知れる場です。</p>
+      <a href="#" class="inline-block bg-white text-red px-12 py-5 text-base font-bold tracking-wider hover:bg-gray-100 transition mb-3">会社説明会に申し込む　→</a>
+      <p class="text-[10px] text-white/60">※リンクは仮（ダミー）です</p>
+    </div>
+  </section>
+
+  <!-- ============ Footer ============ -->
+  <footer id="footer" class="bg-paper px-6 lg:px-16 py-16 border-t border-gray-200">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 mb-10">
+      <div>
+        <h3 class="font-bold text-lg mb-4">採用に関するお問い合わせ</h3>
+        <p class="mb-1"><span class="inline-block border border-gray-400 text-[10px] px-2 py-0.5 mr-2 align-middle">TEL</span><span class="font-alumni font-bold text-2xl align-middle tracking-wide">03-4590-0808</span></p>
+        <p class="text-xs text-gray-500 mb-3">（受付時間 9:30〜18:30 ※土日祝・年末年始・GW除く）</p>
+        <a href="mailto:#" class="inline-block border border-gray-400 px-6 py-2.5 text-xs hover:border-red hover:text-red transition">メールでのお問い合わせ　›</a>
+      </div>
+      <div>
+        <h3 class="font-bold text-lg mb-4">会社概要・アクセス</h3>
+        <p class="text-xs text-gray-600 leading-loose mb-3">株式会社Enjin（東証グロース 7370）<br />東京都中央区銀座5-13-16 ヒューリック銀座イーストビル8F<br />（7F：スタジオ／受付）</p>
+        <div class="flex items-center gap-5 text-sm">
+          <a href="#" class="hover:text-red font-alumni font-bold tracking-wider">Instagram</a><span class="text-gray-300">／</span>
+          <a href="#" class="hover:text-red font-alumni font-bold tracking-wider">X</a><span class="text-gray-300">／</span>
+          <a href="#" class="hover:text-red font-alumni font-bold tracking-wider">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-5xl mx-auto pt-6 border-t border-gray-200 text-[11px] text-gray-400 flex flex-col lg:flex-row items-center justify-between gap-2">
+      <p>© Enjin Inc. All Rights Reserved.</p>
+      <p class="text-[10px]">RECRUIT LP 合作版 v7（実サイト忠実ベース）／ 内部レビュー用 ／ 実写＝本番素材・文言一部仮</p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
+      function init(){document.querySelectorAll('.reveal,.deco-line').forEach(function(el){io.observe(el);});}
+      if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+    })();
+  </script>
+</body>
+</html>
