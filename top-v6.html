@@ -101,6 +101,25 @@
     /* Elegant wide-tracked serif English */
     .en-serif { font-family: 'Noto Serif JP', serif; font-style: italic; letter-spacing: 0.28em; font-size: 11px; color: #9ca3af; }
 
+    /* FAQ accordion */
+    .faq { border-bottom: 1px solid #e5e7eb; }
+    .faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.3rem 0.5rem; font-weight: 500; font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary:hover { color: #c8102e; }
+    .faq summary .q { font-family:'Noto Serif JP',serif; font-weight:700; color:#c8102e; font-size:1.1rem; flex-shrink:0; }
+    .faq summary .plus { margin-left:auto; color:#c8102e; font-size:1.4rem; font-weight:300; transition: transform 0.25s; flex-shrink:0; }
+    .faq[open] summary .plus { transform: rotate(45deg); }
+    .faq .a {
+      display: grid; grid-template-columns: auto 1fr; gap: 1rem;
+      padding: 0 0.5rem 1.4rem; font-size: 0.85rem; color:#4b5563; line-height:1.9;
+    }
+    .faq .a .amark { font-family:'Noto Serif JP',serif; font-weight:700; color:#9ca3af; font-size:1.1rem; }
+
     .photo { background-color:#e5e7eb; background-size:cover; background-position:center; }
     .kari-badge { display:inline-block; border:1px solid #d1d5db; color:#9ca3af; font-size:10px; padding:2px 8px; letter-spacing:0.1em; vertical-align:middle; }
 
@@ -135,7 +154,7 @@
       <a href="#members" class="hover:text-enjin-red">ひとを知る</a>
       <a href="#benefits" class="hover:text-enjin-red">働く環境</a>
       <a href="#flow" class="hover:text-enjin-red">選考フロー</a>
-      <a href="#news" class="hover:text-enjin-red">お知らせ</a>
+      <a href="#faq" class="hover:text-enjin-red">FAQ</a>
       <a href="#cta" class="bg-enjin-red text-white px-4 py-2 text-xs font-bold tracking-wider hover:bg-red-700 transition">説明会に申し込む</a>
     </nav>
   </header>
@@ -629,7 +648,49 @@
     </div>
   </section>
 
-  <!-- ============ 13 CTA（赤バンド） ============ -->
+  <!-- ============ 13 FAQ（実務・アコーディオン） ============ -->
+  <section id="faq" class="reveal bg-gray-50 px-6 lg:px-16 py-20 relative overflow-hidden">
+    <div class="ghost-en-l" style="top:2%; right:-3%;">FAQ</div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <div class="text-center mb-12">
+        <p class="en-serif mb-3">— FAQ</p>
+        <p class="text-xs tracking-[0.3em] text-gray-500 mb-3"><span class="sec-no">13</span>よくある質問</p>
+        <h2 class="font-mincho font-bold text-2xl lg:text-3xl mb-4">気になること、<span class="brush">先に</span>お答えします。</h2>
+        <span class="deco-line mx-auto"></span>
+      </div>
+
+      <div class="bg-white border border-gray-200 px-5 lg:px-8">
+        <details class="faq" open>
+          <summary><span class="q">Q</span>未経験・スキルがなくても大丈夫ですか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>問題ありません。新入社員研修から実務スキルまで段階的に学べる研修制度があり、月次1on1でのフォロー体制も整えています。大切なのは今のスキルより、これからの成長意欲です。</span></div>
+        </details>
+        <details class="faq">
+          <summary><span class="q">Q</span>文系でも応募できますか？対象は誰ですか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>文理不問・全学部全学科が対象です。大学・大学院を卒業／修了（見込み）の新卒の方を募集しています。<span class="kari-badge ml-1">要確認</span></span></div>
+        </details>
+        <details class="faq">
+          <summary><span class="q">Q</span>勤務地はどこですか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>東京都中央区銀座（ヒューリック銀座イーストビル）です。勤務時間は9:30〜18:30、年間休日120日以上・完全週休2日制です。</span></div>
+        </details>
+        <details class="faq">
+          <summary><span class="q">Q</span>どんな人が働いていますか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>さまざまなバックグラウンドを持つ仲間が集まっています。「先にギブできる」「まず動ける」人が多く、フェアで切磋琢磨できるOHANA文化が根づいています。</span></div>
+        </details>
+        <details class="faq">
+          <summary><span class="q">Q</span>選考では何を見られますか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>学歴や資格は不問です。人柄・価値観・成長意欲を中心に、一次面接から最終面接（役員・代表）まで、対話を通じてお互いを深く知っていきます。</span></div>
+        </details>
+        <details class="faq">
+          <summary><span class="q">Q</span>説明会は選考に関係しますか？<span class="plus">＋</span></summary>
+          <div class="a"><span class="amark">A</span><span>関係ありません。会社説明会は選考ではなく、Enjinのリアルをラフに知っていただく場です。まずは気軽に話を聞きに来てください。</span></div>
+        </details>
+      </div>
+
+      <p class="text-center text-[11px] text-gray-400 mt-6">※ 回答内容は一部仮です。正式な内容は募集要項・説明会でご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- ============ 14 CTA（赤バンド） ============ -->
   <section id="cta" class="reveal bg-enjin-red text-white px-6 lg:px-16 py-24 text-center relative overflow-hidden">
     <div class="ghost-en-l" style="top:-8%; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.06);">JOIN&nbsp;US</div>
     <div class="max-w-3xl mx-auto relative z-10">
