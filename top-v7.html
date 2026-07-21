@@ -50,6 +50,15 @@
     .hub-link:hover{border-color:var(--red);color:var(--red);}
     .hub-link .en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.7rem;color:#c9c9c9;letter-spacing:.1em;}
 
+    /* Interview marquee (横流れ) */
+    .iv-wrap { overflow:hidden; position:relative; }
+    .iv-track { display:flex; gap:1rem; width:max-content; animation: iv-scroll 45s linear infinite; }
+    .iv-wrap:hover .iv-track { animation-play-state: paused; }
+    @keyframes iv-scroll { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    .iv-card { width:250px; flex:0 0 auto; background:#fff; border:1px solid #e5e7eb; transition:.2s; display:block; }
+    .iv-card:hover { border-color:var(--red); }
+    .iv-card .ph { aspect-ratio:4/3; background-size:cover; background-position:center; }
+
     /* Timeline */
     .tl{position:relative;padding-left:1.8rem;}
     .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:rgba(191,15,15,.4);}
@@ -206,10 +215,15 @@
       </div>
       <div class="ken-burns aspect-[16/8] shadow-lg mb-6"><div class="kb-img" style="background-image:url('images/members_20th.jpg');"></div></div>
       <p class="text-center text-xs text-gray-500 mb-10">創業20周年を迎えたEnjinのメンバー</p>
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <a href="members-v7.html#interviews" class="border border-dashed border-gray-300 bg-white p-6 text-center block hover:border-red transition"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 01</p><p class="font-bold text-lg text-gray-400">社員インタビュー</p><p class="text-[10px] text-gray-400 mt-2">※コンテンツ制作予定（人選中）</p></a>
-        <a href="members-v7.html#interviews" class="border border-dashed border-gray-300 bg-white p-6 text-center block hover:border-red transition"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 02</p><p class="font-bold text-lg text-gray-400">社員インタビュー</p><p class="text-[10px] text-gray-400 mt-2">※コンテンツ制作予定（人選中）</p></a>
-        <a href="#" class="bg-red text-white p-6 flex flex-col justify-center items-center hover:opacity-90 transition"><p class="font-alumni font-bold text-xs tracking-widest mb-1 text-white/80">YOUTUBE</p><p class="font-bold text-sm">動画で社員を見る　→</p></a>
+      <div class="iv-wrap mb-6">
+        <div class="iv-track">
+          <a href="interview-v7.html?n=1" class="iv-card"><div class="ph" style="background-image:url('images/interview_01.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 01</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=2" class="iv-card"><div class="ph" style="background-image:url('images/interview_02.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 02</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=3" class="iv-card"><div class="ph" style="background-image:url('images/interview_03.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 03</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=4" class="iv-card"><div class="ph" style="background-image:url('images/interview_04.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 04</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=5" class="iv-card"><div class="ph" style="background-image:url('images/interview_05.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 05</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=6" class="iv-card"><div class="ph" style="background-image:url('images/interview_06.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 06</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a>
+          <a href="interview-v7.html?n=1" class="iv-card"><div class="ph" style="background-image:url('images/interview_01.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 01</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=2" class="iv-card"><div class="ph" style="background-image:url('images/interview_02.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 02</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=3" class="iv-card"><div class="ph" style="background-image:url('images/interview_03.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 03</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=4" class="iv-card"><div class="ph" style="background-image:url('images/interview_04.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 04</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=5" class="iv-card"><div class="ph" style="background-image:url('images/interview_05.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 05</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a><a href="interview-v7.html?n=6" class="iv-card"><div class="ph" style="background-image:url('images/interview_06.jpg');"></div><div class="p-4"><p class="font-alumni font-bold text-xs text-red mb-1">INTERVIEW ／ 06</p><p class="text-xs text-gray-500">記事準備中（写真は現サイトより）</p></div></a>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="members-v7.html#interviews" class="inline-block border border-gray-400 px-8 py-3 text-sm text-center hover:border-red hover:text-red transition">インタビュー一覧へ　›</a>
+        <a href="#" class="inline-block bg-red text-white px-8 py-3 text-sm font-bold text-center hover:opacity-90 transition">動画で社員を見る（YouTube）　→</a>
       </div>
     </div>
   </section>
