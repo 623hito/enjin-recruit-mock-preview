@@ -440,7 +440,7 @@
   <div class="mobile-cta">
     <div class="flex gap-2">
       <a href="application-v8.html" data-cta="seminar_bar" class="flex-1 bg-red text-white text-center font-bold py-3 text-[13px] tracking-wider">説明会に申し込む</a>
-      <a href="#cta" data-cta="line_bar" class="whitespace-nowrap border border-red text-red text-center font-bold py-3 px-4 text-[13px]">LINE相談</a>
+      <a href="#cta" data-cta="line_bar" class="whitespace-nowrap text-white text-center font-bold py-3 px-4 text-[13px]" style="background:#06C755;">LINE相談</a>
     </div>
   </div>
 
@@ -749,7 +749,7 @@
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">CAPITAL</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;"><span class="cnt font-alumni text-4xl lg:text-5xl align-[-2px] mx-1" data-target="177930" style="color:var(--red);">0</span><span class="text-base">万円</span></p><p class="text-[11px] text-gray-500 mt-2">資本金（17億7,930万円・準備金含む）</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">EMPLOYEES</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;"><span class="cnt font-alumni text-4xl lg:text-5xl align-[-2px] mx-1" data-target="149" style="color:var(--red);">0</span><span class="text-base">名</span></p><p class="text-[11px] text-gray-500 mt-2">従業員数</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">1ST-YEAR SALARY</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">¥<span class="cnt font-alumni text-4xl lg:text-5xl align-[-2px] mx-1" data-target="420" style="color:var(--red);">0</span>万〜</p><p class="text-[11px] text-gray-500 mt-2">1年目モデル年収 <span class="kari">仮</span></p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">HOLIDAYS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">年間休日<span class="cnt font-alumni text-4xl lg:text-5xl align-[-2px] mx-1" data-target="120" style="color:var(--red);">0</span>日以上</p><p class="text-[11px] text-gray-500 mt-2">完全週休2日・土日祝休み</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">HOLIDAYS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">年間休日<span class="cnt font-alumni text-4xl lg:text-5xl align-[-2px] mx-1" data-target="126" style="color:var(--red);">0</span>日</p><p class="text-[11px] text-gray-500 mt-2">完全週休2日・土日祝休み</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#faf8f5;min-height:180px;"><p class="font-bold text-sm text-gray-500 mb-4">平均年齢</p><div class="mb-4 rounded-full flex items-center justify-center" style="width:56px;height:56px;background:conic-gradient(#b8afa5 0 62%, #e6e1db 0);"><div class="rounded-full flex items-center justify-center" style="width:38px;height:38px;background:#faf8f5;"><span class="font-alumni font-bold text-gray-400 text-xs">??.?</span></div></div><p class="text-[10px] text-gray-400">※データ収集中</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#faf8f5;min-height:180px;"><p class="font-bold text-sm text-gray-500 mb-4">男女比</p><div class="mb-4 w-full" style="max-width:150px;"><div class="flex overflow-hidden mb-2" style="height:14px;"><div style="width:52%;background:#b8afa5;"></div><div style="width:48%;background:#e6e1db;"></div></div><div class="flex justify-between text-[10px] text-gray-500"><span>男 ??%</span><span>女 ??%</span></div></div><p class="text-[10px] text-gray-400">※データ収集中</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#faf8f5;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-2">AS OF</p><p class="font-bold text-lg text-gray-500">2026年<br>5月末時点</p></div>
@@ -832,8 +832,8 @@
         </a>
       </div>
       <div class="rec-acc-wrap">
-        <details class="rec-acc" id="accFlow">
-          <summary><span class="ra-jp">選考フロー</span><span class="ra-en">FLOW</span><span class="ra-ico" aria-hidden="true">＋</span></summary>
+        <details class="rec-acc" id="accFlow" open>
+          <summary onclick="event.preventDefault()" style="cursor:default;"><span class="ra-jp">選考フロー</span><span class="ra-en">FLOW</span></summary>
           <div class="rec-acc-body">
             <p class="text-sm text-gray-600 mb-10 lg:mb-12">エントリーから内定まで。あなたのことを、じっくり知っていきます。</p>
             <div class="flowline grid grid-cols-2 lg:grid-cols-6 gap-3 mb-8">
@@ -852,7 +852,7 @@
           <div class="rec-acc-body">
             <details class="faq"><summary><span class="q">Q</span>未経験・スキルがなくても大丈夫ですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>大丈夫です。入社後の研修と、先輩による月1回の面談でしっかりサポートします。今のスキルより、これから伸びる意欲を大切にしています。</span></div></details>
             <details class="faq"><summary><span class="q">Q</span>文系でも応募できますか？対象は誰ですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>文系・理系は問いません。全学部・全学科が対象で、大学・大学院を卒業（見込み）の新卒の方が対象です。<span class="kari ml-1">要確認</span></span></div></details>
-            <details class="faq"><summary><span class="q">Q</span>勤務地はどこですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>東京・銀座（ヒューリック銀座イーストビル）です。勤務は9:30〜18:30、年間休日120日以上・完全週休2日制です。</span></div></details>
+            <details class="faq"><summary><span class="q">Q</span>勤務地はどこですか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>東京・銀座（ヒューリック銀座イーストビル）です。勤務は9:30〜18:30、年間休日126日・完全週休2日制です。</span></div></details>
             <details class="faq"><summary><span class="q">Q</span>どんな人が働いていますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>いろいろな経歴の仲間がいます。「まず動く」「先に与える」人が多く、支え合って高め合うOHANA文化が根づいています。</span></div></details>
             <details class="faq"><summary><span class="q">Q</span>選考では何を見られますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>学歴や資格は問いません。人柄・価値観・成長意欲を中心に、面接での対話を通じてお互いを深く知っていきます。</span></div></details>
             <details class="faq"><summary><span class="q">Q</span>説明会は選考に関係しますか？<span class="plus">＋</span></summary><div class="a"><span class="am">A</span><span>関係ありません。説明会は、Enjinを気軽に知ってもらうための場です。まずは話を聞きに来てください。</span></div></details>
@@ -909,11 +909,11 @@
           <p class="text-xs text-gray-500 leading-relaxed mb-4">Enjinのリアルをラフに知る場。オンライン可。</p>
           <span class="font-alumni font-bold text-xs tracking-widest text-red group-hover:tracking-[.2em] transition">RESERVE →</span>
         </a>
-        <a href="#" data-cta="line" class="group bg-white p-6 hover:-translate-y-1 transition" style="color:#141414;">
-          <p class="font-alumni font-black text-red text-2xl mb-2">02</p>
+        <a href="#" data-cta="line" class="group bg-white p-6 hover:-translate-y-1 transition relative" style="color:#141414;border-top:3px solid #06C755;">
+          <p class="font-alumni font-black text-2xl mb-2" style="color:#06C755;">02</p>
           <h3 class="font-bold text-lg mb-1">LINEで相談</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">まず気軽に。友だち追加して質問だけでもOK。</p>
-          <span class="font-alumni font-bold text-xs tracking-widest text-red group-hover:tracking-[.2em] transition">ADD FRIEND →</span>
+          <span class="font-alumni font-bold text-xs tracking-widest group-hover:tracking-[.2em] transition" style="color:#06C755;">ADD FRIEND →</span>
         </a>
         <a href="application-v8.html" data-cta="entry" class="group bg-white p-6 hover:-translate-y-1 transition" style="color:#141414;">
           <p class="font-alumni font-black text-red text-2xl mb-2">03</p>
