@@ -1019,7 +1019,7 @@
         requestAnimationFrame(tick);
 
         // arrow buttons
-        var step=function(dir){ idle=99999; wrap.scrollBy({left:dir*300,behavior:'smooth'}); };
+        var step=function(dir){ idle=0; var w=(wrap.querySelector('.iv-card')||{}).offsetWidth||260; wrap.scrollBy({left:dir*(w+19),behavior:'smooth'}); };
         document.querySelectorAll('[data-iv]').forEach(function(b){
           b.addEventListener('click',function(){ step(b.getAttribute('data-iv')==='next'?1:-1); });
         });
