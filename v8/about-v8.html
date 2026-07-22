@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>会社を知る ABOUT — Enjin 採用 v8</title>
+  <script src="assets/tailwind.js"></script>
+  <link href="assets/fonts.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <style>
+    :root { --red:#BF0F0F; --ink:#141414; --paper:#F7F4F2; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    html, body { overflow-x:hidden; max-width:100%; }
+    a { color:inherit; }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .font-mincho { font-family:'Noto Serif JP', serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
+    .eyebrow { font-family:'Alumni Sans',sans-serif; font-weight:700; letter-spacing:0.22em; font-size:0.78rem; color:#9a9a9a; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; }
+    .eyebrow::before { content:""; width:22px; height:2px; background:var(--red); flex-shrink:0; }
+    .eyebrow.center { justify-content:center; }
+    .eyebrow .en-num{ font-family:'Alumni Sans',sans-serif; font-weight:900; color:var(--red); font-size:1rem; letter-spacing:.04em; line-height:1; }
+    .sec-title { font-weight:900; letter-spacing:0.02em; line-height:1.25; }
+    .sec-en-ghost { position:absolute; pointer-events:none; user-select:none; z-index:0; font-family:'Alumni Sans',sans-serif; font-weight:900; color:rgba(20,20,20,0.045); font-size:12vw; line-height:0.8; white-space:nowrap; }
+    .reveal { opacity:0; transform:translateY(34px); transition:opacity 1.1s cubic-bezier(.22,1,.36,1), transform 1.1s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:translateY(0); }
+    @keyframes kb { 0%{transform:scale(1.02);} 100%{transform:scale(1.1);} }
+    .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate;background-size:cover;background-position:center;}
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;white-space:nowrap;}
+    .biz-card{position:relative;overflow:hidden;background:#fff;transition:.35s cubic-bezier(.22,1,.36,1);}
+    .biz-card .ph{aspect-ratio:16/10;overflow:hidden;}
+    .biz-card .ph>div{width:100%;height:100%;background-size:cover;background-position:center;filter:grayscale(.35);transition:transform .6s cubic-bezier(.22,1,.36,1),filter .5s;}
+    .biz-card:hover .ph>div{transform:scale(1.05);filter:grayscale(0);}
+    .biz-card .num{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:2rem;line-height:1;color:#e3ddd9;transition:color .35s;}
+    .biz-card:hover .num{color:var(--red);}
+    .noise{position:relative;}
+    .noise::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.055;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+    .noise > *{position:relative;z-index:2;}
+    .info-row{display:grid;grid-template-columns:150px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid #eee;font-size:.9rem;}
+    .info-row dt{color:#9a9a9a;font-weight:600;font-size:.8rem;letter-spacing:.05em;}
+    @media (max-width:640px){ .info-row{grid-template-columns:1fr;gap:.3rem;} }
+    .site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #f0f0f0;}
+    .site-head nav a:hover{color:var(--red);}
+    .head-badge{position:relative;padding-left:.85rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;white-space:nowrap;color:#141414;}
+    .head-badge::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:15px;width:1px;background:currentColor;opacity:.45;}
+    @media (prefers-reduced-motion: reduce){ .reveal,.ken-burns>.kb-img{animation:none!important;opacity:1!important;transform:none!important;transition:none!important;} }
+  </style>
+</head>
+<body>
+  <header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
+    <a href="index-v8.html" class="flex items-center gap-3"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /><span class="head-badge">新卒RECRUIT</span></a>
+    <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+      <a href="about-v8.html" class="hover:text-red transition">会社を知る</a>
+      <a href="members-v8.html" class="hover:text-red transition">ひとを知る</a>
+      <a href="environment-v8.html" class="hover:text-red transition">Enjin LIFE</a>
+      <a href="recruitment-v8.html" class="hover:text-red transition">採用情報</a>
+      <a href="recruitment-v8.html#faq" class="hover:text-red transition">FAQ</a>
+      <a href="application-v8.html" class="bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+    </nav>
+    <button class="lg:hidden hamburger" aria-label="メニューを開く" onclick="document.getElementById('drawer').classList.add('open')"><span></span><span></span><span></span></button>
+  </header>
+  <div id="drawer" class="drawer lg:hidden">
+    <div class="drawer-bg" onclick="document.getElementById('drawer').classList.remove('open')"></div>
+    <div class="drawer-panel">
+      <div class="flex items-center justify-between mb-6">
+        <img src="images/logo_enjin.png" alt="Enjin" style="height:24px;width:auto;" />
+        <button aria-label="閉じる" onclick="document.getElementById('drawer').classList.remove('open')" class="text-2xl text-gray-400 leading-none">×</button>
+      </div>
+      <a href="index-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">TOP</a>
+      <a href="about-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">会社を知る</a>
+      <a href="members-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">ひとを知る</a>
+      <a href="environment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">Enjin LIFE</a>
+      <a href="recruitment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">採用情報</a>
+      <a href="news-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">お知らせ</a>
+      <a href="application-v8.html" onclick="document.getElementById('drawer').classList.remove('open')" class="mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">説明会に申し込む　→</a>
+    </div>
+  </div>
+
+  <!-- Page hero -->
+  <section class="relative overflow-hidden" style="background:#141414;">
+    <div class="ken-burns absolute inset-0"><div class="kb-img" style="background-image:linear-gradient(rgba(20,20,20,.6),rgba(20,20,20,.6)),url('images/business.jpg');"></div></div>
+    <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10">
+      <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">ABOUT US</p>
+      <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(2rem,4.6vw,3.4rem);">会社を知る</h1>
+      <p class="text-white/70 text-sm mt-4 leading-loose max-w-xl">Enjinは、クライアントの魅力や価値を世の中に伝えるお仕事をしています。「社会の役に立つ立派な人間を一人でも多く輩出する」——このパーパスを根幹に、進化し続ける会社です。</p>
+    </div>
+    <p class="absolute font-alumni font-black whitespace-nowrap pointer-events-none" style="bottom:-1.5vw;left:0;font-size:15vw;line-height:.78;color:rgba(255,255,255,.06);">ABOUT ENJIN</p>
+  </section>
+
+  <!-- Business -->
+  <section id="business" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:3%;right:-2%;">BUSINESS</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-14">
+        <p class="eyebrow mb-4"><span class="en-num">01</span>Business</p>
+        <h2 class="sec-title text-4xl lg:text-5xl mb-6">事業紹介 <span class="text-xl lg:text-2xl align-middle text-gray-400 font-alumni">GROUP 8 COMPANIES</span></h2>
+        <p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl">PRを起点に、観光・不動産・金融など多様な領域へ。グループ8社が連携し、クライアントの価値を社会に届けています。<span class="kari ml-2">事業内容・仮</span></p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="biz-card"><div class="ph"><div style="background-image:url('images/business.jpg');"></div></div><div class="p-5"><p class="num mb-2">01</p><h3 class="font-bold text-lg mb-1">PR事業</h3><p class="text-xs text-gray-500 leading-relaxed">中小企業の経営者に伴走し、その会社の魅力を世の中へ発信する主力事業。</p></div></div>
+        <div class="biz-card"><div class="ph"><div style="background-image:url('images/office_about.jpg');"></div></div><div class="p-5"><p class="num mb-2">02</p><h3 class="font-bold text-lg mb-1">観光事業</h3><p class="text-xs text-gray-500 leading-relaxed">地域の魅力を再発見し、人を呼び込む観光プロモーションを手がける。</p></div></div>
+        <div class="biz-card"><div class="ph"><div style="background-image:url('images/members_20th.jpg');"></div></div><div class="p-5"><p class="num mb-2">03</p><h3 class="font-bold text-lg mb-1">不動産事業</h3><p class="text-xs text-gray-500 leading-relaxed">資産価値を高める企画・仲介。空間づくりから価値を伝える。</p></div></div>
+        <div class="biz-card"><div class="ph"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div><div class="p-5"><p class="num mb-2">04</p><h3 class="font-bold text-lg mb-1">金融事業</h3><p class="text-xs text-gray-500 leading-relaxed">経営者の挑戦を、資金と情報の両面から支えるサービス。</p></div></div>
+        <div class="biz-card"><div class="ph"><div style="background-image:url('images/ohana_trip.jpg');"></div></div><div class="p-5"><p class="num mb-2">05</p><h3 class="font-bold text-lg mb-1">プラットフォーム事業</h3><p class="text-xs text-gray-500 leading-relaxed">自社プラットフォームの運営を通じて、情報の発信力そのものを資産化する。</p></div></div>
+      </div>
+      <p class="text-center text-[11px] text-gray-400 mt-8"><span class="kari">全8社中6社を表示・仮</span>　各社名・事業内容は正式版で差し替え予定</p>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section id="message" class="noise px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden" style="background:#141414;color:#fff;">
+    <div class="sec-en-ghost" style="top:3%;left:-2%;color:rgba(255,255,255,.05);">MESSAGE</div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <p class="eyebrow center mb-4" style="color:#777;"><span class="en-num">02</span>CEO Message</p>
+      <h2 class="sec-title text-3xl lg:text-4xl mb-14 text-white">代表メッセージ</h2>
+      <blockquote class="font-mincho font-bold leading-[1.9] mb-10 text-white" style="font-size:clamp(1.5rem,3.2vw,2.6rem);">「社会の役に立つ立派な人間を<br />一人でも多く輩出する」</blockquote>
+      <div class="text-sm text-gray-400 leading-[2.3] max-w-2xl mx-auto mb-10 text-left space-y-6">
+        <p>このパーパス（存在意義）は私たちの企業活動の根幹を成す理念であり、すべての行動において揺るぎない指針となっています。AIやデジタルテクノロジーの進展により「人」が提供できる価値が大きく変わるいま、私たちは何を提供できるのかを絶えず考え、進化し続けます。</p>
+        <p>創業から20年。おかげさまで累計2,500社を超えるクライアントと歩んでこられました。しかし私たちが本当に生み出したいのは、売上でも規模でもなく「人」です。ここで数年を過ごした若者が、どこへ行っても通用する立派な人格者になっている——そんな会社であり続けたい。<span class="kari" style="border-color:#3a3a3a;color:#666;">全文・仮</span></p>
+      </div>
+      <p class="text-xs text-gray-500 tracking-wider">株式会社Enjin 代表取締役社長 グループCEO</p>
+      <p class="font-bold text-2xl mt-1 font-mincho text-white">本田 幸大</p>
+    </div>
+  </section>
+
+  <!-- Company -->
+  <section id="company" class="bg-paper px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+    <div class="sec-en-ghost" style="top:3%;right:-2%;">COMPANY</div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <div class="mb-14">
+        <p class="eyebrow mb-4"><span class="en-num">03</span>Company</p>
+        <h2 class="sec-title text-4xl lg:text-5xl">会社概要・アクセス</h2>
+      </div>
+      <div class="grid lg:grid-cols-[1.1fr_1fr] gap-14">
+        <dl>
+          <div class="info-row"><dt>商号</dt><dd>株式会社Enjin</dd></div>
+          <div class="info-row"><dt>上場</dt><dd>東証グロース市場（証券コード：7370）</dd></div>
+          <div class="info-row"><dt>代表者</dt><dd>代表取締役社長 グループCEO　本田 幸大</dd></div>
+          <div class="info-row"><dt>創業</dt><dd>2006年 <span class="kari">要確認</span></dd></div>
+          <div class="info-row"><dt>所在地</dt><dd>東京都中央区銀座5-13-16 ヒューリック銀座イーストビル8F<br />（7F：スタジオ／受付）</dd></div>
+          <div class="info-row"><dt>事業内容</dt><dd>PR・観光・不動産・金融ほか（グループ8社）</dd></div>
+          <div class="info-row"><dt>従業員数</dt><dd><span class="text-gray-400">※データ収集中</span></dd></div>
+        </dl>
+        <div>
+          <div class="ken-burns aspect-[4/3] mb-4" style="box-shadow:20px 20px 0 #fff;"><div class="kb-img" style="background-image:url('images/office_about.jpg');"></div></div>
+          <p class="text-xs text-gray-500 leading-loose">最寄駅：東京メトロ各線 銀座駅 徒歩数分 <span class="kari ml-1">アクセス詳細・仮</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA back -->
+  <section class="relative text-white px-6 lg:px-16 py-24 text-center overflow-hidden">
+    <div class="absolute inset-0" style="background-image:url('images/members_20th.jpg');background-size:cover;background-position:center;"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(150,8,8,.93),rgba(191,15,15,.88));"></div>
+    <div class="max-w-3xl mx-auto relative z-10">
+      <h2 class="sec-title mb-8" style="font-size:clamp(1.6rem,3.6vw,2.6rem);">まずは、話を聞きに来ませんか。</h2>
+      <a href="application-v8.html" class="inline-block whitespace-nowrap bg-white text-red px-12 py-4 text-base font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+    </div>
+  </section>
+
+  <footer class="bg-white px-6 lg:px-16 py-12 border-t border-gray-200 text-center">
+    <a href="index-v8.html" class="text-sm text-gray-500 hover:text-red transition">← TOPページに戻る</a>
+    <p class="text-[10px] text-gray-400 mt-4">© Enjin Inc. All Rights Reserved.／ ABOUT v8 内部レビュー用・文言一部仮</p>
+  </footer>
+
+  <script>
+    (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
+    function init(){document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}})();
+  </script>
+</body>
+</html>

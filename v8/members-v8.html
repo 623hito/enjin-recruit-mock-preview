@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>ひとを知る — Enjin 採用 v8</title>
+<script src="assets/tailwind.js"></script>
+<link href="assets/fonts.css" rel="stylesheet" />
+<link href="assets/site-v8.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+</head>
+<body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
+  <a href="index-v8.html" class="flex items-center gap-3"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /><span class="head-badge">新卒RECRUIT</span></a>
+  <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+    <a href="about-v8.html" class="transition">会社を知る</a>
+    <a href="members-v8.html" class="transition">ひとを知る</a>
+    <a href="environment-v8.html" class="transition">Enjin LIFE</a>
+    <a href="recruitment-v8.html" class="transition">採用情報</a>
+    <a href="recruitment-v8.html#faq" class="transition">FAQ</a>
+    <a href="application-v8.html" class="bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+  </nav>
+  <button class="lg:hidden hamburger" aria-label="メニューを開く" onclick="document.getElementById('drawer').classList.add('open')"><span></span><span></span><span></span></button>
+</header>
+  <div id="drawer" class="drawer lg:hidden">
+    <div class="drawer-bg" onclick="document.getElementById('drawer').classList.remove('open')"></div>
+    <div class="drawer-panel">
+      <div class="flex items-center justify-between mb-6">
+        <img src="images/logo_enjin.png" alt="Enjin" style="height:24px;width:auto;" />
+        <button aria-label="閉じる" onclick="document.getElementById('drawer').classList.remove('open')" class="text-2xl text-gray-400 leading-none">×</button>
+      </div>
+      <a href="index-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">TOP</a>
+      <a href="about-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">会社を知る</a>
+      <a href="members-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">ひとを知る</a>
+      <a href="environment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">Enjin LIFE</a>
+      <a href="recruitment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">採用情報</a>
+      <a href="news-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">お知らせ</a>
+      <a href="application-v8.html" onclick="document.getElementById('drawer').classList.remove('open')" class="mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">説明会に申し込む　→</a>
+    </div>
+  </div><section class="page-hero reveal">
+  <div class="bg"><div class="kb-img" style="background-image:linear-gradient(rgba(20,20,20,.62),rgba(20,20,20,.62)),url('images/members_20th.jpg');"></div></div>
+  <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10">
+    <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">MEMBERS</p>
+    <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(2rem,4.6vw,3.4rem);">働くひとたち</h1>
+    <p class="text-white/70 text-sm mt-4 leading-loose max-w-xl">さまざまなバックグラウンドを持つ仲間が、挑戦を楽しんでいます。</p>
+  </div>
+  <p class="ghost">MEMBERS</p>
+</section>
+<section class="bg-paper px-6 lg:px-16 py-24 reveal relative overflow-hidden">
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="mb-12"><p class="eyebrow mb-4"><span class="en-num">00</span>Our People</p><h2 class="sec-title text-3xl lg:text-4xl mb-4">こんな仲間と、働く。</h2><p class="text-sm text-gray-600 leading-loose max-w-2xl">年次も職種もさまざま。共通しているのは「まず動く」「先に与える」「共に走る」という姿勢です。</p></div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
+      <div class="lg:border-r border-gray-200 lg:pr-8"><p class="font-alumni font-black text-5xl mb-4 text-red">01</p><h3 class="font-bold text-lg mb-2">まず、動ける人</h3><p class="text-[13px] text-gray-600 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
+      <div class="lg:border-r border-gray-200 lg:pr-8"><p class="font-alumni font-black text-5xl mb-4 text-red">02</p><h3 class="font-bold text-lg mb-2">先に、ギブできる人</h3><p class="text-[13px] text-gray-600 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
+      <div><p class="font-alumni font-black text-5xl mb-4 text-red">03</p><h3 class="font-bold text-lg mb-2">共に、走れる人</h3><p class="text-[13px] text-gray-600 leading-[2]">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
+    </div>
+  </div>
+</section>
+<section id="interviews" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+  <div class="sec-en-ghost" style="top:2%;right:-2%;">INTERVIEW</div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">01</span>Interview</p><h2 class="sec-title text-4xl lg:text-5xl">社員インタビュー</h2></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14"><a href="interview-v8.html?n=1" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_01.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">01</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">経営者の一言が、私を変えた。</p>
+  <p class="text-[11px] text-gray-500">PRコンサル／営業　2021年入社　<span class="font-alumni font-bold tracking-wider">Y.S</span><span class="kari ml-2">内容仮</span></p>
+</a>
+<a href="interview-v8.html?n=2" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_02.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">02</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">伝わった瞬間が、いちばん好き。</p>
+  <p class="text-[11px] text-gray-500">企画／プランナー　2019年入社　<span class="font-alumni font-bold tracking-wider">M.K</span><span class="kari ml-2">内容仮</span></p>
+</a>
+<a href="interview-v8.html?n=3" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_03.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">03</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">仲間づくりが、私の仕事。</p>
+  <p class="text-[11px] text-gray-500">HR　2020年入社　<span class="font-alumni font-bold tracking-wider">A.T</span><span class="kari ml-2">内容仮</span></p>
+</a>
+<a href="interview-v8.html?n=4" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_04.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">04</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">1年目から、社長と商談。</p>
+  <p class="text-[11px] text-gray-500">PRコンサル／営業　2023年入社　<span class="font-alumni font-bold tracking-wider">R.H</span><span class="kari ml-2">内容仮</span></p>
+</a>
+<a href="interview-v8.html?n=5" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_05.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">05</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">挑戦を、数字で支える。</p>
+  <p class="text-[11px] text-gray-500">経理　2018年入社　<span class="font-alumni font-bold tracking-wider">S.N</span><span class="kari ml-2">内容仮</span></p>
+</a>
+<a href="interview-v8.html?n=6" class="group block">
+  <div class="gc color aspect-[4/3] mb-4"><div style="background-image:url('images/interview_06.jpg');"></div></div>
+  <p class="font-alumni font-bold text-[11px] tracking-widest text-gray-400 mb-1.5">INTERVIEW ／ <span class="text-red">06</span></p>
+  <p class="font-mincho font-bold text-lg leading-snug mb-2 group-hover:text-red transition">ギブし続けたら、ここにいた。</p>
+  <p class="text-[11px] text-gray-500">PRコンサル／営業　2017年入社　<span class="font-alumni font-bold tracking-wider">K.M</span><span class="kari ml-2">内容仮</span></p>
+</a></div>
+    <div class="text-center mt-16"><a href="#" class="btn-red">動画で社員を見る（YouTube）　→</a></div>
+  </div>
+</section>
+<section class="relative text-white px-6 lg:px-16 py-24 text-center overflow-hidden reveal">
+  <div class="absolute inset-0" style="background-image:url('images/members_20th.jpg');background-size:cover;background-position:center;"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(150,8,8,.93),rgba(191,15,15,.88));"></div>
+  <div class="max-w-3xl mx-auto relative z-10">
+    <p class="font-alumni font-bold text-sm tracking-[0.3em] text-white/70 mb-4">CASUAL SESSION</p>
+    <h2 class="sec-title mb-8" style="font-size:clamp(1.6rem,3.6vw,2.6rem);">まずは、話を聞きに来ませんか。</h2>
+    <a href="application-v8.html" class="inline-block whitespace-nowrap bg-white text-red px-12 py-4 text-base font-bold tracking-wider hover:bg-gray-100 transition">会社説明会に申し込む　→</a>
+  </div>
+</section>
+<footer class="bg-white px-6 lg:px-16 py-12 border-t border-gray-200 text-center">
+  <a href="index-v8.html" class="text-sm text-gray-500 hover:text-red transition">← TOPページに戻る</a>
+  <p class="text-[10px] text-gray-400 mt-4">© Enjin Inc. All Rights Reserved.／ MEMBERS v8 内部レビュー用・文言一部仮</p>
+</footer>
+<script>
+(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
+function init(){document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}})();
+</script>
+</body>
+</html>
