@@ -567,10 +567,22 @@
           </div>
         </div>
 
-        <!-- 他事業は1行導線 -->
-        <div class="mt-10 pt-8 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <p class="text-sm text-gray-600 leading-relaxed">グループ<span class="font-bold">8社</span>で、観光・不動産・金融などの事業も展開しています。</p>
-          <a href="about-v8.html#business" class="hub-link whitespace-nowrap" style="max-width:320px;"><span class="font-medium">他の事業はこちら</span><span class="en">GROUP ›</span></a>
+        <!-- 他事業（グループ8社）をわかりやすく -->
+        <div class="mt-12 pt-10 border-t border-gray-200">
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+            <div>
+              <p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP COMPANIES</p>
+              <p class="text-sm text-gray-700 leading-relaxed mb-5">Enjinグループは<span class="font-bold">PRを軸に、8社</span>で事業を展開しています。<br class="hidden sm:block" />入社後は主力のPR事業からスタートし、将来的にはグループの多様なフィールドへ広がります。</p>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="inline-flex items-center gap-2 border border-red bg-red text-white text-xs font-bold px-3 py-2">PR・ブランディング<span class="text-[10px] font-normal opacity-80">／新卒配属はここ</span></span>
+                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">観光</span>
+                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">不動産</span>
+                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">金融</span>
+                <span class="inline-block text-gray-400 text-xs px-1 py-2">ほか</span>
+              </div>
+            </div>
+            <a href="about-v8.html#business" class="hub-link whitespace-nowrap flex-shrink-0" style="min-width:280px;"><span class="font-medium">他の事業を見る</span><span class="en">GROUP ›</span></a>
+          </div>
         </div>
       </div>
     </div>
@@ -1107,5 +1119,6 @@
       document.querySelectorAll('.cnt').forEach(function(el){cio.observe(el);});
     })();
   </script>
+<script src="assets/photo-kari.js"></script>
 </body>
 </html>
