@@ -5,7 +5,7 @@
  */
 (function () {
   // 確定済みとして扱う画像（バッジを出さない）。確定したらここに追記する。
-  var CONFIRMED = [];
+  var CONFIRMED = ['hero_main'];   // TOPメインビジュアル＝確定
   // バッジ対象外（ロゴ・アイコン類）
   var IGNORE = ['logo_enjin', 'favicon'];
 
