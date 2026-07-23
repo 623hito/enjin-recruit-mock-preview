@@ -23,6 +23,24 @@
   .hub-card .ph > div { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .5s; }
   .hub-card:hover .ph > div { transform:scale(1.04); }
   .hub-tag { position:absolute; top:10px; left:10px; z-index:2; background:var(--red); color:#fff; font-size:11px; font-weight:700; padding:3px 10px; letter-spacing:.1em; }
+  /* ヒーロー：写真の人物は右、コピーは左の余白（空）へ置く */
+  .hero-photo { background-size:cover; background-position:center bottom; background-repeat:no-repeat; }
+  .hero-scrim { background:linear-gradient(100deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.82) 38%,rgba(255,255,255,.42) 62%,rgba(255,255,255,.18) 100%); }
+  .hero-copy { max-width:34rem; margin-left:max(1.5rem,6vw); text-align:left; }
+  @media (max-width:900px){
+    .hero-photo { background-position:72% bottom; }
+    .hero-scrim { background:linear-gradient(180deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.86) 45%,rgba(255,255,255,.62) 100%); }
+    .hero-copy { max-width:100%; margin-left:auto; margin-right:auto; text-align:center; }
+  }
+  /* 準備中カバー（既存カードの上に被せる） */
+  .hub-card.is-prep { cursor:default; }
+  .hub-card.is-prep:hover { border-color:#e5e7eb; transform:none; box-shadow:none; }
+  .prep-cover { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1.5rem;
+    background:linear-gradient(180deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.9) 100%); backdrop-filter:saturate(.6) blur(1px); }
+  .prep-cover .prep-en { font-family:'Alumni Sans',sans-serif; font-weight:700; letter-spacing:.22em; font-size:.85rem; color:rgba(255,255,255,.6); }
+  .prep-cover .prep-jp { font-family:'Noto Serif JP',serif; font-weight:700; color:#fff; font-size:clamp(1.8rem,4.5vw,2.6rem); line-height:1.2; margin:.5rem 0 .9rem;
+    border-top:1px solid rgba(255,255,255,.25); border-bottom:1px solid rgba(255,255,255,.25); padding:.5rem 1.6rem; }
+  .prep-cover .prep-note { font-size:11px; color:rgba(255,255,255,.65); line-height:1.9; }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
   .reveal.in { opacity:1; transform:translateY(0); }
 </style>
@@ -41,12 +59,20 @@
   <a href="#contact" class="text-xs text-gray-500 hover:text-red transition">お問い合わせ</a>
 </header>
 
-<!-- 一言メッセージ -->
-<section class="bg-paper px-6 py-20 lg:py-28 text-center relative overflow-hidden">
-  <div class="max-w-3xl mx-auto reveal in">
-    <p class="eyebrow mb-4">Recruit</p>
-    <h1 class="font-mincho font-bold leading-relaxed mb-6" style="font-size:clamp(1.5rem,3.6vw,2.4rem);">「社会の役に立つ立派な人間を<br class="sm:hidden" />一人でも多く輩出する」</h1>
-    <p class="text-sm text-gray-600 leading-loose">Enjinの採用は、このパーパスから始まります。<br />あなたに合った入口から、Enjinを知ってください。</p>
+<!-- OHANA RECRUITING ようこそバナー（仮） -->
+<section id="welcome" class="bg-paper relative overflow-hidden text-center" style="padding:clamp(4.5rem,11vw,8rem) 1.5rem;">
+  <div class="absolute inset-0 hero-photo" style="background-image:url('images/career_hero.jpg');"></div>
+  <div class="absolute inset-0 hero-scrim"></div>
+  <div class="hero-copy relative z-10 reveal in">
+    <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.02;letter-spacing:.04em;color:#141414;">OHANA<br class="sm:hidden" /> RECRUITING</p>
+    <p class="font-mincho font-bold mt-6" style="font-size:clamp(1rem,2.2vw,1.35rem);color:#141414;">ようこそ、Enjinの採用サイトへ。<span class="kari ml-2">文言仮</span></p>
+    <p class="text-xs text-gray-600 mt-3 leading-loose">家族のように支え合い、高め合う仲間たちが、あなたを待っています。</p>
+
+    <div class="mt-10 lg:mt-12 pt-9 border-t border-gray-400/40">
+      <p class="eyebrow mb-4">Recruit</p>
+      <h1 class="font-mincho font-bold leading-relaxed mb-5" style="font-size:clamp(1.4rem,2.6vw,2rem);">「社会の役に立つ立派な人間を<br class="sm:hidden" />一人でも多く輩出する」</h1>
+      <p class="text-sm text-gray-700 leading-loose">Enjinの採用は、このパーパスから始まります。<br />あなたに合った入口から、Enjinを知ってください。</p>
+    </div>
   </div>
 </section>
 
@@ -65,25 +91,31 @@
       </div>
     </a>
 
-    <!-- 中途 -->
-    <a href="https://www.y-enjin.co.jp/career/mid-career-recruitment/" target="_blank" rel="noopener" class="hub-card reveal">
+    <!-- 中途（準備中） -->
+    <div class="hub-card is-prep reveal relative">
       <div class="ph"><span class="hub-tag">CAREER</span><div style="background-image:url('images/business.jpg');"></div></div>
       <div class="p-6">
         <h2 class="font-bold text-lg mb-2">キャリア採用<span class="text-[11px] text-gray-400 font-normal ml-2">中途</span></h2>
         <p class="text-xs text-gray-500 leading-relaxed mb-5">その経験を、最高峰の商談で。即戦力を待っています。<span class="kari ml-1">文言仮</span></p>
         <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">キャリア採用へ　→</span>
-        <p class="text-[10px] text-gray-400 mt-3">※当面は既存ページ。中途LP完成後に差し替え</p>
+        <p class="text-[10px] text-gray-400 mt-3">※中途LP完成後に公開</p>
       </div>
-    </a>
+      <!-- 準備中カバー -->
+      <div class="prep-cover">
+        <p class="prep-en">COMING SOON</p>
+        <p class="prep-jp">準備中</p>
+        <p class="prep-note">キャリア採用サイトは現在制作中です</p>
+      </div>
+    </div>
 
     <!-- 高卒 -->
-    <a href="https://enjin-recruit.web.app/" target="_blank" rel="noopener" class="hub-card reveal">
-      <div class="ph"><span class="hub-tag">HIGH SCHOOL</span><div style="background-image:url('images/ohana_trip.jpg');"></div></div>
+    <a href="https://y-enjin.co.jp/recruit-hs/" target="_blank" rel="noopener" class="hub-card reveal">
+      <div class="ph"><span class="hub-tag">HIGH SCHOOL</span><div style="background-image:url('images/career_hero.jpg');"></div></div>
       <div class="p-6">
         <h2 class="font-bold text-lg mb-2">高卒採用<span class="text-[11px] text-gray-400 font-normal ml-2">高校生</span></h2>
         <p class="text-xs text-gray-500 leading-relaxed mb-5">今は夢が、なくていい。20代で何にでもなれる環境がある。</p>
         <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">高卒採用サイトへ　→</span>
-        <p class="text-[10px] text-gray-400 mt-3">※既存の高卒採用LPへ接続</p>
+        <p class="text-[10px] text-gray-400 mt-3">※コーポレートサイトの高卒採用ページへ接続</p>
       </div>
     </a>
 
