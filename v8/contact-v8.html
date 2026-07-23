@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>お問い合わせ — Enjin 採用 v8</title>
+<script src="assets/tailwind.js"></script>
+<link href="assets/fonts.css" rel="stylesheet" />
+<link href="assets/site-v8.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="images/favicon.png" />
+<style>
+  .form-row { margin-bottom: 1.6rem; }
+  .form-label { display:block; font-weight:700; font-size:.88rem; margin-bottom:.5rem; }
+  .form-label .req { display:inline-block; background:var(--red,#BF0F0F); color:#fff; font-size:10px; font-weight:700; padding:1px 7px; margin-left:.5rem; vertical-align:middle; letter-spacing:.06em; }
+  .form-label .opt { display:inline-block; background:#e5e7eb; color:#6b7280; font-size:10px; font-weight:700; padding:1px 7px; margin-left:.5rem; vertical-align:middle; letter-spacing:.06em; }
+  .form-input { width:100%; border:1px solid #d1d5db; background:#fff; padding:.85rem 1rem; font-size:.95rem; transition:border-color .2s; }
+  .form-input:focus { outline:none; border-color:var(--red,#BF0F0F); }
+  textarea.form-input { min-height:160px; resize:vertical; }
+  .thanks { display:none; }
+  body.sent .contact-form { display:none; }
+  body.sent .thanks { display:block; }
+</style>
+</head>
+<body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
+  <a href="index-v8.html" class="flex items-center gap-3"><img src="images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /><span class="head-badge">新卒RECRUIT</span></a>
+  <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+    <a href="about-v8.html" class="transition">会社を知る</a>
+    <a href="members-v8.html" class="transition">ひとを知る</a>
+    <a href="environment-v8.html" class="transition">Enjin LIFE</a>
+    <a href="recruitment-v8.html" class="transition">採用情報</a>
+    <a href="recruitment-v8.html#faq" class="transition">FAQ</a>
+    <a href="application-v8.html" class="bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition">説明会に申し込む</a>
+  </nav>
+  <button class="lg:hidden hamburger" aria-label="メニューを開く" onclick="document.getElementById('drawer').classList.add('open')"><span></span><span></span><span></span></button>
+</header>
+  <div id="drawer" class="drawer lg:hidden">
+    <div class="drawer-bg" onclick="document.getElementById('drawer').classList.remove('open')"></div>
+    <div class="drawer-panel">
+      <div class="flex items-center justify-between mb-6">
+        <img src="images/logo_enjin.png" alt="Enjin" style="height:24px;width:auto;" />
+        <button aria-label="閉じる" onclick="document.getElementById('drawer').classList.remove('open')" class="text-2xl text-gray-400 leading-none">×</button>
+      </div>
+      <a href="index-v8.html">TOP</a>
+      <a href="about-v8.html">会社を知る</a>
+      <a href="members-v8.html">ひとを知る</a>
+      <a href="environment-v8.html">Enjin LIFE</a>
+      <a href="recruitment-v8.html">採用情報</a>
+      <a href="news-v8.html">お知らせ</a>
+      <a href="application-v8.html" class="mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">説明会に申し込む　→</a>
+    </div>
+  </div>
+
+<section class="bg-paper px-6 lg:px-16 pt-12 pb-10 relative overflow-hidden">
+  <div class="sec-en-ghost" style="top:-8%;right:-2%;">CONTACT</div>
+  <div class="max-w-3xl mx-auto relative z-10">
+    <p class="text-[11px] text-gray-400 mb-6"><a href="index-v8.html" class="hover:text-red">TOP</a><span class="mx-2">›</span><span class="text-gray-700">お問い合わせ</span></p>
+    <p class="eyebrow mb-2">Contact</p>
+    <h1 class="sec-title text-4xl lg:text-5xl mb-4">お問い合わせ</h1>
+    <p class="text-sm text-gray-700 leading-loose">採用に関するご質問・ご相談はこちらから。担当者より折り返しご連絡いたします。<br />お急ぎの場合はお電話（<span class="font-bold">03-4590-0808</span>／9:30〜18:30 平日）でも受け付けています。</p>
+  </div>
+</section>
+
+<main class="px-6 lg:px-16 py-16">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- 送信完了メッセージ -->
+    <div class="thanks border border-gray-200 bg-paper p-10 text-center">
+      <p class="eyebrow mb-3">Thank You</p>
+      <h2 class="sec-title text-2xl mb-4">送信が完了しました</h2>
+      <p class="text-sm text-gray-600 leading-loose mb-8">お問い合わせありがとうございます。<br />内容を確認のうえ、担当者よりご連絡いたします。</p>
+      <a href="index-v8.html" class="inline-block bg-red text-white px-8 py-3.5 text-sm font-bold tracking-wider hover:opacity-90 transition">TOPへ戻る　→</a>
+    </div>
+
+    <!-- フォーム本体（FormSubmit経由で saiyo@y-enjin.co.jp へ送信） -->
+    <form class="contact-form" action="https://formsubmit.co/saiyo@y-enjin.co.jp" method="POST">
+      <!-- FormSubmit設定 -->
+      <input type="hidden" name="_subject" value="【採用サイト】お問い合わせ" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" style="display:none" />
+      <input type="hidden" name="_next" id="nextUrl" value="" />
+
+      <div class="form-row">
+        <label class="form-label" for="f-name">お名前<span class="req">必須</span></label>
+        <input class="form-input" id="f-name" type="text" name="お名前" required placeholder="縁人 太郎" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-kana">フリガナ<span class="req">必須</span></label>
+        <input class="form-input" id="f-kana" type="text" name="フリガナ" required placeholder="エンジン タロウ" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-mail">メールアドレス<span class="req">必須</span></label>
+        <input class="form-input" id="f-mail" type="email" name="メールアドレス" required placeholder="taro@example.com" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-tel">電話番号<span class="opt">任意</span></label>
+        <input class="form-input" id="f-tel" type="tel" name="電話番号" placeholder="090-0000-0000" />
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-type">ご区分<span class="req">必須</span></label>
+        <select class="form-input" id="f-type" name="ご区分" required>
+          <option value="">選択してください</option>
+          <option>27卒（大学・大学院）</option>
+          <option>28卒（大学・大学院）</option>
+          <option>キャリア採用（中途）</option>
+          <option>保護者・学校関係者</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-msg">お問い合わせ内容<span class="req">必須</span></label>
+        <textarea class="form-input" id="f-msg" name="お問い合わせ内容" required placeholder="ご質問・ご相談内容をご記入ください"></textarea>
+      </div>
+      <div class="form-row">
+        <label class="flex items-start gap-3 text-sm text-gray-700 cursor-pointer">
+          <input type="checkbox" required class="mt-1" />
+          <span><a href="privacy-v8.html" target="_blank" class="text-red underline underline-offset-2">プライバシーポリシー</a>に同意する<span class="req">必須</span></span>
+        </label>
+      </div>
+
+      <div class="text-center mt-10">
+        <button type="submit" class="bg-red text-white px-14 py-4 text-base font-bold tracking-wider hover:opacity-90 transition">送信する　→</button>
+        <p class="text-[11px] text-gray-400 mt-4">送信内容は採用担当（saiyo@y-enjin.co.jp）に届きます。</p>
+      </div>
+    </form>
+
+  </div>
+</main>
+
+<footer class="bg-paper px-6 lg:px-16 py-10 border-t border-gray-200 text-center">
+  <a href="index-v8.html" class="text-sm text-gray-500 hover:text-red transition">← TOPページに戻る</a>
+  <p class="text-[10px] text-gray-400 mt-4">© Enjin Inc. All Rights Reserved.／ CONTACT v8 内部レビュー用</p>
+</footer>
+
+<script>
+  // 送信後の戻り先（このページ ?sent=1）を絶対URLでセット
+  document.getElementById('nextUrl').value = location.origin + location.pathname + '?sent=1';
+  // 送信完了表示
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    document.body.classList.add('sent');
+  }
+</script>
+</body>
+</html>
