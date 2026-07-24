@@ -122,3 +122,6 @@ a { color:inherit; }
 .flow-node .dot .fico{width:23px;height:23px;}
 .flow-node .step-no{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;color:#b9afa8;margin-bottom:.15rem;}
 .flow-node.first .step-no{color:var(--red);}
+
+.info-row dt{display:flex;align-items:center;gap:.45rem;}
+.info-row dt .dico{width:15px;height:15px;flex-shrink:0;color:#c9bdb6;}
