@@ -69,12 +69,29 @@
   .bm-thumb:hover{opacity:.85;}
   .bm-thumb.on{opacity:1;border-color:var(--red);}
 
-  /* 前後の制度へ送る */
-  .bm-nav{display:flex;align-items:center;justify-content:space-between;gap:.5rem;border-top:1px solid #efe9e5;padding:.85rem 1.2rem;}
-  .bm-nav-btn{background:none;border:none;font-family:inherit;font-size:.8rem;font-weight:700;color:#7d736d;
-    cursor:pointer;padding:.5rem .7rem;white-space:nowrap;transition:color .2s;}
-  .bm-nav-btn:hover{color:var(--red);}
-  .bm-count{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.12em;color:#b5aca6;}
+  /* 前後の制度へ送る：パネル幅を左右で二分し、指で押しやすい大きさにする */
+  .bm-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #efe9e5;}
+  .bm-nav-btn{display:flex;align-items:center;gap:.7rem;min-height:68px;padding:.8rem 1.1rem;
+    background:none;border:none;border-right:1px solid #efe9e5;font-family:inherit;text-align:left;
+    cursor:pointer;color:#4a423e;transition:background .2s;}
+  .bm-nav-btn:last-child{border-right:none;justify-content:flex-end;text-align:right;}
+  .bm-nav-btn:hover{background:#faf7f5;}
+  .bm-nav-btn:active{background:#f3eeea;}
+  .bm-arrow{flex-shrink:0;width:36px;height:36px;border-radius:999px;border:1px solid #ddd4ce;background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;color:#8a807a;transition:.2s;}
+  .bm-nav-btn:hover .bm-arrow{background:var(--red);border-color:var(--red);color:#fff;}
+  .bm-nav-txt{min-width:0;display:flex;flex-direction:column;gap:.15rem;}
+  .bm-nav-txt small{font-size:.62rem;font-weight:700;letter-spacing:.12em;color:#a99f97;}
+  .bm-nav-txt b{font-size:.85rem;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  /* 現在地は写真の上に小さく重ねる */
+  .bm-count{position:absolute;top:1rem;left:1.2rem;z-index:3;
+    font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.12em;color:#fff;
+    background:rgba(20,18,18,.45);border-radius:999px;padding:.25rem .75rem;}
+  @media (max-width:480px){
+    .bm-nav-btn{gap:.5rem;padding:.7rem .8rem;min-height:62px;}
+    .bm-nav-txt b{font-size:.78rem;}
+    .bm-arrow{width:32px;height:32px;}
+  }
 
   .bm-body{padding:2rem 2rem 2.4rem;}
   .bm-detail{font-size:.92rem;color:#5b534e;line-height:2.05;}
@@ -187,6 +204,7 @@
     <div class="bm-cover" id="bmCover">
       <div class="bm-img" id="bmImg"></div>
       <span class="bm-en-ghost" id="bmEnGhost" aria-hidden="true"></span>
+      <span class="bm-count" id="bmCount"></span>
       <div class="bm-dots" id="bmDots" aria-hidden="true"></div>
       <div class="bm-cover-body">
         <span class="bm-axis" id="bmAxis"></span>
@@ -199,9 +217,14 @@
       <p class="bm-detail" id="bmDetail"></p>
     </div>
     <div class="bm-nav">
-      <button type="button" class="bm-nav-btn" id="bmPrev">‹ 前の制度</button>
-      <span class="bm-count" id="bmCount"></span>
-      <button type="button" class="bm-nav-btn" id="bmNext">次の制度 ›</button>
+      <button type="button" class="bm-nav-btn" id="bmPrev">
+        <span class="bm-arrow" aria-hidden="true">‹</span>
+        <span class="bm-nav-txt"><small>前の制度</small><b id="bmPrevName"></b></span>
+      </button>
+      <button type="button" class="bm-nav-btn" id="bmNext">
+        <span class="bm-nav-txt"><small>次の制度</small><b id="bmNextName"></b></span>
+        <span class="bm-arrow" aria-hidden="true">›</span>
+      </button>
     </div>
   </div>
 </div>
@@ -306,6 +329,10 @@ if(modal){
     document.getElementById('bmTitle').textContent=c.dataset.title;
     document.getElementById('bmDetail').textContent=c.dataset.detail||'';
     document.getElementById('bmCount').textContent=(cur+1)+' / '+cards.length;
+    // 押した先がどの制度かをボタンに出す（何が起きるか分かるように）
+    var prevC=cards[(cur-1+cards.length)%cards.length], nextC=cards[(cur+1)%cards.length];
+    document.getElementById('bmPrevName').textContent=prevC.dataset.title;
+    document.getElementById('bmNextName').textContent=nextC.dataset.title;
     imgs=imagesOf(c);
     buildGallery();
     showImg(0);
