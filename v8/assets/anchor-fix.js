@@ -24,13 +24,26 @@
     return (pos === 'sticky' || pos === 'fixed') ? el.offsetHeight + 8 : 8;
   }
 
+  // 'auto' はCSSの scroll-behavior:smooth に従ってしまい、着地前に次の処理が
+  // 走ってしまうため 'instant' を使う。未対応ブラウザではCSS側を一時的に切る。
+  function scrollToY(y) {
+    try {
+      window.scrollTo({ top: y, behavior: 'instant' });
+    } catch (e) {
+      var root = document.documentElement;
+      var prev = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, y);
+      root.style.scrollBehavior = prev;
+    }
+  }
+
   function jump() {
     var el = target();
     if (!el) return;
     el.classList.add('in');
     var y = window.scrollY + el.getBoundingClientRect().top - headerOffset();
-    // 'auto' はCSSの scroll-behavior:smooth に従ってしまい着地前に次の処理が走るため 'instant' を使う
-    window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'instant' });
+    scrollToY(y < 0 ? 0 : y);
   }
 
   if (!target()) return;
