@@ -72,8 +72,10 @@
       <a href="index-v8.html" class="inline-block bg-red text-white px-8 py-3.5 text-sm font-bold tracking-wider hover:opacity-90 transition">TOPへ戻る　→</a>
     </div>
 
-    <!-- フォーム本体（FormSubmit経由で saiyo@y-enjin.co.jp へ送信） -->
-    <form class="contact-form" action="https://formsubmit.co/saiyo@y-enjin.co.jp" method="POST">
+    <!-- フォーム本体（FormSubmit経由で saiyo@y-enjin.co.jp へ送信）
+         actionのランダム文字列は saiyo@ のエイリアス。メールアドレスをHTMLに露出させないための
+         FormSubmit公式の方式で、秘密鍵ではない。※本番ドメインへ移設したら再アクティベートが必要 -->
+    <form class="contact-form" action="https://formsubmit.co/817d48a937579b5d7516285c014d35f2" method="POST">
       <!-- FormSubmit設定 -->
       <input type="hidden" name="_subject" value="【採用サイト】お問い合わせ" />
       <input type="hidden" name="_template" value="table" />
