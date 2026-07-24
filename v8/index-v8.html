@@ -390,6 +390,16 @@
     @media (max-width:1023px){ body { padding-bottom:64px; } }
       .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
     .btn-apply:hover{background:#a30d0d;}
+  
+    /* ===== 質感B: 直角のまま影で立体感（枠線・目地を廃止） ===== */
+    .job-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+    .job-card:hover{transform:translateY(-5px);box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
+    .iv-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+    .iv-card:hover{box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
+    #data .grid.gap-px{gap:10px;background:transparent!important;}
+    #data .grid.gap-px>div{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+    #cta .grid>*{box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
+    #cta .grid>*:hover{box-shadow:0 30px 62px -20px rgba(0,0,0,.7);}
   </style>
 </head>
 <body>
