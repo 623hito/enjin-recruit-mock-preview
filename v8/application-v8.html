@@ -85,12 +85,19 @@
     .trust{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:#6a635d;}
     .trust svg{width:18px;height:18px;color:var(--red);flex-shrink:0;}
     @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;} }
-      /* ヘッダーのSNSアイコン */
+      /* 安心バッジ（説明会は気軽に参加できることを伝える） */
+    .ease-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.4rem;}
+    .ease-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:700;color:#fff;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:.35rem .9rem;white-space:nowrap;}
+    .ease-chip svg{width:14px;height:14px;flex-shrink:0;color:#ff9d94;}
+    @media(max-width:520px){ .ease-row{gap:.4rem;margin-top:1.1rem;} .ease-chip{font-size:.68rem;padding:.3rem .7rem;gap:.28rem;} }
+    /* ヘッダーのSNSアイコン */
     .head-sns{display:flex;align-items:center;gap:.65rem;padding-left:.9rem;margin-left:.1rem;position:relative;}
     .head-sns::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:16px;width:1px;background:currentColor;opacity:.35;}
     .head-sns a{display:flex;color:inherit;transition:color .2s,transform .2s;}
     .head-sns a:hover{color:var(--red);transform:translateY(-1px);}
     .head-sns svg{width:18px;height:18px;}
+    @media(max-width:1023px){.head-sns{display:none;}}
   </style>
 </head>
 <body>
@@ -110,6 +117,11 @@
       <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">SEMINAR ENTRY</p>
       <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3rem);">会社説明会に申し込む</h1>
       <p class="text-white/75 text-sm mt-4 leading-loose">選考ではありません。まずはEnjinを知る場です。<br />お気軽にお申し込みください。所要時間は約1分です。</p>
+      <div class="ease-row">
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>服装自由</span>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>選考ではありません</span>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>オンライン・約30分</span>
+      </div>
     </div>
   </section>
 
@@ -192,7 +204,7 @@
           <option value="">選択してください</option>
           <option>就活サイト（マイナビ・リクナビ等）</option>
           <option>学校・キャリアセンター</option>
-          <option>SNS（Instagram・X・YouTube）</option>
+          <option>SNS（Instagram・YouTube・note）</option>
           <option>知人・OB/OGの紹介</option>
           <option>その他</option>
         </select>
@@ -202,7 +214,7 @@
       <!-- 希望日程 --><a id="dates"></a>
       <div class="field">
         <label class="lab">希望日程<span class="req">必須</span></label>
-        <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）</span>が基本です。対面をご希望の場合は「日程の相談をしたい」からお知らせください。</p>
+        <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>で、私服でお気軽にご参加いただけます。対面をご希望の場合は「日程の相談をしたい」からお知らせください。</p>
         <div class="date-scroll">
           <div class="choices" style="grid-template-columns:1fr;">
             <label class="choice"><input type="radio" name="date" value="2026年8月18日（火）14:00〜 ／ オンライン" required /><span class="box date-box"><span class="dt"><span class="t">8/18（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
