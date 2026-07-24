@@ -7,7 +7,7 @@
   <title>採用LP 合作版 v8（アートディレクション強化版） — Enjin</title>
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="ぜんぶ欲しいは、夢じゃない。｜Enjin 新卒採用 2027-2028" />
+  <meta property="og:title" content="ぜんぶ欲しいを、夢にしない。｜Enjin 新卒採用 2027-2028" />
   <meta property="og:description" content="社会の役に立つ立派な人間を、一人でも多く輩出する。創業20周年のEnjinが、次の20年を担う仲間を募集します。" />
   <meta property="og:image" content="images/hero_main.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -268,7 +268,7 @@
     .head-sns a:hover{color:var(--red);transform:translateY(-1px);}
     .head-sns svg{width:18px;height:18px;}
     .apply-menu{position:relative;}
-    .apply-caret{font-size:.6rem;margin-left:.4rem;opacity:.8;}
+    .apply-caret{font-size:.6rem;margin-left:.4rem;opacity:1;color:#fff;}
     .apply-drop{position:absolute;top:100%;right:0;margin-top:.55rem;min-width:200px;background:#fff;box-shadow:0 20px 44px -14px rgba(0,0,0,.3);border-top:2px solid var(--red);opacity:0;visibility:hidden;transform:translateY(6px);transition:.25s;z-index:60;}
     .apply-drop::before{content:"";position:absolute;top:-.6rem;left:0;right:0;height:.6rem;}
     .apply-menu:hover .apply-drop{opacity:1;visibility:visible;transform:translateY(0);}
@@ -361,6 +361,14 @@
         .htri-arr svg{width:100%;height:100%;display:block;animation:htriArr 2.6s ease-in-out infinite;}
         .htri-arr path{stroke:rgba(255,255,255,.95);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
         @keyframes htriArr{0%,100%{opacity:.35;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
+        /* loader variant（暗背景・小型） */
+        .ld-nodebox{position:relative;width:min(86vw,460px);height:min(60vw,320px);}
+        .ld-nodebox .htri{max-width:none;width:100%;height:100%;margin:0;aspect-ratio:auto;}
+        .ld-nodebox .htri-node{width:120px;height:120px;}
+        .ld-nodebox .htri-ring{padding:9px;} .ld-nodebox .htri-ring::before{inset:9px;}
+        .ld-nodebox .htri-core .num{font-size:1.9rem;} .ld-nodebox .htri-core .en{font-size:.72rem;} .ld-nodebox .htri-core .jp{font-size:1.15rem;}
+        .ld-nodebox .htri-lines .htri-link{stroke:rgba(255,255,255,.3);}
+        @media(max-width:640px){ .ld-nodebox .htri-node{width:96px;height:96px;} .ld-nodebox .htri-core .num{font-size:1.5rem;} .ld-nodebox .htri-core .jp{font-size:.95rem;} .ld-nodebox .htri-core .en{font-size:.62rem;} }
 @media(max-width:640px){
           .htri{max-width:340px;}
           .htri-node{width:126px;height:126px;}
@@ -407,25 +415,23 @@
     <div class="glow"></div>
     <div class="ld-scene"><p class="ld-eyebrow">PURPOSE</p><p class="ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p></div>
     <div class="ld-scene"><p class="ld-eyebrow">OHANA</p><p class="ld-jp"><span class="rise"><span>支え合って、高め合う。</span></span></p></div>
-    <div class="ld-scene"><div class="ld-tri">
-      <svg viewBox="0 0 100 88" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="fL" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#ff8574"/><stop offset="1" stop-color="#bf0f0f"/></linearGradient>
-          <linearGradient id="fR" x1="1" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#d8281a"/><stop offset="1" stop-color="#7a0909"/></linearGradient>
-          <linearGradient id="fB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5c0808"/><stop offset="1" stop-color="#2e0404"/></linearGradient>
-        </defs>
-        <polygon class="face f3" points="12,80 88,80 50,58" fill="url(#fB)" />
-        <polygon class="face f1" points="50,6 12,80 50,58" fill="url(#fL)" />
-        <polygon class="face f2" points="50,6 88,80 50,58" fill="url(#fR)" />
-        <polygon class="edge" points="50,6 88,80 12,80" pathLength="1" />
-        <line class="edge" x1="50" y1="6" x2="50" y2="58" pathLength="1" />
-      </svg>
-      <div class="ld-dot" style="left:50%;top:6%;"><span class="d"></span><span class="t">経済</span></div>
-      <div class="ld-dot" style="left:12%;top:92%;"><span class="t">健康</span><span class="d"></span></div>
-      <div class="ld-dot" style="left:88%;top:92%;"><span class="t">人間関係</span><span class="d"></span></div>
+    <div class="ld-scene"><div class="ld-nodebox">
+      <div class="htri">
+        <svg class="htri-lines" viewBox="0 0 860 600" preserveAspectRatio="none">
+          <path class="htri-link d1" d="M415,150 L200,455" pathLength="1"/>
+          <path class="htri-link d2" d="M445,150 L660,455" pathLength="1"/>
+          <path class="htri-link d3" d="M235,486 L625,486" pathLength="1"/>
+          <path class="htri-flow" d="M415,150 L200,455"/>
+          <path class="htri-flow" d="M445,150 L660,455"/>
+          <path class="htri-flow" d="M235,486 L625,486"/>
+        </svg>
+        <div class="htri-node he"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">3</span><span class="en">Economy</span><span class="jp">経済</span></div></div></div>
+        <div class="htri-node hh"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">1</span><span class="en">Health</span><span class="jp">健康</span></div></div></div>
+        <div class="htri-node hr"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">2</span><span class="en">Relation</span><span class="jp">人間関係</span></div></div></div>
+      </div>
     </div></div>
     <div class="ld-scene"><p class="ld-num"><span class="u">DEVIATION VALUE</span>偏差値 <span id="ldDv">0</span><span class="k">仮</span></p></div>
-    <div class="ld-scene"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><p class="ld-mincho"><span class="rise"><span>ぜんぶ欲しいは、<span style="color:#ff5a5a;">夢じゃない。</span></span></span></p></div>
+    <div class="ld-scene"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><p class="ld-mincho"><span class="rise"><span>ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></span></p></div>
     <button class="ld-skip" type="button">SKIP →</button>
   </div>
   <div class="progress" id="progress"></div>
@@ -502,8 +508,8 @@
     <div class="absolute left-6 lg:left-16 bottom-24 lg:bottom-28 z-10 pr-6">
       <p class="hero-sub font-alumni font-bold text-white/80 tracking-[0.3em] text-xs lg:text-sm mb-5">RECRUIT ／ ENJIN GROUP 2027-2028</p>
       <h1 class="font-mincho font-bold text-white leading-[1.3]" style="font-size:clamp(2.05rem, 5.6vw, 5rem);">
-        <span class="rl"><span>ぜんぶ欲しいは、</span></span>
-        <span class="rl"><span>夢じゃない。</span></span>
+        <span class="rl"><span>ぜんぶ欲しいを、</span></span>
+        <span class="rl"><span>夢にしない。</span></span>
       </h1>
       <p class="hero-sub text-white/80 text-sm lg:text-base mt-6 leading-relaxed max-w-md">まず、自分を満たせ。<br />健康も、仲間も、稼ぎも手にした人だけが、<br />誰かに与えられる。それがEnjin流。<span class="kari ml-1" style="border-color:rgba(255,255,255,.35);color:rgba(255,255,255,.55);">コピー仮</span></p>
       <a href="#cta" class="hero-sub btn-primary mt-8"><span>まずは説明会に申し込む</span><span class="ar">→</span></a>
