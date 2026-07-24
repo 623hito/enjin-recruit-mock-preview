@@ -32,14 +32,40 @@
   .bmodal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity .3s;}
   .bmodal.open{opacity:1;visibility:visible;}
   .bmodal-bg{position:absolute;inset:0;background:rgba(20,18,18,.72);backdrop-filter:blur(3px);}
-  .bmodal-panel{position:relative;background:#fff;max-width:520px;width:100%;padding:3rem 2.5rem 2.75rem;transform:translateY(16px) scale(.98);transition:transform .35s cubic-bezier(.22,1,.36,1);box-shadow:0 40px 90px -30px rgba(0,0,0,.5);}
+  .bmodal-panel{position:relative;background:#fff;max-width:640px;width:100%;max-height:90vh;overflow:auto;
+    transform:translateY(16px) scale(.98);transition:transform .35s cubic-bezier(.22,1,.36,1);box-shadow:0 40px 90px -30px rgba(0,0,0,.5);}
   .bmodal.open .bmodal-panel{transform:translateY(0) scale(1);}
-  .bmodal-x{position:absolute;top:1rem;right:1.15rem;background:none;border:none;font-size:1.7rem;line-height:1;color:#b5aca6;cursor:pointer;transition:color .2s;}
-  .bmodal-x:hover{color:var(--red);}
-  .bm-axis{display:inline-block;white-space:nowrap;font-size:.66rem;font-weight:700;letter-spacing:.08em;color:var(--red);border:1px solid rgba(191,15,15,.3);border-radius:999px;padding:.2rem .7rem;margin-bottom:1rem;}
-  .bm-en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.22em;color:#bcb2ab;margin-bottom:.35rem;}
-  .bm-title{font-weight:700;font-size:1.55rem;margin-bottom:1.1rem;}
+  .bmodal-x{position:absolute;top:.9rem;right:1.1rem;z-index:3;width:34px;height:34px;border-radius:999px;
+    background:rgba(20,18,18,.45);border:none;font-size:1.35rem;line-height:1;color:#fff;cursor:pointer;transition:background .2s;}
+  .bmodal-x:hover{background:var(--red);}
+
+  /* カバー画像：見出しを写真の上に重ねる */
+  .bm-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#efeae6;}
+  .bm-cover .bm-img{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.02);}
+  .bm-cover::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,18,18,.15) 0%,rgba(20,18,18,.05) 38%,rgba(20,18,18,.78) 100%);}
+  /* 写真が未定のカードは暗い縞模様にする（白い見出しを重ねるため明るいままだと読めない） */
+  .bm-cover.prep .bm-img{background-image:repeating-linear-gradient(45deg,#2b2523,#2b2523 10px,#342d2a 10px,#342d2a 20px)!important;}
+  .bm-cover.prep::before{content:"NOW PRINTING";position:absolute;inset:0;z-index:1;display:flex;align-items:flex-start;justify-content:center;padding-top:2.6rem;
+    font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.18em;font-size:.8rem;color:rgba(255,255,255,.42);}
+  .bm-cover .bm-en-ghost{position:absolute;right:-2%;bottom:-8%;z-index:1;pointer-events:none;user-select:none;
+    font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:5.2rem;line-height:.8;color:rgba(255,255,255,.16);white-space:nowrap;}
+  .bm-cover-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.6rem 2rem;}
+
+  .bm-axis{display:inline-block;white-space:nowrap;font-size:.66rem;font-weight:700;letter-spacing:.08em;color:#fff;
+    background:var(--red);border-radius:999px;padding:.25rem .8rem;margin-bottom:.7rem;}
+  .bm-en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.24em;color:rgba(255,255,255,.75);margin-bottom:.25rem;}
+  .bm-title{font-weight:700;font-size:clamp(1.4rem,3.4vw,1.9rem);color:#fff;line-height:1.35;text-shadow:0 2px 18px rgba(0,0,0,.35);}
+
+  .bm-body{padding:2rem 2rem 2.4rem;}
   .bm-detail{font-size:.92rem;color:#5b534e;line-height:2.05;}
+  .bm-detail:empty{display:none;}
+  @media (max-width:640px){
+    .bm-cover{aspect-ratio:4/3;}
+    .bm-cover-body{padding:1.2rem 1.3rem;}
+    .bm-cover .bm-en-ghost{font-size:3.4rem;}
+    .bm-body{padding:1.5rem 1.3rem 1.9rem;}
+  }
 </style>
 </head>
 <body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
@@ -139,10 +165,18 @@
   <div class="bmodal-bg" data-close></div>
   <div class="bmodal-panel" role="dialog" aria-modal="true">
     <button type="button" class="bmodal-x" data-close aria-label="閉じる">×</button>
-    <span class="bm-axis" id="bmAxis"></span>
-    <p class="bm-en" id="bmEn"></p>
-    <h3 class="bm-title" id="bmTitle"></h3>
-    <p class="bm-detail" id="bmDetail"></p>
+    <div class="bm-cover" id="bmCover">
+      <div class="bm-img" id="bmImg"></div>
+      <span class="bm-en-ghost" id="bmEnGhost" aria-hidden="true"></span>
+      <div class="bm-cover-body">
+        <span class="bm-axis" id="bmAxis"></span>
+        <p class="bm-en" id="bmEn"></p>
+        <h3 class="bm-title" id="bmTitle"></h3>
+      </div>
+    </div>
+    <div class="bm-body">
+      <p class="bm-detail" id="bmDetail"></p>
+    </div>
   </div>
 </div>
 <section id="career" class="bg-paper px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
@@ -197,8 +231,27 @@ function init(){document.querySelectorAll('.reveal').forEach(function(el){io.obs
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 var modal=document.getElementById('benModal');
 if(modal){
-  var openM=function(c){document.getElementById('bmAxis').textContent=c.dataset.axis;document.getElementById('bmEn').textContent=c.dataset.en;document.getElementById('bmTitle').textContent=c.dataset.title;document.getElementById('bmDetail').textContent=c.dataset.detail;modal.classList.add('open');modal.setAttribute('aria-hidden','false');};
-  var closeM=function(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');};
+  var openM=function(c){
+    document.getElementById('bmAxis').textContent=c.dataset.axis;
+    document.getElementById('bmEn').textContent=c.dataset.en;
+    document.getElementById('bmEnGhost').textContent=c.dataset.en;
+    document.getElementById('bmTitle').textContent=c.dataset.title;
+    document.getElementById('bmDetail').textContent=c.dataset.detail||'';
+    // カバー画像はカード側の写真をそのまま流用する（写真が未定のカードは縞模様のまま）
+    var cover=document.getElementById('bmCover'), img=document.getElementById('bmImg');
+    var src=c.querySelector('.bc-img > div');
+    if(src && src.style.backgroundImage){
+      img.style.backgroundImage=src.style.backgroundImage;
+      cover.classList.remove('prep');
+    }else{
+      img.style.backgroundImage='';
+      cover.classList.add('prep');
+    }
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    modal.querySelector('.bmodal-panel').scrollTop=0;
+  };
+  var closeM=function(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
   document.querySelectorAll('.ben-card').forEach(function(c){c.addEventListener('click',function(){openM(c);});});
   modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeM);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
