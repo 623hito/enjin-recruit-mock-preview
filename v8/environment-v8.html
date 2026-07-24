@@ -57,6 +57,25 @@
   .bm-en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.24em;color:rgba(255,255,255,.75);margin-bottom:.25rem;}
   .bm-title{font-weight:700;font-size:clamp(1.4rem,3.4vw,1.9rem);color:#fff;line-height:1.35;text-shadow:0 2px 18px rgba(0,0,0,.35);}
 
+  /* 画像切り替え（複数枚ある制度のみ表示される） */
+  .bm-dots{position:absolute;right:1.2rem;bottom:1.2rem;z-index:3;display:flex;gap:.4rem;}
+  .bm-dots:empty{display:none;}
+  .bm-dot{width:7px;height:7px;border-radius:999px;background:rgba(255,255,255,.45);transition:background .2s;}
+  .bm-dot.on{background:#fff;}
+  .bm-thumbs{display:flex;gap:.5rem;padding:.9rem 2rem 0;overflow-x:auto;}
+  .bm-thumbs:empty{display:none;}
+  .bm-thumb{width:62px;height:44px;flex-shrink:0;background-size:cover;background-position:center;cursor:pointer;
+    border:2px solid transparent;opacity:.5;transition:opacity .2s,border-color .2s;padding:0;}
+  .bm-thumb:hover{opacity:.85;}
+  .bm-thumb.on{opacity:1;border-color:var(--red);}
+
+  /* 前後の制度へ送る */
+  .bm-nav{display:flex;align-items:center;justify-content:space-between;gap:.5rem;border-top:1px solid #efe9e5;padding:.85rem 1.2rem;}
+  .bm-nav-btn{background:none;border:none;font-family:inherit;font-size:.8rem;font-weight:700;color:#7d736d;
+    cursor:pointer;padding:.5rem .7rem;white-space:nowrap;transition:color .2s;}
+  .bm-nav-btn:hover{color:var(--red);}
+  .bm-count{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.12em;color:#b5aca6;}
+
   .bm-body{padding:2rem 2rem 2.4rem;}
   .bm-detail{font-size:.92rem;color:#5b534e;line-height:2.05;}
   .bm-detail:empty{display:none;}
@@ -149,12 +168,12 @@
     <div class="mb-8"><p class="eyebrow mb-4"><span class="en-num">03</span>Benefits</p><h2 class="sec-title text-4xl lg:text-5xl mb-4">制度・福利厚生</h2></div>
     <p class="text-sm text-gray-600 mb-12 leading-relaxed">Enjinの制度は、<span class="font-bold">健康・人間関係・経済</span>——3つの軸で整えています。カードをクリックすると詳細が開きます。<span class="kari ml-1">一部・仮</span></p>
     <div class="ben-grid">
-      <button type="button" class="ben-card" data-title="科学的なオフィス設計" data-en="OFFICE DESIGN" data-axis="健康" data-detail="脳科学と行動心理にもとづき、香り・採光・観葉植物・デスクの向きまで設計。集中とリラックスが自然に切り替わる空間で、心身のコンディションを整えます。"><div class="bc-img"><div style="background-image:url('images/office_about.jpg');"></div></div><div class="bc-body"><span class="bc-axis">健康</span><p class="bc-en">OFFICE DESIGN</p><h3 class="bc-title">科学的なオフィス設計</h3><p class="bc-short">香り・採光・植物まで根拠に基づいて設計</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="科学的なオフィス設計" data-imgs="images/office_about.jpg,images/ohana_cafe.jpg" data-en="OFFICE DESIGN" data-axis="健康" data-detail="脳科学と行動心理にもとづき、香り・採光・観葉植物・デスクの向きまで設計。集中とリラックスが自然に切り替わる空間で、心身のコンディションを整えます。"><div class="bc-img"><div style="background-image:url('images/office_about.jpg');"></div></div><div class="bc-body"><span class="bc-axis">健康</span><p class="bc-en">OFFICE DESIGN</p><h3 class="bc-title">科学的なオフィス設計</h3><p class="bc-short">香り・採光・植物まで根拠に基づいて設計</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="先輩メシ" data-en="SENPAI MESHI" data-axis="健康" data-detail="入社から初任給が出るまでの間、毎日先輩がランチをご馳走する制度。お金の不安も、ひとりぼっちの不安もなく、社会人の一歩目を安心して迎えられます。"><div class="bc-img"><div style="background-image:url('images/senpai_meshi.jpg');"></div></div><div class="bc-body"><span class="bc-axis">健康</span><p class="bc-en">SENPAI MESHI</p><h3 class="bc-title">先輩メシ</h3><p class="bc-short">初任給が出るまで、先輩が毎日ランチをご馳走</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="ジム手当" data-en="GYM" data-axis="健康" data-detail="心と身体の健康づくりのため、ジムに通う費用を会社が一部補助。まず自分が健康であることが、すべての土台だと考えています。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><span class="bc-axis">健康</span><p class="bc-en">GYM</p><h3 class="bc-title">ジム手当</h3><p class="bc-short">健康増進のためのジム費用を一部補助</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="親孝行休暇" data-en="OYAKOKO" data-axis="人間関係" data-detail="ご両親の誕生日・命日を特別休暇とし、帰省の交通費も会社が一部負担。「親孝行できること」を、立派な人間の大切な条件だと考えています。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><span class="bc-axis">人間関係</span><p class="bc-en">OYAKOKO</p><h3 class="bc-title">親孝行休暇</h3><p class="bc-short">ご両親の誕生日・命日は特別休暇＋帰省を補助</p><span class="bc-more">詳しく見る ＋</span></div></button>
-      <button type="button" class="ben-card" data-title="カンパニー旅行" data-en="COMPANY TRIP" data-axis="人間関係" data-detail="チーム（カンパニー）単位で親睦を深める旅行の費用を会社が負担。仕事だけでは見えない、仲間の新しい一面に出会えます。"><div class="bc-img"><div style="background-image:url('images/ohana_trip.jpg');"></div></div><div class="bc-body"><span class="bc-axis">人間関係</span><p class="bc-en">COMPANY TRIP</p><h3 class="bc-title">カンパニー旅行</h3><p class="bc-short">チームの親睦旅行の費用を会社が負担</p><span class="bc-more">詳しく見る ＋</span></div></button>
-      <button type="button" class="ben-card" data-title="OHANA交流イベント" data-en="OHANA EVENT" data-axis="人間関係" data-detail="運動会や周年パーティなど、部署・役職を越えて交流するイベントを多数開催。家族のような関係が、こうした時間から生まれます。"><div class="bc-img"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div><div class="bc-body"><span class="bc-axis">人間関係</span><p class="bc-en">OHANA EVENT</p><h3 class="bc-title">OHANA交流イベント</h3><p class="bc-short">運動会・周年パーティなど部署を超えた交流</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="カンパニー旅行" data-imgs="images/ohana_trip.jpg,images/members_20th.jpg" data-en="COMPANY TRIP" data-axis="人間関係" data-detail="チーム（カンパニー）単位で親睦を深める旅行の費用を会社が負担。仕事だけでは見えない、仲間の新しい一面に出会えます。"><div class="bc-img"><div style="background-image:url('images/ohana_trip.jpg');"></div></div><div class="bc-body"><span class="bc-axis">人間関係</span><p class="bc-en">COMPANY TRIP</p><h3 class="bc-title">カンパニー旅行</h3><p class="bc-short">チームの親睦旅行の費用を会社が負担</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="OHANA交流イベント" data-imgs="images/ohana_cafe.jpg,images/members_20th.jpg,images/ohana_trip.jpg" data-en="OHANA EVENT" data-axis="人間関係" data-detail="運動会や周年パーティなど、部署・役職を越えて交流するイベントを多数開催。家族のような関係が、こうした時間から生まれます。"><div class="bc-img"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div><div class="bc-body"><span class="bc-axis">人間関係</span><p class="bc-en">OHANA EVENT</p><h3 class="bc-title">OHANA交流イベント</h3><p class="bc-short">運動会・周年パーティなど部署を超えた交流</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="アカデミー育成制度" data-en="ACADEMY" data-axis="経済" data-detail="新卒社員で構成される「アカデミー（ACD）」で、一定期間しっかり教育。標準化された安定したプログラムで、着実に力を伸ばします。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><span class="bc-axis">経済</span><p class="bc-en">ACADEMY</p><h3 class="bc-title">アカデミー育成制度</h3><p class="bc-short">新卒組織で標準化された安定した育成</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="宣言制度" data-en="SENGEN" data-axis="経済" data-detail="通常より高い目標を自ら「宣言」し、達成するとご褒美がもらえる制度。同期と切磋琢磨しながら、成長のスピードを自分で上げていけます。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><span class="bc-axis">経済</span><p class="bc-en">SENGEN</p><h3 class="bc-title">宣言制度</h3><p class="bc-short">高い目標を自ら宣言し、達成でご褒美</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="フェアな評価" data-en="FAIR REVIEW" data-axis="経済" data-detail="評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、やった分だけ正当に返ってきます。若いうちの頑張りが、将来の安心に変わります。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><span class="bc-axis">経済</span><p class="bc-en">FAIR REVIEW</p><h3 class="bc-title">フェアな評価</h3><p class="bc-short">年齢・学歴不問。やった分だけ正当に返る</p><span class="bc-more">詳しく見る ＋</span></div></button>
@@ -168,14 +187,21 @@
     <div class="bm-cover" id="bmCover">
       <div class="bm-img" id="bmImg"></div>
       <span class="bm-en-ghost" id="bmEnGhost" aria-hidden="true"></span>
+      <div class="bm-dots" id="bmDots" aria-hidden="true"></div>
       <div class="bm-cover-body">
         <span class="bm-axis" id="bmAxis"></span>
         <p class="bm-en" id="bmEn"></p>
         <h3 class="bm-title" id="bmTitle"></h3>
       </div>
     </div>
+    <div class="bm-thumbs" id="bmThumbs"></div>
     <div class="bm-body">
       <p class="bm-detail" id="bmDetail"></p>
+    </div>
+    <div class="bm-nav">
+      <button type="button" class="bm-nav-btn" id="bmPrev">‹ 前の制度</button>
+      <span class="bm-count" id="bmCount"></span>
+      <button type="button" class="bm-nav-btn" id="bmNext">次の制度 ›</button>
     </div>
   </div>
 </div>
@@ -231,30 +257,88 @@ function init(){document.querySelectorAll('.reveal').forEach(function(el){io.obs
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 var modal=document.getElementById('benModal');
 if(modal){
-  var openM=function(c){
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.ben-card'));
+  var cur=0, imgs=[], imgIdx=0;
+  var cover=document.getElementById('bmCover'), imgEl=document.getElementById('bmImg');
+  var dotsEl=document.getElementById('bmDots'), thumbsEl=document.getElementById('bmThumbs');
+
+  // 画像は data-imgs（カンマ区切り・複数可）を優先し、無ければカードの写真1枚を使う
+  function imagesOf(c){
+    if(c.dataset.imgs){
+      return c.dataset.imgs.split(',').map(function(s){return s.trim();}).filter(Boolean);
+    }
+    var d=c.querySelector('.bc-img > div');
+    var m=d && d.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+    return m ? [m[1]] : [];
+  }
+
+  function showImg(i){
+    if(!imgs.length){
+      imgEl.style.backgroundImage=''; cover.classList.add('prep'); return;
+    }
+    imgIdx=(i%imgs.length+imgs.length)%imgs.length;
+    imgEl.style.backgroundImage="url('"+imgs[imgIdx]+"')";
+    cover.classList.remove('prep');
+    Array.prototype.forEach.call(dotsEl.children,function(d,n){d.classList.toggle('on',n===imgIdx);});
+    Array.prototype.forEach.call(thumbsEl.children,function(t,n){t.classList.toggle('on',n===imgIdx);});
+  }
+
+  function buildGallery(){
+    dotsEl.innerHTML=''; thumbsEl.innerHTML='';
+    if(imgs.length<2) return;               // 1枚以下なら切り替えUIは出さない
+    imgs.forEach(function(src,n){
+      var d=document.createElement('span'); d.className='bm-dot'; dotsEl.appendChild(d);
+      var t=document.createElement('button');
+      t.type='button'; t.className='bm-thumb';
+      t.style.backgroundImage="url('"+src+"')";
+      t.setAttribute('aria-label',(n+1)+'枚目の写真');
+      t.addEventListener('click',function(){showImg(n);});
+      thumbsEl.appendChild(t);
+    });
+  }
+
+  function render(i){
+    cur=(i%cards.length+cards.length)%cards.length;
+    var c=cards[cur];
     document.getElementById('bmAxis').textContent=c.dataset.axis;
     document.getElementById('bmEn').textContent=c.dataset.en;
     document.getElementById('bmEnGhost').textContent=c.dataset.en;
     document.getElementById('bmTitle').textContent=c.dataset.title;
     document.getElementById('bmDetail').textContent=c.dataset.detail||'';
-    // カバー画像はカード側の写真をそのまま流用する（写真が未定のカードは縞模様のまま）
-    var cover=document.getElementById('bmCover'), img=document.getElementById('bmImg');
-    var src=c.querySelector('.bc-img > div');
-    if(src && src.style.backgroundImage){
-      img.style.backgroundImage=src.style.backgroundImage;
-      cover.classList.remove('prep');
-    }else{
-      img.style.backgroundImage='';
-      cover.classList.add('prep');
-    }
+    document.getElementById('bmCount').textContent=(cur+1)+' / '+cards.length;
+    imgs=imagesOf(c);
+    buildGallery();
+    showImg(0);
+    modal.querySelector('.bmodal-panel').scrollTop=0;
+  }
+
+  var openM=function(c){
+    render(cards.indexOf(c));
     modal.classList.add('open');modal.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
-    modal.querySelector('.bmodal-panel').scrollTop=0;
   };
   var closeM=function(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
-  document.querySelectorAll('.ben-card').forEach(function(c){c.addEventListener('click',function(){openM(c);});});
+
+  document.getElementById('bmPrev').addEventListener('click',function(){render(cur-1);});
+  document.getElementById('bmNext').addEventListener('click',function(){render(cur+1);});
+
+  // カバーを左右にスワイプすると写真が切り替わる（複数枚ある時のみ）
+  var tx=null;
+  cover.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;},{passive:true});
+  cover.addEventListener('touchend',function(e){
+    if(tx===null||imgs.length<2)return;
+    var dx=e.changedTouches[0].clientX-tx; tx=null;
+    if(Math.abs(dx)>40) showImg(imgIdx+(dx<0?1:-1));
+  },{passive:true});
+
+  cards.forEach(function(c){c.addEventListener('click',function(){openM(c);});});
   modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeM);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closeM();return;}
+    if(!modal.classList.contains('open'))return;
+    if(e.key==='ArrowLeft') render(cur-1);
+    if(e.key==='ArrowRight') render(cur+1);
+  });
 }
 
 /* 360°VRツアー：ボタンを押したときだけiframeを読み込む（初回表示を軽くする） */
