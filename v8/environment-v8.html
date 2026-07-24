@@ -10,6 +10,11 @@
 <link href="assets/site-v8.css" rel="stylesheet" />
 <link rel="icon" type="image/png" href="images/favicon.png" />
 <style>
+  /* 360°VRツアー埋め込み：PCは16:9、モバイルは縦を確保して操作しやすく */
+  .vr-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+  .vr-frame>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  @media (max-width:768px){ .vr-frame{aspect-ratio:3/4;min-height:420px;} }
+
   .ben-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem;}
   .ben-card{display:flex;flex-direction:column;text-align:left;background:#fff;border:1px solid #ece7e3;padding:0;cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s;overflow:hidden;}
   .ben-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px -26px rgba(20,20,20,.4);border-color:#ddd4ce;}
@@ -88,12 +93,27 @@
   </div>
 </section>
 <section id="office" class="relative reveal">
-  <div class="ken-burns aspect-[16/8] lg:aspect-[16/6]"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,0.5),rgba(10,8,8,0.5)),url('images/office_about.jpg');"></div></div>
-  <div class="absolute inset-0 flex items-center justify-center text-center px-6">
-    <div>
-      <p class="font-alumni font-bold text-xs text-white/70 tracking-[0.3em] mb-3">OFFICE ／ 360° VR</p>
-      <h2 class="sec-title text-2xl lg:text-4xl text-white mb-8">【360°VR体験】<br class="lg:hidden" />空間の魅力をリアルに伝える。</h2>
-      <a href="#" class="inline-block whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">VRでオフィスを見る　→ <span class="kari ml-1" style="border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.7);">リンク仮</span></a>
+  <!-- ポスター：クリックで360°VRツアーをその場に読み込む（初回表示を軽くするため遅延読込） -->
+  <div id="vrPoster" class="relative">
+    <div class="ken-burns aspect-[16/8] lg:aspect-[16/6]"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,0.5),rgba(10,8,8,0.5)),url('images/office_about.jpg');"></div></div>
+    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
+      <div>
+        <p class="font-alumni font-bold text-xs text-white/70 tracking-[0.3em] mb-3">OFFICE ／ 360° VR</p>
+        <h2 class="sec-title text-2xl lg:text-4xl text-white mb-8">【360°VR体験】<br class="lg:hidden" />空間の魅力をリアルに伝える。</h2>
+        <button type="button" id="vrOpen" class="inline-flex items-center gap-3 whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">
+          <svg viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
+          <span>VRでオフィスを見る</span>
+        </button>
+        <p class="text-[11px] text-white/60 mt-4">ドラッグで360°見渡せます</p>
+      </div>
+    </div>
+  </div>
+  <!-- 読み込み後のツアー本体 -->
+  <div id="vrStage" class="hidden bg-black">
+    <div class="vr-frame"><iframe id="vrFrame" src="" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
+    <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap">
+      <button type="button" id="vrClose" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">閉じる</button>
+      <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
     </div>
   </div>
 </section>
@@ -182,6 +202,23 @@ if(modal){
   document.querySelectorAll('.ben-card').forEach(function(c){c.addEventListener('click',function(){openM(c);});});
   modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeM);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeM();});
+}
+
+/* 360°VRツアー：ボタンを押したときだけiframeを読み込む（初回表示を軽くする） */
+var VR_SRC='https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e';
+var vrOpen=document.getElementById('vrOpen'),vrStage=document.getElementById('vrStage'),
+    vrPoster=document.getElementById('vrPoster'),vrFrame=document.getElementById('vrFrame'),
+    vrClose=document.getElementById('vrClose');
+if(vrOpen&&vrStage&&vrPoster&&vrFrame){
+  vrOpen.addEventListener('click',function(){
+    if(!vrFrame.getAttribute('src')){vrFrame.setAttribute('src',VR_SRC);}
+    vrPoster.classList.add('hidden');vrStage.classList.remove('hidden');
+    vrStage.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  if(vrClose){vrClose.addEventListener('click',function(){
+    vrStage.classList.add('hidden');vrPoster.classList.remove('hidden');
+    vrPoster.scrollIntoView({behavior:'smooth',block:'center'});
+  });}
 }})();
 </script>
 <script src="assets/photo-kari.js"></script>
