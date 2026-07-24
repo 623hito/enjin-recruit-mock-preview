@@ -328,27 +328,51 @@
     .btn-primary .ar,.btn-ghost .ar{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:.95rem;transition:transform .4s;border:1px solid currentColor;}
     .btn-primary .ar{border-color:rgba(255,255,255,.5);}
     .btn-primary:hover .ar,.btn-ghost:hover .ar{transform:translateX(5px);}
+    /* Happiness Triangle — node diagram */
+    /* Happiness Triangle — node diagram */
+        .htri{position:relative;width:100%;max-width:680px;margin:3.5rem auto 0;aspect-ratio:860/600;}
+        .htri-lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1;}
+        .htri-lines .htri-link{fill:none;stroke:#e0d5d2;stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;animation:htriDraw 1.3s cubic-bezier(.22,1,.36,1) forwards;}
+        .htri-lines .htri-link.d2{animation-delay:.15s;} .htri-lines .htri-link.d3{animation-delay:.3s;}
+        @keyframes htriDraw{to{stroke-dashoffset:0;}}
+        .htri-lines .htri-flow{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:5 30;opacity:0;animation:htriFlowIn .6s ease 1.2s forwards,htriFlowMove 3s linear 1.2s infinite;}
+        @keyframes htriFlowIn{to{opacity:.55;}}
+        @keyframes htriFlowMove{to{stroke-dashoffset:-70;}}
+        .htri-node{position:absolute;width:180px;height:180px;transform:translate(-50%,-50%);z-index:2;opacity:0;animation:htriNodeIn .7s cubic-bezier(.22,1,.36,1) forwards;}
+        .htri-node.he{left:50%;top:19%;animation-delay:.35s;}
+        .htri-node.hh{left:19%;top:81%;animation-delay:.5s;}
+        .htri-node.hr{left:81%;top:81%;animation-delay:.65s;}
+        @keyframes htriNodeIn{from{opacity:0;transform:translate(-50%,-50%) scale(.82);}to{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+        .htri-nd{position:absolute;inset:0;animation:htriFloat 5.5s ease-in-out infinite;}
+        .htri-node.hh .htri-nd{animation-duration:6.2s;animation-delay:-1.4s;}
+        .htri-node.hr .htri-nd{animation-duration:5s;animation-delay:-2.6s;}
+        @keyframes htriFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+        .htri-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,#7a0909,#e0554a,var(--red),#7a0909);padding:13px;box-shadow:0 16px 36px -14px rgba(191,15,15,.55);animation:htriSpin 14s linear infinite;}
+        .htri-node.hh .htri-ring{animation-duration:18s;animation-direction:reverse;}
+        .htri-node.hr .htri-ring{animation-duration:16s;}
+        @keyframes htriSpin{to{transform:rotate(360deg);}}
+        .htri-ring::before{content:"";position:absolute;inset:13px;border-radius:50%;background:radial-gradient(125% 125% at 50% 20%,#fffdf8,#ece2d4);box-shadow:inset 0 3px 7px rgba(255,255,255,.9),inset 0 -10px 20px rgba(120,88,66,.16),0 2px 5px rgba(90,50,30,.12);}
+        .htri-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3;}
+        .htri-core .num{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:2.7rem;line-height:.85;color:var(--red);}
+        .htri-core .en{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.16em;font-size:.9rem;color:#a98d80;margin-top:4px;white-space:nowrap;}
+        .htri-core .jp{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.5rem;letter-spacing:.04em;margin-top:3px;white-space:nowrap;color:#2a211e;text-shadow:0 1px 0 rgba(255,255,255,.6);}
+        .htri-arrows{position:absolute;inset:0;z-index:1;}
+        .htri-arr{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;transform-origin:50% 50%;}
+        .htri-arr svg{width:100%;height:100%;display:block;animation:htriArr 2.6s ease-in-out infinite;}
+        .htri-arr path{stroke:rgba(255,255,255,.95);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+        @keyframes htriArr{0%,100%{opacity:.35;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
+@media(max-width:640px){
+          .htri{max-width:340px;}
+          .htri-node{width:126px;height:126px;}
+          .htri-ring{padding:9px;} .htri-ring::before{inset:9px;}
+          .htri-core .jp{font-size:1.1rem;} .htri-core .num{font-size:1.9rem;} .htri-core .en{font-size:.72rem;}
+        }
+        @media (prefers-reduced-motion: reduce){
+          .htri-node,.htri-nd,.htri-ring,.htri-arr svg{animation:none!important;}
+          .htri-node{opacity:1!important;transform:translate(-50%,-50%)!important;}
+          .htri-lines .htri-link{stroke-dashoffset:0!important;animation:none!important;} .htri-lines .htri-flow{display:none;}
+        }
 
-    /* Happiness Triangle (3D pyramid) */
-    .pyr-stage{position:relative;max-width:600px;margin:4rem auto 0;}
-    .pyr-art{position:relative;width:100%;aspect-ratio:100/84;}
-    .pyr-art svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 28px 50px rgba(191,15,15,.32));}
-    .pyr-art .edge{fill:none;stroke:rgba(255,255,255,.6);stroke-width:.6;stroke-linejoin:round;}
-    .pyr-lab{position:absolute;display:flex;flex-direction:column;align-items:center;gap:.15rem;z-index:2;}
-    .pyr-lab .ico{width:40px;height:40px;color:var(--red);margin-bottom:.35rem;}
-    .pyr-lab .en{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:.9rem;letter-spacing:.2em;color:#c9a3a3;}
-    .pyr-lab .jp{font-weight:900;font-size:2.1rem;letter-spacing:.04em;white-space:nowrap;}
-    .pyr-lab .jp .n{font-family:'Alumni Sans',sans-serif;color:var(--red);margin-right:.3rem;font-size:.85em;}
-    .pyr-lab .nt{font-size:.8rem;color:#9a9a9a;white-space:nowrap;font-weight:500;}
-    .pyr-lab.e{top:-16%;left:50%;transform:translateX(-50%);}
-    .pyr-lab.h{bottom:-4%;left:-1%;align-items:flex-start;}
-    .pyr-lab.r{bottom:-4%;right:-1%;align-items:flex-end;}
-    @media(max-width:640px){
-      .pyr-stage{max-width:330px;margin-top:3rem;}
-      .pyr-lab .jp{font-size:1.5rem;}
-      .pyr-lab .ico{width:30px;height:30px;}
-      .pyr-lab.h{left:-8%;} .pyr-lab.r{right:-8%;}
-    }
 
     /* DI-style reveal effects */
     .reveal .sec-title{clip-path:inset(-4% -4% 104% -4%);transform:translateY(38px);transition:clip-path 1s cubic-bezier(.22,1,.36,1) .08s,transform 1s cubic-bezier(.22,1,.36,1) .08s;}
@@ -507,24 +531,18 @@
         <p class="text-sm lg:text-[15px] text-gray-600 leading-[2.1] max-w-2xl mx-auto">人は、<span class="font-bold">経済・健康・人間関係。</span><br />どれかではなく、ぜんぶのバランスがとれたとき、豊かさを感じます。<span class="kari ml-1">文言仮</span></p>
       </div>
 
-      <div class="pyr-stage">
-        <div class="pyr-lab e"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 3 3 7-8"/><path d="M15 4h5v5"/></svg><span class="en">ECONOMY</span><span class="jp"><span class="n">3</span>経済</span></div>
-        <div class="pyr-art">
-          <svg viewBox="0 0 100 84" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="pfL" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#ff8574"/><stop offset="1" stop-color="#bf0f0f"/></linearGradient>
-              <linearGradient id="pfR" x1="1" y1="0" x2="0.4" y2="1"><stop offset="0" stop-color="#d8281a"/><stop offset="1" stop-color="#7a0909"/></linearGradient>
-              <linearGradient id="pfB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a0a0a"/><stop offset="1" stop-color="#3a0505"/></linearGradient>
-            </defs>
-            <polygon points="12,76 88,76 50,54" fill="url(#pfB)" />
-            <polygon points="50,5 12,76 50,54" fill="url(#pfL)" />
-            <polygon points="50,5 88,76 50,54" fill="url(#pfR)" />
-            <polygon class="edge" points="50,5 88,76 12,76" />
-            <line class="edge" x1="50" y1="5" x2="50" y2="54" />
-          </svg>
-        </div>
-        <div class="pyr-lab h"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg><span class="en">HEALTH</span><span class="jp"><span class="n">1</span>健康</span></div>
-        <div class="pyr-lab r"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5"/><path d="M13 20c0-3 2.5-5 5-5s5 2 5 5"/></svg><span class="en">RELATION</span><span class="jp"><span class="n">2</span>人間関係</span></div>
+      <div class="htri">
+        <svg class="htri-lines" viewBox="0 0 860 600" preserveAspectRatio="none">
+          <path class="htri-link d1" d="M415,150 L200,455" pathLength="1"/>
+          <path class="htri-link d2" d="M445,150 L660,455" pathLength="1"/>
+          <path class="htri-link d3" d="M235,486 L625,486" pathLength="1"/>
+          <path class="htri-flow" d="M415,150 L200,455"/>
+          <path class="htri-flow" d="M445,150 L660,455"/>
+          <path class="htri-flow" d="M235,486 L625,486"/>
+        </svg>
+        <div class="htri-node he"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">3</span><span class="en">Economy</span><span class="jp">経済</span></div></div></div>
+        <div class="htri-node hh"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">1</span><span class="en">Health</span><span class="jp">健康</span></div></div></div>
+        <div class="htri-node hr"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">2</span><span class="en">Relation</span><span class="jp">人間関係</span></div></div></div>
       </div>
 
       <div class="max-w-2xl mx-auto text-center mt-16 lg:mt-20">
@@ -1137,5 +1155,26 @@
   </script>
 <script src="assets/anchor-fix.js"></script>
 <script src="assets/photo-kari.js"></script>
+
+<script>
+  (function(){
+    var arrowSVG='<svg viewBox="0 0 12 12"><path d="M6,10 L6,2 M3,5 L6,2 L9,5"/></svg>';
+    function build(){
+      document.querySelectorAll('.htri-arrows').forEach(function(box){
+        if(box.childElementCount) return;
+        var node=box.closest('.htri-node');
+        var R=(node?node.offsetWidth:180)/2+10;
+        for(var i=0;i<8;i++){
+          var a=document.createElement('div');a.className='htri-arr';
+          a.style.transform='rotate('+(i*45)+'deg) translateY(-'+R+'px)';
+          a.innerHTML=arrowSVG;
+          var s=a.querySelector('svg'); if(s) s.style.animationDelay=(i*0.12)+'s';
+          box.appendChild(a);
+        }
+      });
+    }
+    if(document.readyState!=='loading') build(); else document.addEventListener('DOMContentLoaded',build);
+  })();
+  </script>
 </body>
 </html>
