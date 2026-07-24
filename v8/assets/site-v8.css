@@ -42,6 +42,10 @@ a { color:inherit; }
 .btn-line:hover{background:var(--red);border-color:var(--red);color:#fff;}
 .btn-red{display:inline-block;white-space:nowrap;background:var(--red);color:#fff;padding:.9rem 2.4rem;font-size:.875rem;font-weight:700;letter-spacing:.05em;transition:.25s;}
 .btn-red:hover{opacity:.9;}
+/* 説明会CTA：常に赤背景・白字を固定（nav a:hoverで文字が赤くなり消えるのを防ぐ） */
+.btn-apply,.btn-apply:hover,.site-head nav a.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
+.btn-apply:hover{background:#a30d0d;}
+
 
 /* page hero */
 .page-hero{position:relative;overflow:hidden;background:#141414;}

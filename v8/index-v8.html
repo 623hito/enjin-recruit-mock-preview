@@ -364,6 +364,8 @@
     .mobile-cta { position:fixed; left:0; right:0; bottom:0; z-index:40; padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background:rgba(255,255,255,.92); backdrop-filter:blur(8px); border-top:1px solid #eee; }
     @media (min-width:1024px){ .mobile-cta{ display:none; } }
     @media (max-width:1023px){ body { padding-bottom:64px; } }
+      .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
+    .btn-apply:hover{background:#a30d0d;}
   </style>
 </head>
 <body>
@@ -414,7 +416,7 @@
         <a href="https://note.com/enjin_hr" target="_blank" rel="noopener" aria-label="note" data-cta="sns_head_note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 19.85V4.15H15.1C18.14 4.15 20 6.61 20 10.63V19.85H15.53V10.2C15.53 8.58 14.13 8.04 13.66 8.04H8.47V19.85Z"/></svg></a>
       </span>
       <div class="apply-menu">
-        <a href="#cta" class="bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition flex items-center">説明会に申し込む<span class="apply-caret">▼</span></a>
+        <a href="#cta" class="btn-apply bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition flex items-center">説明会に申し込む<span class="apply-caret">▼</span></a>
         <div class="apply-drop">
           <a href="application-v8.html?grad=27" data-cta="apply_27">2027年卒はこちら<span class="yr">27</span></a>
           <a href="application-v8.html?grad=28" data-cta="apply_28">2028年卒はこちら<span class="yr">28</span></a>
@@ -447,7 +449,7 @@
 
   <div class="mobile-cta">
     <div class="flex gap-2">
-      <a href="application-v8.html" data-cta="seminar_bar" class="flex-1 bg-red text-white text-center font-bold py-3 text-[13px] tracking-wider">説明会に申し込む</a>
+      <a href="application-v8.html" data-cta="seminar_bar" class="btn-apply flex-1 bg-red text-white text-center font-bold py-3 text-[13px] tracking-wider">説明会に申し込む</a>
       <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line_bar" class="whitespace-nowrap text-white text-center font-bold py-3 px-4 text-[13px]" style="background:#06C755;">LINE相談</a>
     </div>
   </div>
