@@ -117,3 +117,8 @@ a { color:inherit; }
 .day-item.hot .t{color:var(--red);}
 .day-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;margin-left:.5rem;vertical-align:middle;}
 @media (max-width:640px){ .day::before{left:58px;} .day-item{grid-template-columns:46px 1fr;gap:1.4rem;} .day-item::before{left:54px;} .day-item .t{font-size:1.3rem;} }
+
+/* 選考フロー：段階が絵で分かるようにアイコンを入れる */
+.flow-node .dot .fico{width:23px;height:23px;}
+.flow-node .step-no{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;color:#b9afa8;margin-bottom:.15rem;}
+.flow-node.first .step-no{color:var(--red);}

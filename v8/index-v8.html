@@ -144,6 +144,12 @@
       .flow-node .dot{margin:0;}
     }
 
+
+    /* 選考フロー：段階が絵で分かるようにアイコンを入れる */
+    .flow-node .dot .fico{width:23px;height:23px;}
+    .flow-node .step-no{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.18em;color:#b9afa8;margin-bottom:.15rem;}
+    .flow-node.first .step-no{color:var(--red);}
+    
     /* Recruit accordions */
     .rec-acc-wrap{border-top:1px solid #ddd5cd;}
     .rec-acc{border-bottom:1px solid #ddd5cd;}
@@ -881,12 +887,12 @@
           <div class="rec-acc-body">
             <p class="text-sm text-gray-600 mb-10 lg:mb-12">エントリーから内定まで。あなたのことを、じっくり知っていきます。</p>
             <div class="flowline grid grid-cols-1 lg:grid-cols-6 gap-3 mb-8">
-              <div class="flow-node first"><span class="dot">1</span><div><p class="font-bold text-[15px]">エントリー</p><p class="text-[11px] text-gray-500 mt-1">まずは応募から</p></div></div>
-              <div class="flow-node"><span class="dot">2</span><div><p class="font-bold text-[15px]">書類選考</p><p class="text-[11px] text-gray-500 mt-1">プロフィールを確認</p></div></div>
-              <div class="flow-node"><span class="dot">3</span><div><p class="font-bold text-[15px]">一次選考</p><p class="text-[11px] text-gray-500 mt-1">グループ面接<br />（オンライン）</p></div></div>
-              <div class="flow-node"><span class="dot">4</span><div><p class="font-bold text-[15px]">二次選考</p><p class="text-[11px] text-gray-500 mt-1">1on1面接<br />（オンライン）</p></div></div>
-              <div class="flow-node"><span class="dot">5</span><div><p class="font-bold text-[15px]">最終選考</p><p class="text-[11px] text-gray-500 mt-1">面接<br />（対面）</p></div></div>
-              <div class="flow-node"><span class="dot">6</span><div><p class="font-bold text-[15px]">内定</p><p class="text-[11px] text-gray-500 mt-1">入社前研修へ</p></div></div>
+              <div class="flow-node first"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span><div><p class="step-no">STEP 1</p><p class="font-bold text-[15px]">エントリー</p><p class="text-[11px] text-gray-500 mt-1">まずは応募から</p></div></div>
+              <div class="flow-node"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg></span><div><p class="step-no">STEP 2</p><p class="font-bold text-[15px]">書類選考</p><p class="text-[11px] text-gray-500 mt-1">プロフィールを確認</p></div></div>
+              <div class="flow-node"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3.2"/><path d="M2 20v-1.5A4.5 4.5 0 0 1 6.5 14h5A4.5 4.5 0 0 1 16 18.5V20"/><path d="M17.5 14.2A4.5 4.5 0 0 1 22 18.5V20"/><path d="M16 4.3a3.2 3.2 0 0 1 0 6.2"/></svg></span><div><p class="step-no">STEP 3</p><p class="font-bold text-[15px]">一次選考</p><p class="text-[11px] text-gray-500 mt-1">グループ面接<br />（オンライン）</p></div></div>
+              <div class="flow-node"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 11.5a1.8 1.8 0 0 1-1.8 1.8H5.4L2 16.5V4.8A1.8 1.8 0 0 1 3.8 3h6.9a1.8 1.8 0 0 1 1.8 1.8z"/><path d="M16.5 8H20a2 2 0 0 1 2 2v11l-3.4-3.2h-5.3a2 2 0 0 1-2-2v-.6"/></svg></span><div><p class="step-no">STEP 4</p><p class="font-bold text-[15px]">二次選考</p><p class="text-[11px] text-gray-500 mt-1">1on1面接<br />（オンライン）</p></div></div>
+              <div class="flow-node"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7.5L12 3l7 4.5V21"/><path d="M9.5 21v-6h5v6"/></svg></span><div><p class="step-no">STEP 5</p><p class="font-bold text-[15px]">最終選考</p><p class="text-[11px] text-gray-500 mt-1">面接<br />（対面）</p></div></div>
+              <div class="flow-node"><span class="dot"><svg class="fico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="5.5"/><path d="M8.4 13.4 7.2 22 12 19.2 16.8 22l-1.2-8.6"/></svg></span><div><p class="step-no">STEP 6</p><p class="font-bold text-[15px]">内定</p><p class="text-[11px] text-gray-500 mt-1">入社前研修へ</p></div></div>
             </div>
             <p class="text-[11px] text-gray-400">所要日数など詳細は説明会でご案内します</p>
           </div>
