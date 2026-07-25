@@ -400,6 +400,40 @@
           .htri-pyr-tier{opacity:1!important;transform:none!important;transition:none!important;}
         }
 
+        /* THE TWO PATHS — horizontal story carousel */
+        .story-outer{position:relative;max-width:640px;margin:0 auto;}
+        .story-wrap{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:18px;}
+        .story-wrap::-webkit-scrollbar{display:none;}
+        .story-track{display:flex;}
+        .htri-story-frame{flex:0 0 100%;scroll-snap-align:start;background:linear-gradient(135deg,#1c1514,#100c0b);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:2rem 1.5rem 2.2rem;}
+        .frame-age{text-align:center;font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;line-height:1;margin-bottom:1.7rem;}
+        .frame-age span{font-size:.92rem;font-weight:700;color:#8a8a8a;letter-spacing:.05em;margin-left:.5rem;}
+        .frame-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+        .frame-case{display:flex;flex-direction:column;align-items:center;text-align:center;}
+        .case-label{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:.72rem;letter-spacing:.18em;margin-bottom:1rem;}
+        .case-label.case-a{color:var(--red);}
+        .case-label.case-b{color:#8a8a8a;}
+        .mini-tri{display:flex;flex-direction:column-reverse;align-items:center;width:var(--tri-w,64px);margin:0 auto 1.1rem;flex-shrink:0;}
+        .mini-tri-tier{width:100%;height:calc(var(--tri-w,64px)*.27);}
+        .mini-tri-tier.t0{background:linear-gradient(135deg,#fdf6f0,#f3e7db);clip-path:polygon(16.667% 0%,83.333% 0%,100% 100%,0% 100%);}
+        .mini-tri-tier.t1{background:linear-gradient(135deg,#fdf6f0,#f3e7db);clip-path:polygon(33.333% 0%,66.667% 0%,83.333% 100%,16.667% 100%);margin-top:-1px;}
+        .mini-tri-tier.t2{background:linear-gradient(135deg,var(--red),#8a0e0e);clip-path:polygon(50% 0%,50% 0%,66.667% 100%,33.333% 100%);margin-top:-1px;}
+        .case-cap{font-size:.76rem;color:#b9b0a9;line-height:1.7;max-width:150px;}
+        .story-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;transition:background .25s;}
+        .story-nav:hover{background:rgba(255,255,255,.18);}
+        .story-nav svg{width:16px;height:16px;}
+        .story-nav.prev{left:-8px;}
+        .story-nav.next{right:-8px;}
+        .story-dots{display:flex;justify-content:center;gap:8px;margin-top:1.2rem;}
+        .story-dots span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,transform .3s;}
+        .story-dots span.on{background:var(--red);transform:scale(1.3);}
+        @media(max-width:640px){
+          .story-nav{display:none;}
+          .frame-cols{gap:.8rem;}
+          .case-cap{font-size:.7rem;max-width:120px;}
+          .frame-age{font-size:1.8rem;}
+        }
+
         /* Happiness Triangle — dark "core belief" chapter treatment */
         #triangle{color:#c9c2bc;}
         #triangle::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.18) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
@@ -622,6 +656,82 @@
 
       <div class="max-w-2xl mx-auto text-center mt-14 lg:mt-16">
         <p class="text-sm text-gray-600 leading-[2.1]">大切なのは<span class="font-bold text-red">順番</span>。まず健康、その上に人とのつながり、いちばん上に経済。<br />だからこそ、健康と人間関係という土台があるうちに、経済力を伸ばすことに舵を切る。<span class="kari ml-1">文言仮</span></p>
+      </div>
+
+      <div class="htri-story-block mt-16 lg:mt-20">
+        <div class="max-w-xl mx-auto text-center mb-10">
+          <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE TWO PATHS — 同じ22歳、その先の差</p>
+          <p class="text-sm lg:text-[15px] text-gray-600 leading-[2.1]">先に頑張るか、先にバランスを求めるか。<br />同じスタートラインに立った、二人の20代を追う。<span class="kari ml-1">文言仮</span></p>
+        </div>
+        <div class="story-outer">
+          <button type="button" class="story-nav prev" aria-label="前へ" data-story="prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button type="button" class="story-nav next" aria-label="次へ" data-story="next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+          <div class="story-wrap" id="storyWrap">
+            <div class="story-track" id="storyTrack">
+              <div class="htri-story-frame">
+                <p class="frame-age">22<span>歳 ／ 入社</span></p>
+                <div class="frame-cols">
+                  <div class="frame-case">
+                    <p class="case-label case-a">CASE A</p>
+                    <div class="mini-tri" style="--tri-w:64px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">経営者と対峙し、がむしゃらに学ぶ。</p>
+                  </div>
+                  <div class="frame-case">
+                    <p class="case-label case-b">CASE B</p>
+                    <div class="mini-tri" style="--tri-w:64px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">無理せず、プライベートを優先。</p>
+                  </div>
+                </div>
+              </div>
+              <div class="htri-story-frame">
+                <p class="frame-age">25<span>歳</span></p>
+                <div class="frame-cols">
+                  <div class="frame-case">
+                    <p class="case-label case-a">CASE A</p>
+                    <div class="mini-tri" style="--tri-w:96px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">評価が正当に返り、任される範囲が広がる。</p>
+                  </div>
+                  <div class="frame-case">
+                    <p class="case-label case-b">CASE B</p>
+                    <div class="mini-tri" style="--tri-w:68px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">心地よい日々。でも、経済は伸びない。</p>
+                  </div>
+                </div>
+              </div>
+              <div class="htri-story-frame">
+                <p class="frame-age">30<span>歳</span></p>
+                <div class="frame-cols">
+                  <div class="frame-case">
+                    <p class="case-label case-a">CASE A</p>
+                    <div class="mini-tri" style="--tri-w:132px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">経済的な土台ができ、健康や人間関係にも還元する余裕が生まれる。</p>
+                  </div>
+                  <div class="frame-case">
+                    <p class="case-label case-b">CASE B</p>
+                    <div class="mini-tri" style="--tri-w:62px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">まわりが変わっていくのに、自分だけ足踏み。</p>
+                  </div>
+                </div>
+              </div>
+              <div class="htri-story-frame">
+                <p class="frame-age">35<span>歳</span></p>
+                <div class="frame-cols">
+                  <div class="frame-case">
+                    <p class="case-label case-a">CASE A</p>
+                    <div class="mini-tri" style="--tri-w:172px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">健康・人間関係・経済、ぜんぶを満たす。</p>
+                  </div>
+                  <div class="frame-case">
+                    <p class="case-label case-b">CASE B</p>
+                    <div class="mini-tri" style="--tri-w:52px;"><div class="mini-tri-tier t0"></div><div class="mini-tri-tier t1"></div><div class="mini-tri-tier t2"></div></div>
+                    <p class="case-cap">経済的な焦りが、健康にも人間関係にも影を落とす。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="story-dots" id="storyDots"><span class="on"></span><span></span><span></span><span></span></div>
+        </div>
       </div>
 
       <div class="htri-proof-block mt-16 lg:mt-20">
@@ -1156,6 +1266,29 @@
           tiers.forEach(function(t){t.classList.add('on');});
         });},{threshold:.35});
         pio.observe(pyr);
+      })();
+
+      // THE TWO PATHS — horizontal story carousel (arrows + dots)
+      (function(){
+        var wrap=document.getElementById('storyWrap'); if(!wrap)return;
+        var track=document.getElementById('storyTrack');
+        var frames=Array.prototype.slice.call(track.querySelectorAll('.htri-story-frame'));
+        var dots=Array.prototype.slice.call(document.querySelectorAll('#storyDots span'));
+        var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function go(dir){
+          wrap.scrollBy({left:dir*wrap.clientWidth,behavior:reduce?'auto':'smooth'});
+        }
+        document.querySelectorAll('[data-story]').forEach(function(b){
+          b.addEventListener('click',function(){go(b.getAttribute('data-story')==='next'?1:-1);});
+        });
+        var dio=new IntersectionObserver(function(es){
+          es.forEach(function(e){
+            if(!e.isIntersecting)return;
+            var idx=frames.indexOf(e.target);
+            dots.forEach(function(d,i){d.classList.toggle('on',i===idx);});
+          });
+        },{root:wrap,threshold:.6});
+        frames.forEach(function(f){dio.observe(f);});
       })();
 
       // scroll progress + hero parallax
