@@ -319,16 +319,17 @@
     .cnt{font-variant-numeric:tabular-nums;}
 
     /* Buttons */
-    .btn-primary,.btn-ghost{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.05rem 2.1rem;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,border-color .35s;text-align:center;}
-    .btn-primary{background:var(--red);color:#fff;}
+    .btn-primary,.btn-ghost{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.05rem 2.1rem;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,border-color .35s,transform .15s cubic-bezier(.34,1.56,.64,1);text-align:center;}
+    .btn-primary{background:var(--red);color:#fff;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
     .btn-ghost{border:1px solid #141414;color:#141414;background:transparent;}
     .btn-primary::before,.btn-ghost::before{content:"";position:absolute;inset:0;z-index:0;background:#141414;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
     .btn-ghost:hover{color:#fff;}
     .btn-primary:hover::before,.btn-ghost:hover::before{transform:scaleX(1);}
+    .btn-primary:active,.btn-ghost:active{transform:scale(.96);}
     .btn-primary>*,.btn-ghost>*{position:relative;z-index:1;}
-    .btn-primary .ar,.btn-ghost .ar{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:.95rem;transition:transform .4s;border:1px solid currentColor;}
+    .btn-primary .ar,.btn-ghost .ar{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:.95rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1);border:1px solid currentColor;}
     .btn-primary .ar{border-color:rgba(255,255,255,.5);}
-    .btn-primary:hover .ar,.btn-ghost:hover .ar{transform:translateX(5px);}
+    .btn-primary:hover .ar,.btn-ghost:hover .ar{transform:translateX(6px) scale(1.08);}
     /* Happiness Triangle — node diagram */
     /* Happiness Triangle — node diagram */
         .htri{position:relative;width:100%;max-width:680px;margin:3.5rem auto 0;aspect-ratio:860/600;}
@@ -470,6 +471,12 @@
     @media (max-width:1023px){ body { padding-bottom:64px; } }
       .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
     .btn-apply:hover{background:#a30d0d;}
+    .btn-apply{position:relative;overflow:hidden;transition:background .25s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .btn-apply:active{transform:scale(.95);}
+    .btn-apply::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .55s ease;pointer-events:none;}
+    .btn-apply:hover::after{left:120%;}
+    .btn-line-cta{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);transition:transform .15s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
+    .btn-line-cta:active{transform:scale(.95);}
   
     /* ===== 質感B: 直角のまま影で立体感（枠線・目地を廃止） ===== */
     .job-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
@@ -562,7 +569,7 @@
   <div class="mobile-cta">
     <div class="flex gap-2">
       <a href="application-v8.html" data-cta="seminar_bar" class="btn-apply flex-1 bg-red text-white text-center font-bold py-3 text-[13px] tracking-wider">説明会に申し込む</a>
-      <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line_bar" class="whitespace-nowrap text-white text-center font-bold py-3 px-4 text-[13px]" style="background:#06C755;">LINE相談</a>
+      <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line_bar" class="btn-line-cta whitespace-nowrap text-white text-center font-bold py-3 px-4 text-[13px]" style="background:#06C755;">LINE相談</a>
     </div>
   </div>
 

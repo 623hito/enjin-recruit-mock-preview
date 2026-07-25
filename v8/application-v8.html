@@ -73,14 +73,17 @@
     .chk{display:flex;align-items:flex-start;gap:.7rem;font-size:.85rem;line-height:1.7;cursor:pointer;}
     .chk input{margin-top:.25rem;width:18px;height:18px;accent-color:var(--red);flex-shrink:0;}
 
-    .btn-primary{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.15rem 2.6rem;font-size:1rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s;background:var(--red);color:#fff;border:none;}
+    .btn-primary{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.15rem 2.6rem;font-size:1rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,transform .15s cubic-bezier(.34,1.56,.64,1);background:var(--red);color:#fff;border:none;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
     .btn-primary::before{content:"";position:absolute;inset:0;z-index:0;background:#141414;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
     .btn-primary:hover::before{transform:scaleX(1);}
+    .btn-primary:active{transform:scale(.96);}
     .btn-primary:disabled{background:#cfc8c2;cursor:not-allowed;}
     .btn-primary:disabled::before{display:none;}
+    .btn-primary:disabled:active{transform:none;}
     .btn-primary>*{position:relative;z-index:1;}
     .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2rem;border:1px solid #141414;font-weight:700;font-size:.9rem;cursor:pointer;background:transparent;transition:.3s;}
     .btn-ghost:hover{background:#141414;color:#fff;}
+    .btn-ghost:active{transform:scale(.96);}
 
     .trust{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:#6a635d;}
     .trust svg{width:18px;height:18px;color:var(--red);flex-shrink:0;}
@@ -100,6 +103,10 @@
     @media(max-width:1023px){.head-sns{display:none;}}
       .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
     .btn-apply:hover{background:#a30d0d;}
+    .btn-apply{position:relative;overflow:hidden;transition:background .25s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .btn-apply:active{transform:scale(.95);}
+    .btn-apply::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .55s ease;pointer-events:none;}
+    .btn-apply:hover::after{left:120%;}
   
     /* ===== 質感B: 選択カードに浅い影 ===== */
     .choice .box{border-color:#e6dfd9;background:#fff;box-shadow:0 1px 2px rgba(31,23,20,.04), 0 6px 16px -10px rgba(31,23,20,.10);}
