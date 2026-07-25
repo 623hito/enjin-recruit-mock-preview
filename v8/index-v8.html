@@ -197,38 +197,46 @@
     #loader::after{content:"";position:absolute;inset:0;opacity:.07;mix-blend-mode:screen;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
     #loader .glow{position:absolute;left:50%;top:44%;width:70vmin;height:70vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.22) 0%, rgba(191,15,15,0) 62%);animation:ldGlow 5s ease-in-out infinite alternate;pointer-events:none;}
     @keyframes ldGlow{from{transform:translate(-50%,-50%) scale(.9);}to{transform:translate(-50%,-50%) scale(1.15);}}
-    .ld-scene .rise{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;}
-    .ld-scene .rise>span{display:inline-block;transform:translateY(115%);transition:transform .75s cubic-bezier(.22,1,.36,1);}
-    .ld-scene.on .rise>span{transform:translateY(0);}
-    .ld-scene.on .rise+.rise>span{transition-delay:.13s;}
-    @keyframes ldPunch{0%{transform:scale(1);}38%{transform:scale(1.14);}100%{transform:scale(1);}}
-    .ld-num.punch{animation:ldPunch .45s cubic-bezier(.22,1,.36,1);}
+    #loader .rise{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;}
+    #loader .rise>span{display:inline-block;transform:translateY(115%);transition:transform .75s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="0"] .c-purpose .rise>span{transform:translateY(0);}
+    #loader[data-step="0"] .c-purpose .rise+.rise>span{transition-delay:.13s;}
     #loader.done{transform:translateY(-100%);visibility:hidden;}
-    .ld-scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;opacity:0;transform:scale(1.02);transition:opacity .45s ease,transform .6s ease;}
-    .ld-scene.on{opacity:1;transform:scale(1);}
-    .ld-eyebrow{font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;letter-spacing:.55em;font-size:clamp(1.6rem,4.5vw,2.8rem);color:#ff5a5a;margin-bottom:1.6rem;opacity:0;transition:letter-spacing .8s cubic-bezier(.22,1,.36,1),opacity .6s ease;text-indent:.28em;}
-    .ld-scene.on .ld-eyebrow{opacity:1;letter-spacing:.28em;}
+    .ld-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2.5rem 1.4rem;}
     .ld-mincho{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.25rem,3.4vw,2.1rem);}
-    .ld-jp{color:#fff;font-weight:700;font-size:clamp(1.9rem,4.8vw,3rem);letter-spacing:.05em;}
-    .ld-num{font-family:'Anton','Alumni Sans',sans-serif;font-weight:900;color:#fff;font-size:clamp(3.4rem,12vw,8.5rem);line-height:.9;letter-spacing:.02em;}
-    .ld-num .u{font-family:'Anton','Alumni Sans',sans-serif;font-size:.16em;color:#ff5a5a;letter-spacing:.35em;display:block;margin-bottom:.7rem;}
-    .ld-num .k{font-size:.24em;color:#7a7a7a;margin-left:.5rem;letter-spacing:.05em;}
-    .ld-logo{height:40px;width:auto;margin-bottom:1.5rem;opacity:0;transform:scale(.82);transition:opacity .7s ease,transform .9s cubic-bezier(.22,1,.36,1);}
-    .ld-scene.on .ld-logo{opacity:1;transform:scale(1);}
+    .ld-logo{height:38px;width:auto;opacity:0;transform:scale(.82);transition:opacity .7s ease,transform .9s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="5"] .ld-logo{opacity:1;transform:scale(1);}
     .ld-skip{position:absolute;bottom:1.4rem;right:1.6rem;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.2em;font-size:.72rem;color:rgba(255,255,255,.45);cursor:pointer;background:none;border:none;padding:.4rem;}
     .ld-skip:hover{color:#fff;}
-    .ld-tri{position:relative;width:min(80vw,440px);height:min(58vw,300px);}
-    .ld-tri svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 22px 40px rgba(191,15,15,.5));transform:rotateX(6deg);transform-origin:center 70%;}
-    .ld-tri .face{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.86);transition:opacity .55s ease,transform .7s cubic-bezier(.22,1,.36,1);}
-    .ld-scene.on .ld-tri .face{opacity:1;transform:scale(1);}
-    .ld-scene.on .ld-tri .face.f2{transition-delay:.08s;} .ld-scene.on .ld-tri .face.f3{transition-delay:.16s;}
-    .ld-tri .edge{fill:none;stroke:rgba(255,255,255,.5);stroke-width:.6;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s ease .1s;}
-    .ld-scene.on .ld-tri .edge{stroke-dashoffset:0;}
-    .ld-dot{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:0;transition:opacity .4s ease .25s;}
-    .ld-scene.on .ld-dot{opacity:1;}
-    .ld-dot .d{width:12px;height:12px;border-radius:50%;background:#ff5a5a;box-shadow:0 0 18px rgba(255,90,90,.85);}
-    .ld-dot .t{color:#fff;font-size:.82rem;font-weight:700;white-space:nowrap;}
-    .ld-tri .t{text-shadow:0 1px 6px rgba(0,0,0,.5);}
+    /* prologue: one triangle that grows through the whole opening */
+    #loader{--pw:min(38vw,24vh,150px);}
+    #loader[data-step="1"],#loader[data-step="2"],#loader[data-step="3"]{--pw:min(74vw,40vh,400px);}
+    #loader[data-step="4"],#loader[data-step="5"]{--pw:min(86vw,48vh,500px);}
+    .ld-pyr{position:relative;display:flex;flex-direction:column-reverse;align-items:center;width:var(--pw);flex-shrink:0;transition:width 1.15s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));}
+    .ld-pyr-tier{position:relative;width:100%;height:calc(var(--pw) * .29);display:flex;align-items:flex-end;justify-content:center;padding-bottom:.7em;background-color:rgba(255,255,255,.05);background-size:cover;filter:grayscale(1) brightness(.34);transition:height 1.15s cubic-bezier(.22,1,.36,1),filter 1s ease;}
+    .ld-pyr-tier.t0{clip-path:polygon(16.667% 0,83.333% 0,100% 100%,0 100%);background-image:url('images/hero_main.jpg');background-position:center 20%;}
+    .ld-pyr-tier.t1{clip-path:polygon(33.333% 0,66.667% 0,83.333% 100%,16.667% 100%);margin-top:-1px;background-image:url('images/members_20th.jpg');background-position:center 68%;}
+    .ld-pyr-tier.t2{clip-path:polygon(50% 0,50% 0,66.667% 100%,33.333% 100%);margin-top:-1px;background-image:url('images/business.jpg');background-position:center 38%;}
+    .ld-pyr-tier::after{content:"";position:absolute;inset:0;background:rgba(10,8,8,.5);transition:background 1s ease;}
+    .ld-pyr-tier.lit{filter:grayscale(.4) brightness(.92);}
+    .ld-pyr-tier.lit::after{background:rgba(10,8,8,.24);}
+    .ld-pyr-tier.t2.lit{filter:none;}
+    /* 経済＝赤で締めるが、商談の情景が透けるくらいの濃度に留める */
+    .ld-pyr-tier.t2.lit::after{background:linear-gradient(160deg,rgba(191,15,15,.6),rgba(126,11,11,.74));}
+    .ld-pyr-tier .lab{position:relative;z-index:2;font-family:'Noto Serif JP',serif;font-weight:700;color:#fff;font-size:clamp(.72rem,1.9vw,1.05rem);letter-spacing:.06em;white-space:nowrap;opacity:0;transform:translateY(7px);transition:opacity .6s ease .3s,transform .6s cubic-bezier(.22,1,.36,1) .3s;text-shadow:0 1px 3px rgba(0,0,0,.95),0 3px 14px rgba(0,0,0,.85);}
+    .ld-pyr-tier.lit .lab{opacity:1;transform:translateY(0);}
+    /* 社会人偏差値（例え。あくまで目標として提示）。step4以外は畳んで余白を作らない */
+    .ld-dv{text-align:center;opacity:0;max-height:0;overflow:hidden;transform:translateY(12px);transition:opacity .6s ease,transform .7s cubic-bezier(.22,1,.36,1),max-height .9s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="4"] .ld-dv{opacity:1;max-height:16rem;transform:translateY(0);}
+    .ld-dv .dv-num{font-family:'Anton','Alumni Sans',sans-serif;font-weight:900;color:#fff;font-size:clamp(2.4rem,8vw,4.6rem);line-height:.9;letter-spacing:.02em;}
+    .ld-dv .dv-lab{font-weight:700;letter-spacing:.2em;font-size:.7rem;color:#ff5a5a;margin-top:.5rem;}
+    .ld-dv .dv-sub{font-family:'Noto Serif JP',serif;font-weight:700;color:rgba(255,255,255,.9);font-size:clamp(.85rem,2.3vw,1.05rem);margin-top:.55rem;}
+    /* caption：ステップごとに差し替わるコピー */
+    .ld-cap{position:relative;width:100%;min-height:5.4em;display:flex;align-items:center;justify-content:center;}
+    .ld-cap .cap{position:absolute;left:0;right:0;text-align:center;opacity:0;transition:opacity .55s ease;}
+    #loader[data-step="0"] .cap.c-purpose{opacity:1;}
+    #loader[data-step="5"] .cap.c-final{opacity:1;}
+    .ld-cap .c-final{display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
 
     /* Film grain (dark sections) */
     .noise{position:relative;}
@@ -363,14 +371,6 @@
         .htri-arr svg{width:100%;height:100%;display:block;animation:htriArr 2.6s ease-in-out infinite;}
         .htri-arr path{stroke:rgba(255,255,255,.95);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
         @keyframes htriArr{0%,100%{opacity:.35;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
-        /* loader variant（暗背景・小型） */
-        .ld-nodebox{position:relative;width:min(86vw,460px);height:min(60vw,320px);}
-        .ld-nodebox .htri{max-width:none;width:100%;height:100%;margin:0;aspect-ratio:auto;}
-        .ld-nodebox .htri-node{width:120px;height:120px;}
-        .ld-nodebox .htri-ring{padding:9px;} .ld-nodebox .htri-ring::before{inset:9px;}
-        .ld-nodebox .htri-core .num{font-size:1.9rem;} .ld-nodebox .htri-core .en{font-size:.72rem;} .ld-nodebox .htri-core .jp{font-size:1.15rem;}
-        .ld-nodebox .htri-lines .htri-link{stroke:rgba(255,255,255,.3);}
-        @media(max-width:640px){ .ld-nodebox .htri-node{width:96px;height:96px;} .ld-nodebox .htri-core .num{font-size:1.5rem;} .ld-nodebox .htri-core .jp{font-size:.95rem;} .ld-nodebox .htri-core .en{font-size:.62rem;} }
 @media(max-width:640px){
           .htri{max-width:340px;}
           .htri-node{width:126px;height:126px;}
@@ -490,27 +490,24 @@
   </style>
 </head>
 <body>
-  <div id="loader">
+  <div id="loader" data-step="0">
     <div class="glow"></div>
-    <div class="ld-scene"><p class="ld-eyebrow">PURPOSE</p><p class="ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p></div>
-    <div class="ld-scene"><p class="ld-eyebrow">OHANA</p><p class="ld-jp"><span class="rise"><span>支え合って、高め合う。</span></span></p></div>
-    <div class="ld-scene"><div class="ld-nodebox">
-      <div class="htri">
-        <svg class="htri-lines" viewBox="0 0 860 600" preserveAspectRatio="none">
-          <path class="htri-link d1" d="M415,150 L200,455" pathLength="1"/>
-          <path class="htri-link d2" d="M445,150 L660,455" pathLength="1"/>
-          <path class="htri-link d3" d="M235,486 L625,486" pathLength="1"/>
-          <path class="htri-flow" d="M415,150 L200,455"/>
-          <path class="htri-flow" d="M445,150 L660,455"/>
-          <path class="htri-flow" d="M235,486 L625,486"/>
-        </svg>
-        <div class="htri-node he"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">3</span><span class="en">Economy</span><span class="jp">経済</span></div></div></div>
-        <div class="htri-node hh"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">1</span><span class="en">Health</span><span class="jp">健康</span></div></div></div>
-        <div class="htri-node hr"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">2</span><span class="en">Relation</span><span class="jp">人間関係</span></div></div></div>
+    <div class="ld-stage">
+      <div class="ld-pyr" id="ldPyr">
+        <div class="ld-pyr-tier t0"><span class="lab">健康</span></div>
+        <div class="ld-pyr-tier t1"><span class="lab">人間関係</span></div>
+        <div class="ld-pyr-tier t2"><span class="lab">経済</span></div>
       </div>
-    </div></div>
-    <div class="ld-scene"><p class="ld-num"><span class="u">DEVIATION VALUE</span>偏差値 <span id="ldDv">0</span><span class="k">仮</span></p></div>
-    <div class="ld-scene"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><p class="ld-mincho"><span class="rise"><span>ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></span></p></div>
+      <div class="ld-dv">
+        <p class="dv-num"><span id="ldDv">0</span></p>
+        <p class="dv-lab">社会人偏差値</p>
+        <p class="dv-sub">ここを、目指す。</p>
+      </div>
+      <div class="ld-cap">
+        <p class="cap c-purpose ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p>
+        <p class="cap c-final"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><span class="ld-mincho">ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></p>
+      </div>
+    </div>
     <button class="ld-skip" type="button">SKIP →</button>
   </div>
   <div class="progress" id="progress"></div>
@@ -743,8 +740,8 @@
       </div>
 
       <div class="htri-proof-block mt-16 lg:mt-20">
-        <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE ENGINE — 経済力を伸ばす、Enjinという仕組み</p>
-        <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-10">視野を広げる経験が、経済力を伸ばす。それがEnjinのエンジン。<span class="kari ml-1">文言仮</span></p>
+        <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE Enjin — 経済力を伸ばす、その仕組み</p>
+        <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-10">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
         <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
           <a href="about-v8.html#business" class="htri-proof-card">
             <div class="htri-proof-img" style="background-image:url('images/business.jpg');"></div>
@@ -1367,28 +1364,34 @@
         var seen=false; try{ seen=sessionStorage.getItem('enjinIntroSeen')==='1'; }catch(e){}
         if(seen){ l.classList.add('done'); l.style.display='none'; return; }
         try{ sessionStorage.setItem('enjinIntroSeen','1'); }catch(e){}
-        var scenes=l.querySelectorAll('.ld-scene');
+        var tiers=l.querySelectorAll('.ld-pyr-tier');
         var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var timers=[], counted=false, finished=false;
+        var timers=[], counted=false, finished=false, LAST=5;
+        // 社会人偏差値は「例え」＝実測値ではないので、三角形が育つのと同時に上がる演出だけを担う
         function count(){ if(counted)return; counted=true;
           var el=document.getElementById('ldDv'); if(!el)return;
-          var t0=null, dur=750;
+          var t0=null, dur=900;
           function st(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1); var e=1-Math.pow(1-p,3);
             el.textContent=Math.round(60*e);
-            if(p<1)requestAnimationFrame(st); else el.closest('.ld-num').classList.add('punch'); }
+            if(p<1)requestAnimationFrame(st); }
           requestAnimationFrame(st);
         }
-        function show(i){scenes.forEach(function(s,j){s.classList.toggle('on',j===i);}); if(i===3)count();}
+        // step0=理念 / step1-3=健康→人間関係→経済が順に満ちる / step4=偏差値 / step5=ロゴ
+        function step(i){
+          l.setAttribute('data-step',String(i));
+          tiers.forEach(function(t,idx){ t.classList.toggle('lit', i>=idx+1); });
+          if(i>=4)count();
+        }
         function finish(){ if(finished)return; finished=true;
           l.classList.add('done'); document.body.style.overflow='';
         }
-        function skip(){timers.forEach(clearTimeout);show(scenes.length-1);setTimeout(finish,250);}
+        function skip(){timers.forEach(clearTimeout);step(LAST);setTimeout(finish,250);}
         var sb=l.querySelector('.ld-skip'); if(sb)sb.addEventListener('click',skip);
         if(reduce){finish();return;}
         document.body.style.overflow='hidden';
-        var sceneT=[0,1200,2050,3100,3950];
-        sceneT.forEach(function(t,i){timers.push(setTimeout(function(){show(i);},t));});
-        timers.push(setTimeout(finish,5050));
+        var sceneT=[0,1400,2200,3000,3900,5300];
+        sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
+        timers.push(setTimeout(finish,6600));
       })();
 
       // count-up numbers

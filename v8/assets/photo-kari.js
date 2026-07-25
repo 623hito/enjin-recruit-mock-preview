@@ -54,11 +54,18 @@
     host.appendChild(badge());
   }
 
+  // オープニング演出（#loader）内はバッジ対象外。三角形に写真をマスクしているだけで
+  // 「写真そのものを見せる枠」ではないため、バッジが出ると演出が壊れる。
+  function inLoader(el) {
+    return !!(el && el.closest && el.closest('#loader'));
+  }
+
   function run() {
     // 1) background-image で指定された写真
     var all = document.querySelectorAll('div,section,span,a,figure');
     for (var i = 0; i < all.length; i++) {
       var el = all[i];
+      if (inLoader(el)) continue;
       var inline = el.getAttribute('style') || '';
       var bg = inline.indexOf('images/') !== -1 ? inline : window.getComputedStyle(el).backgroundImage;
       if (isTarget(bg)) mark(hostFor(el));
@@ -66,6 +73,7 @@
     // 2) <img> タグの写真
     var imgs = document.querySelectorAll('img');
     for (var k = 0; k < imgs.length; k++) {
+      if (inLoader(imgs[k])) continue;
       var src = imgs[k].getAttribute('src') || '';
       if (isTarget(src)) {
         var h = imgs[k].parentElement || imgs[k];
