@@ -381,21 +381,20 @@
           .htri-lines .htri-link{stroke-dashoffset:0!important;animation:none!important;} .htri-lines .htri-flow{display:none;}
         }
 
-        /* Happiness Triangle — stacking pyramid (order story) */
-        .htri-pyr{display:flex;flex-direction:column-reverse;align-items:center;gap:10px;max-width:480px;margin:0 auto;}
-        .htri-pyr-tier{position:relative;width:100%;border-radius:14px;padding:1.15rem 1.5rem;display:flex;align-items:center;gap:16px;opacity:0;transform:translateY(26px) scaleX(.94);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);background:linear-gradient(135deg,#fdf6f0,#f3e7db);box-shadow:0 10px 26px -16px rgba(90,40,20,.28);}
-        .htri-pyr-tier.on{opacity:1;transform:translateY(0) scaleX(1);}
-        .htri-pyr-tier[data-tier="0"]{width:100%;}
-        .htri-pyr-tier[data-tier="1"]{width:84%;transition-delay:.16s;}
-        .htri-pyr-tier[data-tier="2"]{width:66%;transition-delay:.32s;background:linear-gradient(135deg,var(--red),#8a0e0e);color:#fff;box-shadow:0 16px 32px -14px rgba(191,15,15,.5);}
+        /* Happiness Triangle — stacking pyramid (order story), a single continuous triangle */
+        .htri-pyr{display:flex;flex-direction:column-reverse;align-items:center;max-width:420px;margin:0 auto;filter:drop-shadow(0 20px 32px rgba(0,0,0,.5));}
+        .htri-pyr-tier{position:relative;width:100%;height:112px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);background:linear-gradient(135deg,#fdf6f0,#f3e7db);}
+        .htri-pyr-tier.on{opacity:1;transform:translateY(0);}
+        .htri-pyr-tier[data-tier="0"]{clip-path:polygon(16.667% 0%,83.333% 0%,100% 100%,0% 100%);}
+        .htri-pyr-tier[data-tier="1"]{clip-path:polygon(33.333% 0%,66.667% 0%,83.333% 100%,16.667% 100%);margin-top:-1px;transition-delay:.16s;}
+        .htri-pyr-tier[data-tier="2"]{clip-path:polygon(50% 0%,50% 0%,66.667% 100%,33.333% 100%);margin-top:-1px;transition-delay:.32s;background:linear-gradient(135deg,var(--red),#8a0e0e);color:#fff;}
         .htri-pyr-tier[data-tier="2"] .htri-pyr-n,.htri-pyr-tier[data-tier="2"] .htri-pyr-d{color:rgba(255,255,255,.82);}
-        .htri-pyr-n{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.7rem;color:var(--red);line-height:1;flex-shrink:0;}
-        .htri-pyr-t{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.08rem;flex-shrink:0;white-space:nowrap;}
-        .htri-pyr-d{font-size:.79rem;color:#8a7a6e;line-height:1.55;}
+        .htri-pyr-n{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.5rem;color:var(--red);line-height:1;}
+        .htri-pyr-t{font-family:'Noto Serif JP',serif;font-weight:700;font-size:.98rem;white-space:nowrap;margin-top:.3rem;}
         @media(max-width:640px){
-          .htri-pyr-tier{padding:.9rem 1.1rem;gap:11px;}
-          .htri-pyr-d{display:none;}
-          .htri-pyr-n{font-size:1.35rem;} .htri-pyr-t{font-size:.94rem;}
+          .htri-pyr{max-width:300px;}
+          .htri-pyr-tier{height:84px;padding-bottom:11px;}
+          .htri-pyr-n{font-size:1.2rem;} .htri-pyr-t{font-size:.82rem;}
         }
         @media (prefers-reduced-motion: reduce){
           .htri-pyr-tier{opacity:1!important;transform:none!important;transition:none!important;}
@@ -609,17 +608,14 @@
           <div class="htri-pyr-tier" data-tier="0">
             <span class="htri-pyr-n">01</span>
             <span class="htri-pyr-t">健康</span>
-            <span class="htri-pyr-d">すべての土台。まず、動ける身体。</span>
           </div>
           <div class="htri-pyr-tier" data-tier="1">
             <span class="htri-pyr-n">02</span>
             <span class="htri-pyr-t">人間関係</span>
-            <span class="htri-pyr-d">健康の上に築く、支え合える仲間。</span>
           </div>
           <div class="htri-pyr-tier" data-tier="2">
             <span class="htri-pyr-n">03</span>
             <span class="htri-pyr-t">経済</span>
-            <span class="htri-pyr-d">いちばん上に積み上がる、頑張った証。</span>
           </div>
         </div>
       </div>
