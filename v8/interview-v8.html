@@ -51,10 +51,10 @@
 <article class="bg-white px-6 lg:px-16 py-24 lg:py-28 reveal">
   <div class="max-w-2xl mx-auto">
     <div class="space-y-14 text-[15px] leading-[2.2] text-gray-700">
-      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. 入社の決め手は？</p><p>就活の軸が定まらないまま説明会に行ったのが最初でした。選考ではなく「ラフに話を聞く場」と言われた通り、対話のなかで自分の"これから"に一番期待してくれた会社がEnjinでした。<span class="kari">本文・仮</span></p></div>
-      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. 印象に残っている仕事は？</p><p>1年目から中小企業の社長に対峙します。最初は震えるほど緊張しましたが、ある経営者の一言でスイッチが入りました。若手でも「会社の顔」として信頼される——その責任と面白さが、いまの自分をつくっています。<span class="kari">本文・仮</span></p></div>
-      <blockquote class="font-mincho font-bold text-2xl lg:text-3xl leading-relaxed text-center py-8" style="border-top:1px solid #eee;border-bottom:1px solid #eee;">「これから」に、<br />賭けてもらえる場所。</blockquote>
-      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. どんな人と働きたい？</p><p>スキルより「先にギブできる」人。完璧じゃなくていいから、まず動ける人と一緒に走りたいです。<span class="kari">本文・仮</span></p></div>
+      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. 入社の決め手は？</p><p id="ivQ1">就活の軸が定まらないまま説明会に行ったのが最初でした。選考ではなく「ラフに話を聞く場」と言われた通り、対話のなかで自分の"これから"に一番期待してくれた会社がEnjinでした。<span class="kari">本文・仮</span></p></div>
+      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. 印象に残っている仕事は？</p><p id="ivQ2">1年目から中小企業の社長に対峙します。最初は震えるほど緊張しましたが、ある経営者の一言でスイッチが入りました。若手でも「会社の顔」として信頼される——その責任と面白さが、いまの自分をつくっています。<span class="kari">本文・仮</span></p></div>
+      <blockquote class="font-mincho font-bold text-2xl lg:text-3xl leading-relaxed text-center py-8" style="border-top:1px solid #eee;border-bottom:1px solid #eee;" id="ivQuote">「これから」に、<br />賭けてもらえる場所。</blockquote>
+      <div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-3">Q. どんな人と働きたい？</p><p id="ivQ3">スキルより「先にギブできる」人。完璧じゃなくていいから、まず動ける人と一緒に走りたいです。<span class="kari">本文・仮</span></p></div>
     </div>
     <div class="mt-20 text-center"><a href="members-v8.html#interviews" class="btn-line">インタビュー一覧へ　›</a></div>
   </div>
@@ -89,12 +89,36 @@
 <script>
 (function(){
   var data={
-    1:{t:'経営者の一言が、<br />私を変えた。',r:'PRコンサル／営業',y:'2021',i:'Y.S',img:'interview_01.jpg'},
-    2:{t:'伝わった瞬間が、<br />いちばん好き。',r:'企画／プランナー',y:'2019',i:'M.K',img:'interview_02.jpg'},
-    3:{t:'仲間づくりが、<br />私の仕事。',r:'HR',y:'2020',i:'A.T',img:'interview_03.jpg'},
-    4:{t:'1年目から、<br />社長と商談。',r:'PRコンサル／営業',y:'2023',i:'R.H',img:'interview_04.jpg'},
-    5:{t:'挑戦を、<br />数字で支える。',r:'経理',y:'2018',i:'S.N',img:'interview_05.jpg'},
-    6:{t:'ギブし続けたら、<br />ここにいた。',r:'PRコンサル／営業',y:'2017',i:'K.M',img:'interview_06.jpg'}
+    1:{t:'経営者の一言が、<br />私を変えた。',r:'PRコンサル／営業',y:'2021',i:'Y.S',img:'interview_01.jpg',
+      q1:'就活の軸が定まらないまま説明会に行ったのが最初でした。選考ではなく「ラフに話を聞く場」と言われた通り、対話のなかで自分の"これから"に一番期待してくれた会社がEnjinでした。',
+      q2:'1年目から中小企業の社長に対峙します。最初は震えるほど緊張しましたが、ある経営者の一言でスイッチが入りました。若手でも「会社の顔」として信頼される——その責任と面白さが、いまの自分をつくっています。',
+      quote:'「これから」に、<br />賭けてもらえる場所。',
+      q3:'スキルより「先にギブできる」人。完璧じゃなくていいから、まず動ける人と一緒に走りたいです。'},
+    2:{t:'伝わった瞬間が、<br />いちばん好き。',r:'企画／プランナー',y:'2019',i:'M.K',img:'interview_02.jpg',
+      q1:'説明会で「思ったよりずっと自由に企画を任せてもらえそう」と感じたことです。決められた型に沿うのではなく、自分なりの伝え方を考えられる環境に惹かれました。',
+      q2:'あるクライアントの魅力がなかなか伝わらず苦戦した企画で、切り口を180度変えたら反響が一気に変わった瞬間がありました。「伝わった」と実感できたときの高揚感は、何度経験しても病みつきになります。',
+      quote:'「伝わった」瞬間が、<br />何よりのご褒美。',
+      q3:'自分の企画に固執せず、良いものは素直に取り入れられる人。チームで作るからこそ生まれるアイデアを、一緒に面白がれる人と働きたいです。'},
+    3:{t:'仲間づくりが、<br />私の仕事。',r:'HR',y:'2020',i:'A.T',img:'interview_03.jpg',
+      q1:'面接で会った社員の誰もが、会社の話より「これから何をしたいか」を熱心に聞いてくれたことです。人を大事にする文化が、選考の段階からすでに感じられました。',
+      q2:'自分が面接を担当した学生が入社し、活躍している姿を見たときです。採用は「合否を決める仕事」ではなく「これから一緒に働く仲間をつくる仕事」なんだと実感しました。',
+      quote:'会社をつくるのは、<br />結局のところ「人」。',
+      q3:'誰かのために本気になれる人。採用も組織づくりも、突き詰めれば人への想像力が必要な仕事だと思っています。'},
+    4:{t:'1年目から、<br />社長と商談。',r:'PRコンサル／営業',y:'2023',i:'R.H',img:'interview_04.jpg',
+      q1:'「1年目から経営者と直接向き合える」という話を、正直半信半疑で聞いていました。でも実際に配属されてすぐ、本当に社長との商談に同席させてもらえて驚きました。',
+      q2:'入社3ヶ月で任された商談で、社長からいただいた指摘がすべて的確で、自分の準備不足を痛感した日があります。悔しさをバネに、それからは誰よりも準備するようになりました。',
+      quote:'早いうちに、<br />本気の壁にぶつかれる。',
+      q3:'できないことを素直に認めて、次に活かせる人。1年目からハードルが高い分、伸びしろを楽しめる人と働きたいです。'},
+    5:{t:'挑戦を、<br />数字で支える。',r:'経理',y:'2018',i:'S.N',img:'interview_05.jpg',
+      q1:'上場を目指す成長企業のバックオフィスに、若いうちから深く関われると聞いたことです。守りの仕事ほど、会社の成長スピードに近い場所にいられると思いました。',
+      q2:'上場準備のさなか、これまでのやり方が通用しない場面が何度もありました。地道な数字の積み重ねが、会社の大きな挑戦を支えているのだと実感した瞬間です。',
+      quote:'攻めの裏側には、<br />いつも守りがある。',
+      q3:'地道な作業も面白がれる人。数字は嘘をつかない分、誠実に向き合える人と一緒に働きたいです。'},
+    6:{t:'ギブし続けたら、<br />ここにいた。',r:'PRコンサル／営業',y:'2017',i:'K.M',img:'interview_06.jpg',
+      q1:'特別な決め手があったわけではなく、「まず与えられる人になりたい」という価値観に共感したのがきっかけです。気づけば一番長く在籍する社員の一人になっていました。',
+      q2:'見返りを求めずに動いていたら、いつの間にかクライアントからも後輩からも頼られる存在になっていました。ギブし続けることが、結局は一番の近道だったと感じています。',
+      quote:'見返りを求めずにいたら、<br />ここまで来ていた。',
+      q3:'損得より先に、人のために動ける人。長く一緒に働くほど、そういう人の価値が分かってきます。'}
   };
   var n=parseInt(new URLSearchParams(location.search).get('n'),10);
   if(data[n]){var d=data[n],p=('0'+n).slice(-2);
@@ -102,6 +126,10 @@
     document.getElementById('ivTitle').innerHTML=d.t;
     document.getElementById('ivMeta').innerHTML=d.r+'　'+d.y+'年入社　<span class="font-alumni font-bold tracking-wider">'+d.i+'</span><span class="kari ml-2" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.6);">記事・仮</span>';
     document.getElementById('ivBg').style.backgroundImage="linear-gradient(rgba(20,20,20,.55),rgba(20,20,20,.55)),url('images/"+d.img+"')";
+    document.getElementById('ivQ1').innerHTML=d.q1+'<span class="kari">本文・仮</span>';
+    document.getElementById('ivQ2').innerHTML=d.q2+'<span class="kari">本文・仮</span>';
+    document.getElementById('ivQuote').innerHTML=d.quote;
+    document.getElementById('ivQ3').innerHTML=d.q3+'<span class="kari">本文・仮</span>';
     document.title=d.r+' '+d.i+' — 社員インタビュー — Enjin 採用 v8';
   }
 })();
