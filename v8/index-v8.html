@@ -463,14 +463,13 @@
         .ht-title span{color:#ff8f86;}
         .ht-sub{font-size:16px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 auto;max-width:34em;text-wrap:pretty;}
 
-        /* 真四角のカードに遊び心を：本体は角丸+わずかな傾き、背後に赤枠カードを覗かせて
-           重なり感を出す（stage自体はoverflow:hiddenで矩形のまま、演出は外側のwrapで） */
+        /* 真四角に軽い遊び心を：斜めは使わず、角丸＋平行なオフセット枠のみ */
         .ht-stage-wrap{position:relative;}
-        .ht-stage-wrap::before{content:"";position:absolute;inset:16px -10px -14px 14px;border:2px solid rgba(200,50,42,.38);border-radius:30px;transform:rotate(-1.8deg);z-index:0;}
-        .ht-stage{position:relative;z-index:1;transform:rotate(.6deg);background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);border-radius:26px;box-shadow:0 50px 110px -40px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
+        .ht-stage-wrap::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid rgba(200,50,42,.32);border-radius:26px;z-index:0;}
+        .ht-stage{position:relative;z-index:1;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);border-radius:22px;box-shadow:0 50px 110px -40px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
         @media(max-width:640px){
-          .ht-stage-wrap::before{inset:10px -6px -8px 8px;border-radius:22px;}
-          .ht-stage{border-radius:18px;}
+          .ht-stage-wrap::before{inset:8px -8px -8px 8px;border-radius:18px;}
+          .ht-stage{border-radius:14px;}
         }
         /* minmax の下限は min(330px,100%)。素の 330px だとスマホでトラックがコンテナを
            はみ出し、.ht-stage の overflow:hidden で右側が切れる */
@@ -482,10 +481,11 @@
         .ht-scene.is-before{transform:translateY(-14px);}
         /* シーン内の要素は num→lead→body/emph の順に一拍ずつ遅らせて出す（読みやすさ優先） */
         .ht-scene .ht-num,.ht-scene .ht-lead,.ht-scene .ht-body,.ht-scene .ht-emph{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1);}
-        .ht-scene.is-active .ht-num{transition-delay:.05s;opacity:1;transform:translateY(0);}
-        .ht-scene.is-active .ht-lead{transition-delay:.22s;opacity:1;transform:translateY(0);}
-        .ht-scene.is-active .ht-body,.ht-scene.is-active .ht-emph{transition-delay:.42s;opacity:1;transform:translateY(0);}
-        .ht-num{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.28em;font-size:15px;color:#c8322a;margin:0 0 18px;}
+        .ht-scene.is-active .ht-num{transition-delay:.5s;opacity:1;transform:translateY(0);}
+        .ht-scene.is-active .ht-lead{transition-delay:.8s;opacity:1;transform:translateY(0);}
+        .ht-scene.is-active .ht-body,.ht-scene.is-active .ht-emph{transition-delay:1.1s;opacity:1;transform:translateY(0);}
+        .ht-scene.is-active .ht-emph.ht-emph-2{transition-delay:1.35s;}
+        .ht-num{font-family:'Alumni Sans',sans-serif;font-weight:800;letter-spacing:.1em;font-size:clamp(38px,5.4vw,52px);line-height:1;color:#c8322a;margin:0 0 14px;}
         .ht-lead{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(23px,3vw,33px);line-height:1.7;margin:0 0 16px;color:#1c1a17;text-wrap:pretty;}
         .ht-body{font-size:clamp(17px,2.1vw,21px);line-height:1.95;color:#5d574e;margin:8px 0 0;max-width:26em;text-wrap:pretty;font-weight:400;}
         .ht-emph{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(27px,3.9vw,42px);line-height:1.55;margin:6px 0 0;color:#1c1a17;letter-spacing:.02em;}
@@ -526,9 +526,9 @@
         #htStartCard.is-on{opacity:1;}
         #htEndCard{z-index:5;background:rgba(251,248,242,.94);cursor:pointer;transition:opacity .6s ease;}
         #htEndCard.is-on{opacity:1;pointer-events:auto;}
-        .ht-chevron{width:40px;height:40px;border-radius:50%;border:1px solid rgba(200,50,42,.35);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
+        .ht-chevron{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(200,50,42,.4);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
         @keyframes htFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-        .ht-replay{margin-top:22px;display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:8px 18px;font-size:12.5px;letter-spacing:.06em;color:#8a8378;cursor:pointer;}
+        .ht-replay{margin-top:30px;display:inline-flex;align-items:center;gap:9px;background:none;border:1px solid rgba(28,26,23,.2);border-radius:99px;padding:11px 24px;font-size:15px;letter-spacing:.06em;color:#5d574e;cursor:pointer;}
         .ht-hint{text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin:18px 0 0;letter-spacing:.08em;}
 
         /* THE Enjin（旧#engine）は #triangle と背景を交代し、明色セクションに戻した。
@@ -764,8 +764,9 @@
             </div>
             <div class="ht-scene" data-scene="5">
               <p class="ht-num">06</p>
-              <p class="ht-lead">22歳、<br>「社会人偏差値0」<br>からのスタート</p>
-              <p class="ht-emph">いまはまだ何者でもない。<br>でも、<span>可能性は無限</span>にある。</p>
+              <p class="ht-lead" style="white-space:nowrap;font-size:clamp(16px,5vw,28px);">22歳、<br>「社会人偏差値0」からのスタート</p>
+              <p class="ht-emph" style="white-space:nowrap;font-size:clamp(19px,5.8vw,30px);">今はまだ何者でもない。</p>
+              <p class="ht-emph ht-emph-2" style="white-space:nowrap;font-size:clamp(19px,5.8vw,30px);margin-top:.3em;">でも、<span>可能性は無限</span>。</p>
             </div>
           </div>
 
@@ -802,21 +803,21 @@
                     <circle id="htD1" cx="321.2" cy="270" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
                     <circle id="htD2" cx="200" cy="60" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
                   </g>
-                  <g transform="translate(200,-18)">
-                    <circle cx="0" cy="-6" r="9" fill="none" stroke="#c8322a" stroke-width="1.6"></circle>
-                    <text x="0" y="-1" text-anchor="middle" font-size="11" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#c8322a">¥</text>
-                    <text id="htEco" x="0" y="22" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">経済</text>
+                  <g transform="translate(200,-46)">
+                    <circle cx="0" cy="-13" r="17" fill="none" stroke="#c8322a" stroke-width="2"></circle>
+                    <text x="0" y="-3" text-anchor="middle" font-size="20" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#c8322a">¥</text>
+                    <text id="htEco" x="0" y="34" text-anchor="middle" font-size="30" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">経済</text>
                   </g>
-                  <g transform="translate(14,318)">
-                    <path d="M0,-4 c0,-6 8,-6 8,0 c0,5 -8,9 -8,13 c0,-4 -8,-8 -8,-13 c0,-6 8,-6 8,0 z" fill="none" stroke="#c8322a" stroke-width="1.5"></path>
-                    <text id="htHel" x="0" y="34" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">健康</text>
+                  <g transform="translate(-6,340)">
+                    <path d="M0,-8 c0,-12 16,-12 16,0 c0,10 -16,18 -16,26 c0,-8 -16,-16 -16,-26 c0,-12 16,-12 16,0 z" fill="none" stroke="#c8322a" stroke-width="2"></path>
+                    <text id="htHel" x="0" y="58" text-anchor="middle" font-size="30" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">健康</text>
                   </g>
-                  <g transform="translate(386,318)">
-                    <circle cx="-4" cy="-9" r="3.6" fill="none" stroke="#c8322a" stroke-width="1.4"></circle>
-                    <path d="M-9,3 c0,-6.5 10,-6.5 10,0" fill="none" stroke="#c8322a" stroke-width="1.4"></path>
-                    <circle cx="5" cy="-9" r="3.6" fill="none" stroke="#c8322a" stroke-width="1.4"></circle>
-                    <path d="M0,3 c0,-6.5 10,-6.5 10,0" fill="none" stroke="#c8322a" stroke-width="1.4"></path>
-                    <text id="htRel" x="0" y="34" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">人間関係</text>
+                  <g transform="translate(406,340)">
+                    <circle cx="-8" cy="-18" r="7" fill="none" stroke="#c8322a" stroke-width="1.8"></circle>
+                    <path d="M-18,6 c0,-13 20,-13 20,0" fill="none" stroke="#c8322a" stroke-width="1.8"></path>
+                    <circle cx="10" cy="-18" r="7" fill="none" stroke="#c8322a" stroke-width="1.8"></circle>
+                    <path d="M0,6 c0,-13 20,-13 20,0" fill="none" stroke="#c8322a" stroke-width="1.8"></path>
+                    <text id="htRel" x="0" y="58" text-anchor="middle" font-size="30" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">人間関係</text>
                   </g>
                   <g id="htArrow" opacity="0">
                     <line x1="258" y1="104" x2="258" y2="46" stroke="#c8322a" stroke-width="2.4"></line>
@@ -874,11 +875,11 @@
           <p style="position:relative;font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#1c1a17;margin:0;">幸せに、順番がある。</p>
         </div>
 
-        <div class="ht-card" id="htEndCard">
-          <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 10px;">SCROLL ON</p>
-          <p style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(18px,2.3vw,25px);line-height:1.6;color:#1c1a17;margin:0 0 22px;">学生時代の偏差値は関係ない。<br />偏差値60をEnjinで一緒に目指そう。</p>
-          <div class="ht-chevron"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#c8322a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-          <button class="ht-replay" id="htReplay"><svg width="13" height="13" viewBox="0 0 20 20"><path d="M4,4 v6 h6 M4,10 a8,8 0 1 0 2-6" fill="none" stroke="#8a8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>もう一度見る</button>
+        <div class="ht-card" id="htEndCard" style="padding:0 6vw;">
+          <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:clamp(15px,1.9vw,19px);color:#c8322a;margin:0 0 22px;">SCROLL ON</p>
+          <p style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;margin:0 0 38px;">学生時代の偏差値は関係ない。<br />社会人としての「偏差値60」を、<br />Enjinで一緒に目指そう。</p>
+          <div class="ht-chevron"><svg width="26" height="26" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#c8322a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <button class="ht-replay" id="htReplay"><svg width="16" height="16" viewBox="0 0 20 20"><path d="M4,4 v6 h6 M4,10 a8,8 0 1 0 2-6" fill="none" stroke="#8a8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>もう一度見る</button>
         </div>
       </div>
       </div>
@@ -1447,7 +1448,7 @@
       // 進捗バーは .ht-bar の下地を常にニュートラルにし、中の .ht-bar-fill を伸ばして見せる
       // （下地を赤で塗ると塗りと同色になり「左から伸びる」動きが見えなくなる）
       (function(){
-        var D=[2900,3200,3200,4900,5000,6200];
+        var D=[2900,4200,3200,4900,5000,6200];
         // T の各要素は [健康, 人間関係, 経済]。シーン05(index4)は健康・人間関係を左右対称の
         // 基準値(1,1)に固定し、経済だけを動かして「経済力だけを伸ばす」印象にする
         // （T[2]の1.18/1.0のような非対称値を流用すると土台が傾いていびつに見える）
