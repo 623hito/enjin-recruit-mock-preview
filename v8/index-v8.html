@@ -518,8 +518,6 @@
         /* THE Enjin（旧#engine）は #triangle と背景を交代し、明色セクションに戻した。
            ゴースト文字・スポットライトは既定（明色用）のまま流用でよい */
         #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.16) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
-        /* htri-proof-card はページ地色(#f6f2ea)とほぼ同色なので、白へ明度差をつけて浮かせる */
-        #engine .htri-proof-card{background:#fffdf8;box-shadow:0 14px 32px -18px rgba(28,26,23,.22);}
 
         /* 章末の遷移リンク（横並びの楕円ボタン） */
         .pill-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:.72rem 1.4rem;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#3f3a36;background:rgba(255,255,255,.5);transition:border-color .25s,background .25s,color .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
@@ -530,17 +528,6 @@
         @media(max-width:640px){
           .pill-link{width:100%;justify-content:space-between;}
         }
-
-        /* Happiness Triangle — proof cards (real benefits, grounding the concept) */
-        .htri-proof-card{display:flex;flex-direction:column;background:#fdf6f0;border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;box-shadow:0 12px 28px -18px rgba(0,0,0,.55);}
-        .htri-proof-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -16px rgba(0,0,0,.6);}
-        .htri-proof-img{aspect-ratio:4/3;background-size:cover;background-position:center;}
-        .htri-proof-num .htri-proof-img{background:linear-gradient(135deg,var(--red),#8a0e0e);display:flex;align-items:center;justify-content:center;}
-        .htri-proof-bignum{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:1.9rem;color:#fff;font-variant-numeric:tabular-nums;}
-        .htri-proof-body{padding:1.1rem 1.2rem 1.35rem;}
-        .htri-proof-axis{display:inline-block;font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:.68rem;letter-spacing:.16em;color:var(--red);margin-bottom:.5rem;}
-        .htri-proof-title{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.02rem;color:#2a211e;margin-bottom:.4rem;}
-        .htri-proof-d{font-size:.76rem;color:#8a7a6e;line-height:1.6;}
 
 
     /* DI-style reveal effects */
@@ -908,26 +895,27 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-7">
-          <a href="about-v8.html#business" class="htri-proof-card">
-            <!-- 上の PR & BRANDING が business.jpg なので、ここは別カットを使う -->
-            <div class="htri-proof-img" style="background-image:url('images/office_about.jpg');"></div>
-            <div class="htri-proof-body">
-              <span class="htri-proof-axis">01</span>
-              <h4 class="htri-proof-title">経営者と、直接対峙する。</h4>
-              <p class="htri-proof-d">1年目から経営者と商談。視野が広がる経験が、価値を伸ばす。</p>
-            </div>
-          </a>
-          <a href="environment-v8.html#benefit" class="htri-proof-card htri-proof-num">
-            <div class="htri-proof-img"><span class="htri-proof-bignum">FAIR<br />REVIEW</span></div>
-            <div class="htri-proof-body">
-              <span class="htri-proof-axis">02</span>
-              <h4 class="htri-proof-title">フェアな評価。</h4>
-              <p class="htri-proof-d">年齢も学歴も関係なく、やった分だけ正当に返る。</p>
-            </div>
+        <!-- フェアな評価。PR&BRANDINGブロックと左右逆転の配置（テキスト→ビジュアルの順）で並べ、
+             ジグザグのリズムを作る。01「経営者と、直接対峙する。」は上のPR&BRANDINGの
+             箇条書き01と内容が重複するため削除し、02のみをここへ昇格させた -->
+        <div class="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
+          <div>
+            <p class="font-alumni font-bold text-[11px] text-red tracking-[0.22em] mb-4">FAIR REVIEW</p>
+            <h3 class="font-mincho font-bold leading-[1.5] mb-6" style="font-size:clamp(1.5rem,3vw,2.1rem);">評価に、年齢も学歴も、<br /><span class="text-red">関係ない。</span></h3>
+            <p class="text-[15px] text-gray-700 leading-[2.1] mb-8">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、<span class="font-bold">やった分だけ正当に返ってきます</span>。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">紹介文言仮</span></p>
+            <ul class="grid gap-3 mb-8">
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">評価基準は、年齢でも社歴でもなく<span class="font-bold">成果とプロセス</span>。</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">若手でも、昇給・昇格の<span class="font-bold">スピードに上限はない</span>。</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">年齢も学歴も関係なく、やった分だけ正当に返る。</span></li>
+            </ul>
+            <a href="environment-v8.html#benefit" class="hub-link" style="max-width:360px;"><span class="font-medium">評価制度・福利厚生を見る</span><span class="en">BENEFIT ›</span></a>
+          </div>
+          <a href="environment-v8.html#benefit" class="relative aspect-[4/3] block rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,var(--red),#8a0e0e);box-shadow:-24px 24px 0 #fff;">
+            <span class="absolute inset-0 flex flex-col items-center justify-center text-white font-alumni font-black text-4xl lg:text-5xl leading-none text-center">FAIR<br />REVIEW</span>
+            <span class="absolute right-0 bottom-0 bg-white text-red text-[11px] font-bold px-4 py-2 tracking-wider">やった分だけ、正当に。</span>
           </a>
         </div>
-        <div class="max-w-xl mx-auto text-center mt-12 lg:mt-14">
+        <div class="max-w-xl mx-auto text-center mt-16 lg:mt-20">
           <p class="text-sm text-gray-600 leading-[2.1]">経済力が伸びれば、巡り巡って<span class="font-bold text-red">健康も人間関係も</span>、さらに良くなっていく。<span class="kari ml-1">文言仮</span></p>
         </div>
       </div>
