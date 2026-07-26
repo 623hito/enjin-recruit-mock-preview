@@ -263,12 +263,13 @@
        三角形を使わないシーンでは width:0 に畳む——場所だけ確保すると
        PURPOSE/OHANAの文字が三角形1個分(約300px)下に押し下げられ「隙間」になる */
     .ld-tri-box{width:0;flex-shrink:0;opacity:0;transition:opacity .7s ease,width .85s cubic-bezier(.22,1,.36,1);}
-    #loader[data-step="2"] .ld-tri-box,#loader[data-step="3"] .ld-tri-box{opacity:1;width:min(84vw,52vh,520px);}
+    #loader[data-step="2"] .ld-tri-box,#loader[data-step="3"] .ld-tri-box{opacity:1;width:min(88vw,58vh,600px);}
     .ld-tri-box .htri{margin:0;max-width:none;width:100%;}
-    .ld-tri-box .htri-node{width:112px;height:112px;opacity:0;animation:none;}
-    .ld-tri-box .htri-ring{padding:9px;} .ld-tri-box .htri-ring::before{inset:9px;}
-    .ld-tri-box .htri-core .en{font-size:.66rem;margin-top:2px;}
-    .ld-tri-box .htri-core .jp{font-size:1rem;margin-top:1px;}
+    /* 円は余白を詰めて文字を大きく（リング幅7px・中の文字を一回り拡大） */
+    .ld-tri-box .htri-node{width:128px;height:128px;opacity:0;animation:none;}
+    .ld-tri-box .htri-ring{padding:7px;} .ld-tri-box .htri-ring::before{inset:7px;}
+    .ld-tri-box .htri-core .en{font-size:.78rem;margin-top:2px;}
+    .ld-tri-box .htri-core .jp{font-size:1.22rem;margin-top:1px;}
     .ld-tri-box .htri-lines .htri-link{stroke:rgba(255,255,255,.45);stroke-width:1.8;animation:none;stroke-dashoffset:1;}
     /* 健康(左下)→人間関係(右下)→経済(上) の順に点が現れ、線が追って三角形を閉じる（計2.9s） */
     .ld-tri-box.drawn .htri-node.hh{animation:htriNodeIn .6s cubic-bezier(.22,1,.36,1) 0s forwards;}
@@ -281,10 +282,10 @@
     .ld-tri-box .htri-flow{animation:none;opacity:0;}
     .ld-tri-box.drawn .htri-flow{animation:htriFlowIn .8s ease 3.1s forwards,htriFlowMove 3s linear 3.1s infinite;}
     @media(max-width:640px){
-      .ld-tri-box .htri-node{width:80px;height:80px;}
-      .ld-tri-box .htri-ring{padding:6px;} .ld-tri-box .htri-ring::before{inset:6px;}
-      .ld-tri-box .htri-core .en{font-size:.52rem;}
-      .ld-tri-box .htri-core .jp{font-size:.76rem;}
+      .ld-tri-box .htri-node{width:92px;height:92px;}
+      .ld-tri-box .htri-ring{padding:5px;} .ld-tri-box .htri-ring::before{inset:5px;}
+      .ld-tri-box .htri-core .en{font-size:.6rem;}
+      .ld-tri-box .htri-core .jp{font-size:.92rem;}
     }
     /* caption：使わないステップは枠ごと畳んで、三角形が常に中央に来るようにする */
     .ld-cap{position:relative;width:100%;height:0;display:flex;align-items:center;justify-content:center;transition:height 1s cubic-bezier(.22,1,.36,1);}
