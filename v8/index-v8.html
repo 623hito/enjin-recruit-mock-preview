@@ -16,6 +16,23 @@
   {"@context":"https://schema.org/","@type":"JobPosting","title":"新卒採用 2027-2028（PRコンサル／営業ほか）","description":"創業20周年のEnjinが、次の20年を担う新卒メンバーを募集。1年目から経営者と直接商談。","hiringOrganization":{"@type":"Organization","name":"株式会社Enjin"},"jobLocation":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"中央区","addressRegion":"東京都","streetAddress":"銀座5-13-16 ヒューリック銀座イーストビル8F","addressCountry":"JP"}},"employmentType":"FULL_TIME","datePosted":"2026-07-21","validThrough":"2027-03-31"}
   </script>
   <script src="assets/tailwind.js"></script>
+  <script>
+  // オープニングを再生する時だけ、背景写真3枚を最優先で先行取得する。
+  // CSS背景画像は他の<img>と帯域を取り合って後回しにされ、再生開始に間に合わず
+  // 黒背景のままシーンが進んでしまうため（再生条件の判定はローダー本体と同一に保つこと）
+  (function(){try{
+    var ne=performance.getEntriesByType('navigation')[0];
+    var isReload=ne?ne.type==='reload':(performance.navigation||{}).type===1;
+    var seen=sessionStorage.getItem('enjinIntroSeen')==='1';
+    if(seen&&!isReload)return;
+    ['images/purpose_summit.jpg','images/culture_beach.jpg','images/philosophy_triangle.jpg'].forEach(function(u,i){
+      var l=document.createElement('link');
+      l.rel='preload';l.as='image';l.href=u;
+      if(i===0)l.setAttribute('fetchpriority','high');
+      document.head.appendChild(l);
+    });
+  }catch(e){}})();
+  </script>
   <link href="assets/fonts.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Anton&family=Shippori+Mincho+B1:wght@700;800&display=swap" rel="stylesheet" />
   <style>
@@ -1388,9 +1405,20 @@
         // step0は0msではなく140ms後に発火させる（初回ペイント前にdata-stepが変わると
         // pre→0 のトランジションが走らず、開幕がフェードインしない）
         // step2は三角形の描画2.0s＋破線の巡回開始＋「ぜんぶ大事」で2.9s確保する
-        var sceneT=[140,2100,4000,6900];
-        sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
-        timers.push(setTimeout(finish,8300));
+        function start(){
+          var sceneT=[140,2100,4000,6900];
+          sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
+          timers.push(setTimeout(finish,8300));
+        }
+        // 1枚目の写真が来る前に開演すると黒背景のままシーンが進むため、
+        // ロード完了を待ってから始める。ただし回線が遅くても最大1.2sで見切り発車
+        // （2枚目以降はheadのpreloadが先行取得しているので、シーン到達までに間に合う）
+        var started=false;
+        function go(){ if(started||finished)return; started=true; start(); }
+        var first=new Image();
+        first.onload=go; first.onerror=go;
+        first.src='images/purpose_summit.jpg';
+        if(first.complete){ go(); } else { setTimeout(go,1200); }
       })();
 
       // count-up numbers
