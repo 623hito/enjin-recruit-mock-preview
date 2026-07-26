@@ -520,11 +520,11 @@
         #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.16) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
 
         /* 章末の遷移リンク（横並びの楕円ボタン） */
-        .pill-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:.72rem 1.4rem;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#3f3a36;background:rgba(255,255,255,.5);transition:border-color .25s,background .25s,color .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
-        .pill-link:hover{border-color:var(--red);background:#fff;color:var(--red);}
+        .pill-link{display:inline-flex;align-items:center;gap:.7rem;border:1.5px solid rgba(28,26,23,.7);border-radius:99px;padding:1.05rem 1.9rem;font-size:14px;font-weight:700;letter-spacing:.02em;color:#2a211e;background:#fff;box-shadow:0 8px 20px -12px rgba(28,26,23,.35);transition:border-color .25s,background .25s,color .25s,box-shadow .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+        .pill-link:hover{border-color:var(--red);background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(191,15,15,.5);}
         .pill-link:active{transform:scale(.96);}
-        .pill-link .ar{display:inline-block;transform:translateY(1px);color:var(--red);}
-        .pill-link:hover .ar{color:#ff6b6b;}
+        .pill-link .ar{display:inline-block;transform:translateY(1px);color:var(--red);font-size:16px;transition:color .25s;}
+        .pill-link:hover .ar{color:#fff;}
         @media(max-width:640px){
           .pill-link{width:100%;justify-content:space-between;}
         }
@@ -1122,7 +1122,7 @@
 
   <!-- ============ Enjin LIFE（ハブ） ============ -->
   <section id="env" class="bg-paper px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
-    <div class="sec-en-ghost" style="top:2%;right:-2%;">LIFE</div>
+    <div class="sec-en-ghost" style="top:2%;left:-2%;">LIFE</div>
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="mb-14">
         <p class="eyebrow mb-4"><span class="en-num">04</span>Enjin LIFE</p>
@@ -1326,20 +1326,20 @@
       <p class="font-alumni font-bold text-sm tracking-[0.3em] text-white/70 mb-4">JOIN US</p>
       <h2 class="sec-title leading-tight mb-4" style="font-size:clamp(1.8rem, 4vw, 3rem);">あなたに合った入口で、<br class="sm:hidden" />話を聞きに来ませんか。</h2>
       <p class="text-sm text-white/85 mb-12">選考ではありません。まずは知ることから。3つの入口を用意しました。</p>
-      <div class="grid sm:grid-cols-3 gap-4 text-left">
-        <a href="application-v8.html" data-cta="seminar" class="group bg-white p-6 hover:-translate-y-1 transition" style="color:#141414;">
+      <div class="grid sm:grid-cols-3 gap-5 text-left">
+        <a href="application-v8.html" data-cta="seminar" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#141414;">
           <p class="font-alumni font-black text-red text-2xl mb-2">01</p>
           <h3 class="font-bold text-lg mb-1">会社説明会</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">Enjinのリアルをラフに知る場。オンライン可。</p>
           <span class="font-alumni font-bold text-xs tracking-widest text-red group-hover:tracking-[.2em] transition">RESERVE →</span>
         </a>
-        <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line" class="group bg-white p-6 hover:-translate-y-1 transition relative" style="color:#141414;border-top:3px solid #06C755;">
+        <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300 relative" style="color:#141414;border-top:3px solid #06C755;">
           <p class="font-alumni font-black text-2xl mb-2" style="color:#06C755;">02</p>
           <h3 class="font-bold text-lg mb-1">LINEで相談</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">まず気軽に。友だち追加して質問だけでもOK。</p>
           <span class="font-alumni font-bold text-xs tracking-widest group-hover:tracking-[.2em] transition" style="color:#06C755;">ADD FRIEND →</span>
         </a>
-        <a href="application-v8.html" data-cta="entry" class="group bg-white p-6 hover:-translate-y-1 transition" style="color:#141414;">
+        <a href="application-v8.html" data-cta="entry" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#141414;">
           <p class="font-alumni font-black text-red text-2xl mb-2">03</p>
           <h3 class="font-bold text-lg mb-1">エントリー</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">選考に進みたい方はこちら。マイナビ等も対応予定。</p>
@@ -1396,11 +1396,13 @@
       // （下地を赤で塗ると塗りと同色になり「左から伸びる」動きが見えなくなる）
       (function(){
         var D=[2900,3200,3200,4900,5000,5400];
-        var T=[[1,1,1],[1,1,1],[1.18,1.0,0.26],[0.34,0.30,0.24],[1.16,1.14,1.14],[1,1,1]];
+        // T の各要素は [健康, 人間関係, 経済]。シーン05(index4)は健康・人間関係をシーン03(index2)
+        // と同値のまま据え置き、経済だけを動かして「経済力だけを伸ばす」印象にする
+        var T=[[1,1,1],[1,1,1],[1.18,1.0,0.26],[0.34,0.30,0.24],[1.18,1.0,1.32],[1,1,1]];
         var AGE=['','','20代','30代〜','20代のうちに',''];
         var N=6;
         var state={i:0,playing:false,ended:false,showStart:true};
-        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, pending=null, seen=false, raf=null;
+        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, seen=false, raf=null;
 
         var $=function(id){return document.getElementById(id);};
         var stage=$('htStage'), poly=$('htPoly'), circ=$('htCirc'), d0=$('htD0'), d1=$('htD1'), d2=$('htD2'),
@@ -1433,10 +1435,11 @@
         }
 
         function setScene(i){
-          clearTimeout(pending);
           el=0;
-          if(i===4){ target=T[2].slice(); pending=setTimeout(function(){target=T[4].slice();},900); }
-          else target=T[i].slice();
+          // シーン05(index4)は健康・人間関係を即座に定位置へスナップ（アニメーションさせない）。
+          // 経済(cur[2])だけをtickのlerpで動かし、「経済力だけを伸ばす」動きにする
+          if(i===4){ cur[0]=T[4][0]; cur[1]=T[4][1]; }
+          target=T[i].slice();
           if(i===5) num=0;
           state.i=i; state.ended=false;
           renderScenes();
