@@ -474,7 +474,7 @@
         /* minmax の下限は min(330px,100%)。素の 330px だとスマホでトラックがコンテナを
            はみ出し、.ht-stage の overflow:hidden で右側が切れる */
         .ht-grid{cursor:pointer;user-select:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));align-items:center;gap:clamp(24px,4vw,56px);padding:clamp(28px,4vw,56px);min-height:clamp(560px,68vh,660px);}
-        @media(min-width:641px){ .ht-grid{grid-template-columns:1fr 1.15fr;} }
+        @media(min-width:641px){ .ht-grid{grid-template-columns:.95fr 1.15fr;gap:clamp(40px,7vw,96px);} }
         .ht-textcol{position:relative;min-height:clamp(260px,38vh,340px);order:2;}
         .ht-scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;transition:opacity .3s ease,transform .5s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0;transform:translateY(14px);}
         .ht-scene.is-active{opacity:1;transform:translateY(0);pointer-events:auto;}
@@ -524,8 +524,13 @@
         .ht-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .9s ease;opacity:0;pointer-events:none;}
         #htStartCard{z-index:6;background:rgba(251,248,242,.96);}
         #htStartCard.is-on{opacity:1;}
-        #htEndCard{z-index:5;background:rgba(251,248,242,.94);cursor:pointer;transition:opacity .6s ease;}
+        #htEndCard{z-index:5;background:rgba(251,248,242,.94);cursor:pointer;transition:opacity .3s ease;}
         #htEndCard.is-on{opacity:1;pointer-events:auto;}
+        /* 終了カードの3行は1行ずつ順番に出す */
+        .ht-endl{margin:0;opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,1,.36,1);}
+        #htEndCard.is-on .ht-endl{transition-delay:.35s;opacity:1;transform:translateY(0);}
+        #htEndCard.is-on .ht-endl-2{transition-delay:.85s;}
+        #htEndCard.is-on .ht-endl-3{transition-delay:1.35s;}
         .ht-chevron{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(200,50,42,.4);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
         @keyframes htFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
         .ht-replay{margin-top:30px;display:inline-flex;align-items:center;gap:9px;background:none;border:1px solid rgba(28,26,23,.2);border-radius:99px;padding:11px 24px;font-size:15px;letter-spacing:.06em;color:#5d574e;cursor:pointer;}
@@ -825,7 +830,7 @@
                   </g>
                 </g>
 
-                <g id="htPyr" style="opacity:0;">
+                <g id="htPyr" style="opacity:0;" transform="translate(200,213) scale(1.32) translate(-200,-213)">
                   <ellipse cx="200" cy="360" rx="132" ry="18" fill="url(#htGroundG)"></ellipse>
                   <g id="htPyr0" opacity="0">
                     <polygon points="122,270 200,270 200,356 82,356" fill="#f2b3ad"></polygon>
@@ -877,7 +882,11 @@
 
         <div class="ht-card" id="htEndCard" style="padding:0 6vw;">
           <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:clamp(15px,1.9vw,19px);color:#c8322a;margin:0 0 22px;">SCROLL ON</p>
-          <p style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;margin:0 0 38px;">学生時代の偏差値は関係ない。<br />社会人としての「偏差値60」を、<br />Enjinで一緒に目指そう。</p>
+          <div style="margin:0 0 38px;">
+            <p class="ht-endl" style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">学生時代の偏差値は関係ない。</p>
+            <p class="ht-endl ht-endl-2" style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">社会人としての「偏差値60」を、</p>
+            <p class="ht-endl ht-endl-3" style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">Enjinで一緒に目指そう。</p>
+          </div>
           <div class="ht-chevron"><svg width="26" height="26" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#c8322a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
           <button class="ht-replay" id="htReplay"><svg width="16" height="16" viewBox="0 0 20 20"><path d="M4,4 v6 h6 M4,10 a8,8 0 1 0 2-6" fill="none" stroke="#8a8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>もう一度見る</button>
         </div>
