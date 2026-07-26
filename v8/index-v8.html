@@ -33,6 +33,9 @@
     });
   }catch(e){}})();
   </script>
+  <!-- Heroの写真はCSSのbackground-imageなのでCSS解決後まで取得が始まらない。
+       ロゴでTOPへ戻った直後に写真が出遅れるため、ファーストビューとして明示的に先読みする -->
+  <link rel="preload" as="image" href="images/hero_main.jpg" fetchpriority="high" />
   <link href="assets/fonts.css" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@700;900&family=Shippori+Mincho+B1:wght@700;800&display=swap" rel="stylesheet" />
   <style>
@@ -511,9 +514,25 @@
         /* Happiness Triangle — dark "core belief" chapter treatment */
         #engine{color:#c9c2bc;}
         #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.18) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
-        #engine h2{color:#fbf7f3;}
+        #engine h2,#engine h3{color:#fbf7f3;}
         #engine .text-gray-600{color:#bdb3ab;}
+        #engine .text-gray-700{color:#c4bab2;}
         #engine .sec-en-ghost{color:rgba(255,255,255,.05);}
+        /* hub-link は明色セクション前提の罫線色なので、暗色章では反転させる */
+        #engine .hub-link{border-bottom-color:rgba(255,255,255,.22);}
+        #engine .hub-link:hover{border-bottom-color:#fff;}
+        #engine .hub-link .font-medium{color:#f2ece7;}
+        #engine .hub-link .en{color:#8d857e;}
+
+        /* 章末の遷移リンク（横並びの楕円ボタン） */
+        .pill-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(255,255,255,.26);border-radius:99px;padding:.72rem 1.4rem;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#f2ece7;background:rgba(255,255,255,.03);transition:border-color .25s,background .25s,color .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+        .pill-link:hover{border-color:var(--red);background:rgba(191,15,15,.16);color:#fff;}
+        .pill-link:active{transform:scale(.96);}
+        .pill-link .ar{display:inline-block;transform:translateY(1px);color:var(--red);}
+        .pill-link:hover .ar{color:#ff6b6b;}
+        @media(max-width:640px){
+          .pill-link{width:100%;justify-content:space-between;}
+        }
 
         /* Happiness Triangle — proof cards (real benefits, grounding the concept) */
         .htri-proof-card{display:flex;flex-direction:column;background:#fdf6f0;border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;box-shadow:0 12px 28px -18px rgba(0,0,0,.55);}
@@ -690,11 +709,9 @@
     <div class="max-w-6xl mx-auto flex flex-col lg:flex-row lg:items-center gap-4">
       <div class="flex items-center gap-3 flex-shrink-0">
         <span class="font-alumni font-black text-lg tracking-wide">NEWS</span>
-        <span class="text-[10px] text-gray-400 tracking-widest">お知らせ</span>
       </div>
       <a href="news-article-v8.html" class="flex items-center gap-4 flex-1 min-w-0 group">
         <span class="font-alumni font-bold text-sm text-gray-400 whitespace-nowrap">2026.07.XX</span>
-        <span class="text-xs border border-red text-red px-2 py-0.5 whitespace-nowrap flex-shrink-0">選考情報</span>
         <span class="text-sm truncate group-hover:text-red transition">【28卒採用】会社説明会の日程を公開しました（ダミー）</span>
       </a>
       <a href="news-v8.html" class="text-xs text-gray-500 hover:text-red transition whitespace-nowrap flex-shrink-0">一覧を見る　›</a>
@@ -739,7 +756,7 @@
             <div class="ht-scene" data-scene="4">
               <p class="ht-num">05</p>
               <p class="ht-lead">だからこそ、<br>健康と人間関係の<br>土台があるうちに、</p>
-              <p class="ht-emph"><span>経済力を伸ばすこと</span>に、舵を切る。</p>
+              <p class="ht-emph"><span>経済力を伸ばすこと</span>に、<br />舵を切る。</p>
             </div>
             <div class="ht-scene" data-scene="5">
               <p class="ht-num">06</p>
@@ -867,15 +884,36 @@
 
   <!-- ============ 02b THE Enjin — 経済力を伸ばす、その仕組み ============ -->
   <section id="engine" class="px-6 lg:px-16 py-24 lg:py-32 reveal relative overflow-hidden" style="background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);">
-    <div class="sec-en-ghost" style="top:6%;left:-2%;">BALANCE</div>
+    <div class="sec-en-ghost" style="top:6%;left:-2%;">ECONOMY</div>
     <div class="max-w-5xl mx-auto relative z-10">
 
       <div class="htri-proof-block">
         <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE Enjin — 経済力を伸ばす、その仕組み</p>
-        <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-10">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
-        <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
+        <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-14 lg:mb-16">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
+
+        <!-- 主力事業＝PR。「経済力が伸びる理由」の本体なのでこの章で語る（旧 #about の主力事業ブロックを集約） -->
+        <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-16 lg:mb-20">
+          <div class="ken-burns aspect-[4/3] relative" style="box-shadow:24px 24px 0 rgba(255,255,255,.055);">
+            <div class="kb-img" style="background-image:url('images/business.jpg');"></div>
+            <span class="absolute left-0 bottom-0 bg-red text-white text-[11px] font-bold px-4 py-2 tracking-wider">1年目から、経営者と。</span>
+          </div>
+          <div>
+            <p class="font-alumni font-bold text-[11px] text-red tracking-[0.22em] mb-4">PR &amp; BRANDING</p>
+            <h3 class="font-mincho font-bold leading-[1.5] mb-6" style="font-size:clamp(1.5rem,3vw,2.1rem);">経営者のブランディングを、<br /><span class="text-red">1年目から</span>任される。</h3>
+            <p class="text-[15px] text-gray-700 leading-[2.1] mb-8">Enjinの主力は、全国の中小企業の経営者に伴走する<span class="font-bold">PR・ブランディング事業</span>。担当するのは、決裁者である経営者ご本人。その想いや事業の価値を引き出し、メディアを通じて世の中に伝えます。新卒1年目から経営者と直接向き合える——それが、Enjinで得られるいちばんの経験です。<span class="kari ml-1">紹介文言仮</span></p>
+            <ul class="grid gap-3 mb-8">
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">対峙するのは、中間管理職ではなく<span class="font-bold">経営者・決裁者</span>。</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">累計<span class="font-bold">7,000社超</span>の顧客基盤の上で、実践を積める。</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">新聞・Webで見かける記事の裏側に、Enjinの仕事がある。</span></li>
+            </ul>
+            <a href="sales-v8.html" class="hub-link" style="max-width:360px;"><span class="font-medium">PRコンサルティング／営業を見る</span><span class="en">SALES ›</span></a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-7">
           <a href="about-v8.html#business" class="htri-proof-card">
-            <div class="htri-proof-img" style="background-image:url('images/business.jpg');"></div>
+            <!-- 上の PR & BRANDING が business.jpg なので、ここは別カットを使う -->
+            <div class="htri-proof-img" style="background-image:url('images/office_about.jpg');"></div>
             <div class="htri-proof-body">
               <span class="htri-proof-axis">01</span>
               <h4 class="htri-proof-title">経営者と、直接対峙する。</h4>
@@ -883,7 +921,7 @@
             </div>
           </a>
           <a href="environment-v8.html#benefit" class="htri-proof-card htri-proof-num">
-            <div class="htri-proof-img"><span class="htri-proof-bignum" style="font-size:1.3rem;">FAIR<br />REVIEW</span></div>
+            <div class="htri-proof-img"><span class="htri-proof-bignum">FAIR<br />REVIEW</span></div>
             <div class="htri-proof-body">
               <span class="htri-proof-axis">02</span>
               <h4 class="htri-proof-title">フェアな評価。</h4>
@@ -891,16 +929,14 @@
             </div>
           </a>
         </div>
-        <div class="max-w-xl mx-auto text-center mt-10">
+        <div class="max-w-xl mx-auto text-center mt-12 lg:mt-14">
           <p class="text-sm text-gray-600 leading-[2.1]">経済力が伸びれば、巡り巡って<span class="font-bold text-red">健康も人間関係も</span>、さらに良くなっていく。<span class="kari ml-1">文言仮</span></p>
-        </div>
-        <div class="text-center mt-7">
-          <a href="environment-v8.html#benefit" class="inline-flex items-center gap-1.5 text-[12.5px] text-red font-bold hover:opacity-70 transition-opacity"><span>制度・福利厚生をすべて見る</span><span class="ar" style="display:inline-block;transform:translateY(1px);">›</span></a>
         </div>
       </div>
 
-      <div class="max-w-2xl mx-auto text-center mt-14 lg:mt-16">
-        <a href="#message" class="inline-flex items-center gap-1.5 text-[12.5px] text-red font-bold hover:opacity-70 transition-opacity"><span>この想いの原点、本田のメッセージを読む</span><span class="ar" style="display:inline-block;transform:translateY(1px);">›</span></a>
+      <div class="flex flex-wrap items-center justify-center gap-3 mt-10 lg:mt-12">
+        <a href="environment-v8.html#benefit" class="pill-link"><span>制度・福利厚生をすべて見る</span><span class="ar">›</span></a>
+        <a href="#message" class="pill-link"><span>この想いの原点、本田のメッセージを読む</span><span class="ar">›</span></a>
       </div>
     </div>
   </section>
@@ -925,47 +961,23 @@
         </div>
       </div>
 
-      <!-- 事業内容：主力=PR（B事業）を主役に -->
-      <div class="mt-20 lg:mt-24">
-        <p class="eyebrow mb-4">Our Business</p>
-        <h3 class="sec-title text-2xl lg:text-3xl mb-6">主力事業</h3>
-
-        <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center">
-          <!-- ビジュアル：経営者と向き合う商談シーンを想起 -->
-          <div class="ken-burns aspect-[4/3] relative" style="box-shadow:24px 24px 0 var(--paper);">
-            <div class="kb-img" style="background-image:url('images/business.jpg');"></div>
-            <span class="absolute left-0 bottom-0 bg-red text-white text-[11px] font-bold px-4 py-2 tracking-wider">1年目から、経営者と。</span>
-          </div>
-
+      <!-- グループ8社。主力PRの中身は ECONOMY セクションで語り切っているので、
+           ここは「会社の広がり」に絞る -->
+      <div class="mt-20 lg:mt-24 pt-12 border-t border-gray-200">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div>
-            <p class="font-alumni font-bold text-[11px] text-red tracking-[0.22em] mb-4">PR &amp; BRANDING</p>
-            <h4 class="font-mincho font-bold leading-[1.5] mb-6" style="font-size:clamp(1.5rem,3vw,2.1rem);">経営者のブランディングを、<br /><span class="text-red">1年目から</span>任される。</h4>
-            <p class="text-[15px] text-gray-700 leading-[2.1] mb-8">Enjinの主力は、全国の中小企業の経営者に伴走する<span class="font-bold">PR・ブランディング事業</span>。担当するのは、決裁者である経営者ご本人。その想いや事業の価値を引き出し、メディアを通じて世の中に伝えます。新卒1年目から経営者と直接向き合える——それが、Enjinで得られるいちばんの経験です。<span class="kari ml-1">紹介文言仮</span></p>
-            <ul class="grid gap-3 mb-8">
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">対峙するのは、中間管理職ではなく<span class="font-bold">経営者・決裁者</span>。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">累計<span class="font-bold">7,000社超</span>の顧客基盤の上で、実践を積める。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">新聞・Webで見かける記事の裏側に、Enjinの仕事がある。</span></li>
-            </ul>
-            <a href="sales-v8.html" class="hub-link" style="max-width:360px;"><span class="font-medium">PRコンサルティング／営業を見る</span><span class="en">SALES ›</span></a>
-          </div>
-        </div>
-
-        <!-- 他事業（グループ8社）をわかりやすく -->
-        <div class="mt-12 pt-10 border-t border-gray-200">
-          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-            <div>
-              <p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP COMPANIES</p>
-              <p class="text-sm text-gray-700 leading-relaxed mb-5">Enjinグループは<span class="font-bold">PRを軸に、8社</span>で事業を展開しています。<br class="hidden sm:block" />入社後は主力のPR事業からスタートし、将来的にはグループの多様なフィールドへ広がります。</p>
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="inline-flex items-center gap-2 border border-red bg-red text-white text-xs font-bold px-3 py-2">PR・ブランディング<span class="text-[10px] font-normal opacity-80">／新卒配属はここ</span></span>
-                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">観光</span>
-                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">不動産</span>
-                <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">金融</span>
-                <span class="inline-block text-gray-400 text-xs px-1 py-2">ほか</span>
-              </div>
+            <p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP COMPANIES</p>
+            <h3 class="sec-title text-2xl lg:text-3xl mb-6">グループ8社</h3>
+            <p class="text-sm text-gray-700 leading-relaxed mb-5">Enjinグループは<span class="font-bold">PRを軸に、8社</span>で事業を展開しています。<br class="hidden sm:block" />入社後は主力のPR事業からスタートし、将来的にはグループの多様なフィールドへ広がります。</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-2 border border-red bg-red text-white text-xs font-bold px-3 py-2">PR・ブランディング<span class="text-[10px] font-normal opacity-80">／新卒配属はここ</span></span>
+              <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">不動産</span>
+              <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">観光</span>
+              <span class="inline-block border border-gray-300 text-gray-600 text-xs px-3 py-2">金融</span>
+              <span class="inline-block text-gray-400 text-xs px-1 py-2">ほか</span>
             </div>
-            <a href="about-v8.html#business" class="hub-link whitespace-nowrap flex-shrink-0" style="min-width:280px;"><span class="font-medium">他の事業を見る</span><span class="en">GROUP ›</span></a>
           </div>
+          <a href="about-v8.html#business" class="hub-link whitespace-nowrap flex-shrink-0" style="min-width:280px;"><span class="font-medium">他の事業を見る</span><span class="en">GROUP ›</span></a>
         </div>
       </div>
     </div>
@@ -1155,8 +1167,8 @@
   <!-- ============ TAPE（理念マーキー帯） ============ -->
   <div class="tape" aria-hidden="true">
     <div class="tape-track">
-      <p class="solid">GIVE FIRST</p><p class="stroke">社会の役に立つ立派な人間を、一人でも多く輩出する。</p><p class="red">ENJIN GROUP</p><p class="stroke">SINCE 2005 — 20TH ANNIVERSARY</p>
-      <p class="solid">GIVE FIRST</p><p class="stroke">社会の役に立つ立派な人間を、一人でも多く輩出する。</p><p class="red">ENJIN GROUP</p><p class="stroke">SINCE 2005 — 20TH ANNIVERSARY</p>
+      <p class="solid">GIVE FIRST</p><p class="stroke">社会の役に立つ立派な人間を一人でも多く輩出する。</p><p class="red">ENJIN GROUP</p><p class="stroke">SINCE 2006</p>
+      <p class="solid">GIVE FIRST</p><p class="stroke">社会の役に立つ立派な人間を一人でも多く輩出する。</p><p class="red">ENJIN GROUP</p><p class="stroke">SINCE 2006</p>
     </div>
   </div>
 
@@ -1467,7 +1479,11 @@
             fill.style.opacity = n<state.i ? '.42' : '1';
           });
 
-          var k=1-Math.pow(0.02, dt/1000);
+          // 1秒後に残る差の割合。大きいほどゆっくり近づく。
+          // 05「経済力を伸ばすことに、舵を切る。」は伸びをじっくり見せたいので緩める
+          // （尺 D[4] は変えていないので全体の長さは同じ）
+          var rate = state.i===4 ? 0.40 : 0.02;
+          var k=1-Math.pow(rate, dt/1000);
           for(var j=0;j<3;j++) cur[j]+=(target[j]-cur[j])*k;
           var i=state.i, big=i===4, dim=i===3, isLast=i===5;
 

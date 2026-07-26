@@ -34,6 +34,30 @@
     .biz-card:hover .ph>div{transform:scale(1.05);filter:grayscale(0);}
     .biz-card .num{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:2rem;line-height:1;color:#e3ddd9;transition:color .35s;}
     .biz-card:hover .num{color:var(--red);}
+
+    /* 事業カード：クリックで紹介文を開く（カード自体がボタン） */
+    .biz-card{display:flex;flex-direction:column;}
+    .bd-toggle{display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit;}
+    .bd-more{display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--red);}
+    .bd-more-i{position:relative;width:11px;height:11px;flex-shrink:0;}
+    .bd-more-i::before,.bd-more-i::after{content:"";position:absolute;background:currentColor;transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s;}
+    .bd-more-i::before{left:0;top:5px;width:11px;height:1.5px;}
+    .bd-more-i::after{left:5px;top:0;width:1.5px;height:11px;}
+    .biz-card.is-open .bd-more-i::after{transform:scaleY(0);opacity:0;}
+    .biz-card.is-open .bd-more .bd-more-t{opacity:.55;}
+    .bd-body{overflow:hidden;}
+    .bd-body-in{padding:0 1.25rem 1.4rem;border-top:1px solid #f0ebe6;margin-top:.2rem;padding-top:1.1rem;}
+    .bd-lead{font-size:.8rem;line-height:1.95;color:#5d574e;margin-bottom:1rem;}
+    .bd-facts{display:grid;gap:.5rem;margin-bottom:1rem;}
+    .bd-fact{display:flex;align-items:baseline;gap:.7rem;}
+    .bd-fact dt{flex-shrink:0;font-size:.62rem;letter-spacing:.1em;color:#a29a8d;border:1px solid #e6ded7;padding:.15rem .5rem;line-height:1.6;}
+    .bd-fact dd{font-size:.78rem;font-weight:700;color:#2a211e;line-height:1.6;}
+    .bd-cta{display:inline-flex;align-items:center;gap:.45rem;font-size:.74rem;font-weight:700;color:var(--red);}
+    .bd-cta:hover{opacity:.7;}
+    .bd-ar{display:inline-block;transform:translateY(1px);}
+    /* 開閉アニメーションは JS が高さを付けて走らせる */
+    .bd-body.is-anim{transition:height .42s cubic-bezier(.22,1,.36,1);}
+    @media (prefers-reduced-motion: reduce){ .bd-body.is-anim{transition:none;} }
     .noise{position:relative;}
     .noise::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.055;mix-blend-mode:screen;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
     .noise > *{position:relative;z-index:2;}
@@ -117,11 +141,96 @@
         <p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl">PRを起点に、不動産・観光・金融など多様な領域へ。グループ8社が連携し、クライアントの価値を社会に届けています。<span class="kari ml-2">事業内容・仮</span></p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="biz-card"><div class="ph"><div style="background-image:url('images/business.jpg');"></div></div><div class="p-5"><p class="num mb-2">01</p><h3 class="font-bold text-lg mb-1">PR事業</h3><p class="text-xs text-gray-500 leading-relaxed">中小企業の経営者に伴走し、その会社の魅力を世の中へ発信する主力事業。</p></div></div>
-        <div class="biz-card"><div class="ph"><div style="background-image:url('images/members_20th.jpg');"></div></div><div class="p-5"><p class="num mb-2">02</p><h3 class="font-bold text-lg mb-1">不動産事業</h3><p class="text-xs text-gray-500 leading-relaxed">資産価値を高める企画・仲介。空間づくりから価値を伝える。</p></div></div>
-        <div class="biz-card"><div class="ph"><div style="background-image:url('images/office_about.jpg');"></div></div><div class="p-5"><p class="num mb-2">03</p><h3 class="font-bold text-lg mb-1">観光事業</h3><p class="text-xs text-gray-500 leading-relaxed">地域の魅力を再発見し、人を呼び込む観光プロモーションを手がける。</p></div></div>
-        <div class="biz-card"><div class="ph"><div style="background-image:url('images/ohana_trip.jpg');"></div></div><div class="p-5"><p class="num mb-2">04</p><h3 class="font-bold text-lg mb-1">プラットフォーム事業</h3><p class="text-xs text-gray-500 leading-relaxed">自社プラットフォームの運営を通じて、情報の発信力そのものを資産化する。</p></div></div>
-        <div class="biz-card"><div class="ph"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div><div class="p-5"><p class="num mb-2">05</p><h3 class="font-bold text-lg mb-1">金融事業</h3><p class="text-xs text-gray-500 leading-relaxed">経営者の挑戦を、資金と情報の両面から支えるサービス。</p></div></div>
+        <div class="biz-card" data-biz="01">
+          <button class="bd-toggle" type="button" aria-expanded="false" aria-controls="bizBody01">
+            <div class="ph"><div style="background-image:url('images/business.jpg');"></div></div>
+            <div class="p-5">
+              <p class="num mb-2">01</p>
+              <h3 class="font-bold text-lg mb-1">PR事業</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">中小企業の経営者に伴走し、その会社の魅力を世の中へ発信する主力事業。</p>
+              <span class="bd-more"><span class="bd-more-t">くわしく見る</span><span class="bd-more-i" aria-hidden="true"></span></span>
+            </div>
+          </button>
+          <div class="bd-body" id="bizBody01" hidden>
+            <div class="bd-body-in">
+              <p class="bd-lead">Enjinグループの主力。全国の中小企業の経営者ご本人と向き合い、その想いや事業の価値を引き出して、新聞・Web・テレビなどのメディアを通じて世の中に伝えます。担当するのは決裁者である経営者。新卒1年目から経営者と直接対峙できるのが、この事業のいちばんの特徴です。<span class="kari ml-1">紹介文言仮</span></p>
+              <dl class="bd-facts"><div class="bd-fact"><dt>窓口</dt><dd>経営者・決裁者</dd></div><div class="bd-fact"><dt>顧客基盤</dt><dd>累計7,000社超</dd></div><div class="bd-fact"><dt>新卒配属</dt><dd>ここからスタート</dd></div></dl>
+              <a href="sales-v8.html" class="bd-cta">PRコンサルティング／営業を見る<span class="bd-ar">›</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="biz-card" data-biz="02">
+          <button class="bd-toggle" type="button" aria-expanded="false" aria-controls="bizBody02">
+            <div class="ph"><div style="background-image:url('images/members_20th.jpg');"></div></div>
+            <div class="p-5">
+              <p class="num mb-2">02</p>
+              <h3 class="font-bold text-lg mb-1">不動産事業</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">資産価値を高める企画・仲介。空間づくりから価値を伝える。</p>
+              <span class="bd-more"><span class="bd-more-t">くわしく見る</span><span class="bd-more-i" aria-hidden="true"></span></span>
+            </div>
+          </button>
+          <div class="bd-body" id="bizBody02" hidden>
+            <div class="bd-body-in">
+              <p class="bd-lead">物件の仲介にとどまらず、「どう見せれば価値が伝わるか」という視点から企画・リノベーション・販促までを手がけます。PR事業で培った“伝える力”を、空間そのものに応用している事業です。<span class="kari ml-1">紹介文言仮</span></p>
+              <dl class="bd-facts"><div class="bd-fact"><dt>領域</dt><dd>企画・仲介・販促</dd></div><div class="bd-fact"><dt>強み</dt><dd>PR起点の見せ方</dd></div></dl>
+              
+            </div>
+          </div>
+        </div>
+        <div class="biz-card" data-biz="03">
+          <button class="bd-toggle" type="button" aria-expanded="false" aria-controls="bizBody03">
+            <div class="ph"><div style="background-image:url('images/office_about.jpg');"></div></div>
+            <div class="p-5">
+              <p class="num mb-2">03</p>
+              <h3 class="font-bold text-lg mb-1">観光事業</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">地域の魅力を再発見し、人を呼び込む観光プロモーションを手がける。</p>
+              <span class="bd-more"><span class="bd-more-t">くわしく見る</span><span class="bd-more-i" aria-hidden="true"></span></span>
+            </div>
+          </button>
+          <div class="bd-body" id="bizBody03" hidden>
+            <div class="bd-body-in">
+              <p class="bd-lead">自治体や観光事業者と組み、まだ知られていない地域の魅力を掘り起こしてプロモーションします。観光客を呼び込むだけでなく、地域にお金と誇りが残る仕組みづくりまでを一緒に考えます。<span class="kari ml-1">紹介文言仮</span></p>
+              <dl class="bd-facts"><div class="bd-fact"><dt>パートナー</dt><dd>自治体・観光事業者</dd></div><div class="bd-fact"><dt>ゴール</dt><dd>地域に残る仕組み</dd></div></dl>
+              
+            </div>
+          </div>
+        </div>
+        <div class="biz-card" data-biz="04">
+          <button class="bd-toggle" type="button" aria-expanded="false" aria-controls="bizBody04">
+            <div class="ph"><div style="background-image:url('images/ohana_trip.jpg');"></div></div>
+            <div class="p-5">
+              <p class="num mb-2">04</p>
+              <h3 class="font-bold text-lg mb-1">プラットフォーム事業</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">自社プラットフォームの運営を通じて、情報の発信力そのものを資産化する。</p>
+              <span class="bd-more"><span class="bd-more-t">くわしく見る</span><span class="bd-more-i" aria-hidden="true"></span></span>
+            </div>
+          </button>
+          <div class="bd-body" id="bizBody04" hidden>
+            <div class="bd-body-in">
+              <p class="bd-lead">受託だけに頼らず、自社でメディア・サービスを保有・運営することで、発信力そのものをグループの資産にしていく事業です。クライアントワークで得た知見を、自社プロダクトに還流させています。<span class="kari ml-1">紹介文言仮</span></p>
+              <dl class="bd-facts"><div class="bd-fact"><dt>形態</dt><dd>自社保有・自社運営</dd></div><div class="bd-fact"><dt>役割</dt><dd>グループの発信基盤</dd></div></dl>
+              
+            </div>
+          </div>
+        </div>
+        <div class="biz-card" data-biz="05">
+          <button class="bd-toggle" type="button" aria-expanded="false" aria-controls="bizBody05">
+            <div class="ph"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div>
+            <div class="p-5">
+              <p class="num mb-2">05</p>
+              <h3 class="font-bold text-lg mb-1">金融事業</h3>
+              <p class="text-xs text-gray-500 leading-relaxed">経営者の挑戦を、資金と情報の両面から支えるサービス。</p>
+              <span class="bd-more"><span class="bd-more-t">くわしく見る</span><span class="bd-more-i" aria-hidden="true"></span></span>
+            </div>
+          </button>
+          <div class="bd-body" id="bizBody05" hidden>
+            <div class="bd-body-in">
+              <p class="bd-lead">PR事業で経営者と深く関わる中で見えてきた「資金面の課題」に応える事業。資金調達の支援と、経営判断に必要な情報提供の両面から、経営者の次の挑戦を後押しします。<span class="kari ml-1">紹介文言仮</span></p>
+              <dl class="bd-facts"><div class="bd-fact"><dt>支援</dt><dd>資金調達・情報提供</dd></div><div class="bd-fact"><dt>起点</dt><dd>PR事業での経営者接点</dd></div></dl>
+              
+            </div>
+          </div>
+        </div>
       </div>
       <p class="text-center text-[11px] text-gray-400 mt-8"><span class="kari">全8社中6社を表示・仮</span>　各社名・事業内容は正式版で差し替え予定</p>
     </div>
@@ -206,6 +315,62 @@
     (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -70px 0px'});
     function init(){document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
     if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}})();
+  </script>
+<script>
+  // 事業カードのアコーディオン。height:auto へは transition できないので、
+  // 実測した px を当てて遷移させ、終わったら height を外して auto に戻す。
+  // 開始値の確定は requestAnimationFrame ではなく強制リフローで行う。
+  // rAF はタブが非アクティブだと止まるため、rAF 内で高さを入れる書き方だと
+  // height:0px のまま開いて中身が見えなくなる。
+  // 後始末も transitionend だけに頼らず setTimeout を併用する（残ると
+  // ウィンドウ幅を変えたときに固定pxで本文が切れる）。
+  (function(){
+    var cards=[].slice.call(document.querySelectorAll('.biz-card[data-biz]'));
+    if(!cards.length)return;
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var DUR=420;
+    cards.forEach(function(card){
+      var btn=card.querySelector('.bd-toggle'), body=card.querySelector('.bd-body');
+      if(!btn||!body)return;
+      var label=btn.querySelector('.bd-more-t');
+      var timer=null;
+      function settle(collapse){
+        clearTimeout(timer);
+        timer=setTimeout(function(){
+          body.classList.remove('is-anim');
+          body.style.height='';
+          if(collapse)body.hidden=true;
+        }, DUR+60);
+      }
+      btn.addEventListener('click', function(){
+        var open=card.classList.contains('is-open');
+        clearTimeout(timer);
+        if(open){
+          card.classList.remove('is-open');
+          btn.setAttribute('aria-expanded','false');
+          if(label)label.textContent='くわしく見る';
+          if(reduce){ body.hidden=true; body.style.height=''; return; }
+          body.style.height=body.scrollHeight+'px';
+          body.classList.add('is-anim');
+          void body.offsetHeight;
+          body.style.height='0px';
+          settle(true);
+        }else{
+          body.hidden=false;
+          card.classList.add('is-open');
+          btn.setAttribute('aria-expanded','true');
+          if(label)label.textContent='閉じる';
+          if(reduce){ body.style.height=''; return; }
+          var h=body.scrollHeight;
+          body.style.height='0px';
+          body.classList.add('is-anim');
+          void body.offsetHeight;              // 0px を遷移の始点として確定させる
+          body.style.height=h+'px';
+          settle(false);
+        }
+      });
+    });
+  })();
   </script>
 <script src="assets/anchor-fix.js"></script>
 <script src="assets/photo-kari.js"></script>
