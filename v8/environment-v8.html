@@ -151,14 +151,30 @@
       <a href="news-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">お知らせ</a>
       <a href="application-v8.html" onclick="document.getElementById('drawer').classList.remove('open')" class="btn-apply mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">説明会に申し込む　→</a>
     </div>
-  </div><section class="page-hero reveal">
-  <div class="bg"><div class="kb-img" style="background-image:linear-gradient(rgba(20,20,20,.62),rgba(20,20,20,.62)),url('images/ohana_cafe.jpg');"></div></div>
-  <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10">
-    <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">ENJIN LIFE</p>
-    <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(2rem,4.6vw,3.4rem);">Enjin LIFE</h1>
-    <p class="text-white/70 text-sm mt-4 leading-loose max-w-xl">文化・オフィス・制度・キャリア。Enjinで働く毎日を、4つの視点から紹介します。</p>
+  </div><section id="office" class="page-hero reveal relative">
+  <!-- 旧トップの汎用ヒーロー(ENJIN LIFE見出し)を廃止し、360°VRポスターをそのままヒーローに昇格。
+       クリックで360°VRツアーをその場に読み込む（初回表示を軽くするため遅延読込） -->
+  <div id="vrPoster" class="relative">
+    <div class="bg"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,.58),rgba(10,8,8,.58)),url('images/office_about.jpg');"></div></div>
+    <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10 text-center">
+      <p class="font-alumni font-bold text-white/70 tracking-[0.3em] text-xs mb-4">OFFICE ／ 360° VR</p>
+      <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3.2rem);">【360°VR体験】<br class="sm:hidden" />空間の魅力をリアルに伝える。</h1>
+      <button type="button" id="vrOpen" class="inline-flex items-center gap-3 whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition mt-9">
+        <svg viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
+        <span>VRでオフィスを見る</span>
+      </button>
+      <p class="text-[12px] text-white/60 mt-4">ドラッグで360°見渡せます</p>
+    </div>
   </div>
-  <p class="ghost">LIFE</p>
+  <!-- 読み込み後のツアー本体 -->
+  <div id="vrStage" class="hidden bg-black relative z-10">
+    <div class="vr-frame"><iframe id="vrFrame" src="" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
+    <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap">
+      <button type="button" id="vrClose" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">閉じる</button>
+      <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
+    </div>
+  </div>
+  <p class="ghost">OFFICE</p>
 </section>
 <section id="culture" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
   <div class="sec-en-ghost" style="top:2%;right:-2%;">CULTURE</div>
@@ -171,31 +187,6 @@
         <p class="text-[15px] text-gray-700 leading-[2.2] mb-5">OHANAとは、ハワイ語で<span class="font-bold">「家族」</span>を意味する言葉。<br />「誰ひとり置き去りにしない」——それが、Enjinがこの言葉に込めた約束です。</p>
         <p class="text-[15px] text-gray-700 leading-[2.2]">部署や役職を越えて支え合い、お互いの成長を本気で喜べる。同じ目的に向かう仲間だからこそ、時に厳しく、いつも温かく。そんな家族のような関係を、私たちは大切にしています。<span class="kari ml-1">文言仮</span></p>
       </div>
-    </div>
-  </div>
-</section>
-<section id="office" class="relative reveal">
-  <!-- ポスター：クリックで360°VRツアーをその場に読み込む（初回表示を軽くするため遅延読込） -->
-  <div id="vrPoster" class="relative">
-    <div class="ken-burns aspect-[16/8] lg:aspect-[16/6]"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,0.5),rgba(10,8,8,0.5)),url('images/office_about.jpg');"></div></div>
-    <div class="absolute inset-0 flex items-center justify-center text-center px-6">
-      <div>
-        <p class="font-alumni font-bold text-xs text-white/70 tracking-[0.3em] mb-3">OFFICE ／ 360° VR</p>
-        <h2 class="sec-title text-2xl lg:text-4xl text-white mb-8">【360°VR体験】<br class="lg:hidden" />空間の魅力をリアルに伝える。</h2>
-        <button type="button" id="vrOpen" class="inline-flex items-center gap-3 whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
-          <span>VRでオフィスを見る</span>
-        </button>
-        <p class="text-[11px] text-white/60 mt-4">ドラッグで360°見渡せます</p>
-      </div>
-    </div>
-  </div>
-  <!-- 読み込み後のツアー本体 -->
-  <div id="vrStage" class="hidden bg-black">
-    <div class="vr-frame"><iframe id="vrFrame" src="" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
-    <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap">
-      <button type="button" id="vrClose" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">閉じる</button>
-      <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
     </div>
   </div>
 </section>
@@ -213,7 +204,6 @@
       <button type="button" class="ben-card" data-title="OHANA交流イベント" data-imgs="images/ohana_cafe.jpg,images/members_20th.jpg,images/ohana_trip.jpg" data-en="OHANA EVENT" data-axis="人間関係" data-detail="運動会や周年パーティなど、部署・役職を越えて交流するイベントを多数開催。家族のような関係が、こうした時間から生まれます。"><div class="bc-img"><div style="background-image:url('images/ohana_cafe.jpg');"></div></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3.5"/><path d="M12 17.5V21"/><path d="M3 12h3.5"/><path d="M17.5 12H21"/><path d="m5.9 5.9 2.5 2.5"/><path d="m15.6 15.6 2.5 2.5"/><path d="m18.1 5.9-2.5 2.5"/><path d="m8.4 15.6-2.5 2.5"/></svg></span><span class="bc-axis">人間関係</span></div><p class="bc-en">OHANA EVENT</p><h3 class="bc-title">OHANA交流イベント</h3><p class="bc-short">運動会・周年パーティなど部署を超えた交流</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="アカデミー育成制度" data-en="ACADEMY" data-axis="経済" data-detail="新卒社員で構成される「アカデミー（ACD）」で、一定期間しっかり教育。標準化された安定したプログラムで、着実に力を伸ばします。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span><span class="bc-axis">経済</span></div><p class="bc-en">ACADEMY</p><h3 class="bc-title">アカデミー育成制度</h3><p class="bc-short">新卒組織で標準化された安定した育成</p><span class="bc-more">詳しく見る ＋</span></div></button>
       <button type="button" class="ben-card" data-title="宣言制度" data-en="SENGEN" data-axis="経済" data-detail="通常より高い目標を自ら「宣言」し、達成するとご褒美がもらえる制度。同期と切磋琢磨しながら、成長のスピードを自分で上げていけます。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V4"/></svg></span><span class="bc-axis">経済</span></div><p class="bc-en">SENGEN</p><h3 class="bc-title">宣言制度</h3><p class="bc-short">高い目標を自ら宣言し、達成でご褒美</p><span class="bc-more">詳しく見る ＋</span></div></button>
-      <button type="button" class="ben-card" data-title="フェアな評価" data-en="FAIR REVIEW" data-axis="経済" data-detail="評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、やった分だけ正当に返ってきます。若いうちの頑張りが、将来の安心に変わります。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17"/><path d="M5 7.5h14"/><path d="M8.5 20.5h7"/><path d="M5 7.5 2.2 13a3 3 0 0 0 5.6 0z"/><path d="M19 7.5 16.2 13a3 3 0 0 0 5.6 0z"/></svg></span><span class="bc-axis">経済</span></div><p class="bc-en">FAIR REVIEW</p><h3 class="bc-title">フェアな評価</h3><p class="bc-short">年齢・学歴不問。やった分だけ正当に返る</p><span class="bc-more">詳しく見る ＋</span></div></button>
     </div>
   </div>
 </section>
@@ -252,33 +242,55 @@
   <div class="sec-en-ghost" style="top:2%;left:-2%;">CAREER</div>
   <div class="max-w-6xl mx-auto relative z-10">
     <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">04</span>Career &amp; Growth</p><h2 class="sec-title text-4xl lg:text-5xl mb-4">キャリアと成長</h2><p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl">研修から独り立ち、その先の年収モデルまで。若いうちに頑張った人が、ちゃんと報われる設計です。</p></div>
-    <h3 class="font-bold text-xl mb-3">研修制度 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">TRAINING PROGRAM</span></h3>
+
+    <!-- 評価制度：#benefit のフェアな評価カードをここへ移設。TOP(#engine)の
+         「評価制度・福利厚生を見る」もこのセクションへ向くよう index-v8.html 側を修正済み -->
+    <div class="mb-16 p-7 lg:p-9 bg-white border border-gray-200 max-w-3xl">
+      <h3 class="font-bold text-xl mb-1">評価制度 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">FAIR REVIEW</span></h3>
+      <p class="text-[13px] text-gray-600 leading-[2] mt-3">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、やった分だけ正当に返ってきます。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">文言仮</span></p>
+    </div>
+
+    <h3 class="font-bold text-xl mb-3">独り立ちまでの支援 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">ONBOARDING SUPPORT</span></h3>
     <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">入社後は「アカデミー（ACD）」で基礎から段階的に育成。標準化されたプログラムと先輩の伴走で、いきなり一人にはしません。<span class="kari ml-1">内容仮</span></p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-px mb-16" style="background:#e6ded9;">
-      <div class="bg-white p-7">
-        <p class="font-alumni font-black text-3xl text-red mb-3">01</p>
-        <h4 class="font-bold text-[15px] mb-2">新入社員研修（ACD）</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">ビジネスマナー・PRの基礎・自社理念を、新卒組織アカデミーで体系的に習得。同期と切磋琢磨しながら土台をつくる期間です。</p>
+    <div class="day max-w-2xl mb-3">
+      <div class="day-item"><p class="t">4/1</p><div><p class="font-bold text-[15px]">入社式</p></div></div>
+      <div class="day-item"><p class="t">4/2-3</p><div><p class="font-bold text-[15px]">外部の研修会場で社会人基礎を学ぶ</p><p class="text-[12px] text-gray-500 mt-1">報連相の仕方、名刺交換など</p></div></div>
+      <div class="day-item hot"><p class="t">4/4〜</p><div><p class="font-bold text-[15px]">アカデミー（ACD）開始</p></div></div>
+      <div class="day-item"><p class="t">〜2週</p><div><p class="font-bold text-[15px]">社内ルールやビジネス基礎を学ぶ</p></div></div>
+      <div class="day-item"><p class="t">〜3週</p><div><p class="font-bold text-[15px]">業界や商材について学び、自社内で演習</p></div></div>
+      <div class="day-item"><p class="t">〜4週</p><div><p class="font-bold text-[15px]">徐々に実践＋フィードバック研修</p></div></div>
+      <div class="day-item"><p class="t">GW明け</p><div><p class="font-bold text-[15px]">一通りの1日業務に慣れる</p><p class="text-[12px] text-gray-500 mt-1">GW明け〜は実践数を増やしながら仮配属へ</p></div></div>
+      <div class="day-item hot"><p class="t">8月末</p><div><p class="font-bold text-[15px]">アカデミー卒業を目指して配属へ<span class="day-badge ml-1">GOAL</span></p></div></div>
+    </div>
+    <p class="text-[11px] text-gray-400 mb-16"><span class="kari">※直近年度の新人教育の例</span></p>
+
+    <h3 class="font-bold text-xl mb-8">配属後のキャリアステップ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">CAREER STEPS</span></h3>
+    <div class="flowline grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-16">
+      <div class="flow-node first"><span class="dot">1y</span><div><p class="font-bold text-[15px]">配属後〜</p><p class="text-[11px] text-gray-500 mt-1">OJT・先輩の伴走。<br />次は独りで商談へ。</p></div></div>
+      <div class="flow-node"><span class="dot">2y</span><div><p class="font-bold text-[15px]">2年目〜</p><p class="text-[11px] text-gray-500 mt-1">自走に向けてのチャレンジ</p></div></div>
+      <div class="flow-node"><span class="dot">3y</span><div><p class="font-bold text-[15px]">3年目</p><p class="text-[11px] text-gray-500 mt-1">主任昇格へ</p></div></div>
+      <div class="flow-node"><span class="dot">5y</span><div><p class="font-bold text-[15px]">5年目</p><p class="text-[11px] text-gray-500 mt-1">リード</p></div></div>
+    </div>
+
+    <h3 class="font-bold text-xl mb-2">営業力を活かして、次のフェーズへ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">NEXT PHASE</span></h3>
+    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">リードとして活躍した先には、3つの道を用意しています。<span class="kari ml-1">文言仮</span></p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">MANAGEMENT</p>
+        <h4 class="font-bold text-lg mb-2">マネジメント職</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">チーム・組織を率い、後進の育成と事業の成長を牽引する。<span class="kari ml-1">内容仮</span></p>
       </div>
-      <div class="bg-white p-7">
-        <p class="font-alumni font-black text-3xl text-red mb-3">02</p>
-        <h4 class="font-bold text-[15px] mb-2">OJT・先輩の伴走</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">配属後は先輩とともに実際の商談へ。月次1on1で振り返りとフォローを行い、「考えながら走る」を安全な環境で経験します。</p>
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">PROFESSIONAL</p>
+        <h4 class="font-bold text-lg mb-2">プロフェッショナル職</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">現場のプロとして専門性を磨き、最前線で価値を出し続ける。<span class="kari ml-1">内容仮</span></p>
       </div>
-      <div class="bg-white p-7">
-        <p class="font-alumni font-black text-3xl text-red mb-3">03</p>
-        <h4 class="font-bold text-[15px] mb-2">継続的な学びの機会</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">海外出張・宣言制度など、成長し続けるための機会を継続的に用意。年次を問わず、挑戦したい人に打席が回ってきます。</p>
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">“KI”GYOKA</p>
+        <h4 class="font-bold text-lg mb-2">独立・起業家へ</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">Enjinで培った営業力を武器に、企業家・起業家・“奇”業家として独立する道も。<span class="kari ml-1">3つ目の案・要確認</span></p>
       </div>
     </div>
-    <h3 class="font-bold text-xl mb-8">キャリアと年収モデル <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">MODEL SALARY</span></h3>
-    <div class="flowline grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
-      <div class="flow-node first"><span class="dot">1y</span><div><p class="font-bold text-[15px]">1年目｜挑戦</p><p class="text-[11px] text-gray-500 mt-1 mb-2">経営者と商談デビュー</p><p class="font-alumni font-black text-2xl text-gray-300">¥ ???</p></div></div>
-      <div class="flow-node"><span class="dot">3y</span><div><p class="font-bold text-[15px]">3年目｜自立</p><p class="text-[11px] text-gray-500 mt-1 mb-2">主要クライアントを担当</p><p class="font-alumni font-black text-2xl text-gray-300">¥ ???</p></div></div>
-      <div class="flow-node"><span class="dot">5y</span><div><p class="font-bold text-[15px]">5年目｜リード</p><p class="text-[11px] text-gray-500 mt-1 mb-2">チーム・後進を牽引</p><p class="font-alumni font-black text-2xl text-gray-300">¥ ???</p></div></div>
-      <div class="flow-node"><span class="dot" style="font-size:.8rem;">キ</span><div><p class="font-bold text-[15px]">“キ”業家へ</p><p class="text-[11px] text-gray-500 mt-1 mb-2">企業家・起業家・奇業家</p><p class="font-alumni font-black text-2xl text-gray-300">¥ ???</p></div></div>
-    </div>
-    <p class="text-[11px] text-gray-400"><span class="kari">年収モデル・年次は仮</span>　実データ確定後に差し替え</p>
   </div>
 </section>
 <section class="relative text-white px-6 lg:px-16 py-24 text-center overflow-hidden reveal">
