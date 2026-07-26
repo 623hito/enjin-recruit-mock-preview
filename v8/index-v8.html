@@ -228,8 +228,12 @@
     .ld-photo.p-culture{background-image:url('images/ohana_trip.jpg');background-position:center 52%;filter:grayscale(.35) brightness(.72);}
     /* この写真だけは笑顔を沈ませたくないので、覆いを弱めて上部を明るく残す */
     #loader[data-step="1"] .ld-photo.p-culture::after{background:linear-gradient(180deg,rgba(9,7,7,.25) 0%,rgba(9,7,7,.55) 45%,rgba(9,7,7,.88) 100%);}
+    /* PHILOSOPHY＝「人が自らの手で三角形を掲げる」写真（AdobeStock 182818051）を薄く敷く。
+       写真内の木の三角形がノード図と競合しないよう暗めに沈め、輪郭だけ感じさせる */
+    .ld-photo.p-philo{background-image:url('images/philosophy_triangle.jpg');background-position:center 30%;filter:grayscale(.6) brightness(.38);}
     #loader[data-step="0"] .ld-photo.p-purpose{opacity:1;}
     #loader[data-step="1"] .ld-photo.p-culture{opacity:1;}
+    #loader[data-step="2"] .ld-photo.p-philo{opacity:1;}
     /* 眉見出しは常に三角形の上に置く（章立てが先に来る） */
     /* 中身が position:absolute なので max-height では場所が確保されない（高さ0になり
        三角形と重なる）。height で明示的に枠を取ること */
@@ -520,6 +524,7 @@
     <div class="glow"></div>
     <div class="ld-photo p-purpose"></div>
     <div class="ld-photo p-culture"></div>
+    <div class="ld-photo p-philo"></div>
     <div class="ld-stage">
       <div class="ld-top">
         <p class="ld-eyebrow e-purpose">PURPOSE</p>
