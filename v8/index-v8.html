@@ -1360,9 +1360,16 @@
       // loader — cinematic opening (band cuts / count-up / curtain exit)
       (function(){
         var l=document.getElementById('loader'); if(!l)return;
-        // show intro only once per session (returning from sub-pages skips it)
+        // リロードは「もう一度見たい」の意思表示とみなし、既視でも必ず再生する。
+        // ※ソフト/ハードリロードはブラウザが同じ 'reload' として報告するため区別できない。
+        //   ロゴクリックやサブページからの復帰は 'navigate' なので再生されない。
+        var isReload=false;
+        try{
+          var ne=performance.getEntriesByType('navigation')[0];
+          isReload = ne ? ne.type==='reload' : (performance.navigation||{}).type===1;
+        }catch(e){}
         var seen=false; try{ seen=sessionStorage.getItem('enjinIntroSeen')==='1'; }catch(e){}
-        if(seen){ l.classList.add('done'); l.style.display='none'; return; }
+        if(seen && !isReload){ l.classList.add('done'); l.style.display='none'; return; }
         try{ sessionStorage.setItem('enjinIntroSeen','1'); }catch(e){}
         var tiers=l.querySelectorAll('.ld-pyr-tier');
         var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
