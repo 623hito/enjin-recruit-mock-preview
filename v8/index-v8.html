@@ -203,25 +203,43 @@
     #loader[data-step="0"] .c-purpose .rise+.rise>span{transition-delay:.13s;}
     #loader.done{transform:translateY(-100%);visibility:hidden;}
     .ld-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2.5rem 1.4rem;}
-    .ld-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.44em;text-indent:.44em;font-size:.92rem;color:#ff5a5a;margin-bottom:1.1rem;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
-    #loader[data-step="0"] .ld-eyebrow{opacity:1;letter-spacing:.28em;text-indent:.28em;}
+    /* 眉見出しは初代OPの大きさに戻す（Anton・字間が詰まりながら現れる）。
+       PURPOSE / CULTURE / PHILOSOPHY の3枚で章立てを揃える */
+    .ld-eyebrow{font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;letter-spacing:.55em;text-indent:.55em;font-size:clamp(1.5rem,4vw,2.6rem);color:#ff5a5a;line-height:1.1;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
+    .ld-ohana{font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;color:#fff;font-size:clamp(2.2rem,6.4vw,4rem);line-height:1;letter-spacing:.04em;}
+    .ld-sub{font-family:'Noto Serif JP',serif;font-weight:700;color:rgba(255,255,255,.85);font-size:clamp(.95rem,2.4vw,1.25rem);margin-top:1rem;}
     .ld-mincho{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.25rem,3.4vw,2.1rem);}
     .ld-logo{height:38px;width:auto;opacity:0;transform:scale(.82);transition:opacity .7s ease,transform .9s cubic-bezier(.22,1,.36,1);}
-    #loader[data-step="2"] .ld-logo{opacity:1;transform:scale(1);}
+    #loader[data-step="3"] .ld-logo{opacity:1;transform:scale(1);}
     .ld-skip{position:absolute;bottom:1.4rem;right:1.6rem;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.2em;font-size:.72rem;color:rgba(255,255,255,.45);cursor:pointer;background:none;border:none;padding:.4rem;}
     .ld-skip:hover{color:#fff;}
-    /* prologue: step0=理念(写真のみ) / step1=三角形が順に結ばれる / step2=ロゴ */
-    .ld-photo{position:absolute;inset:0;background-image:url('images/business.jpg');background-size:cover;background-position:center 38%;filter:grayscale(.55) brightness(.5);opacity:0;transition:opacity 1.2s ease;}
-    #loader[data-step="0"] .ld-photo{opacity:1;}
+    /* prologue: step0=PURPOSE / step1=CULTURE(OHANA) / step2=PHILOSOPHY(三角形) / step3=ロゴ */
+    .ld-photo{position:absolute;inset:0;background-size:cover;filter:grayscale(.55) brightness(.5);opacity:0;transition:opacity 1.2s ease;}
     .ld-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(115% 85% at 50% 42%,rgba(9,7,7,.3) 0%,rgba(9,7,7,.9) 72%);}
+    .ld-photo.p-purpose{background-image:url('images/business.jpg');background-position:center 38%;}
+    /* OHANA＝仲間なので社員旅行の集合写真を使う。members_20thは20TH背景幕が
+       眉見出しと重なるため不採用。この写真は上部が空で見出しと干渉しない */
+    .ld-photo.p-culture{background-image:url('images/ohana_trip.jpg');background-position:center 52%;filter:grayscale(.35) brightness(.72);}
+    /* この写真だけは笑顔を沈ませたくないので、覆いを弱めて上部を明るく残す */
+    #loader[data-step="1"] .ld-photo.p-culture::after{background:linear-gradient(180deg,rgba(9,7,7,.25) 0%,rgba(9,7,7,.55) 45%,rgba(9,7,7,.88) 100%);}
+    #loader[data-step="0"] .ld-photo.p-purpose{opacity:1;}
+    #loader[data-step="1"] .ld-photo.p-culture{opacity:1;}
+    /* 眉見出しは常に三角形の上に置く（章立てが先に来る） */
+    /* 中身が position:absolute なので max-height では場所が確保されない（高さ0になり
+       三角形と重なる）。height で明示的に枠を取ること */
+    .ld-top{position:relative;width:100%;height:0;display:flex;align-items:center;justify-content:center;transition:height .9s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="0"] .ld-top,#loader[data-step="1"] .ld-top,#loader[data-step="2"] .ld-top{height:3.4em;}
+    .ld-top .ld-eyebrow{position:absolute;left:0;right:0;text-align:center;}
+    #loader[data-step="0"] .e-purpose,#loader[data-step="1"] .e-culture,#loader[data-step="2"] .e-philo{opacity:1;letter-spacing:.28em;text-indent:.28em;}
     /* ピラミッド（順序＝階層）ではなくノード三角形（3点が対等に繋がる）を使う。
        「ぜんぶ大事」を言う場面なので、上下関係が出る積み上げ表現は避ける */
-    .ld-tri-box{width:min(84vw,46vh,400px);flex-shrink:0;opacity:0;transition:opacity .7s ease;}
-    #loader[data-step="1"] .ld-tri-box,#loader[data-step="2"] .ld-tri-box{opacity:1;}
+    .ld-tri-box{width:min(84vw,42vh,380px);flex-shrink:0;opacity:0;transition:opacity .7s ease;}
+    #loader[data-step="2"] .ld-tri-box,#loader[data-step="3"] .ld-tri-box{opacity:1;}
     .ld-tri-box .htri{margin:0;max-width:none;width:100%;}
     .ld-tri-box .htri-node{width:96px;height:96px;opacity:0;animation:none;}
     .ld-tri-box .htri-ring{padding:8px;} .ld-tri-box .htri-ring::before{inset:8px;}
-    .ld-tri-box .htri-core .jp{font-size:.92rem;}
+    .ld-tri-box .htri-core .en{font-size:.58rem;margin-top:2px;}
+    .ld-tri-box .htri-core .jp{font-size:.86rem;margin-top:1px;}
     .ld-tri-box .htri-lines .htri-link{stroke:rgba(255,255,255,.45);stroke-width:1.6;animation:none;stroke-dashoffset:1;}
     /* 健康(左下)→人間関係(右下)→経済(上) の順に点が現れ、線が追って三角形を閉じる（計2.0s） */
     .ld-tri-box.drawn .htri-node.hh{animation:htriNodeIn .5s cubic-bezier(.22,1,.36,1) 0s forwards;}
@@ -230,20 +248,25 @@
     .ld-tri-box.drawn .htri-link.L1{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) .25s forwards;}
     .ld-tri-box.drawn .htri-link.L2{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) .85s forwards;}
     .ld-tri-box.drawn .htri-link.L3{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) 1.45s forwards;}
+    /* 三角形が閉じ切った後、赤い破線が辺を巡り始める＝3つが繋がって循環している絵 */
+    .ld-tri-box .htri-flow{animation:none;opacity:0;}
+    .ld-tri-box.drawn .htri-flow{animation:htriFlowIn .8s ease 2s forwards,htriFlowMove 3s linear 2s infinite;}
     @media(max-width:640px){
       .ld-tri-box .htri-node{width:74px;height:74px;}
       .ld-tri-box .htri-ring{padding:6px;} .ld-tri-box .htri-ring::before{inset:6px;}
-      .ld-tri-box .htri-core .jp{font-size:.74rem;}
+      .ld-tri-box .htri-core .en{font-size:.5rem;}
+      .ld-tri-box .htri-core .jp{font-size:.72rem;}
     }
     /* caption：使わないステップは枠ごと畳んで、三角形が常に中央に来るようにする */
-    .ld-cap{position:relative;width:100%;max-height:0;display:flex;align-items:center;justify-content:center;transition:max-height 1s cubic-bezier(.22,1,.36,1);}
-    #loader[data-step="0"] .ld-cap,#loader[data-step="2"] .ld-cap{max-height:11em;}
-    #loader[data-step="1"] .ld-cap{max-height:4.5em;}
+    .ld-cap{position:relative;width:100%;height:0;display:flex;align-items:center;justify-content:center;transition:height 1s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="0"] .ld-cap,#loader[data-step="1"] .ld-cap,#loader[data-step="3"] .ld-cap{height:7.6em;}
+    #loader[data-step="2"] .ld-cap{height:3.8em;}
     .ld-cap .cap{position:absolute;left:0;right:0;text-align:center;opacity:0;transition:opacity .55s ease;}
     #loader[data-step="0"] .cap.c-purpose{opacity:1;}
+    #loader[data-step="1"] .cap.c-culture{opacity:1;}
     /* 三角形が閉じ切ってから出す */
-    #loader[data-step="1"] .cap.c-all{opacity:1;transition-delay:1.75s;}
-    #loader[data-step="2"] .cap.c-final{opacity:1;}
+    #loader[data-step="2"] .cap.c-philo{opacity:1;transition-delay:1.75s;}
+    #loader[data-step="3"] .cap.c-final{opacity:1;}
     .ld-cap .c-final{display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
 
     /* Film grain (dark sections) */
@@ -489,23 +512,33 @@
 <body>
   <div id="loader" data-step="0">
     <div class="glow"></div>
-    <div class="ld-photo"></div>
+    <div class="ld-photo p-purpose"></div>
+    <div class="ld-photo p-culture"></div>
     <div class="ld-stage">
+      <div class="ld-top">
+        <p class="ld-eyebrow e-purpose">PURPOSE</p>
+        <p class="ld-eyebrow e-culture">CULTURE</p>
+        <p class="ld-eyebrow e-philo">PHILOSOPHY</p>
+      </div>
       <div class="ld-tri-box">
         <div class="htri">
           <svg class="htri-lines" viewBox="0 0 860 600" preserveAspectRatio="none">
             <path class="htri-link L1" d="M235,486 L625,486" pathLength="1"/>
             <path class="htri-link L2" d="M660,455 L445,150" pathLength="1"/>
             <path class="htri-link L3" d="M415,150 L200,455" pathLength="1"/>
+            <path class="htri-flow" d="M235,486 L625,486"/>
+            <path class="htri-flow" d="M660,455 L445,150"/>
+            <path class="htri-flow" d="M415,150 L200,455"/>
           </svg>
-          <div class="htri-node hh"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="jp">健康</span></div></div></div>
-          <div class="htri-node hr"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="jp">人間関係</span></div></div></div>
-          <div class="htri-node he"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="jp">経済</span></div></div></div>
+          <div class="htri-node hh"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="en">Health</span><span class="jp">健康</span></div></div></div>
+          <div class="htri-node hr"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="en">Relation</span><span class="jp">人間関係</span></div></div></div>
+          <div class="htri-node he"><div class="htri-nd"><div class="htri-ring"></div><div class="htri-core"><span class="en">Economy</span><span class="jp">経済</span></div></div></div>
         </div>
       </div>
       <div class="ld-cap">
-        <div class="cap c-purpose"><p class="ld-eyebrow">PURPOSE</p><p class="ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p></div>
-        <p class="cap c-all ld-mincho">ぜんぶ<span style="color:#ff5a5a;">大事</span>。</p>
+        <p class="cap c-purpose ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p>
+        <div class="cap c-culture"><p class="ld-ohana">“OHANA”</p><p class="ld-sub">支え合って、高め合う。</p></div>
+        <p class="cap c-philo ld-mincho">ぜんぶ<span style="color:#ff5a5a;">大事</span>。</p>
         <p class="cap c-final"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><span class="ld-mincho">ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></p>
       </div>
     </div>
@@ -1325,12 +1358,12 @@
         try{ sessionStorage.setItem('enjinIntroSeen','1'); }catch(e){}
         var triBox=l.querySelector('.ld-tri-box');
         var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var timers=[], finished=false, LAST=2;
-        // step0=理念(写真のみ) / step1=三角形が順に結ばれる / step2=ロゴ
-        // 0→60の成長はTOPの #grow セクションが担当する（オープニングは象徴だけ渡す）
+        var timers=[], finished=false, LAST=3;
+        // step0=PURPOSE / step1=CULTURE(OHANA) / step2=PHILOSOPHY(幸せトライアングル) / step3=ロゴ
+        // 0→60の成長はTOPの THE START が担当する（オープニングは象徴だけ渡す）
         function step(i){
           l.setAttribute('data-step',String(i));
-          if(i>=1 && triBox) triBox.classList.add('drawn');
+          if(i>=2 && triBox) triBox.classList.add('drawn');
         }
         function finish(){ if(finished)return; finished=true;
           l.classList.add('done'); document.body.style.overflow='';
@@ -1339,10 +1372,10 @@
         var sb=l.querySelector('.ld-skip'); if(sb)sb.addEventListener('click',skip);
         if(reduce){finish();return;}
         document.body.style.overflow='hidden';
-        // step1は三角形の描画2.0s＋「ぜんぶ大事」0.6sで2.6s確保する
-        var sceneT=[0,2000,4600];
+        // step2は三角形の描画2.0s＋破線の巡回開始＋「ぜんぶ大事」で2.9s確保する
+        var sceneT=[0,1900,3600,6500];
         sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
-        timers.push(setTimeout(finish,6100));
+        timers.push(setTimeout(finish,7900));
       })();
 
       // count-up numbers
