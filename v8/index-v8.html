@@ -52,7 +52,7 @@
     .bg-paper { background:var(--paper); }
 
     /* 小ラベル：赤をやめてグレーに。先頭に短い赤ティックだけ残す */
-    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.22em; font-size:0.78rem; color:#9a9a9a; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; }
+    .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.22em; font-size:0.88rem; color:#9a9a9a; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; }
     .eyebrow::before { content:""; width:22px; height:2px; background:var(--red); flex-shrink:0; }
     .eyebrow.center { justify-content:center; }
     .sec-title { font-weight:900; letter-spacing:0.02em; line-height:1.25; }
@@ -125,20 +125,22 @@
     .iv-card .ph>div{ width:100%; height:100%; background-size:cover; background-position:center; transition:transform .6s cubic-bezier(.22,1,.36,1); }
     .iv-card:hover .ph>div{ transform:scale(1.06); }
 
-    /* 1日のスケジュール：太い時間軸 */
-    .day{position:relative;}
-    .day::before{content:"";position:absolute;left:74px;top:10px;bottom:10px;width:2px;background:#e5ddd8;}
-    .day-item{position:relative;display:grid;grid-template-columns:60px 1fr;gap:2rem;padding:1.1rem 0;align-items:baseline;}
-    .day-item::before{content:"";position:absolute;left:70px;top:1.75rem;width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid #cfc6c0;z-index:1;}
-    .day-item.hot::before{background:var(--red);border-color:var(--red);}
-    .day-item .t{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:1.7rem;line-height:1;text-align:right;color:#141414;}
-    .day-item.hot .t{color:var(--red);}
-    .day-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;margin-left:.5rem;vertical-align:middle;}
-    @media (max-width:640px){
-      .day::before{left:58px;}
-      .day-item{grid-template-columns:46px 1fr;gap:1.4rem;}
-      .day-item::before{left:54px;}
-      .day-item .t{font-size:1.3rem;}
+    .day-badge{display:inline-block;background:var(--red);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;padding:2px 8px;vertical-align:middle;}
+
+    /* 創業からのあゆみ：横並びタイムライン。アイコン中心（26px）を貫く水平線で繋ぐ */
+    .hist-track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0 .5rem;}
+    .hist-track::before{content:"";position:absolute;left:26px;right:26px;top:26px;height:2px;background:#e5ddd8;z-index:0;}
+    .hist-node{position:relative;z-index:1;text-align:center;padding:0 .35rem;}
+    .hist-node__ic{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#fff;border:1.5px solid #cfc6c0;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#8a7f77;}
+    .hist-node__ic svg{width:22px;height:22px;}
+    .hist-node.hot .hist-node__ic{background:var(--red);border-color:var(--red);color:#fff;}
+    .hist-node__y{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.25rem;line-height:1;color:#141414;margin-bottom:.5rem;}
+    .hist-node.hot .hist-node__y{color:var(--red);}
+    .hist-node__t{font-size:.82rem;color:#3f3a36;line-height:1.55;}
+    @media(max-width:900px){
+      .hist-track{display:flex;overflow-x:auto;gap:2.4rem;padding:.2rem .2rem 1rem;-webkit-overflow-scrolling:touch;}
+      .hist-track::before{left:26px;right:auto;width:calc(100% - 52px);}
+      .hist-node{flex:0 0 136px;}
     }
 
     /* 入社後の流れ STEP — timeline */
@@ -456,10 +458,10 @@
         .ht-wrap .sec-en-ghost{color:rgba(255,255,255,.05);}
         .ht-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto;}
         .ht-head{text-align:center;margin-bottom:clamp(40px,6vw,72px);}
-        .ht-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:13px;color:#ff8f86;margin:0 0 18px;}
+        .ht-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:15px;color:#ff8f86;margin:0 0 18px;}
         .ht-title{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;line-height:1.4;margin:0 0 22px;font-size:clamp(1.9rem,4.4vw,3.2rem);color:#fbf7f3;}
         .ht-title span{color:#ff8f86;}
-        .ht-sub{font-size:15px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 auto;max-width:34em;text-wrap:pretty;}
+        .ht-sub{font-size:16px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 auto;max-width:34em;text-wrap:pretty;}
 
         .ht-stage{position:relative;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);box-shadow:0 50px 110px -40px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
         /* minmax の下限は min(330px,100%)。素の 330px だとスマホでトラックがコンテナを
@@ -873,23 +875,23 @@
     <div class="max-w-5xl mx-auto relative z-10">
 
       <div class="htri-proof-block">
-        <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE Enjin — 経済力を伸ばす、その仕組み</p>
-        <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-14 lg:mb-16">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
+        <p class="text-center font-alumni font-bold text-[12.5px] tracking-[0.22em] text-red mb-4">THE Enjin — 経済力を伸ばす、その仕組み</p>
+        <p class="max-w-xl mx-auto text-center text-[15px] lg:text-[16px] text-gray-600 leading-[2.1] mb-14 lg:mb-16">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
 
         <!-- 主力事業＝PR。「経済力が伸びる理由」の本体なのでこの章で語る（旧 #about の主力事業ブロックを集約） -->
         <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-16 lg:mb-20">
           <div class="ken-burns aspect-[4/3] relative" style="box-shadow:24px 24px 0 #fff;">
             <div class="kb-img" style="background-image:url('images/business.jpg');"></div>
-            <span class="absolute left-0 bottom-0 bg-red text-white text-[11px] font-bold px-4 py-2 tracking-wider">1年目から、経営者と。</span>
+            <span class="absolute left-0 bottom-0 bg-red text-white text-[12px] font-bold px-4 py-2 tracking-wider">1年目から、経営者と。</span>
           </div>
           <div>
-            <p class="font-alumni font-bold text-[11px] text-red tracking-[0.22em] mb-4">PR &amp; BRANDING</p>
+            <p class="font-alumni font-bold text-[12.5px] text-red tracking-[0.22em] mb-4">PR &amp; BRANDING</p>
             <h3 class="font-mincho font-bold leading-[1.5] mb-6" style="font-size:clamp(1.5rem,3vw,2.1rem);">経営者のブランディングを、<br /><span class="text-red">1年目から</span>任される。</h3>
-            <p class="text-[15px] text-gray-700 leading-[2.1] mb-8">Enjinの主力は、全国の中小企業の経営者に伴走する<span class="font-bold">PR・ブランディング事業</span>。担当するのは、決裁者である経営者ご本人。その想いや事業の価値を引き出し、メディアを通じて世の中に伝えます。新卒1年目から経営者と直接向き合える——それが、Enjinで得られるいちばんの経験です。<span class="kari ml-1">紹介文言仮</span></p>
+            <p class="text-[16px] text-gray-700 leading-[2.1] mb-8">Enjinの主力は、全国の中小企業の経営者に伴走する<span class="font-bold">PR・ブランディング事業</span>。担当するのは、決裁者である経営者ご本人。その想いや事業の価値を引き出し、メディアを通じて世の中に伝えます。新卒1年目から経営者と直接向き合える——それが、Enjinで得られるいちばんの経験です。<span class="kari ml-1">紹介文言仮</span></p>
             <ul class="grid gap-3 mb-8">
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">対峙するのは、中間管理職ではなく<span class="font-bold">経営者・決裁者</span>。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">累計<span class="font-bold">7,000社超</span>の顧客基盤の上で、実践を積める。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">新聞・Webで見かける記事の裏側に、Enjinの仕事がある。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">対峙するのは、中間管理職ではなく<span class="font-bold">経営者・決裁者</span>。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">累計<span class="font-bold">7,000社超</span>の顧客基盤の上で、実践を積める。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">新聞・Webで見かける記事の裏側に、Enjinの仕事がある。</span></li>
             </ul>
             <a href="sales-v8.html" class="hub-link" style="max-width:360px;"><span class="font-medium">PRコンサルティング／営業を見る</span><span class="en">SALES ›</span></a>
           </div>
@@ -900,23 +902,23 @@
              箇条書き01と内容が重複するため削除し、02のみをここへ昇格させた -->
         <div class="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center">
           <div>
-            <p class="font-alumni font-bold text-[11px] text-red tracking-[0.22em] mb-4">FAIR REVIEW</p>
+            <p class="font-alumni font-bold text-[12.5px] text-red tracking-[0.22em] mb-4">FAIR REVIEW</p>
             <h3 class="font-mincho font-bold leading-[1.5] mb-6" style="font-size:clamp(1.5rem,3vw,2.1rem);">評価に、年齢も学歴も、<br /><span class="text-red">関係ない。</span></h3>
-            <p class="text-[15px] text-gray-700 leading-[2.1] mb-8">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、<span class="font-bold">やった分だけ正当に返ってきます</span>。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">紹介文言仮</span></p>
+            <p class="text-[16px] text-gray-700 leading-[2.1] mb-8">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、<span class="font-bold">やった分だけ正当に返ってきます</span>。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">紹介文言仮</span></p>
             <ul class="grid gap-3 mb-8">
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">評価基準は、年齢でも社歴でもなく<span class="font-bold">成果とプロセス</span>。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">若手でも、昇給・昇格の<span class="font-bold">スピードに上限はない</span>。</span></li>
-              <li class="flex items-start gap-3 text-sm"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">年齢も学歴も関係なく、やった分だけ正当に返る。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">01</span><span class="text-gray-700">評価基準は、年齢でも社歴でもなく<span class="font-bold">成果とプロセス</span>。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">02</span><span class="text-gray-700">若手でも、昇給・昇格の<span class="font-bold">スピードに上限はない</span>。</span></li>
+              <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">年齢も学歴も関係なく、やった分だけ正当に返る。</span></li>
             </ul>
             <a href="environment-v8.html#benefit" class="hub-link" style="max-width:360px;"><span class="font-medium">評価制度・福利厚生を見る</span><span class="en">BENEFIT ›</span></a>
           </div>
           <a href="environment-v8.html#benefit" class="relative aspect-[4/3] block rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,var(--red),#8a0e0e);box-shadow:-24px 24px 0 #fff;">
             <span class="absolute inset-0 flex flex-col items-center justify-center text-white font-alumni font-black text-4xl lg:text-5xl leading-none text-center">FAIR<br />REVIEW</span>
-            <span class="absolute right-0 bottom-0 bg-white text-red text-[11px] font-bold px-4 py-2 tracking-wider">やった分だけ、正当に。</span>
+            <span class="absolute right-0 bottom-0 bg-white text-red text-[12px] font-bold px-4 py-2 tracking-wider">やった分だけ、正当に。</span>
           </a>
         </div>
         <div class="max-w-xl mx-auto text-center mt-16 lg:mt-20">
-          <p class="text-sm text-gray-600 leading-[2.1]">経済力が伸びれば、巡り巡って<span class="font-bold text-red">健康も人間関係も</span>、さらに良くなっていく。<span class="kari ml-1">文言仮</span></p>
+          <p class="text-[15px] text-gray-600 leading-[2.1]">経済力が伸びれば、巡り巡って<span class="font-bold text-red">健康も人間関係も</span>、さらに良くなっていく。<span class="kari ml-1">文言仮</span></p>
         </div>
       </div>
 
@@ -940,7 +942,7 @@
           <!-- グループ8社。主力PRの中身は ECONOMY セクションで語り切っているので、
                ここは「会社の広がり」に絞る -->
           <div class="pt-8 mb-6 border-t border-gray-200">
-            <p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP COMPANIES</p>
+            <p class="font-alumni font-bold text-[12.5px] text-gray-400 tracking-[0.22em] mb-3">GROUP COMPANIES</p>
             <h3 class="font-bold text-lg mb-4">事業紹介</h3>
             <p class="text-sm text-gray-700 leading-relaxed mb-5">Enjinグループは<span class="font-bold">PRを軸に、8社</span>で事業を展開しています。入社後は主力のPR事業からスタートし、将来的にはグループの多様なフィールドへ広がります。</p>
             <div class="flex flex-wrap items-center gap-2 mb-6">
@@ -960,18 +962,42 @@
         </div>
       </div>
 
-      <!-- 創業からのあゆみ。.day/.day-item は元々「1日のスケジュール」用の縦タイムライン
-           コンポーネント（interview-v8.html）だが、年表としてそのまま流用できる -->
+      <!-- 創業からのあゆみ。横並びタイムライン（.hist-*）。アイコン中心を貫く水平線で
+           繋ぐ。スマホは横スクロールでそのまま流用 -->
       <div class="mt-20 lg:mt-24 pt-12 border-t border-gray-200">
-        <p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">HISTORY</p>
+        <p class="font-alumni font-bold text-[12.5px] text-gray-400 tracking-[0.22em] mb-3">HISTORY</p>
         <h3 class="sec-title text-2xl lg:text-3xl mb-10 lg:mb-12">2006-2026、あゆみ</h3>
-        <div class="day max-w-2xl">
-          <div class="day-item"><p class="t">2006</p><div><p class="font-bold text-[15px]">大阪にて創業</p></div></div>
-          <div class="day-item"><p class="t">2015</p><div><p class="font-bold text-[15px]">新卒1期生入社</p></div></div>
-          <div class="day-item"><p class="t">2019</p><div><p class="font-bold text-[15px]">優良申告法人に認定</p></div></div>
-          <div class="day-item"><p class="t">2021</p><div><p class="font-bold text-[15px]">東証マザーズ（現グロース）上場</p></div></div>
-          <div class="day-item"><p class="t">2023</p><div><p class="font-bold text-[15px]">AZ WORLDCOMがグループイン</p></div></div>
-          <div class="day-item hot"><p class="t">2026</p><div><p class="font-bold text-[15px]">5つの事業を設立<span class="day-badge">NOW</span></p></div></div>
+        <div class="hist-track">
+          <div class="hist-node">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h13l-3 4 3 4H5"/></svg></span>
+            <p class="hist-node__y">2006</p>
+            <p class="hist-node__t">大阪にて創業</p>
+          </div>
+          <div class="hist-node">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"/></svg></span>
+            <p class="hist-node__y">2015</p>
+            <p class="hist-node__t">新卒1期生入社</p>
+          </div>
+          <div class="hist-node">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 13.5 7 21l5-2.5L17 21l-2-7.5"/></svg></span>
+            <p class="hist-node__y">2019</p>
+            <p class="hist-node__t">優良申告法人に認定</p>
+          </div>
+          <div class="hist-node">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17 10 11l4 4 6-8"/><path d="M14 6h6v6"/></svg></span>
+            <p class="hist-node__y">2021</p>
+            <p class="hist-node__t">東証マザーズ（現グロース）上場</p>
+          </div>
+          <div class="hist-node">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="12" r="3.2"/><circle cx="17" cy="12" r="3.2"/><path d="M9.8 12h4.4"/></svg></span>
+            <p class="hist-node__y">2023</p>
+            <p class="hist-node__t">AZ WORLDCOMがグループイン</p>
+          </div>
+          <div class="hist-node hot">
+            <span class="hist-node__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg></span>
+            <p class="hist-node__y">2026</p>
+            <p class="hist-node__t">5つの事業を設立<span class="day-badge ml-1">NOW</span></p>
+          </div>
         </div>
       </div>
     </div>
