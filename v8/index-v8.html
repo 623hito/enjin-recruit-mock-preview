@@ -225,7 +225,7 @@
     .ld-eyebrow{font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;letter-spacing:.55em;text-indent:.55em;font-size:clamp(1.5rem,4vw,2.6rem);color:#ff5a5a;line-height:1.1;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
     .ld-ohana{font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;color:#fff;font-size:clamp(2.2rem,6.4vw,4rem);line-height:1;letter-spacing:.04em;}
     .ld-sub{font-family:'Noto Serif JP',serif;font-weight:700;color:rgba(255,255,255,.85);font-size:clamp(.95rem,2.4vw,1.25rem);margin-top:1rem;}
-    .ld-mincho{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.25rem,3.4vw,2.1rem);}
+    .ld-mincho{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.3rem,3.2vw,2.5rem);}
     .ld-logo{height:38px;width:auto;opacity:0;transform:scale(.82);transition:opacity .7s ease,transform .9s cubic-bezier(.22,1,.36,1);}
     #loader[data-step="3"] .ld-logo{opacity:1;transform:scale(1);transition-delay:.45s;}
     .ld-skip{position:absolute;bottom:1.4rem;right:1.6rem;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.2em;font-size:.72rem;color:rgba(255,255,255,.45);cursor:pointer;background:none;border:none;padding:.4rem;}
@@ -259,40 +259,42 @@
     .ld-top .ld-eyebrow{position:absolute;left:0;right:0;text-align:center;}
     #loader[data-step="0"] .e-purpose,#loader[data-step="1"] .e-culture,#loader[data-step="2"] .e-philo{opacity:1;letter-spacing:.28em;text-indent:.28em;}
     /* ピラミッド（順序＝階層）ではなくノード三角形（3点が対等に繋がる）を使う。
-       「ぜんぶ大事」を言う場面なので、上下関係が出る積み上げ表現は避ける */
-    .ld-tri-box{width:min(84vw,42vh,380px);flex-shrink:0;opacity:0;transition:opacity .7s ease;}
-    #loader[data-step="2"] .ld-tri-box,#loader[data-step="3"] .ld-tri-box{opacity:1;}
+       「ぜんぶ大事」を言う場面なので、上下関係が出る積み上げ表現は避ける。
+       三角形を使わないシーンでは width:0 に畳む——場所だけ確保すると
+       PURPOSE/OHANAの文字が三角形1個分(約300px)下に押し下げられ「隙間」になる */
+    .ld-tri-box{width:0;flex-shrink:0;opacity:0;transition:opacity .7s ease,width .85s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="2"] .ld-tri-box,#loader[data-step="3"] .ld-tri-box{opacity:1;width:min(84vw,52vh,520px);}
     .ld-tri-box .htri{margin:0;max-width:none;width:100%;}
-    .ld-tri-box .htri-node{width:96px;height:96px;opacity:0;animation:none;}
-    .ld-tri-box .htri-ring{padding:8px;} .ld-tri-box .htri-ring::before{inset:8px;}
-    .ld-tri-box .htri-core .en{font-size:.58rem;margin-top:2px;}
-    .ld-tri-box .htri-core .jp{font-size:.86rem;margin-top:1px;}
-    .ld-tri-box .htri-lines .htri-link{stroke:rgba(255,255,255,.45);stroke-width:1.6;animation:none;stroke-dashoffset:1;}
-    /* 健康(左下)→人間関係(右下)→経済(上) の順に点が現れ、線が追って三角形を閉じる（計2.0s） */
-    .ld-tri-box.drawn .htri-node.hh{animation:htriNodeIn .5s cubic-bezier(.22,1,.36,1) 0s forwards;}
-    .ld-tri-box.drawn .htri-node.hr{animation:htriNodeIn .5s cubic-bezier(.22,1,.36,1) .6s forwards;}
-    .ld-tri-box.drawn .htri-node.he{animation:htriNodeIn .5s cubic-bezier(.22,1,.36,1) 1.2s forwards;}
-    .ld-tri-box.drawn .htri-link.L1{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) .25s forwards;}
-    .ld-tri-box.drawn .htri-link.L2{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) .85s forwards;}
-    .ld-tri-box.drawn .htri-link.L3{animation:htriDraw .55s cubic-bezier(.22,1,.36,1) 1.45s forwards;}
+    .ld-tri-box .htri-node{width:112px;height:112px;opacity:0;animation:none;}
+    .ld-tri-box .htri-ring{padding:9px;} .ld-tri-box .htri-ring::before{inset:9px;}
+    .ld-tri-box .htri-core .en{font-size:.66rem;margin-top:2px;}
+    .ld-tri-box .htri-core .jp{font-size:1rem;margin-top:1px;}
+    .ld-tri-box .htri-lines .htri-link{stroke:rgba(255,255,255,.45);stroke-width:1.8;animation:none;stroke-dashoffset:1;}
+    /* 健康(左下)→人間関係(右下)→経済(上) の順に点が現れ、線が追って三角形を閉じる（計2.9s） */
+    .ld-tri-box.drawn .htri-node.hh{animation:htriNodeIn .6s cubic-bezier(.22,1,.36,1) 0s forwards;}
+    .ld-tri-box.drawn .htri-node.hr{animation:htriNodeIn .6s cubic-bezier(.22,1,.36,1) .9s forwards;}
+    .ld-tri-box.drawn .htri-node.he{animation:htriNodeIn .6s cubic-bezier(.22,1,.36,1) 1.8s forwards;}
+    .ld-tri-box.drawn .htri-link.L1{animation:htriDraw .7s cubic-bezier(.22,1,.36,1) .4s forwards;}
+    .ld-tri-box.drawn .htri-link.L2{animation:htriDraw .7s cubic-bezier(.22,1,.36,1) 1.3s forwards;}
+    .ld-tri-box.drawn .htri-link.L3{animation:htriDraw .7s cubic-bezier(.22,1,.36,1) 2.2s forwards;}
     /* 三角形が閉じ切った後、赤い破線が辺を巡り始める＝3つが繋がって循環している絵 */
     .ld-tri-box .htri-flow{animation:none;opacity:0;}
-    .ld-tri-box.drawn .htri-flow{animation:htriFlowIn .8s ease 2s forwards,htriFlowMove 3s linear 2s infinite;}
+    .ld-tri-box.drawn .htri-flow{animation:htriFlowIn .8s ease 3.1s forwards,htriFlowMove 3s linear 3.1s infinite;}
     @media(max-width:640px){
-      .ld-tri-box .htri-node{width:74px;height:74px;}
+      .ld-tri-box .htri-node{width:80px;height:80px;}
       .ld-tri-box .htri-ring{padding:6px;} .ld-tri-box .htri-ring::before{inset:6px;}
-      .ld-tri-box .htri-core .en{font-size:.5rem;}
-      .ld-tri-box .htri-core .jp{font-size:.72rem;}
+      .ld-tri-box .htri-core .en{font-size:.52rem;}
+      .ld-tri-box .htri-core .jp{font-size:.76rem;}
     }
     /* caption：使わないステップは枠ごと畳んで、三角形が常に中央に来るようにする */
     .ld-cap{position:relative;width:100%;height:0;display:flex;align-items:center;justify-content:center;transition:height 1s cubic-bezier(.22,1,.36,1);}
-    #loader[data-step="0"] .ld-cap,#loader[data-step="1"] .ld-cap,#loader[data-step="3"] .ld-cap{height:7.6em;}
-    #loader[data-step="2"] .ld-cap{height:3.8em;}
+    #loader[data-step="0"] .ld-cap,#loader[data-step="1"] .ld-cap,#loader[data-step="3"] .ld-cap{height:9.2em;}
+    #loader[data-step="2"] .ld-cap{height:4.6em;}
     .ld-cap .cap{position:absolute;left:0;right:0;text-align:center;opacity:0;transition:opacity .55s ease;}
     #loader[data-step="0"] .cap.c-purpose{opacity:1;}
     #loader[data-step="1"] .cap.c-culture{opacity:1;}
-    /* 三角形が閉じ切ってから出す */
-    #loader[data-step="2"] .cap.c-philo{opacity:1;transition-delay:1.75s;}
+    /* 三角形が閉じ切ってから出す（描画が2.9sに伸びたので遅延も連動させる） */
+    #loader[data-step="2"] .cap.c-philo{opacity:1;transition-delay:2.8s;}
     /* 「ぜんぶ大事。」が消え切ってから出す（同時クロスフェードだと同じ場所で二重写りする） */
     #loader[data-step="3"] .cap.c-final{opacity:1;transition-delay:.45s;}
     .ld-cap .c-final{display:flex;flex-direction:column;align-items:center;gap:1.1rem;}
@@ -1407,9 +1409,10 @@
         // pre→0 のトランジションが走らず、開幕がフェードインしない）
         // step2は三角形の描画2.0s＋破線の巡回開始＋「ぜんぶ大事」で2.9s確保する
         function start(){
-          var sceneT=[140,2100,4000,6900];
+          // step2は描画2.9s＋「ぜんぶ大事」1.0sで3.8s確保（ゆっくり見せる）
+          var sceneT=[140,2100,4000,7800];
           sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
-          timers.push(setTimeout(finish,8300));
+          timers.push(setTimeout(finish,9200));
         }
         // 1枚目の写真が来る前に開演すると黒背景のままシーンが進むため、
         // ロード完了を待ってから始める。ただし回線が遅くても最大1.2sで見切り発車
