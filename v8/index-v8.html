@@ -448,16 +448,20 @@
           .htri-lines .htri-link{stroke-dashoffset:0!important;animation:none!important;} .htri-lines .htri-flow{display:none;}
         }
 
-        /* 幸せトライアングル ムービー（Why Enjin セクション本体） */
-        .ht-wrap{background:#f6f2ea;color:#1c1a17;font-family:'Noto Sans JP',sans-serif;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);}
-        .ht-inner{max-width:1120px;margin:0 auto;}
+        /* 幸せトライアングル ムービー（Why Enjin セクション本体）
+           背景はECONOMY（旧#engine）と交代：暗色にして目立たせる。
+           .ht-stage から下（ムービー本体のカード）は白のまま＝暗い舞台に白いステージが浮かぶ構成 */
+        .ht-wrap{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);color:#c9c2bc;font-family:'Noto Sans JP',sans-serif;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);}
+        .ht-wrap::before{content:"";position:absolute;left:50%;top:22%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.2) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
+        .ht-wrap .sec-en-ghost{color:rgba(255,255,255,.05);}
+        .ht-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto;}
         .ht-head{text-align:center;margin-bottom:clamp(40px,6vw,72px);}
-        .ht-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:13px;color:#c8322a;margin:0 0 18px;}
-        .ht-title{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;line-height:1.4;margin:0 0 22px;font-size:clamp(1.9rem,4.4vw,3.2rem);}
-        .ht-title span{color:#c8322a;}
-        .ht-sub{font-size:15px;line-height:2.1;color:#5d574e;margin:0 auto;max-width:34em;text-wrap:pretty;}
+        .ht-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:13px;color:#ff8f86;margin:0 0 18px;}
+        .ht-title{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;line-height:1.4;margin:0 0 22px;font-size:clamp(1.9rem,4.4vw,3.2rem);color:#fbf7f3;}
+        .ht-title span{color:#ff8f86;}
+        .ht-sub{font-size:15px;line-height:2.1;color:rgba(255,255,255,.68);margin:0 auto;max-width:34em;text-wrap:pretty;}
 
-        .ht-stage{position:relative;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);box-shadow:0 40px 90px -60px rgba(28,26,23,.65),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
+        .ht-stage{position:relative;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);box-shadow:0 50px 110px -40px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
         /* minmax の下限は min(330px,100%)。素の 330px だとスマホでトラックがコンテナを
            はみ出し、.ht-stage の overflow:hidden で右側が切れる */
         .ht-grid{cursor:pointer;user-select:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));align-items:center;gap:clamp(24px,4vw,56px);padding:clamp(28px,4vw,56px);min-height:clamp(520px,66vh,620px);}
@@ -509,24 +513,17 @@
         .ht-chevron{width:40px;height:40px;border-radius:50%;border:1px solid rgba(200,50,42,.35);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
         @keyframes htFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
         .ht-replay{margin-top:22px;display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:8px 18px;font-size:12.5px;letter-spacing:.06em;color:#8a8378;cursor:pointer;}
-        .ht-hint{text-align:center;font-size:12px;color:#a29a8d;margin:18px 0 0;letter-spacing:.08em;}
+        .ht-hint{text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin:18px 0 0;letter-spacing:.08em;}
 
-        /* Happiness Triangle — dark "core belief" chapter treatment */
-        #engine{color:#c9c2bc;}
-        #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.18) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
-        #engine h2,#engine h3{color:#fbf7f3;}
-        #engine .text-gray-600{color:#bdb3ab;}
-        #engine .text-gray-700{color:#c4bab2;}
-        #engine .sec-en-ghost{color:rgba(255,255,255,.05);}
-        /* hub-link は明色セクション前提の罫線色なので、暗色章では反転させる */
-        #engine .hub-link{border-bottom-color:rgba(255,255,255,.22);}
-        #engine .hub-link:hover{border-bottom-color:#fff;}
-        #engine .hub-link .font-medium{color:#f2ece7;}
-        #engine .hub-link .en{color:#8d857e;}
+        /* THE Enjin（旧#engine）は #triangle と背景を交代し、明色セクションに戻した。
+           ゴースト文字・スポットライトは既定（明色用）のまま流用でよい */
+        #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.16) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
+        /* htri-proof-card はページ地色(#f6f2ea)とほぼ同色なので、白へ明度差をつけて浮かせる */
+        #engine .htri-proof-card{background:#fffdf8;box-shadow:0 14px 32px -18px rgba(28,26,23,.22);}
 
         /* 章末の遷移リンク（横並びの楕円ボタン） */
-        .pill-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(255,255,255,.26);border-radius:99px;padding:.72rem 1.4rem;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#f2ece7;background:rgba(255,255,255,.03);transition:border-color .25s,background .25s,color .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
-        .pill-link:hover{border-color:var(--red);background:rgba(191,15,15,.16);color:#fff;}
+        .pill-link{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:.72rem 1.4rem;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:#3f3a36;background:rgba(255,255,255,.5);transition:border-color .25s,background .25s,color .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+        .pill-link:hover{border-color:var(--red);background:#fff;color:var(--red);}
         .pill-link:active{transform:scale(.96);}
         .pill-link .ar{display:inline-block;transform:translateY(1px);color:var(--red);}
         .pill-link:hover .ar{color:#ff6b6b;}
@@ -723,6 +720,7 @@
   <!-- 6シーン自動再生。バー/▶/ステージクリックで手動操作も可。
        Desktop の「幸せトライアングル ムービー（本番用）.html」を移植（フォントはサイト既読込のものへ差し替え） -->
   <section id="triangle" class="ht-wrap reveal">
+    <div class="sec-en-ghost" style="top:4%;left:50%;transform:translateX(-50%);">PHILOSOPHY</div>
     <div class="ht-inner">
       <div class="ht-head">
         <p class="ht-eyebrow">PHILOSOPHY</p>
@@ -883,7 +881,7 @@
   </section>
 
   <!-- ============ 02b THE Enjin — 経済力を伸ばす、その仕組み ============ -->
-  <section id="engine" class="px-6 lg:px-16 py-24 lg:py-32 reveal relative overflow-hidden" style="background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);">
+  <section id="engine" class="px-6 lg:px-16 py-24 lg:py-32 reveal relative overflow-hidden" style="background:#f6f2ea;">
     <div class="sec-en-ghost" style="top:6%;left:-2%;">ECONOMY</div>
     <div class="max-w-5xl mx-auto relative z-10">
 
@@ -893,7 +891,7 @@
 
         <!-- 主力事業＝PR。「経済力が伸びる理由」の本体なのでこの章で語る（旧 #about の主力事業ブロックを集約） -->
         <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center mb-16 lg:mb-20">
-          <div class="ken-burns aspect-[4/3] relative" style="box-shadow:24px 24px 0 rgba(255,255,255,.055);">
+          <div class="ken-burns aspect-[4/3] relative" style="box-shadow:24px 24px 0 #fff;">
             <div class="kb-img" style="background-image:url('images/business.jpg');"></div>
             <span class="absolute left-0 bottom-0 bg-red text-white text-[11px] font-bold px-4 py-2 tracking-wider">1年目から、経営者と。</span>
           </div>
