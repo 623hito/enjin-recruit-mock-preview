@@ -216,7 +216,13 @@
     /* prologue: step0=PURPOSE / step1=CULTURE(OHANA) / step2=PHILOSOPHY(三角形) / step3=ロゴ */
     .ld-photo{position:absolute;inset:0;background-size:cover;filter:grayscale(.55) brightness(.5);opacity:0;transition:opacity 1.2s ease;}
     .ld-photo::after{content:"";position:absolute;inset:0;background:radial-gradient(115% 85% at 50% 42%,rgba(9,7,7,.3) 0%,rgba(9,7,7,.9) 72%);}
-    .ld-photo.p-purpose{background-image:url('images/business.jpg');background-position:center 38%;}
+    /* PURPOSE＝高台から社会を見渡す一人の人物（AdobeStock 126123873）。
+       商談シーン(business.jpg)は「仕事の一場面」で理念の画ではなかったため差し替え。
+       人物が左1/4に立つので、明るさを残しつつ下部だけ締める */
+    .ld-photo.p-purpose{background-image:url('images/purpose_summit.jpg');background-position:center 30%;filter:grayscale(.4) brightness(.62);}
+    #loader[data-step="0"] .ld-photo.p-purpose::after{background:linear-gradient(180deg,rgba(9,7,7,.34) 0%,rgba(9,7,7,.52) 48%,rgba(9,7,7,.88) 100%);}
+    /* モバイルの縦長クロップでは中央基準だと人物(左1/4)が画面外に切れるため、左寄せで人物を残す */
+    @media(max-width:640px){ .ld-photo.p-purpose{background-position:24% 30%;} }
     /* OHANA＝仲間なので社員旅行の集合写真を使う。members_20thは20TH背景幕が
        眉見出しと重なるため不採用。この写真は上部が空で見出しと干渉しない */
     .ld-photo.p-culture{background-image:url('images/ohana_trip.jpg');background-position:center 52%;filter:grayscale(.35) brightness(.72);}
