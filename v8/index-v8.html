@@ -203,6 +203,8 @@
     #loader[data-step="0"] .c-purpose .rise+.rise>span{transition-delay:.13s;}
     #loader.done{transform:translateY(-100%);visibility:hidden;}
     .ld-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2.5rem 1.4rem;}
+    .ld-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.44em;text-indent:.44em;font-size:.92rem;color:#ff5a5a;margin-bottom:1.1rem;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="0"] .ld-eyebrow{opacity:1;letter-spacing:.28em;text-indent:.28em;}
     .ld-mincho{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.25rem,3.4vw,2.1rem);}
     .ld-logo{height:38px;width:auto;opacity:0;transform:scale(.82);transition:opacity .7s ease,transform .9s cubic-bezier(.22,1,.36,1);}
     #loader[data-step="5"] .ld-logo{opacity:1;transform:scale(1);}
@@ -213,6 +215,10 @@
     #loader[data-step="1"],#loader[data-step="2"],#loader[data-step="3"]{--pw:min(74vw,40vh,400px);}
     #loader[data-step="4"],#loader[data-step="5"]{--pw:min(86vw,48vh,500px);}
     .ld-pyr{position:relative;display:flex;flex-direction:column-reverse;align-items:center;width:var(--pw);flex-shrink:0;transition:width 1.15s cubic-bezier(.22,1,.36,1);filter:drop-shadow(0 24px 44px rgba(0,0,0,.55));}
+    /* step4：数字のカウントと三角形の拡大を同じ尺(2.2s)・同じカーブ(easeInOutCubic)で走らせ、
+       「数字が上がる＝三角形が育つ」を説明せずに伝える。JS側のイージングと必ず揃えること */
+    #loader[data-step="4"] .ld-pyr,#loader[data-step="5"] .ld-pyr{transition:width 2.2s cubic-bezier(.65,0,.35,1);}
+    #loader[data-step="4"] .ld-pyr-tier,#loader[data-step="5"] .ld-pyr-tier{transition:height 2.2s cubic-bezier(.65,0,.35,1),filter 1s ease;}
     .ld-pyr-tier{position:relative;width:100%;height:calc(var(--pw) * .29);display:flex;align-items:flex-end;justify-content:center;padding-bottom:.7em;background-color:rgba(255,255,255,.05);background-size:cover;filter:grayscale(1) brightness(.34);transition:height 1.15s cubic-bezier(.22,1,.36,1),filter 1s ease;}
     .ld-pyr-tier.t0{clip-path:polygon(16.667% 0,83.333% 0,100% 100%,0 100%);background-image:url('images/hero_main.jpg');background-position:center 20%;}
     .ld-pyr-tier.t1{clip-path:polygon(33.333% 0,66.667% 0,83.333% 100%,16.667% 100%);margin-top:-1px;background-image:url('images/members_20th.jpg');background-position:center 68%;}
@@ -232,7 +238,10 @@
     .ld-dv .dv-lab{font-weight:700;letter-spacing:.2em;font-size:.7rem;color:#ff5a5a;margin-top:.5rem;}
     .ld-dv .dv-sub{font-family:'Noto Serif JP',serif;font-weight:700;color:rgba(255,255,255,.9);font-size:clamp(.85rem,2.3vw,1.05rem);margin-top:.55rem;}
     /* caption：ステップごとに差し替わるコピー */
-    .ld-cap{position:relative;width:100%;min-height:5.4em;display:flex;align-items:center;justify-content:center;}
+    /* キャプションはstep0とstep5でしか使わないので、それ以外は枠ごと畳んで
+       三角形が常に画面中央に来るようにする（step4で縦にはみ出すのを防ぐ） */
+    .ld-cap{position:relative;width:100%;max-height:0;display:flex;align-items:center;justify-content:center;transition:max-height 1s cubic-bezier(.22,1,.36,1);}
+    #loader[data-step="0"] .ld-cap,#loader[data-step="5"] .ld-cap{max-height:11em;}
     .ld-cap .cap{position:absolute;left:0;right:0;text-align:center;opacity:0;transition:opacity .55s ease;}
     #loader[data-step="0"] .cap.c-purpose{opacity:1;}
     #loader[data-step="5"] .cap.c-final{opacity:1;}
@@ -504,7 +513,7 @@
         <p class="dv-sub">ここを、目指す。</p>
       </div>
       <div class="ld-cap">
-        <p class="cap c-purpose ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p>
+        <div class="cap c-purpose"><p class="ld-eyebrow">PURPOSE</p><p class="ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p></div>
         <p class="cap c-final"><img class="ld-logo" src="images/logo_enjin_white.png" alt="Enjin" /><span class="ld-mincho">ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></p>
       </div>
     </div>
@@ -1377,9 +1386,12 @@
         // 社会人偏差値は「例え」＝実測値ではないので、三角形が育つのと同時に上がる演出だけを担う
         function count(){ if(counted)return; counted=true;
           var el=document.getElementById('ldDv'); if(!el)return;
-          var t0=null, dur=900;
-          function st(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1); var e=1-Math.pow(1-p,3);
-            el.textContent=Math.round(60*e);
+          var t0=null, dur=2200;
+          // easeInOutCubic：CSSの cubic-bezier(.65,0,.35,1) と同一カーブ。
+          // 三角形の拡大と完全に歩調を揃えるため、どちらかを変えたら必ず両方直すこと。
+          function ease(p){ return p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
+          function st(t){ if(!t0)t0=t; var p=Math.min((t-t0)/dur,1);
+            el.textContent=Math.round(60*ease(p));
             if(p<1)requestAnimationFrame(st); }
           requestAnimationFrame(st);
         }
@@ -1396,9 +1408,10 @@
         var sb=l.querySelector('.ld-skip'); if(sb)sb.addEventListener('click',skip);
         if(reduce){finish();return;}
         document.body.style.overflow='hidden';
-        var sceneT=[0,1400,2200,3000,3900,5300];
+        // step4は拡大2.2s＋余韻0.6sで2.8s確保する
+        var sceneT=[0,1300,2050,2800,3600,6400];
         sceneT.forEach(function(t,i){timers.push(setTimeout(function(){step(i);},t));});
-        timers.push(setTimeout(finish,6600));
+        timers.push(setTimeout(finish,7600));
       })();
 
       // count-up numbers
