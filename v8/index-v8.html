@@ -1200,7 +1200,7 @@
 
   <!-- ============ 採用情報（職種：刷新） ============ -->
   <section id="recruit" class="bg-paper px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
-    <div class="sec-en-ghost" style="top:3%;left:-2%;">RECRUIT</div>
+    <div class="sec-en-ghost" style="top:3%;right:-2%;">RECRUIT</div>
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="mb-14">
         <p class="eyebrow mb-4"><span class="en-num">07</span>Recruitment</p>
@@ -1396,13 +1396,14 @@
       // （下地を赤で塗ると塗りと同色になり「左から伸びる」動きが見えなくなる）
       (function(){
         var D=[2900,3200,3200,4900,5000,5400];
-        // T の各要素は [健康, 人間関係, 経済]。シーン05(index4)は健康・人間関係をシーン03(index2)
-        // と同値のまま据え置き、経済だけを動かして「経済力だけを伸ばす」印象にする
-        var T=[[1,1,1],[1,1,1],[1.18,1.0,0.26],[0.34,0.30,0.24],[1.18,1.0,1.32],[1,1,1]];
+        // T の各要素は [健康, 人間関係, 経済]。シーン05(index4)は健康・人間関係を左右対称の
+        // 基準値(1,1)に固定し、経済だけを動かして「経済力だけを伸ばす」印象にする
+        // （T[2]の1.18/1.0のような非対称値を流用すると土台が傾いていびつに見える）
+        var T=[[1,1,1],[1,1,1],[1.18,1.0,0.26],[0.34,0.30,0.24],[1,1,1.32],[1,1,1]];
         var AGE=['','','20代','30代〜','20代のうちに',''];
         var N=6;
         var state={i:0,playing:false,ended:false,showStart:true};
-        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, seen=false, raf=null;
+        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, pending=null, seen=false, raf=null;
 
         var $=function(id){return document.getElementById(id);};
         var stage=$('htStage'), poly=$('htPoly'), circ=$('htCirc'), d0=$('htD0'), d1=$('htD1'), d2=$('htD2'),
@@ -1435,11 +1436,17 @@
         }
 
         function setScene(i){
+          clearTimeout(pending);
           el=0;
           // シーン05(index4)は健康・人間関係を即座に定位置へスナップ（アニメーションさせない）。
-          // 経済(cur[2])だけをtickのlerpで動かし、「経済力だけを伸ばす」動きにする
-          if(i===4){ cur[0]=T[4][0]; cur[1]=T[4][1]; }
-          target=T[i].slice();
+          // 経済(cur[2])は一拍(650ms)置いてから動かし始め、その後tickのlerpで単独アニメーションさせる
+          if(i===4){
+            cur[0]=T[4][0]; cur[1]=T[4][1];
+            target=[T[4][0], T[4][1], cur[2]];
+            pending=setTimeout(function(){ target=T[4].slice(); },650);
+          } else {
+            target=T[i].slice();
+          }
           if(i===5) num=0;
           state.i=i; state.ended=false;
           renderScenes();
