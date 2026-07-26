@@ -25,7 +25,7 @@
     var isReload=ne?ne.type==='reload':(performance.navigation||{}).type===1;
     var seen=sessionStorage.getItem('enjinIntroSeen')==='1';
     if(seen&&!isReload)return;
-    ['images/purpose_summit.jpg','images/culture_beach.jpg','images/philosophy_triangle.jpg'].forEach(function(u,i){
+    ['images/purpose_summit.jpg','images/culture_sky.jpg','images/philosophy_triangle.jpg'].forEach(function(u,i){
       var l=document.createElement('link');
       l.rel='preload';l.as='image';l.href=u;
       if(i===0)l.setAttribute('fetchpriority','high');
@@ -240,10 +240,11 @@
     #loader[data-step="0"] .ld-photo.p-purpose::after{background:linear-gradient(180deg,rgba(9,7,7,.34) 0%,rgba(9,7,7,.52) 48%,rgba(9,7,7,.88) 100%);}
     /* モバイルの縦長クロップでは中央基準だと人物(左1/4)が画面外に切れるため、左寄せで人物を残す */
     @media(max-width:640px){ .ld-photo.p-purpose{background-position:24% 30%;} }
-    /* OHANA＝夕暮れのビーチで跳ぶ仲間たち（AdobeStock 159156340・仮=透かし入りスクショ。
-       ライセンス版が来たら差し替え）。元から夕暮れなので色を殺さず、覆いも最小限にする */
-    .ld-photo.p-culture{background-image:url('images/culture_beach.jpg');background-position:center 58%;filter:grayscale(.12) brightness(.82);}
-    #loader[data-step="1"] .ld-photo.p-culture::after{background:linear-gradient(180deg,rgba(9,7,7,.3) 0%,rgba(9,7,7,.35) 55%,rgba(9,7,7,.8) 100%);}
+    /* OHANA＝青空へ跳ぶ仲間たち（AdobeStock 454114585・仮=透かし入りスクショ。
+       ライセンス版が来たら差し替え）。この写真の売りは青なので覆いは最小限にして、
+       暗い演出の中でCULTUREだけ光が差す対比のシーンにする（Hiro: 明るい方がEnjinらしい） */
+    .ld-photo.p-culture{background-image:url('images/culture_sky.jpg');background-position:center 45%;filter:grayscale(.05) brightness(.9);}
+    #loader[data-step="1"] .ld-photo.p-culture::after{background:linear-gradient(180deg,rgba(9,7,7,.22) 0%,rgba(9,7,7,.28) 55%,rgba(9,7,7,.66) 100%);}
     /* PHILOSOPHY＝「人が自らの手で三角形を掲げる」写真（AdobeStock 182818051）を薄く敷く。
        写真内の木の三角形がノード図と競合しないよう暗めに沈め、輪郭だけ感じさせる */
     .ld-photo.p-philo{background-image:url('images/philosophy_triangle.jpg');background-position:center 30%;filter:grayscale(.6) brightness(.38);}
