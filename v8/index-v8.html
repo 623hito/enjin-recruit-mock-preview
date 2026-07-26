@@ -445,54 +445,75 @@
           .htri-lines .htri-link{stroke-dashoffset:0!important;animation:none!important;} .htri-lines .htri-flow{display:none;}
         }
 
-        /* Happiness Triangle — stacking pyramid (order story), a single continuous triangle */
-        .htri-pyr{display:flex;flex-direction:column-reverse;align-items:center;max-width:420px;margin:0 auto;filter:drop-shadow(0 20px 32px rgba(0,0,0,.5));}
-        .htri-pyr-tier{position:relative;width:100%;height:112px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:16px;opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);background:linear-gradient(135deg,#fdf6f0,#f3e7db);}
-        .htri-pyr-tier.on{opacity:1;transform:translateY(0);}
-        .htri-pyr-tier[data-tier="0"]{clip-path:polygon(16.667% 0%,83.333% 0%,100% 100%,0% 100%);}
-        .htri-pyr-tier[data-tier="1"]{clip-path:polygon(33.333% 0%,66.667% 0%,83.333% 100%,16.667% 100%);margin-top:-1px;transition-delay:.16s;}
-        .htri-pyr-tier[data-tier="2"]{clip-path:polygon(50% 0%,50% 0%,66.667% 100%,33.333% 100%);margin-top:-1px;transition-delay:.32s;background:linear-gradient(135deg,var(--red),#8a0e0e);color:#fff;}
-        .htri-pyr-tier[data-tier="2"] .htri-pyr-n,.htri-pyr-tier[data-tier="2"] .htri-pyr-d{color:rgba(255,255,255,.82);}
-        .htri-pyr-n{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.5rem;color:var(--red);line-height:1;}
-        .htri-pyr-t{font-family:'Noto Serif JP',serif;font-weight:700;font-size:.98rem;white-space:nowrap;margin-top:.3rem;}
-        @media(max-width:640px){
-          .htri-pyr{max-width:300px;}
-          .htri-pyr-tier{height:84px;padding-bottom:11px;}
-          .htri-pyr-n{font-size:1.2rem;} .htri-pyr-t{font-size:.82rem;}
-        }
-        @media (prefers-reduced-motion: reduce){
-          .htri-pyr-tier{opacity:1!important;transform:none!important;transition:none!important;}
-        }
+        /* 幸せトライアングル ムービー（Why Enjin セクション本体） */
+        .ht-wrap{background:#f6f2ea;color:#1c1a17;font-family:'Noto Sans JP',sans-serif;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);}
+        .ht-inner{max-width:1120px;margin:0 auto;}
+        .ht-head{text-align:center;margin-bottom:clamp(40px,6vw,72px);}
+        .ht-eyebrow{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:13px;color:#c8322a;margin:0 0 18px;}
+        .ht-title{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;line-height:1.4;margin:0 0 22px;font-size:clamp(1.9rem,4.4vw,3.2rem);}
+        .ht-title span{color:#c8322a;}
+        .ht-sub{font-size:15px;line-height:2.1;color:#5d574e;margin:0 auto;max-width:34em;text-wrap:pretty;}
 
-        /* THE START — 22歳＝社会人偏差値0 から 60 へ育つ。
-           数字と三角形はJSの同一ループで駆動して完全に同期させる（別々に動かすと
-           「数字が上がる＝三角形が育つ」が読み取れなくなる） */
-        .grow-stage{max-width:640px;margin:0 auto;}
-        .grow-frame{position:relative;width:min(74vw,340px);margin:0 auto;padding:2.2em 0 2.4em;}
-        .grow-frame-inner{position:relative;width:100%;aspect-ratio:200/168;}
-        .grow-tri{position:absolute;inset:0;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(158deg,var(--red),#7e0b0b);transform:scale(.16);transform-origin:center bottom;filter:drop-shadow(0 22px 40px rgba(191,15,15,.45));}
-        .grow-vlab{position:absolute;font-family:'Noto Serif JP',serif;font-weight:700;font-size:.78rem;color:rgba(255,255,255,.92);white-space:nowrap;opacity:0;transition:opacity .8s ease;text-shadow:0 2px 8px rgba(0,0,0,.7);}
-        .grow-stage.reached .grow-vlab{opacity:1;}
-        .grow-vlab.v-e{left:50%;top:0;transform:translateX(-50%);}
-        .grow-vlab.v-h{left:0;bottom:0;}
-        .grow-vlab.v-r{right:0;bottom:0;}
-        .grow-meter{text-align:center;margin-top:1.4rem;}
-        .grow-num{font-family:'Anton','Alumni Sans',sans-serif;font-weight:900;color:#fff;font-size:clamp(2.6rem,9vw,5rem);line-height:.9;font-variant-numeric:tabular-nums;}
-        .grow-mlab{font-weight:700;letter-spacing:.2em;font-size:.7rem;color:#ff5a5a;margin-top:.5rem;}
-        .grow-goal{font-family:'Noto Serif JP',serif;font-weight:700;color:#fff;font-size:clamp(1.05rem,3vw,1.6rem);text-align:center;margin-top:1.6rem;opacity:0;transform:translateY(10px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1);}
-        .grow-stage.reached .grow-goal{opacity:1;transform:translateY(0);}
-        @media (prefers-reduced-motion: reduce){
-          .grow-tri{transform:scale(1)!important;}
-          .grow-vlab,.grow-goal{opacity:1!important;transform:none!important;}
-          .grow-vlab.v-e{transform:translateX(-50%)!important;}
-        }
+        .ht-stage{position:relative;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);box-shadow:0 40px 90px -60px rgba(28,26,23,.65),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
+        /* minmax の下限は min(330px,100%)。素の 330px だとスマホでトラックがコンテナを
+           はみ出し、.ht-stage の overflow:hidden で右側が切れる */
+        .ht-grid{cursor:pointer;user-select:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));align-items:center;gap:clamp(24px,4vw,56px);padding:clamp(28px,4vw,56px);min-height:clamp(520px,66vh,620px);}
+        .ht-textcol{position:relative;min-height:clamp(230px,34vh,300px);order:2;}
+        .ht-scene{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;transition:opacity 1.3s ease,transform 1.3s cubic-bezier(.22,1,.36,1);pointer-events:none;opacity:0;transform:translateY(14px);}
+        .ht-scene.is-active{opacity:1;transform:translateY(0);pointer-events:auto;}
+        .ht-scene.is-before{transform:translateY(-14px);}
+        .ht-num{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.28em;font-size:13px;color:#c8322a;margin:0 0 16px;}
+        .ht-lead{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(19px,2.5vw,27px);line-height:1.75;margin:0 0 14px;color:#1c1a17;text-wrap:pretty;}
+        .ht-body{font-size:clamp(16px,1.9vw,19px);line-height:2;color:#5d574e;margin:8px 0 0;max-width:26em;text-wrap:pretty;font-weight:400;}
+        .ht-emph{font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(24px,3.4vw,36px);line-height:1.6;margin:6px 0 0;color:#1c1a17;letter-spacing:.02em;}
+        .ht-emph span, .ht-body span.ht-strong-sm{color:#c8322a;border-bottom:3px solid rgba(200,50,42,.35);padding-bottom:3px;}
+        .ht-body span.ht-strong-sm{font-weight:700;padding-bottom:2px;}
+
+        .ht-figcol{order:1;display:flex;justify-content:center;align-items:center;}
+        .ht-fig{position:relative;width:100%;max-width:440px;aspect-ratio:1;}
+        .ht-halo{position:absolute;inset:-8%;border-radius:50%;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 62%);pointer-events:none;}
+        .ht-fig svg{position:relative;width:100%;height:100%;display:block;overflow:visible;}
+        #htRadar{transition:opacity 1.1s ease;}
+        #htPyr{transition:opacity 1.1s ease;}
+        #htCirc{transition:opacity 1.1s ease;}
+        #htArrow{transition:opacity 1s ease;}
+        #htEco,#htHel,#htRel{transition:opacity .4s ease;}
+
+        .ht-numoverlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;transition:opacity 1.1s ease;opacity:0;}
+        .ht-numoverlay.is-on{opacity:1;}
+        .ht-numoverlay-bg{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,253,248,.97) 0%,rgba(255,253,248,.9) 48%,rgba(255,253,248,0) 74%);}
+        .ht-numoverlay p.ht-hensa{position:relative;font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;letter-spacing:.22em;font-size:clamp(15px,2vw,19px);color:#1c1a17;margin:0 0 6px;}
+        .ht-numoverlay p.ht-num{position:relative;margin:0;font-family:'Alumni Sans',sans-serif;font-weight:700;line-height:.9;color:#c8322a;text-shadow:0 10px 26px rgba(200,50,42,.24);}
+        .ht-numoverlay p.ht-num span{font-size:clamp(72px,15vw,116px);}
+
+        .ht-agechip{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-size:15px;font-weight:700;letter-spacing:.1em;color:#8a8378;border:1px solid rgba(28,26,23,.14);border-radius:99px;padding:5px 15px;background:#fffdf8;white-space:nowrap;line-height:1.6;box-shadow:0 3px 10px rgba(28,26,23,.07);transition:opacity .4s ease,color .3s ease,border-color .3s ease;opacity:0;}
+        .ht-agechip.is-on{opacity:1;}
+        .ht-agechip.is-emph{color:#c8322a;border-color:rgba(200,50,42,.4);}
+
+        .ht-controls{border-top:1px solid rgba(28,26,23,.09);padding:16px clamp(18px,3vw,32px);display:flex;align-items:center;gap:clamp(12px,2.5vw,24px);flex-wrap:wrap;background:linear-gradient(180deg,#faf7f1,#f4efe6);}
+        .ht-play{width:40px;height:40px;flex-shrink:0;border-radius:50%;border:1px solid rgba(28,26,23,.18);background:#fffdf8;color:#1c1a17;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;padding:0;box-shadow:0 2px 6px rgba(28,26,23,.08);}
+        .ht-play:hover{border-color:#c8322a;color:#c8322a;}
+        .ht-bars{display:flex;gap:8px;flex:1;min-width:180px;}
+        .ht-bar{flex:1;height:4px;min-width:14px;border:0;padding:0;cursor:pointer;border-radius:2px;overflow:hidden;background:rgba(28,26,23,.13);}
+        .ht-bar-fill{display:block;height:100%;width:0%;background:#c8322a;border-radius:2px;}
+        .ht-counter{margin:0;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.18em;font-size:13px;color:#8a8378;flex-shrink:0;}
+
+        .ht-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .9s ease;opacity:0;pointer-events:none;}
+        #htStartCard{z-index:6;background:rgba(251,248,242,.96);}
+        #htStartCard.is-on{opacity:1;}
+        #htEndCard{z-index:5;background:rgba(251,248,242,.94);cursor:pointer;transition:opacity .6s ease;}
+        #htEndCard.is-on{opacity:1;pointer-events:auto;}
+        .ht-chevron{width:40px;height:40px;border-radius:50%;border:1px solid rgba(200,50,42,.35);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
+        @keyframes htFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+        .ht-replay{margin-top:22px;display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid rgba(28,26,23,.16);border-radius:99px;padding:8px 18px;font-size:12.5px;letter-spacing:.06em;color:#8a8378;cursor:pointer;}
+        .ht-hint{text-align:center;font-size:12px;color:#a29a8d;margin:18px 0 0;letter-spacing:.08em;}
 
         /* Happiness Triangle — dark "core belief" chapter treatment */
-        #triangle{color:#c9c2bc;}
-        #triangle::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.18) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
-        #triangle h2{color:#fbf7f3;}
-        #triangle .text-gray-600{color:#bdb3ab;}
-        #triangle .sec-en-ghost{color:rgba(255,255,255,.05);}
+        #engine{color:#c9c2bc;}
+        #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.18) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
+        #engine h2{color:#fbf7f3;}
+        #engine .text-gray-600{color:#bdb3ab;}
+        #engine .sec-en-ghost{color:rgba(255,255,255,.05);}
 
         /* Happiness Triangle — proof cards (real benefits, grounding the concept) */
         .htri-proof-card{display:flex;flex-direction:column;background:#fdf6f0;border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease;box-shadow:0 12px 28px -18px rgba(0,0,0,.55);}
@@ -680,78 +701,176 @@
     </div>
   </section>
 
-  <!-- ============ 幸せトライアングル（背骨） ============ -->
+  <!-- ============ 02 WHY ENJIN — 幸せトライアングル ムービー（背骨） ============ -->
   <!-- ※ OHANA RECRUITING ようこそバナーは /career/ ハブ（career-hub-v1.html）へ移設 -->
-  <section id="triangle" class="px-6 lg:px-16 py-28 lg:py-36 reveal relative overflow-hidden" style="background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);">
-    <div class="sec-en-ghost" style="top:3%;left:-2%;">BALANCE</div>
+  <!-- 6シーン自動再生。バー/▶/ステージクリックで手動操作も可。
+       Desktop の「幸せトライアングル ムービー（本番用）.html」を移植（フォントはサイト既読込のものへ差し替え） -->
+  <section id="triangle" class="ht-wrap reveal">
+    <div class="ht-inner">
+      <div class="ht-head">
+        <p class="ht-eyebrow">PHILOSOPHY</p>
+        <h2 class="ht-title"><span>ぜんぶ</span>ってなんだろう。</h2>
+        <p class="ht-sub">Enjin の創業者がたどり着いた、３つの答え</p>
+      </div>
+
+      <div class="ht-stage" id="htStage">
+        <div class="ht-grid" id="htZone">
+          <div class="ht-textcol">
+            <div class="ht-scene" data-scene="0">
+              <p class="ht-num">01</p>
+              <p class="ht-lead">経済・健康・人間関係</p>
+              <p class="ht-body">どれかではなく、<br>ぜんぶをバランスよく満たしたとき、<br>人は幸福感を感じます。</p>
+            </div>
+            <div class="ht-scene" data-scene="1">
+              <p class="ht-num">02</p>
+              <p class="ht-lead">大切なのは、その順番</p>
+              <p class="ht-body">まず健康、その上に人とのつながり、<br>いちばん上に経済。</p>
+            </div>
+            <div class="ht-scene" data-scene="2">
+              <p class="ht-num">03</p>
+              <p class="ht-lead">20代は、体力がある<br>人との繋がりもある</p>
+              <p class="ht-emph">でも、<span>経済力がない。</span></p>
+            </div>
+            <div class="ht-scene" data-scene="3">
+              <p class="ht-num">04</p>
+              <p class="ht-lead">その時期に<br>“バランス”を求めれば、<br>三角形は小さいまま</p>
+              <p class="ht-body">30代、40代になってから<br>取り戻そうとしても、もう遅い。</p>
+            </div>
+            <div class="ht-scene" data-scene="4">
+              <p class="ht-num">05</p>
+              <p class="ht-lead">だからこそ、<br>健康と人間関係の<br>土台があるうちに、</p>
+              <p class="ht-emph"><span>経済力を伸ばすこと</span>に、舵を切る。</p>
+            </div>
+            <div class="ht-scene" data-scene="5">
+              <p class="ht-num">06</p>
+              <p class="ht-lead">22歳、<br>「社会人偏差値0」<br>からのスタート</p>
+              <p class="ht-body"><span class="ht-strong-sm">学生時代の偏差値は、関係ない。</span><br>社会人としての偏差値60を目指そう。</p>
+            </div>
+          </div>
+
+          <div class="ht-figcol">
+            <div class="ht-fig">
+              <div class="ht-halo"></div>
+              <svg viewBox="0 0 400 400">
+                <defs>
+                  <linearGradient id="htFillG" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0%" stop-color="#e0453a" stop-opacity=".34"></stop><stop offset="100%" stop-color="#96201a" stop-opacity=".14"></stop></linearGradient>
+                  <linearGradient id="htFillDimG" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0%" stop-color="#8d867a" stop-opacity=".24"></stop><stop offset="100%" stop-color="#4a453d" stop-opacity=".1"></stop></linearGradient>
+                  <linearGradient id="htEdgeG" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="#e8493c"></stop><stop offset="100%" stop-color="#a4251d"></stop></linearGradient>
+                  <radialGradient id="htGroundG"><stop offset="0%" stop-color="#1c1a17" stop-opacity=".26"></stop><stop offset="100%" stop-color="#1c1a17" stop-opacity="0"></stop></radialGradient>
+                  <filter id="htBlurG" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="16"></feGaussianBlur></filter>
+                  <filter id="htShadowG" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="9" flood-color="#5a1b16" flood-opacity=".26"></feDropShadow></filter>
+                </defs>
+
+                <g id="htRadar">
+                  <ellipse cx="200" cy="322" rx="132" ry="20" fill="url(#htGroundG)"></ellipse>
+                  <polygon points="78.8,270 321.2,270 200,60" fill="none" stroke="rgba(28,26,23,.14)" stroke-width="1.4"></polygon>
+                  <polygon points="139.4,235 260.6,235 200,130" fill="none" stroke="rgba(28,26,23,.07)" stroke-width="1"></polygon>
+                  <line x1="200" y1="200" x2="78.8" y2="270" stroke="rgba(28,26,23,.1)" stroke-width="1"></line>
+                  <line x1="200" y1="200" x2="321.2" y2="270" stroke="rgba(28,26,23,.1)" stroke-width="1"></line>
+                  <line x1="200" y1="200" x2="200" y2="60" stroke="rgba(28,26,23,.1)" stroke-width="1"></line>
+                  <g id="htCirc" opacity="0">
+                    <circle cx="200" cy="200" r="140" fill="none" stroke="#c8322a" stroke-width="1.1" stroke-opacity=".55" stroke-dasharray="2 7"></circle>
+                    <circle cx="200" cy="200" r="152" fill="none" stroke="#c8322a" stroke-width=".8" stroke-opacity=".22"></circle>
+                  </g>
+                  <polygon id="htGlow" points="78.8,270 321.2,270 200,60" fill="#d8352a" opacity=".22" filter="url(#htBlurG)"></polygon>
+                  <polygon id="htE2" points="78.8,270 321.2,270 200,60" fill="none" stroke="#c8322a" stroke-opacity=".14" stroke-width="1"></polygon>
+                  <polygon id="htE1" points="78.8,270 321.2,270 200,60" fill="none" stroke="#c8322a" stroke-opacity=".26" stroke-width="1"></polygon>
+                  <polygon id="htPoly" points="78.8,270 321.2,270 200,60" fill="url(#htFillG)" stroke="url(#htEdgeG)" stroke-width="2.4" stroke-linejoin="round" filter="url(#htShadowG)"></polygon>
+                  <g id="htDots">
+                    <circle id="htD0" cx="78.8" cy="270" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
+                    <circle id="htD1" cx="321.2" cy="270" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
+                    <circle id="htD2" cx="200" cy="60" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
+                  </g>
+                  <g transform="translate(200,-18)">
+                    <circle cx="0" cy="-6" r="9" fill="none" stroke="#c8322a" stroke-width="1.6"></circle>
+                    <text x="0" y="-1" text-anchor="middle" font-size="11" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#c8322a">¥</text>
+                    <text id="htEco" x="0" y="22" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">経済</text>
+                  </g>
+                  <g transform="translate(14,318)">
+                    <path d="M0,-4 c0,-6 8,-6 8,0 c0,5 -8,9 -8,13 c0,-4 -8,-8 -8,-13 c0,-6 8,-6 8,0 z" fill="none" stroke="#c8322a" stroke-width="1.5"></path>
+                    <text id="htHel" x="0" y="34" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">健康</text>
+                  </g>
+                  <g transform="translate(386,318)">
+                    <circle cx="-4" cy="-9" r="3.6" fill="none" stroke="#c8322a" stroke-width="1.4"></circle>
+                    <path d="M-9,3 c0,-6.5 10,-6.5 10,0" fill="none" stroke="#c8322a" stroke-width="1.4"></path>
+                    <circle cx="5" cy="-9" r="3.6" fill="none" stroke="#c8322a" stroke-width="1.4"></circle>
+                    <path d="M0,3 c0,-6.5 10,-6.5 10,0" fill="none" stroke="#c8322a" stroke-width="1.4"></path>
+                    <text id="htRel" x="0" y="34" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="6" stroke-linejoin="round">人間関係</text>
+                  </g>
+                  <g id="htArrow" opacity="0">
+                    <line x1="258" y1="104" x2="258" y2="46" stroke="#c8322a" stroke-width="2.4"></line>
+                    <polygon points="258,32 266,50 250,50" fill="#c8322a"></polygon>
+                  </g>
+                </g>
+
+                <g id="htPyr" style="opacity:0;">
+                  <ellipse cx="200" cy="360" rx="132" ry="18" fill="url(#htGroundG)"></ellipse>
+                  <g id="htPyr0" opacity="0">
+                    <polygon points="122,270 200,270 200,356 82,356" fill="#f2b3ad"></polygon>
+                    <polygon points="200,270 278,270 318,356 200,356" fill="#e2968e"></polygon>
+                    <text x="200" y="322" text-anchor="middle" font-size="19" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#6e1610">健康</text>
+                  </g>
+                  <g id="htPyr1" opacity="0">
+                    <polygon points="158,168 200,168 200,262 122,262" fill="#e2685e"></polygon>
+                    <polygon points="200,168 242,168 278,262 200,262" fill="#c9524a"></polygon>
+                    <text x="200" y="222" text-anchor="middle" font-size="18" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#fffdf8">人間関係</text>
+                  </g>
+                  <g id="htPyr2" opacity="0">
+                    <polygon points="200,70 158,160 200,160" fill="#c8322a"></polygon>
+                    <polygon points="200,70 200,160 242,160" fill="#9e231c"></polygon>
+                    <text x="200" y="146" text-anchor="middle" font-size="17" font-family="'Shippori Mincho B1','Noto Serif JP',serif" font-weight="700" fill="#fffdf8">経済</text>
+                  </g>
+                </g>
+              </svg>
+
+              <div class="ht-numoverlay" id="htNumOverlay">
+                <div class="ht-numoverlay-bg"></div>
+                <p class="ht-hensa">偏差値</p>
+                <p class="ht-num"><span id="htNum">0</span></p>
+              </div>
+
+              <div class="ht-agechip" id="htAge"><span id="htAgeText">20代</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ht-controls">
+          <button class="ht-play" id="htPlay">▶</button>
+          <div class="ht-bars" id="htBars">
+            <button class="ht-bar" data-i="0" title="バランス"><span class="ht-bar-fill"></span></button>
+            <button class="ht-bar" data-i="1" title="順番"><span class="ht-bar-fill"></span></button>
+            <button class="ht-bar" data-i="2" title="20代の現実"><span class="ht-bar-fill"></span></button>
+            <button class="ht-bar" data-i="3" title="縮小"><span class="ht-bar-fill"></span></button>
+            <button class="ht-bar" data-i="4" title="舵を切る"><span class="ht-bar-fill"></span></button>
+            <button class="ht-bar" data-i="5" title="THE START"><span class="ht-bar-fill"></span></button>
+          </div>
+          <p class="ht-counter" id="htCounter">01 / 06</p>
+        </div>
+
+        <div class="ht-card" id="htStartCard">
+          <svg width="180" height="156" viewBox="0 0 200 174" style="position:absolute;opacity:.16;"><polygon points="100,10 190,164 10,164" fill="none" stroke="#c8322a" stroke-width="3"></polygon></svg>
+          <p style="position:relative;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 10px;">PHILOSOPHY MOVIE</p>
+          <p style="position:relative;font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#1c1a17;margin:0;">幸せに、順番がある。</p>
+        </div>
+
+        <div class="ht-card" id="htEndCard">
+          <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 10px;">SCROLL ON</p>
+          <p style="font-family:'Shippori Mincho B1','Noto Serif JP',serif;font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#1c1a17;margin:0 0 22px;">さぁ、Enjinで叶えよう。</p>
+          <div class="ht-chevron"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#c8322a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <button class="ht-replay" id="htReplay"><svg width="13" height="13" viewBox="0 0 20 20"><path d="M4,4 v6 h6 M4,10 a8,8 0 1 0 2-6" fill="none" stroke="#8a8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>もう一度見る</button>
+        </div>
+      </div>
+
+      <p class="ht-hint">クリックで各シーンへ移動できます</p>
+    </div>
+  </section>
+
+  <!-- ============ 02b THE Enjin — 経済力を伸ばす、その仕組み ============ -->
+  <section id="engine" class="px-6 lg:px-16 py-24 lg:py-32 reveal relative overflow-hidden" style="background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);">
+    <div class="sec-en-ghost" style="top:6%;left:-2%;">BALANCE</div>
     <div class="max-w-5xl mx-auto relative z-10">
-      <div class="text-center mb-16 lg:mb-24">
-        <p class="eyebrow center mb-5">Why Enjin</p>
-        <h2 class="font-mincho font-bold leading-[1.4] mb-7" style="font-size:clamp(1.9rem,4.4vw,3.4rem);"><span class="text-red">ぜんぶ</span>ってなんだろう。</h2>
-        <p class="text-sm lg:text-[15px] text-gray-600 leading-[2.1] max-w-2xl mx-auto">人は、<span class="font-bold">経済・健康・人間関係。</span><br />どれかではなく、ぜんぶのバランスがとれたとき、豊かさを感じます。<span class="kari ml-1">文言仮</span></p>
-      </div>
 
-      <div class="htri">
-        <svg class="htri-lines" viewBox="0 0 860 600" preserveAspectRatio="none">
-          <path class="htri-link d1" d="M415,150 L200,455" pathLength="1"/>
-          <path class="htri-link d2" d="M445,150 L660,455" pathLength="1"/>
-          <path class="htri-link d3" d="M235,486 L625,486" pathLength="1"/>
-          <path class="htri-flow" d="M415,150 L200,455"/>
-          <path class="htri-flow" d="M445,150 L660,455"/>
-          <path class="htri-flow" d="M235,486 L625,486"/>
-        </svg>
-        <div class="htri-node he"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">3</span><span class="en">Economy</span><span class="jp">経済</span></div></div></div>
-        <div class="htri-node hh"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">1</span><span class="en">Health</span><span class="jp">健康</span></div></div></div>
-        <div class="htri-node hr"><div class="htri-nd"><div class="htri-arrows"></div><div class="htri-ring"></div><div class="htri-core"><span class="num">2</span><span class="en">Relation</span><span class="jp">人間関係</span></div></div></div>
-      </div>
-
-      <div class="htri-pyr-block mt-24 lg:mt-32">
-        <div class="max-w-xl mx-auto text-center mb-12 lg:mb-14">
-          <p class="font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE ORIGIN — 本田が、20代で見た景色</p>
-          <p class="text-sm lg:text-[15px] text-gray-600 leading-[2.1]">20代は、体力がある。人との繋がりもある。でも、お金がない。<br />その時期に<span class="font-bold">"バランス"</span>を求めれば、トライアングルは小さいまま止まる。<br />30代、40代になってから取り戻そうとしても、もう遅い。<span class="kari ml-1">文言仮</span></p>
-        </div>
-
-        <div class="htri-pyr" id="htriPyr">
-          <div class="htri-pyr-tier" data-tier="0">
-            <span class="htri-pyr-n">01</span>
-            <span class="htri-pyr-t">健康</span>
-          </div>
-          <div class="htri-pyr-tier" data-tier="1">
-            <span class="htri-pyr-n">02</span>
-            <span class="htri-pyr-t">人間関係</span>
-          </div>
-          <div class="htri-pyr-tier" data-tier="2">
-            <span class="htri-pyr-n">03</span>
-            <span class="htri-pyr-t">経済</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-2xl mx-auto text-center mt-14 lg:mt-16">
-        <p class="text-sm text-gray-600 leading-[2.1]">大切なのは<span class="font-bold text-red">順番</span>。まず健康、その上に人とのつながり、いちばん上に経済。<br />だからこそ、健康と人間関係という土台があるうちに、経済力を伸ばすことに舵を切る。<span class="kari ml-1">文言仮</span></p>
-      </div>
-
-      <div class="grow-block mt-16 lg:mt-20">
-        <div class="max-w-xl mx-auto text-center mb-10">
-          <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE START — 22歳、社会人偏差値0からのスタート</p>
-          <p class="text-sm lg:text-[15px] text-gray-600 leading-[2.1]">学生時代の偏差値は、ここでは関係ない。<br />伸ばすのは、社会人としての偏差値。<span class="kari ml-1">文言仮</span></p>
-        </div>
-        <div class="grow-stage" id="growStage">
-          <div class="grow-frame">
-            <span class="grow-vlab v-e">経済</span>
-            <div class="grow-frame-inner"><div class="grow-tri" id="growTri"></div></div>
-            <span class="grow-vlab v-h">健康</span>
-            <span class="grow-vlab v-r">人間関係</span>
-          </div>
-          <div class="grow-meter">
-            <p class="grow-num"><span id="growDv">0</span></p>
-            <p class="grow-mlab">社会人偏差値</p>
-          </div>
-          <p class="grow-goal">市場価値を、最大に。<span class="kari ml-1">文言仮</span></p>
-        </div>
-      </div>
-
-      <div class="htri-proof-block mt-16 lg:mt-20">
+      <div class="htri-proof-block">
         <p class="text-center font-alumni font-bold text-[11px] tracking-[0.22em] text-red mb-4">THE Enjin — 経済力を伸ばす、その仕組み</p>
         <p class="max-w-xl mx-auto text-center text-sm lg:text-[15px] text-gray-600 leading-[2.1] mb-10">視野を広げる経験が、経済力を伸ばす。<span class="kari ml-1">文言仮</span></p>
         <div class="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5">
@@ -1274,45 +1393,154 @@
       function init(){document.querySelectorAll('.reveal,.deco-line').forEach(function(el){io.observe(el);});}
       if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 
-      // happiness triangle — pyramid stacks bottom-up as it scrolls into view
+      // 幸せトライアングル ムービー（6シーン）— 自動再生＋手動操作
+      // 進捗バーは .ht-bar の下地を常にニュートラルにし、中の .ht-bar-fill を伸ばして見せる
+      // （下地を赤で塗ると塗りと同色になり「左から伸びる」動きが見えなくなる）
       (function(){
-        var pyr=document.getElementById('htriPyr'); if(!pyr)return;
-        var tiers=pyr.querySelectorAll('.htri-pyr-tier');
-        var pio=new IntersectionObserver(function(es){es.forEach(function(e){
-          if(!e.isIntersecting)return; pio.unobserve(e.target);
-          tiers.forEach(function(t){t.classList.add('on');});
-        });},{threshold:.35});
-        pio.observe(pyr);
-      })();
+        var D=[2900,3200,3200,4900,5000,5400];
+        var T=[[1,1,1],[1,1,1],[1.18,1.0,0.26],[0.34,0.30,0.24],[1.16,1.14,1.14],[1,1,1]];
+        var AGE=['','','20代','30代〜','20代のうちに',''];
+        var N=6;
+        var state={i:0,playing:false,ended:false,showStart:true};
+        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, pending=null, seen=false, raf=null;
 
-      // THE START：22歳＝社会人偏差値0 → 60。スクロールで入ったら発火。
-      // 数字と三角形の拡大を1本のrAFループで駆動し、完全に同期させている。
-      // （初めて三角形を見た人に「数字が上がる＝三角形が育つ」を説明なしで伝えるため）
-      (function(){
-        var stage=document.getElementById('growStage'); if(!stage)return;
-        var tri=document.getElementById('growTri');
-        var num=document.getElementById('growDv');
-        if(!tri||!num)return;
-        var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var S0=.16, S1=1, DUR=2600, done=false;
-        function ease(p){ return p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2; }
-        function run(){
-          if(done)return; done=true;
-          if(reduce){ tri.style.transform='scale(1)'; num.textContent='60'; stage.classList.add('reached'); return; }
-          var t0=null;
-          function st(t){ if(!t0)t0=t;
-            var p=Math.min((t-t0)/DUR,1), e=ease(p);
-            tri.style.transform='scale('+(S0+(S1-S0)*e).toFixed(4)+')';
-            num.textContent=Math.round(60*e);
-            if(p>.62) stage.classList.add('reached');
-            if(p<1)requestAnimationFrame(st);
-          }
-          requestAnimationFrame(st);
+        var $=function(id){return document.getElementById(id);};
+        var stage=$('htStage'), poly=$('htPoly'), circ=$('htCirc'), d0=$('htD0'), d1=$('htD1'), d2=$('htD2'),
+            numEl=$('htNum'), arrow=$('htArrow'), ageChip=$('htAge'), ageText=$('htAgeText'), eco=$('htEco'), hel=$('htHel'), rel=$('htRel'),
+            e1=$('htE1'), e2=$('htE2'), glow=$('htGlow'), dots=$('htDots'), radar=$('htRadar'), pyr=$('htPyr'),
+            pyr0=$('htPyr0'), pyr1=$('htPyr1'), pyr2=$('htPyr2'), numOverlay=$('htNumOverlay'),
+            playBtn=$('htPlay'), counter=$('htCounter'), startCard=$('htStartCard'), endCard=$('htEndCard'), replayBtn=$('htReplay'),
+            zone=$('htZone'), bars=Array.prototype.slice.call(document.querySelectorAll('.ht-bar')),
+            scenes=Array.prototype.slice.call(document.querySelectorAll('.ht-scene'));
+
+        function pts(v,s){
+          var A=[150,30,-90], m=s||1, out=[];
+          for(var k=0;k<3;k++){var a=A[k]*Math.PI/180; out.push((200+140*v[k]*m*Math.cos(a)).toFixed(1)+','+(200+140*v[k]*m*Math.sin(a)).toFixed(1));}
+          return out.join(' ');
         }
-        var gio=new IntersectionObserver(function(es){es.forEach(function(e){
-          if(!e.isIntersecting)return; gio.unobserve(e.target); run();
-        });},{threshold:.45});
-        gio.observe(stage);
+
+        function renderScenes(){
+          scenes.forEach(function(s){
+            var n=+s.dataset.scene;
+            s.classList.toggle('is-active', n===state.i);
+            s.classList.toggle('is-before', n<state.i);
+          });
+          counter.textContent=String(state.i+1).padStart(2,'0')+' / 0'+N;
+          var done=state.i>=N-1 && !state.playing;
+          playBtn.textContent = done ? '↻' : (state.playing ? '❚❚' : '▶');
+          bars.forEach(function(b){ b.style.background='rgba(28,26,23,.13)'; });
+          startCard.classList.toggle('is-on', state.showStart);
+          endCard.classList.toggle('is-on', state.ended);
+          endCard.style.pointerEvents = state.ended ? 'auto' : 'none';
+        }
+
+        function setScene(i){
+          clearTimeout(pending);
+          el=0;
+          if(i===4){ target=T[2].slice(); pending=setTimeout(function(){target=T[4].slice();},900); }
+          else target=T[i].slice();
+          if(i===5) num=0;
+          state.i=i; state.ended=false;
+          renderScenes();
+        }
+
+        function togglePlay(){
+          var done=state.i>=N-1 && !state.playing;
+          if(done){ cur=[1,1,1]; num=0; state.playing=true; state.ended=false; setScene(0); }
+          else { state.playing=!state.playing; renderScenes(); }
+        }
+
+        function tick(ts){
+          if(!last) last=ts;
+          var dt=Math.min(60, ts-last); last=ts;
+          if(state.playing){
+            el+=dt;
+            if(el>=D[state.i]){
+              if(state.i<N-1) setScene(state.i+1);
+              else { state.playing=false; state.ended=true; renderScenes(); }
+            }
+          }
+          bars.forEach(function(b,n){
+            var fill=b.querySelector('.ht-bar-fill');
+            var w = n<state.i ? 100 : n===state.i ? Math.min(100, el/D[state.i]*100) : 0;
+            fill.style.width=w.toFixed(1)+'%';
+            fill.style.opacity = n<state.i ? '.42' : '1';
+          });
+
+          var k=1-Math.pow(0.02, dt/1000);
+          for(var j=0;j<3;j++) cur[j]+=(target[j]-cur[j])*k;
+          var i=state.i, big=i===4, dim=i===3, isLast=i===5;
+
+          poly.setAttribute('points', pts(cur));
+          poly.setAttribute('fill', dim?'url(#htFillDimG)':'url(#htFillG)');
+          poly.setAttribute('stroke', dim?'#9c9488':'url(#htEdgeG)');
+          poly.setAttribute('stroke-width', big?'3.2':'2.4');
+          poly.setAttribute('opacity', isLast ? (0.3+num/60*0.45).toFixed(2) : '1');
+
+          e1.setAttribute('points', pts(cur,1.07)); e1.setAttribute('stroke-opacity', dim?'.1':isLast?'.12':'.26');
+          e2.setAttribute('points', pts(cur,1.15)); e2.setAttribute('stroke-opacity', dim?'.05':isLast?'.06':'.14');
+          glow.setAttribute('points', pts(cur,.94)); glow.setAttribute('opacity', dim?'.05':big?'.34':isLast?'.14':'.2');
+
+          var A=[150,30,-90], R=[d0,d1,d2];
+          R.forEach(function(r,jx){
+            var a=A[jx]*Math.PI/180;
+            r.setAttribute('cx',(200+140*cur[jx]*Math.cos(a)).toFixed(1));
+            r.setAttribute('cy',(200+140*cur[jx]*Math.sin(a)).toFixed(1));
+            r.setAttribute('stroke', dim?'#9c9488':'#c8322a');
+            r.setAttribute('r', (i===2&&jx===0)||(big&&jx===2) ? '8.5':'6.5');
+          });
+          dots.setAttribute('opacity', isLast?'.45':'1');
+          circ.setAttribute('opacity', (i===0||isLast)?'1':'0');
+          arrow.setAttribute('opacity', big?'1':'0');
+          [eco,hel,rel].forEach(function(r){ r.setAttribute('opacity', isLast?'.35':'1'); });
+
+          if(isLast){
+            num += (60-num) * (1-Math.pow(0.15, dt/1000));
+            if(60-num<0.6) num=60;
+            numEl.textContent = Math.round(num);
+            var s=0.34+(num/60)*0.82; cur=[s,s,s]; target=[s,s,s];
+          }
+
+          var PD=[150,850,1550];
+          [pyr0,pyr1,pyr2].forEach(function(r,n){
+            var p=0;
+            if(i===1) p = state.playing ? Math.max(0,Math.min(1,(el-PD[n])/620)) : 1;
+            p = 1-Math.pow(1-p,3);
+            r.setAttribute('opacity', p.toFixed(3));
+            r.style.transform='translateY('+((1-p)*30).toFixed(1)+'px)';
+          });
+
+          radar.style.opacity = i===1 ? '0':'1';
+          pyr.style.opacity = i===1 ? '1':'0';
+          numOverlay.classList.toggle('is-on', i===5);
+          ageChip.classList.toggle('is-on', !!AGE[i]);
+          ageChip.classList.toggle('is-emph', i===2||i===4);
+          ageText.textContent = AGE[i] || '';
+
+          if(state.i>=N-1 && !state.playing !== (playBtn.textContent==='↻')) renderScenes();
+          raf=requestAnimationFrame(tick);
+        }
+
+        playBtn.addEventListener('click', togglePlay);
+        bars.forEach(function(b){ b.addEventListener('click', function(){ setScene(+b.dataset.i); state.playing=true; state.ended=false; renderScenes(); }); });
+        zone.addEventListener('click', function(e){
+          var r=zone.getBoundingClientRect(); var p=(e.clientX-r.left)/r.width;
+          if(p<0.25){ setScene(Math.max(0,state.i-1)); state.playing=true; state.ended=false; renderScenes(); }
+          else if(p>0.75){ if(state.i<N-1){ setScene(state.i+1); state.playing=true; state.ended=false; renderScenes(); } else togglePlay(); }
+          else togglePlay();
+        });
+        endCard.addEventListener('click', function(){ window.scrollBy({top:window.innerHeight*0.85, behavior:'smooth'}); });
+        replayBtn.addEventListener('click', function(e){ e.stopPropagation(); cur=[1,1,1]; num=0; state.playing=true; state.ended=false; setScene(0); });
+
+        var io=new IntersectionObserver(function(es){
+          es.forEach(function(en){
+            if(en.isIntersecting && !seen){ seen=true; setTimeout(function(){ state.showStart=false; state.playing=true; renderScenes(); }, 1100); }
+          });
+        }, {threshold:.15});
+        io.observe(stage);
+
+        renderScenes();
+        raf=requestAnimationFrame(tick);
       })();
 
       // scroll progress + hero parallax
