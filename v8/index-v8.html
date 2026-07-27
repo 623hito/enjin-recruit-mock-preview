@@ -1755,18 +1755,7 @@
         });
       })();
 
-      // GA4 event tracking (dataLayer)
-      window.dataLayer=window.dataLayer||[];
-      document.addEventListener('click',function(e){
-        var a=e.target.closest('[data-cta]'); if(!a)return;
-        window.dataLayer.push({event:'cta_click',cta_type:a.getAttribute('data-cta'),cta_text:(a.textContent||'').trim()});
-      });
-      (function(){var marks=[25,50,75,100],hit={};
-        window.addEventListener('scroll',function(){
-          var d=document.documentElement,p=Math.round((window.scrollY)/(d.scrollHeight-window.innerHeight)*100);
-          marks.forEach(function(m){if(p>=m&&!hit[m]){hit[m]=1;window.dataLayer.push({event:'scroll_depth',percent:m});}});
-        },{passive:true});
-      })();
+      // ※計測（cta_click / scroll_depth ほか）は assets/analytics.js に集約済み
 
       // loader — cinematic opening (band cuts / count-up / curtain exit)
       (function(){
@@ -1865,5 +1854,6 @@
     if(document.readyState!=='loading') build(); else document.addEventListener('DOMContentLoaded',build);
   })();
   </script>
+<script src="assets/analytics.js" defer></script>
 </body>
 </html>
