@@ -74,6 +74,20 @@
     .reveal.in { opacity:1; transform:translateY(0); }
     @keyframes kb { 0%{transform:scale(1.02);} 100%{transform:scale(1.1);} }
     .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate;background-size:cover;background-position:center;}
+    /* ===== Hero写真の男女切り替え =====
+       男女を同一の絶対配置レイヤーで重ね、opacityのみで切り替える。
+       PC(hover対応)は #hero ホバー中だけ女性へクロスフェード、
+       タッチ端末は右上ボタンで .show-f をトグル */
+    .hero-photo-f{background-image:url('images/hero_female.jpg');background-size:cover;background-position:center 25%;transform:scale(1.6);transform-origin:50% 22%;opacity:0;transition:opacity .7s ease;pointer-events:none;}
+    .hero-photo-m .kb-img{animation:kb 30s ease-in-out infinite alternate;}
+    @media (hover:hover) and (pointer:fine){
+      #hero:hover .hero-photo-f{opacity:1;}
+      .hero-toggle{display:none;}
+    }
+    #hero.show-f .hero-photo-f{opacity:1;}
+    .hero-toggle{position:absolute;top:1.1rem;right:1.1rem;z-index:20;border:1px solid rgba(255,255,255,.55);background:rgba(20,18,18,.4);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.06em;padding:.5rem 1rem;border-radius:99px;cursor:pointer;transition:background .2s;}
+    .hero-toggle:active{background:rgba(191,15,15,.7);}
+
     .deco-line{display:block;width:44px;height:2px;background:var(--red);}
     .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
     @keyframes grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
@@ -757,9 +771,13 @@
 
   <!-- ============ 01 Hero ============ -->
   <section id="hero" class="relative h-[92vh] min-h-[620px] overflow-hidden" style="background:#141414;">
-    <div class="ken-burns absolute inset-0" id="heroPara" style="will-change:transform;">
+    <!-- Hero写真は男女2枚を同一の絶対配置レイヤーで重ね、opacityのみで切り替える。
+         PC=ホバー中だけ女性へクロスフェード／タッチ端末=右上ボタンで .show-f をトグル -->
+    <div class="ken-burns absolute inset-0 hero-photo-m" id="heroPara" style="will-change:transform;">
       <div class="kb-img" style="background-image:url('images/hero_main.jpg');"></div>
     </div>
+    <div class="absolute inset-0 hero-photo-f" aria-hidden="true"></div>
+    <button type="button" id="heroToggle" class="hero-toggle" aria-label="写真を切り替える">タップして切替</button>
     <!-- 暗めのオーバーレイで文字を立たせる -->
     <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(10,8,8,.72) 0%, rgba(10,8,8,.25) 45%, rgba(10,8,8,.15) 100%);"></div>
     <!-- 巨大英字 -->
@@ -1666,6 +1684,13 @@
 
         renderScenes();
         raf=requestAnimationFrame(tick);
+      })();
+
+      // Hero写真の切り替え（タッチ端末用の右上ボタン。PCはCSSの:hoverが担当）
+      (function(){
+        var btn=document.getElementById('heroToggle');
+        var hero=document.getElementById('hero');
+        if(btn&&hero){btn.addEventListener('click',function(){hero.classList.toggle('show-f');});}
       })();
 
       // イベントバナー（B案）：ここを書き換えるだけで運用できる。
