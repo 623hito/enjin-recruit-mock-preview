@@ -11,7 +11,7 @@
 <style>
   /* 文字サイズ全体を一般的な採用サイト水準へ底上げ（rem基準を16px→17px化。Tailwindのtext-sm等が連動して拡大） */
   html { font-size:17px; }
-  :root { --red:#BF0F0F; --ink:#1a1a1a; --paper:#FFF7F8; }
+  :root { --red:#BF0F0F; --ink:#444; --paper:#FFF7F8; }
   html { scroll-behavior:smooth; }
   html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
   .font-alumni { font-family:'Alumni Sans', sans-serif; }
@@ -87,7 +87,7 @@
   .rc-flinks__in{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.6rem 2rem;align-items:flex-start;padding-bottom:2.4rem;border-bottom:1px solid #eee;}
   .rc-flinks__logo img{height:20px;width:auto;display:block;margin-top:.2rem;}
   .rc-flinks__cols{display:flex;flex-wrap:wrap;gap:2.4rem 2.6rem;flex:1;}
-  .rc-flinks__h a{font-size:.82rem;font-weight:700;color:#1a1a1a;}
+  .rc-flinks__h a{font-size:.82rem;font-weight:700;color:#444;}
   .rc-flinks__h a:hover{color:var(--red);}
   .rc-flinks__cols ul{margin-top:.9rem;display:grid;gap:.6rem;}
   .rc-flinks__cols li a{font-size:.72rem;color:#777;}
@@ -136,8 +136,8 @@
   <div class="absolute inset-0 hero-photo" style="background-image:url('images/career_hero.jpg');"></div>
   <div class="absolute inset-0 hero-scrim"></div>
   <div class="hero-copy relative z-10 reveal in">
-    <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.02;letter-spacing:.02em;color:#141414;">OHANA<br class="sm:hidden" /> RECRUITING</p>
-    <p class="font-mincho font-bold mt-6" style="font-size:clamp(1rem,2.2vw,1.35rem);color:#141414;">ようこそ、Enjinの採用サイトへ。<span class="kari ml-2">文言仮</span></p>
+    <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.02;letter-spacing:.02em;color:#444;">OHANA<br class="sm:hidden" /> RECRUITING</p>
+    <p class="font-mincho font-bold mt-6" style="font-size:clamp(1rem,2.2vw,1.35rem);color:#444;">ようこそ、Enjinの採用サイトへ。<span class="kari ml-2">文言仮</span></p>
     <p class="text-xs text-gray-600 mt-3 leading-loose">株式会社Enjinは、<br />ご縁（En）のある繋がりを大切にしたい。<br />そんな想いのある社名です。</p>
     <p class="text-xs text-gray-600 mt-3 leading-loose hidden sm:block">ハワイ語で家族を意味する、“OHANA”のカルチャーをベースに、<br />互いに支え合い、高め合える仲間を探しています。</p>
     <p class="text-xs text-gray-600 mt-3 leading-loose sm:hidden">ハワイ語で家族を意味する<br />“OHANA”のカルチャーをベースに、<br />互いに支え合い、高め合える<br />仲間を探しています。</p>

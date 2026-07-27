@@ -41,7 +41,7 @@
   <style>
   /* 文字サイズ全体を一般的な採用サイト水準へ底上げ（rem基準を16px→17px化。Tailwindのtext-sm等が連動して拡大） */
   html { font-size:17px; }
-    :root { --red:#BF0F0F; --ink:#141414; --paper:#F7F4F2; }
+    :root { --red:#BF0F0F; --ink:#444; --paper:#F7F4F2; }
     html { scroll-behavior:smooth; }
     html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
     html, body { overflow-x:hidden; max-width:100%; }
@@ -74,19 +74,8 @@
     .reveal.in { opacity:1; transform:translateY(0); }
     @keyframes kb { 0%{transform:scale(1.02);} 100%{transform:scale(1.1);} }
     .ken-burns{overflow:hidden;position:relative;} .ken-burns>.kb-img{position:absolute;inset:0;animation:kb 26s ease-in-out infinite alternate;background-size:cover;background-position:center;}
-    /* ===== Hero写真の男女切り替え =====
-       男女を同一の絶対配置レイヤーで重ね、opacityのみで切り替える。
-       PC(hover対応)は #hero ホバー中だけ女性へクロスフェード、
-       タッチ端末は右上ボタンで .show-f をトグル */
-    .hero-photo-f{background-image:url('images/hero_female.jpg');background-size:cover;background-position:center 25%;transform:scale(1.6);transform-origin:50% 22%;opacity:0;transition:opacity .7s ease;pointer-events:none;}
+    /* Hero写真の男女切り替えは一旦停止中（素材 images/hero_female.jpg は保持）。復活時はgit履歴参照 */
     .hero-photo-m .kb-img{animation:kb 30s ease-in-out infinite alternate;}
-    @media (hover:hover) and (pointer:fine){
-      #hero:hover .hero-photo-f{opacity:1;}
-      .hero-toggle{display:none;}
-    }
-    #hero.show-f .hero-photo-f{opacity:1;}
-    .hero-toggle{position:absolute;top:1.1rem;right:1.1rem;z-index:20;border:1px solid rgba(255,255,255,.55);background:rgba(20,18,18,.4);backdrop-filter:blur(4px);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.06em;padding:.5rem 1rem;border-radius:99px;cursor:pointer;transition:background .2s;}
-    .hero-toggle:active{background:rgba(191,15,15,.7);}
 
     .deco-line{display:block;width:44px;height:2px;background:var(--red);}
     .deco-line.in{transform-origin:left;animation:grow .8s cubic-bezier(.22,1,.36,1) forwards;}
@@ -131,7 +120,7 @@
     .iv-wrap.dragging .iv-card { pointer-events:none; }
     .iv-track { display:flex; gap:1.2rem; width:max-content; }
     .iv-outer { position:relative; }
-    .iv-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:52px; border-radius:50%; background:#fff; border:1px solid #eee; box-shadow:0 10px 30px -10px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .25s, background .25s; color:#141414; }
+    .iv-nav { position:absolute; top:50%; transform:translateY(-50%); z-index:10; width:52px; height:52px; border-radius:50%; background:#fff; border:1px solid #eee; box-shadow:0 10px 30px -10px rgba(0,0,0,.35); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .25s, background .25s; color:#444; }
     .iv-nav:hover { background:var(--red); color:#fff; transform:translateY(-50%) scale(1.06); }
     .iv-nav svg { width:22px; height:22px; }
     .iv-nav.prev { left:-6px; } .iv-nav.next { right:-6px; }
@@ -150,7 +139,7 @@
     .hist-node__ic{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;background:#fff;border:1.5px solid #cfc6c0;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;color:#8a7f77;}
     .hist-node__ic svg{width:22px;height:22px;}
     .hist-node.hot .hist-node__ic{background:var(--red);border-color:var(--red);color:#fff;}
-    .hist-node__y{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.25rem;line-height:1;color:#141414;margin-bottom:.5rem;}
+    .hist-node__y{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:1.25rem;line-height:1;color:#444;margin-bottom:.5rem;}
     .hist-node.hot .hist-node__y{color:var(--red);}
     .hist-node__t{font-size:.82rem;color:#3f3a36;line-height:1.55;}
     @media(max-width:900px){
@@ -227,7 +216,7 @@
     .drawer-panel a { display:block; padding:.9rem .2rem; border-bottom:1px solid #f0f0f0; font-size:.95rem; }
     .drawer-panel a:active { color:var(--red); }
     .hamburger { width:26px; height:20px; position:relative; }
-    .hamburger span { position:absolute; left:0; width:100%; height:2px; background:#141414; transition:.3s; }
+    .hamburger span { position:absolute; left:0; width:100%; height:2px; background:#444; transition:.3s; }
     .hamburger span:nth-child(1){ top:0; } .hamburger span:nth-child(2){ top:9px; } .hamburger span:nth-child(3){ top:18px; }
 
     /* Loader — keyword cascade */
@@ -330,7 +319,7 @@
     .eyebrow .en-num{font-family:'Alumni Sans',sans-serif;font-weight:900;color:var(--red);font-size:1rem;letter-spacing:.04em;line-height:1;}
 
     /* Concept */
-    .concept-wrap{position:relative;background:#141414;color:#fff;overflow:hidden;}
+    .concept-wrap{position:relative;background:#444;color:#fff;overflow:hidden;}
     .concept-photo{position:absolute;inset:0;}
     .concept-photo .kb-img{position:absolute;inset:0;background-size:cover;background-position:center;animation:kb 30s ease-in-out infinite alternate;opacity:.42;}
     .vmincho{writing-mode:vertical-rl;font-family:'Noto Serif JP',serif;font-weight:700;}
@@ -344,15 +333,15 @@
     .site-head .hamburger span{background:#fff;}
     .site-head.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-color:#f0f0f0;}
     .site-head.scrolled .logo-dark{display:block;} .site-head.scrolled .logo-white{display:none;}
-    .site-head.scrolled nav a{color:#141414;}
+    .site-head.scrolled nav a{color:#444;}
     .site-head.scrolled nav a:hover{color:var(--red);}
     .site-head.scrolled nav a.btn-apply,.site-head.scrolled nav a.btn-apply:hover{color:#fff;}
-    .site-head.scrolled .hamburger span{background:#141414;}
+    .site-head.scrolled .hamburger span{background:#444;}
     /* Header badge */
     .head-badge{position:relative;padding-left:.85rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;white-space:nowrap;}
     .head-badge::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:15px;width:1px;background:currentColor;opacity:.45;}
     .site-head .head-badge{color:#fff;}
-    .site-head.scrolled .head-badge{color:#141414;}
+    .site-head.scrolled .head-badge{color:#444;}
     /* Apply dropdown */
     .head-sns{display:flex;align-items:center;gap:.65rem;padding-left:.9rem;margin-left:.1rem;position:relative;}
     .head-sns::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:16px;width:1px;background:currentColor;opacity:.35;}
@@ -364,7 +353,7 @@
     .apply-drop{position:absolute;top:100%;right:0;margin-top:.55rem;min-width:200px;background:#fff;box-shadow:0 20px 44px -14px rgba(0,0,0,.3);border-top:2px solid var(--red);opacity:0;visibility:hidden;transform:translateY(6px);transition:.25s;z-index:60;}
     .apply-drop::before{content:"";position:absolute;top:-.6rem;left:0;right:0;height:.6rem;}
     .apply-menu:hover .apply-drop{opacity:1;visibility:visible;transform:translateY(0);}
-    .apply-drop a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.9rem 1.1rem;font-size:.82rem;font-weight:600;color:#141414 !important;border-bottom:1px solid #f1efed;transition:background .2s;}
+    .apply-drop a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.9rem 1.1rem;font-size:.82rem;font-weight:600;color:#444 !important;border-bottom:1px solid #f1efed;transition:background .2s;}
     .apply-drop a:last-child{border-bottom:none;}
     .apply-drop a:hover{background:#faf7f5;color:var(--red) !important;}
     .apply-drop .yr{font-family:'Alumni Sans',sans-serif;font-weight:900;color:var(--red);font-size:1rem;}
@@ -412,8 +401,8 @@
     /* Buttons */
     .btn-primary,.btn-ghost{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.05rem 2.1rem;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,border-color .35s,transform .15s cubic-bezier(.34,1.56,.64,1);text-align:center;}
     .btn-primary{background:var(--red);color:#fff;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
-    .btn-ghost{border:1px solid #141414;color:#141414;background:transparent;}
-    .btn-primary::before,.btn-ghost::before{content:"";position:absolute;inset:0;z-index:0;background:#141414;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
+    .btn-ghost{border:1px solid #444;color:#444;background:transparent;}
+    .btn-primary::before,.btn-ghost::before{content:"";position:absolute;inset:0;z-index:0;background:#444;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
     .btn-ghost:hover{color:#fff;}
     .btn-primary:hover::before,.btn-ghost:hover::before{transform:scaleX(1);}
     .btn-primary:active,.btn-ghost:active{transform:scale(.96);}
@@ -633,7 +622,7 @@
     .js-more{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .js-more:hover{opacity:.88;}
     .js-more:active{transform:scale(.95);}
-    .js-entry{display:inline-flex;align-items:center;gap:.5rem;background:#141414;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-entry{display:inline-flex;align-items:center;gap:.5rem;background:#444;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .js-entry:hover{opacity:.85;}
     .js-entry:active{transform:scale(.95);}
     .js-right{padding:1.6rem 1.8rem 1.8rem;background:#fdfbf8;}
@@ -771,14 +760,10 @@
   </div>
 
   <!-- ============ 01 Hero ============ -->
-  <section id="hero" class="relative h-[92vh] min-h-[620px] overflow-hidden" style="background:#141414;">
-    <!-- Hero写真は男女2枚を同一の絶対配置レイヤーで重ね、opacityのみで切り替える。
-         PC=ホバー中だけ女性へクロスフェード／タッチ端末=右上ボタンで .show-f をトグル -->
+  <section id="hero" class="relative h-[92vh] min-h-[620px] overflow-hidden" style="background:#444;">
     <div class="ken-burns absolute inset-0 hero-photo-m" id="heroPara" style="will-change:transform;">
       <div class="kb-img" style="background-image:url('images/hero_main.jpg');"></div>
     </div>
-    <div class="absolute inset-0 hero-photo-f" aria-hidden="true"></div>
-    <button type="button" id="heroToggle" class="hero-toggle" aria-label="写真を切り替える">タップして切替</button>
     <!-- 暗めのオーバーレイで文字を立たせる -->
     <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(10,8,8,.72) 0%, rgba(10,8,8,.25) 45%, rgba(10,8,8,.15) 100%);"></div>
     <!-- 巨大英字 -->
@@ -1131,7 +1116,7 @@
     <div class="sec-en-ghost" style="top:3%;left:-2%;">MESSAGE</div>
     <div class="max-w-6xl mx-auto relative z-10">
       <div class="grid lg:grid-cols-[0.82fr_1.18fr] gap-8 lg:gap-14 items-stretch">
-        <div class="relative flex flex-col justify-between p-10 lg:p-12" style="background:#141414;color:#fff;min-height:400px;">
+        <div class="relative flex flex-col justify-between p-10 lg:p-12" style="background:#444;color:#fff;min-height:400px;">
           <div class="absolute inset-0" style="background-image:url('images/honda_ceo.jpg');background-size:cover;background-position:center top;opacity:.85;"></div>
           <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(20,20,20,.15) 0%,rgba(20,20,20,.35) 55%,rgba(20,20,20,.92) 100%);"></div>
           <div class="relative"></div>
@@ -1325,12 +1310,12 @@
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-px" style="background:#e6e1db;">
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">LISTED</p><p class="font-anton text-4xl lg:text-5xl" style="color:var(--red);">7370</p><p class="text-[11px] text-gray-500 mt-2">東証グロース市場上場</p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">ANNIVERSARY</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">創業<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="20" style="color:var(--red);">0</span>周年</p><p class="text-[11px] text-gray-500 mt-2">2025年に20周年</p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">CLIENTS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;"><span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="7000" data-comma="1" style="color:var(--red);">0</span>社超</p><p class="text-[11px] text-gray-500 mt-2">顧客数</p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">グループ<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="8" style="color:var(--red);">0</span>社</p><p class="text-[11px] text-gray-500 mt-2">PR・観光・不動産・金融ほか</p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">EMPLOYEES</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;"><span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="149" style="color:var(--red);">0</span><span class="text-base">名</span></p><p class="text-[11px] text-gray-500 mt-2">従業員数</p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">1ST-YEAR SALARY</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">¥<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="420" style="color:var(--red);">0</span>万〜</p><p class="text-[11px] text-gray-500 mt-2">1年目モデル年収 <span class="kari">仮</span></p></div>
-        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">HOLIDAYS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#141414;">年間休日<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="126" style="color:var(--red);">0</span>日</p><p class="text-[11px] text-gray-500 mt-2">完全週休2日・土日祝休み</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">ANNIVERSARY</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;">創業<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="20" style="color:var(--red);">0</span>周年</p><p class="text-[11px] text-gray-500 mt-2">2025年に20周年</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">CLIENTS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;"><span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="7000" data-comma="1" style="color:var(--red);">0</span>社超</p><p class="text-[11px] text-gray-500 mt-2">顧客数</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">GROUP</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;">グループ<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="8" style="color:var(--red);">0</span>社</p><p class="text-[11px] text-gray-500 mt-2">PR・観光・不動産・金融ほか</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">EMPLOYEES</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;"><span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="149" style="color:var(--red);">0</span><span class="text-base">名</span></p><p class="text-[11px] text-gray-500 mt-2">従業員数</p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">1ST-YEAR SALARY</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;">¥<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="420" style="color:var(--red);">0</span>万〜</p><p class="text-[11px] text-gray-500 mt-2">1年目モデル年収 <span class="kari">仮</span></p></div>
+        <div class="flex flex-col items-center justify-center text-center px-5" style="background:#fff;min-height:180px;"><p class="font-alumni font-bold text-[11px] text-gray-400 tracking-[0.22em] mb-3">HOLIDAYS</p><p class="font-bold text-2xl lg:text-3xl" style="color:#444;">年間休日<span class="cnt font-anton text-4xl lg:text-5xl align-[-2px] mx-1" data-target="126" style="color:var(--red);">0</span>日</p><p class="text-[11px] text-gray-500 mt-2">完全週休2日・土日祝休み</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#faf8f5;min-height:180px;"><p class="font-bold text-sm text-gray-500 mb-4">平均年齢</p><div class="mb-4 rounded-full flex items-center justify-center" style="width:56px;height:56px;background:conic-gradient(#b8afa5 0 62%, #e6e1db 0);"><div class="rounded-full flex items-center justify-center" style="width:38px;height:38px;background:#faf8f5;"><span class="font-alumni font-bold text-gray-400 text-xs">??.?</span></div></div><p class="text-[10px] text-gray-400">※データ収集中</p></div>
         <div class="flex flex-col items-center justify-center text-center px-5" style="background:#faf8f5;min-height:180px;"><p class="font-bold text-sm text-gray-500 mb-4">男女比</p><div class="mb-4 w-full" style="max-width:150px;"><div class="flex overflow-hidden mb-2" style="height:14px;"><div style="width:52%;background:#b8afa5;"></div><div style="width:48%;background:#e6e1db;"></div></div><div class="flex justify-between text-[10px] text-gray-500"><span>男 ??%</span><span>女 ??%</span></div></div><p class="text-[10px] text-gray-400">※データ収集中</p></div>
         </div>
@@ -1338,7 +1323,7 @@
   </section>
 
   <!-- ============ 求める人物像 ============ -->
-  <section id="person" class="noise px-6 lg:px-16 py-28 lg:py-36 reveal relative overflow-hidden" style="background:#141414;color:#fff;">
+  <section id="person" class="noise px-6 lg:px-16 py-28 lg:py-36 reveal relative overflow-hidden" style="background:#444;color:#fff;">
     <div class="sec-en-ghost" style="top:2%;left:-2%;color:rgba(255,255,255,.05);">WANTED</div>
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center mb-20">
@@ -1348,10 +1333,10 @@
         <p class="text-sm text-gray-400 leading-[2.1]">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari ml-2" style="border-color:#3a3a3a;color:#666;">文言仮</span></p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;">
+        <div class="text-center lg:border-r lg:pr-8" style="border-color:rgba(255,255,255,.25);">
           <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4.2" r="1.5" fill="currentColor" stroke="none"/><path d="M4 17l5 1 .75-1.5"/><path d="M15 21v-4l-4-3 1-6"/><path d="M7 12V9l5-1 3 3 3 1"/></svg></span>
           <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">01</p><h3 class="font-bold text-xl mb-3 text-white">まず、動ける人</h3><p class="text-[13px] text-gray-400 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
-        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;">
+        <div class="text-center lg:border-r lg:pr-8" style="border-color:rgba(255,255,255,.25);">
           <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></svg></span>
           <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">02</p><h3 class="font-bold text-xl mb-3 text-white">気前の良い人</h3><p class="text-[13px] text-gray-400 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
         <div class="text-center">
@@ -1424,7 +1409,7 @@
       <h2 class="sec-title text-2xl lg:text-3xl mb-12">SNSでEnjinのリアルをCHECK</h2>
       <div class="flex items-center justify-center gap-6 lg:gap-10">
         <a href="https://www.instagram.com/enjin_pr" target="_blank" rel="noopener" class="group flex flex-col items-center gap-3">
-          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#141414;">
+          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#444;">
             <svg viewBox="0 0 24 24" class="w-7 h-7 lg:w-8 lg:h-8" fill="none" stroke="currentColor" stroke-width="1.7">
               <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
             </svg>
@@ -1433,13 +1418,13 @@
         </a>
         
         <a href="https://www.youtube.com/@Enjin-Business" target="_blank" rel="noopener" class="group flex flex-col items-center gap-3">
-          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#141414;">
+          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#444;">
             <svg viewBox="0 0 24 24" class="w-8 h-8 lg:w-9 lg:h-9" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
           </span>
           <span class="text-xs font-alumni font-bold tracking-wider text-gray-500 group-hover:text-red transition">YOUTUBE</span>
         </a>
         <a href="https://note.com/enjin_hr" target="_blank" rel="noopener" class="group flex flex-col items-center gap-3">
-          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#141414;">
+          <span class="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-gray-300 flex items-center justify-center transition group-hover:bg-red group-hover:border-red group-hover:text-white" style="color:#444;">
             <svg viewBox="0 0 24 24" class="w-7 h-7 lg:w-8 lg:h-8" fill="currentColor"><path d="M4 19.85V4.15H15.1C18.14 4.15 20 6.61 20 10.63V19.85H15.53V10.2C15.53 8.58 14.13 8.04 13.66 8.04H8.47V19.85Z"/></svg>
           </span>
           <span class="text-xs font-alumni font-bold tracking-wider text-gray-500 group-hover:text-red transition">NOTE</span>
@@ -1458,7 +1443,7 @@
       <h2 class="sec-title leading-tight mb-4" style="font-size:clamp(1.8rem, 4vw, 3rem);">まずは、話を聞きに来ませんか。</h2>
       <p class="text-sm text-white/85 mb-12">会社説明会・LINE相談・エントリーの3つから、あなたに合った方法をお選びいただけます。</p>
       <div class="grid sm:grid-cols-3 gap-5 text-left">
-        <a href="application-v8.html" data-cta="seminar" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#141414;">
+        <a href="application-v8.html" data-cta="seminar" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#444;">
           <div class="flex items-center justify-between mb-2">
             <p class="font-alumni font-black text-red text-2xl">01</p>
             <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(191,15,15,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18"/><path d="M5 4v11h14V4"/><path d="M12 15v3"/><path d="m8.5 21 3.5-3 3.5 3"/><path d="M8.5 8.5 11 11l4.5-4.5"/></svg></span>
@@ -1467,7 +1452,7 @@
           <p class="text-xs text-gray-500 leading-relaxed mb-4">Enjinのリアルを、気軽に知る。オンライン可。</p>
           <span class="font-alumni font-bold text-xs tracking-widest text-red group-hover:tracking-[.2em] transition">RESERVE →</span>
         </a>
-        <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300 relative" style="color:#141414;border-top:3px solid #06C755;">
+        <a href="https://line.me/R/ti/p/@545fhfqv" target="_blank" rel="noopener" data-cta="line" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300 relative" style="color:#444;border-top:3px solid #06C755;">
           <div class="flex items-center justify-between mb-2">
             <p class="font-alumni font-black text-2xl" style="color:#06C755;">02</p>
             <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(6,199,85,.1);color:#06C755;"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1 0-2-.17-2.9-.5L5 21l1.1-3.3A8.46 8.46 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z"/><path d="M8.5 10.5h.01"/><path d="M12.5 10.5h.01"/><path d="M16.5 10.5h.01"/></svg></span>
@@ -1476,7 +1461,7 @@
           <p class="text-xs text-gray-500 leading-relaxed mb-4">まず気軽に。友だち追加して質問だけでもOK。</p>
           <span class="font-alumni font-bold text-xs tracking-widest group-hover:tracking-[.2em] transition" style="color:#06C755;">ADD FRIEND →</span>
         </a>
-        <a href="application-v8.html" data-cta="entry" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#141414;">
+        <a href="application-v8.html" data-cta="entry" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#444;">
           <div class="flex items-center justify-between mb-2">
             <p class="font-alumni font-black text-red text-2xl">03</p>
             <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(191,15,15,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span>
@@ -1685,13 +1670,6 @@
 
         renderScenes();
         raf=requestAnimationFrame(tick);
-      })();
-
-      // Hero写真の切り替え（タッチ端末用の右上ボタン。PCはCSSの:hoverが担当）
-      (function(){
-        var btn=document.getElementById('heroToggle');
-        var hero=document.getElementById('hero');
-        if(btn&&hero){btn.addEventListener('click',function(){hero.classList.toggle('show-f');});}
       })();
 
       // イベントバナー（B案）：ここを書き換えるだけで運用できる。

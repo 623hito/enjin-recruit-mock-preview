@@ -10,7 +10,7 @@
   <style>
   /* 文字サイズ全体を一般的な採用サイト水準へ底上げ（rem基準を16px→17px化。Tailwindのtext-sm等が連動して拡大） */
   html { font-size:17px; }
-    :root { --red:#BF0F0F; --ink:#141414; --paper:#F7F4F2; }
+    :root { --red:#BF0F0F; --ink:#444; --paper:#F7F4F2; }
     html { scroll-behavior:smooth; }
     html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); overflow-x:hidden; max-width:100%; }
     a { color:inherit; } a:hover { color:var(--red); }
@@ -19,7 +19,7 @@
     .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
     .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;white-space:nowrap;}
     .site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #f0f0f0;}
-    .head-badge{position:relative;padding-left:.85rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;white-space:nowrap;color:#141414;}
+    .head-badge{position:relative;padding-left:.85rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;white-space:nowrap;color:#444;}
     .head-badge::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:15px;width:1px;background:currentColor;opacity:.45;}
     .doc h2{font-weight:700;font-size:1.05rem;margin-top:2.6rem;margin-bottom:.9rem;padding-left:.9rem;border-left:3px solid var(--red);letter-spacing:.02em;}
     .doc p{font-size:.9rem;line-height:2;color:#3f3a36;margin-bottom:.7rem;}
@@ -51,7 +51,7 @@
     <a href="index-v8.html" class="text-sm text-gray-500 hover:text-red transition">← 採用TOPに戻る</a>
   </header>
 
-  <section class="relative overflow-hidden" style="background:#141414;">
+  <section class="relative overflow-hidden" style="background:#444;">
     <div class="max-w-3xl mx-auto px-6 lg:px-10 py-14 lg:py-16 relative z-10 text-center">
       <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">PRIVACY POLICY</p>
       <h1 class="font-mincho font-bold text-white leading-[1.4]" style="font-size:clamp(1.7rem,4vw,2.6rem);">プライバシーポリシー</h1>
