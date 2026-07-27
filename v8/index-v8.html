@@ -576,6 +576,51 @@
     .btn-line-cta{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);transition:transform .15s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
     .btn-line-cta:active{transform:scale(.95);}
   
+    /* ===== 募集職種スライダー ===== */
+    .jobs-slider{position:relative;}
+    .js-stage{position:relative;}
+    .js-slide{display:none;background:#fff;box-shadow:0 1px 2px rgba(31,23,20,.05), 0 16px 40px -20px rgba(31,23,20,.2);}
+    .js-slide.is-on{display:grid;grid-template-columns:1fr 1.15fr;animation:jsIn .45s cubic-bezier(.22,1,.36,1);}
+    @keyframes jsIn{from{opacity:0;transform:translateX(18px);}to{opacity:1;transform:translateX(0);}}
+    .js-slide.is-back{animation-name:jsInBack;}
+    @keyframes jsInBack{from{opacity:0;transform:translateX(-18px);}to{opacity:1;transform:translateX(0);}}
+    .js-left{display:flex;flex-direction:column;border-right:1px solid #f0ebe6;}
+    .js-ph{aspect-ratio:16/9;overflow:hidden;flex-shrink:0;}
+    .js-ph.prep{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#efeae6,#efeae6 10px,#e8e2dd 10px,#e8e2dd 20px);}
+    .js-ph.prep span{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.16em;font-size:.72rem;color:#a99f97;}
+    .js-ph>div{width:100%;height:100%;background-size:cover;background-position:center;}
+    .js-info{padding:1.6rem 1.8rem 1.8rem;display:flex;flex-direction:column;flex:1;}
+    .js-num{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:2.4rem;line-height:1;color:var(--red);margin-bottom:.7rem;}
+    .js-catch{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.05rem;line-height:1.6;margin-bottom:.6rem;}
+    .js-title{font-weight:700;font-size:1.35rem;margin-bottom:.6rem;}
+    .js-desc{font-size:.85rem;color:#8a8079;line-height:1.9;flex:1;}
+    .js-more{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;align-self:flex-start;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-more:hover{opacity:.88;}
+    .js-more:active{transform:scale(.95);}
+    .js-right{padding:1.6rem 1.8rem 1.8rem;background:#fdfbf8;}
+    .js-right-h{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.9rem;}
+    .js-right-h b{font-size:1rem;}
+    .js-right-h span{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.18em;color:#b5aca4;}
+    .js-req{display:grid;}
+    .js-req>div{display:grid;grid-template-columns:92px 1fr;gap:.9rem;padding:.68rem 0;border-bottom:1px solid #efe9e3;font-size:.82rem;line-height:1.75;}
+    .js-req>div:last-child{border-bottom:none;}
+    .js-req dt{color:#a29a8d;font-weight:600;font-size:.76rem;letter-spacing:.04em;}
+    .js-req dd{color:#3f3a36;}
+    .js-controls{display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-top:1.4rem;}
+    .js-nav{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(28,26,23,.25);background:#fff;color:#3f3a36;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;padding:0 0 3px;box-shadow:0 4px 12px -6px rgba(28,26,23,.25);transition:background .2s,color .2s,border-color .2s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+    .js-nav:hover{background:var(--red);border-color:var(--red);color:#fff;}
+    .js-nav:active{transform:scale(.92);}
+    .js-dots{display:flex;gap:.55rem;}
+    .js-dot{width:9px;height:9px;border-radius:99px;border:0;padding:0;background:#d9d0c9;cursor:pointer;transition:background .25s,width .25s;}
+    .js-dot.on{background:var(--red);width:26px;}
+    @media(max-width:900px){
+      .js-slide.is-on{grid-template-columns:1fr;}
+      .js-left{border-right:none;border-bottom:1px solid #f0ebe6;}
+      .js-info{padding:1.3rem 1.3rem 1.5rem;}
+      .js-right{padding:1.3rem 1.3rem 1.5rem;}
+      .js-req>div{grid-template-columns:84px 1fr;}
+    }
+
     /* ===== 質感B: 直角のまま影で立体感（枠線・目地を廃止） ===== */
     .job-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
     .job-card:hover{transform:translateY(-5px);box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
@@ -1276,47 +1321,15 @@
         <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400">OPEN POSITIONS</span>
         <span class="kari">紹介文言仮</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-        <a href="sales-v8.html" class="job-card">
-          <div class="jc-ph prep"><span>NOW PRINTING</span></div>
-          <div class="jc-body">
-          <p class="num mb-4">01</p>
-          <p class="font-mincho font-bold text-[15px] mb-3 leading-snug">経営者と、<br />直接向き合う。</p>
-          <h4 class="font-bold text-lg mb-2">PRコンサル／営業</h4>
-          <p class="text-xs text-gray-500 leading-relaxed mb-6">1年目から中小企業の経営者に対峙し、その会社の魅力を世に送り出す。</p>
-          <p class="arrow">VIEW MORE →</p>
-          </div>
-        </a>
-        <a href="job-v8.html?role=planner" class="job-card">
-          <div class="jc-ph prep"><span>NOW PRINTING</span></div>
-          <div class="jc-body">
-          <p class="num mb-4">02</p>
-          <p class="font-mincho font-bold text-[15px] mb-3 leading-snug">伝わるカタチを、<br />設計する。</p>
-          <h4 class="font-bold text-lg mb-2">企画／プランナー</h4>
-          <p class="text-xs text-gray-500 leading-relaxed mb-6">PR戦略・メディア企画を組み立て、クライアントの価値を最大化する。</p>
-          <p class="arrow">VIEW MORE →</p>
-          </div>
-        </a>
-        <a href="job-v8.html?role=hr" class="job-card">
-          <div class="jc-ph prep"><span>NOW PRINTING</span></div>
-          <div class="jc-body">
-          <p class="num mb-4">03</p>
-          <p class="font-mincho font-bold text-[15px] mb-3 leading-snug">未来の仲間を、<br />つくる。</p>
-          <h4 class="font-bold text-lg mb-2">HR</h4>
-          <p class="text-xs text-gray-500 leading-relaxed mb-6">採用・組織づくりを通して、Enjinの次の20年を担う人と文化を育てる。</p>
-          <p class="arrow">VIEW MORE →</p>
-          </div>
-        </a>
-        <a href="job-v8.html?role=accounting" class="job-card">
-          <div class="jc-ph prep"><span>NOW PRINTING</span></div>
-          <div class="jc-body">
-          <p class="num mb-4">04</p>
-          <p class="font-mincho font-bold text-[15px] mb-3 leading-snug">挑戦を、<br />数字で支える。</p>
-          <h4 class="font-bold text-lg mb-2">経理</h4>
-          <p class="text-xs text-gray-500 leading-relaxed mb-6">上場企業の経営基盤をコーポレートの立場から支えるプロフェッショナル。</p>
-          <p class="arrow">VIEW MORE →</p>
-          </div>
-        </a>
+      <!-- 募集職種スライダー：1職種ずつ表示。左=写真+紹介、右=募集要項（求人票）。
+           Prev/Next とドットで4職種を切り替える。スライドHTMLはJSがJOBSデータから描画 -->
+      <div class="jobs-slider mb-12" id="jobsSlider">
+        <div class="js-stage" id="jsStage"></div>
+        <div class="js-controls">
+          <button type="button" class="js-nav" id="jsPrev" aria-label="前の職種"><span>‹</span></button>
+          <div class="js-dots" id="jsDots"></div>
+          <button type="button" class="js-nav" id="jsNext" aria-label="次の職種"><span>›</span></button>
+        </div>
       </div>
       <div class="rec-acc-wrap">
         <details class="rec-acc" id="accFlow" open>
@@ -1628,6 +1641,67 @@
 
         renderScenes();
         raf=requestAnimationFrame(tick);
+      })();
+
+      // 募集職種スライダー：1職種ずつ表示、Prev/Next・ドットで切り替え
+      (function(){
+        var stage=document.getElementById('jsStage'); if(!stage)return;
+        // 募集要項（右カラム）は recruitment-v8.html の dl と表記を揃えること
+        var REQ_COMMON=[
+          ['対象','大学・大学院を卒業／修了（見込み）の新卒の方（文理不問・全学部全学科）'],
+          ['勤務地','東京都中央区銀座5-13-16 ヒューリック銀座イーストビル8F'],
+          ['勤務時間','9:30〜18:30'],
+          ['休日休暇','完全週休2日制（土日祝）・年間休日126日・親孝行休暇ほか'],
+          ['初任給','※データ収集中（正式版で公開）'],
+          ['福利厚生','OHANAカフェ／OHANA旅／研修制度／家賃補助／ジム代補助 ほか']
+        ];
+        var JOBS=[
+          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサル／営業',desc:'1年目から中小企業の経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'},
+          {num:'02',catch:'伝わるカタチを、設計する。',title:'企画／プランナー',desc:'PR戦略・メディア企画を組み立て、クライアントの価値を最大化する。',href:'job-v8.html?role=planner'},
+          {num:'03',catch:'未来の仲間を、つくる。',title:'HR',desc:'採用・組織づくりを通して、Enjinの次の20年を担う人と文化を育てる。',href:'job-v8.html?role=hr'},
+          {num:'04',catch:'挑戦を、数字で支える。',title:'経理',desc:'上場企業の経営基盤をコーポレートの立場から支えるプロフェッショナル。',href:'job-v8.html?role=accounting'}
+        ];
+        var dotsEl=document.getElementById('jsDots');
+        JOBS.forEach(function(j){
+          var reqRows=[['募集職種',j.title]].concat(REQ_COMMON).map(function(r){
+            return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>';
+          }).join('');
+          var el=document.createElement('article');
+          el.className='js-slide';
+          el.innerHTML=
+            '<div class="js-left">'+
+              '<div class="js-ph prep"><span>NOW PRINTING</span></div>'+
+              '<div class="js-info">'+
+                '<p class="js-num">'+j.num+'</p>'+
+                '<p class="js-catch">'+j.catch+'</p>'+
+                '<h4 class="js-title">'+j.title+'</h4>'+
+                '<p class="js-desc">'+j.desc+'</p>'+
+                '<a class="js-more" href="'+j.href+'">VIEW MORE　→</a>'+
+              '</div>'+
+            '</div>'+
+            '<div class="js-right">'+
+              '<div class="js-right-h"><b>募集要項</b><span>REQUIREMENTS</span></div>'+
+              '<dl class="js-req">'+reqRows+'</dl>'+
+            '</div>';
+          stage.appendChild(el);
+          var d=document.createElement('button');
+          d.type='button'; d.className='js-dot';
+          d.setAttribute('aria-label',j.title+'を表示');
+          dotsEl.appendChild(d);
+        });
+        var slides=stage.children, dots=dotsEl.children, cur=0;
+        function show(i,back){
+          cur=(i%JOBS.length+JOBS.length)%JOBS.length;
+          for(var k=0;k<slides.length;k++){
+            slides[k].classList.toggle('is-on',k===cur);
+            slides[k].classList.toggle('is-back',k===cur&&!!back);
+            dots[k].classList.toggle('on',k===cur);
+          }
+        }
+        document.getElementById('jsPrev').addEventListener('click',function(){show(cur-1,true);});
+        document.getElementById('jsNext').addEventListener('click',function(){show(cur+1,false);});
+        for(var k=0;k<dots.length;k++){(function(n){dots[n].addEventListener('click',function(){show(n,n<cur);});})(k);}
+        show(0);
       })();
 
       // scroll progress + hero parallax
