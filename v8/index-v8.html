@@ -644,6 +644,7 @@
     .js-req>div{display:grid;grid-template-columns:92px 1fr;gap:.9rem;padding:.68rem 0;border-bottom:1px solid #efe9e3;font-size:.82rem;line-height:1.75;}
     .js-req>div:last-child{border-bottom:none;}
     .js-req dt{color:#a29a8d;font-weight:600;font-size:.76rem;letter-spacing:.04em;}
+    .js-dico{width:13px;height:13px;display:inline-block;vertical-align:-2px;margin-right:5px;color:var(--red);opacity:.7;}
     .js-req dd{color:#3f3a36;}
     .js-controls{display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-top:1.4rem;}
     .js-nav{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(28,26,23,.25);background:#fff;color:#3f3a36;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;padding:0 0 3px;box-shadow:0 4px 12px -6px rgba(28,26,23,.25);transition:background .2s,color .2s,border-color .2s,transform .15s cubic-bezier(.34,1.56,.64,1);}
@@ -1729,7 +1730,7 @@
       // 募集職種スライダー：1職種ずつ表示、Prev/Next・ドットで切り替え
       (function(){
         var stage=document.getElementById('jsStage'); if(!stage)return;
-        // 募集要項（右カラム）は recruitment-v8.html の dl と表記を揃えること
+        // 募集要項（右カラム）は recruitment-v8.html のスライダーと同一データ（変更時は両方直す）
         var REQ_COMMON=[
           ['対象','大学・大学院を卒業／修了（見込み）の新卒の方（文理不問・全学部全学科）'],
           ['勤務地','東京都中央区銀座5-13-16 ヒューリック銀座イーストビル8F'],
@@ -1744,10 +1745,21 @@
           {num:'03',catch:'未来の仲間を、つくる。',title:'HR',desc:'採用・組織づくりを通して、Enjinの次の20年を担う人と文化を育てる。',href:'job-v8.html?role=hr'},
           {num:'04',catch:'挑戦を、数字で支える。',title:'経理',desc:'上場企業の経営基盤をコーポレートの立場から支えるプロフェッショナル。',href:'job-v8.html?role=accounting'}
         ];
+        // 行アイコン（recruitment-v8.html 旧・募集要項の .dico と同じ絵柄）
+        var ICO={
+          '募集職種':'<path d="M4 7.5h16v12.5H4z"/><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2"/><path d="M4 12.5h16"/>',
+          '対象':'<path d="M12 3 2.5 8 12 13l9.5-5z"/><path d="M6 10.5V16c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5.5"/>',
+          '勤務地':'<path d="M20 10.5c0 5.5-8 11-8 11s-8-5.5-8-11a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.5" r="2.8"/>',
+          '勤務時間':'<circle cx="12" cy="12" r="9"/><path d="M12 6.5V12l3.5 2"/>',
+          '休日休暇':'<rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17"/><path d="M8 3v4"/><path d="M16 3v4"/>',
+          '初任給':'<path d="M12 4 8.5 9.5h7L12 4Z"/><path d="M12 9.5V20"/><path d="M8 13h8"/><path d="M8 16.5h8"/>',
+          '福利厚生':'<path d="M12 20.5s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11.5c0 4.7-7 9-7 9Z"/>'
+        };
         var dotsEl=document.getElementById('jsDots');
         JOBS.forEach(function(j){
           var reqRows=[['募集職種',j.title]].concat(REQ_COMMON).map(function(r){
-            return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>';
+            var ic=ICO[r[0]]?'<svg class="js-dico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICO[r[0]]+'</svg>':'';
+            return '<div><dt>'+ic+r[0]+'</dt><dd>'+r[1]+'</dd></div>';
           }).join('');
           var el=document.createElement('article');
           el.className='js-slide';
@@ -1814,10 +1826,12 @@
         var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var half=function(){return wrap.scrollWidth/2;};
         var norm=function(){var hw=half(); if(hw<=0)return; if(wrap.scrollLeft>=hw)wrap.scrollLeft-=hw; else if(wrap.scrollLeft<0)wrap.scrollLeft+=hw;};
-        var down=false, moved=false, sx=0, sl=0, idle=0, hovering=false;
-        wrap.addEventListener('pointerdown',function(e){down=true;moved=false;sx=e.clientX;sl=wrap.scrollLeft;wrap.classList.add('dragging');wrap.setPointerCapture&&wrap.setPointerCapture(e.pointerId);});
-        wrap.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(Math.abs(dx)>4)moved=true;wrap.scrollLeft=sl-dx;norm();});
-        var end=function(){if(!down)return;down=false;wrap.classList.remove('dragging');idle=0;};
+        var down=false, moved=false, sx=0, sl=0, idle=0, hovering=false, pid=null;
+        // dragging付与（.iv-cardのpointer-events:none）とポインタキャプチャを最初から行うと
+        // clickがカード(<a>)に届かず遷移できない。8px以上動いた「ドラッグ確定」時にだけ行う。
+        wrap.addEventListener('pointerdown',function(e){down=true;moved=false;pid=e.pointerId;sx=e.clientX;sl=wrap.scrollLeft;});
+        wrap.addEventListener('pointermove',function(e){if(!down)return;var dx=e.clientX-sx;if(!moved&&Math.abs(dx)>8){moved=true;wrap.classList.add('dragging');wrap.setPointerCapture&&wrap.setPointerCapture(pid);}if(moved){wrap.scrollLeft=sl-dx;norm();}});
+        var end=function(){if(!down)return;down=false;wrap.classList.remove('dragging');idle=moved?0:-1600;};
         wrap.addEventListener('pointerup',end); wrap.addEventListener('pointercancel',end); wrap.addEventListener('pointerleave',function(){hovering=false;end();});
         wrap.addEventListener('mouseenter',function(){hovering=true;});
         wrap.addEventListener('click',function(e){if(moved){e.preventDefault();}},true);
