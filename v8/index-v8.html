@@ -594,9 +594,13 @@
     .js-catch{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.05rem;line-height:1.6;margin-bottom:.6rem;}
     .js-title{font-weight:700;font-size:1.35rem;margin-bottom:.6rem;}
     .js-desc{font-size:.85rem;color:#8a8079;line-height:1.9;flex:1;}
-    .js-more{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.2rem;align-self:flex-start;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-btns{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem;}
+    .js-more{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .js-more:hover{opacity:.88;}
     .js-more:active{transform:scale(.95);}
+    .js-entry{display:inline-flex;align-items:center;gap:.5rem;background:#141414;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-entry:hover{opacity:.85;}
+    .js-entry:active{transform:scale(.95);}
     .js-right{padding:1.6rem 1.8rem 1.8rem;background:#fdfbf8;}
     .js-right-h{display:flex;align-items:baseline;gap:.6rem;margin-bottom:.9rem;}
     .js-right-h b{font-size:1rem;}
@@ -1291,7 +1295,7 @@
 
   <!-- ============ 求める人物像 ============ -->
   <section id="person" class="noise px-6 lg:px-16 py-28 lg:py-36 reveal relative overflow-hidden" style="background:#141414;color:#fff;">
-    <div class="sec-en-ghost" style="top:-2%;left:50%;transform:translateX(-50%);color:rgba(191,15,15,0.16);font-size:16vw;">WANTED</div>
+    <div class="sec-en-ghost" style="top:2%;left:-2%;color:rgba(255,255,255,.05);">WANTED</div>
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center mb-20">
         <p class="eyebrow center mb-4" style="color:#777;"><span class="en-num">06</span>Who We Want</p>
@@ -1300,9 +1304,15 @@
         <p class="text-sm text-gray-400 leading-[2.1]">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari ml-2" style="border-color:#3a3a3a;color:#666;">文言仮</span></p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;"><p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">01</p><h3 class="font-bold text-xl mb-3 text-white">まず、動ける人</h3><p class="text-[13px] text-gray-400 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
-        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;"><p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">02</p><h3 class="font-bold text-xl mb-3 text-white">気前の良い人</h3><p class="text-[13px] text-gray-400 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
-        <div class="text-center"><p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">03</p><h3 class="font-bold text-xl mb-3 text-white">共に、走れる人</h3><p class="text-[13px] text-gray-400 leading-[2]">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
+        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;">
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4.5 13.5H11L9.5 22 19 10h-6.5L13 2Z"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">01</p><h3 class="font-bold text-xl mb-3 text-white">まず、動ける人</h3><p class="text-[13px] text-gray-400 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
+        <div class="text-center lg:border-r lg:pr-8" style="border-color:#2a2a2a;">
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-9.5-9A5.3 5.3 0 0 1 12 7.5 5.3 5.3 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9Z"/><path d="M2 8V5.5A1.5 1.5 0 0 1 3.5 4H6"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">02</p><h3 class="font-bold text-xl mb-3 text-white">気前の良い人</h3><p class="text-[13px] text-gray-400 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
+        <div class="text-center">
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="3"/><path d="M2.5 20v-1.2A5 5 0 0 1 7.5 14h1a5 5 0 0 1 5 4.8V20"/><circle cx="17" cy="8.5" r="2.6"/><path d="M15.8 13.7a5 5 0 0 1 5.7 4.9V20"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">03</p><h3 class="font-bold text-xl mb-3 text-white">共に、走れる人</h3><p class="text-[13px] text-gray-400 leading-[2]">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
       </div>
     </div>
   </section>
@@ -1666,7 +1676,10 @@
                 '<p class="js-catch">'+j.catch+'</p>'+
                 '<h4 class="js-title">'+j.title+'</h4>'+
                 '<p class="js-desc">'+j.desc+'</p>'+
-                '<a class="js-more" href="'+j.href+'">VIEW MORE　→</a>'+
+                '<div class="js-btns">'+
+                  '<a class="js-more" href="'+j.href+'">VIEW MORE　→</a>'+
+                  '<a class="js-entry" href="application-v8.html">ENTRY　→</a>'+
+                '</div>'+
               '</div>'+
             '</div>'+
             '<div class="js-right">'+
