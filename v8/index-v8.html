@@ -576,6 +576,27 @@
     .btn-line-cta{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);transition:transform .15s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
     .btn-line-cta:active{transform:scale(.95);}
   
+    /* ===== イベントバナー（B案：サムネ付きカード。開催中のみJSが描画） ===== */
+    .evb{display:flex;align-items:stretch;background:#fff;box-shadow:0 10px 28px -14px rgba(31,23,20,.25);overflow:hidden;border-radius:12px;margin-top:1rem;}
+    .evb-ph{flex-shrink:0;width:190px;background-size:cover;background-position:center;}
+    .evb-ph.prep{background:linear-gradient(135deg,#2a2a2a,#4a4a4a);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.14em;}
+    .evb-body{flex:1;padding:16px 22px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;}
+    .evb-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+    .evb-tag{font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:11px;letter-spacing:.14em;color:#fff;background:var(--red);padding:3px 10px;}
+    .evb-dt{font-size:12.5px;color:#8a8079;font-weight:600;}
+    .evb-tt{font-weight:700;font-size:17px;line-height:1.5;}
+    .evb-sub{font-size:13px;color:#8a8079;}
+    .evb-side{flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 22px;border-left:1px dashed #e5ddd6;}
+    .evb-deadline{font-size:11.5px;font-weight:700;color:var(--red);}
+    .evb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:700;font-size:13px;padding:10px 22px;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);white-space:nowrap;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+    .evb-cta:hover{opacity:.88;}
+    .evb-cta:active{transform:scale(.95);}
+    @media(max-width:700px){
+      .evb{flex-direction:column;}
+      .evb-ph{width:100%;height:120px;}
+      .evb-side{border-left:none;border-top:1px dashed #e5ddd6;padding:12px 0;flex-direction:row;}
+    }
+
     /* ===== 募集職種スライダー ===== */
     .jobs-slider{position:relative;}
     .js-stage{position:relative;}
@@ -772,6 +793,10 @@
       </a>
       <a href="news-v8.html" class="text-xs text-gray-500 hover:text-red transition whitespace-nowrap flex-shrink-0">一覧を見る　›</a>
     </div>
+
+    <!-- イベントバナー（B案・サムネ付きカード）：下のJS設定 EVENT_BANNER.enabled=false で
+         丸ごと非表示になる条件付き枠。イベントが無い時期はNEWS帯だけの今まで通りの表示 -->
+    <div class="max-w-6xl mx-auto" id="eventBanner"></div>
   </section>
 
   <!-- ============ 02 WHY ENJIN — 幸せトライアングル ムービー（背骨） ============ -->
@@ -1641,6 +1666,39 @@
 
         renderScenes();
         raf=requestAnimationFrame(tick);
+      })();
+
+      // イベントバナー（B案）：ここを書き換えるだけで運用できる。
+      // enabled:false（またはイベントが無い時）はバナーごと消え、TOPは平常時のまま
+      (function(){
+        var EVENT_BANNER={
+          enabled:true,
+          tag:'INTERN',
+          date:'2026.8.25 TUE 18:00〜 ／ オンライン',
+          title:'1DAYインターン「経営者と対峙する仕事」体験',
+          sub:'選考ではありません。Enjinの仕事を1日で体感できるプログラムです。',
+          deadline:'締切 8/18（火）',
+          href:'application-v8.html',
+          img:''  // 例:'images/event_intern.jpg'（空ならEVENT PHOTOプレースホルダ）
+        };
+        var host=document.getElementById('eventBanner');
+        if(!host||!EVENT_BANNER.enabled)return;
+        var ph=EVENT_BANNER.img
+          ? '<div class="evb-ph" style="background-image:url(\''+EVENT_BANNER.img+'\')"></div>'
+          : '<div class="evb-ph prep">EVENT PHOTO</div>';
+        host.innerHTML=
+          '<a class="evb" href="'+EVENT_BANNER.href+'" data-cta="event_banner">'+
+            ph+
+            '<div class="evb-body">'+
+              '<div class="evb-meta"><span class="evb-tag">'+EVENT_BANNER.tag+'</span><span class="evb-dt">'+EVENT_BANNER.date+'</span></div>'+
+              '<p class="evb-tt">'+EVENT_BANNER.title+'</p>'+
+              '<p class="evb-sub">'+EVENT_BANNER.sub+'</p>'+
+            '</div>'+
+            '<div class="evb-side">'+
+              '<span class="evb-deadline">'+EVENT_BANNER.deadline+'</span>'+
+              '<span class="evb-cta">申し込む　→</span>'+
+            '</div>'+
+          '</a>';
       })();
 
       // 募集職種スライダー：1職種ずつ表示、Prev/Next・ドットで切り替え
