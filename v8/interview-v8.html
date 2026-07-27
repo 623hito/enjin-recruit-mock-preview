@@ -43,7 +43,7 @@
   <div class="bg"><div class="kb-img" id="ivBg" style="background-image:linear-gradient(rgba(20,20,20,.55),rgba(20,20,20,.55)),url('images/interview_01.jpg');"></div></div>
   <div class="max-w-4xl mx-auto px-6 lg:px-16 py-24 lg:py-36 relative z-10">
     <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-6" id="ivEyebrow">INTERVIEW ／ 01</p>
-    <h1 class="font-mincho font-bold text-white leading-[1.45]" style="font-size:clamp(1.9rem,4.4vw,3.2rem);" id="ivTitle">家族の影響と<br />親孝行への想い</h1>
+    <h1 class="font-black text-white leading-[1.45]" style="font-size:clamp(1.9rem,4.4vw,3.2rem);" id="ivTitle">家族の影響と<br />親孝行への想い</h1>
     <p class="text-white/70 text-sm mt-6" id="ivMeta">PR事業部 ユニット長　2021年入社　<span class="font-alumni font-bold tracking-wider">K.K</span></p>
   </div>
   <p class="ghost">STORY</p>
@@ -168,7 +168,7 @@
     var h='';
     d.secs.forEach(function(s,idx){
       h+='<div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">'+('0'+(idx+1)).slice(-2)+'</p>'
-        +'<h3 class="font-mincho font-bold text-xl lg:text-2xl leading-relaxed mb-5">'+s[0]+'</h3>'
+        +'<h3 class="font-bold text-xl lg:text-2xl leading-relaxed mb-5">'+s[0]+'</h3>'
         +s[1].map(function(t){return '<p class="mb-5">'+t+'</p>';}).join('')+'</div>';
       if(idx===0){h+='<blockquote class="font-mincho font-bold text-2xl lg:text-3xl leading-relaxed text-center py-8" style="border-top:1px solid #eee;border-bottom:1px solid #eee;">'+d.quote+'</blockquote>';}
     });
