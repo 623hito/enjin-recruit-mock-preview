@@ -1,5 +1,5 @@
 /*!
- * photo-kari.js — 未確定写真に「写真仮」バッジを自動付与
+ * photo-kari.js — 未確定写真に「写真仮」バッジを自動付与＋白黒化（grayscale）
  * 写真素材が確定したら、該当画像ファイル名を CONFIRMED に追加するか、
  * 本スクリプトの読み込みを外してください。
  */
@@ -54,6 +54,13 @@
     host.appendChild(badge());
   }
 
+  // 仮写真は白黒表示（画像を持つ要素そのものに掛ける。二重適用は防ぐ）
+  function gray(el) {
+    if (!el) return;
+    if ((el.style.filter || '').indexOf('grayscale') !== -1) return;
+    el.style.filter = (el.style.filter ? el.style.filter + ' ' : '') + 'grayscale(1)';
+  }
+
   // オープニング演出（#loader）内はバッジ対象外。三角形に写真をマスクしているだけで
   // 「写真そのものを見せる枠」ではないため、バッジが出ると演出が壊れる。
   function inLoader(el) {
@@ -68,7 +75,7 @@
       if (inLoader(el)) continue;
       var inline = el.getAttribute('style') || '';
       var bg = inline.indexOf('images/') !== -1 ? inline : window.getComputedStyle(el).backgroundImage;
-      if (isTarget(bg)) mark(hostFor(el));
+      if (isTarget(bg)) { mark(hostFor(el)); gray(el); }
     }
     // 2) <img> タグの写真
     var imgs = document.querySelectorAll('img');
@@ -78,6 +85,7 @@
       if (isTarget(src)) {
         var h = imgs[k].parentElement || imgs[k];
         mark(h);
+        gray(imgs[k]);
       }
     }
   }
