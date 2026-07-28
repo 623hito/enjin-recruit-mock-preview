@@ -170,7 +170,7 @@
       h+='<div><p class="font-alumni font-bold text-red text-sm tracking-widest mb-2">'+('0'+(idx+1)).slice(-2)+'</p>'
         +'<h3 class="font-bold text-xl lg:text-2xl leading-relaxed mb-5">'+s[0]+'</h3>'
         +s[1].map(function(t){return '<p class="mb-5">'+t+'</p>';}).join('')+'</div>';
-      if(idx===0){h+='<blockquote class="font-mincho font-bold text-2xl lg:text-3xl leading-relaxed text-center py-8" style="border-top:1px solid #eee;border-bottom:1px solid #eee;">'+d.quote+'</blockquote>';}
+      if(idx===0){h+='<blockquote class="font-bold text-2xl lg:text-3xl leading-relaxed text-center py-8" style="border-top:1px solid #eee;border-bottom:1px solid #eee;">'+d.quote+'</blockquote>';}
     });
     document.getElementById('ivBody').innerHTML=h;
   }
