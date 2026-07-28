@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>エントリー・カジュアル面談｜中途採用LP（案）</title>
+  <script src="../../assets/tailwind.js"></script>
+  <link href="../../assets/fonts.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../../images/favicon.png" />
+  <style>
+  /* 文字サイズ全体を一般的な採用サイト水準へ底上げ（rem基準を16px→17px化。Tailwindのtext-sm等が連動して拡大） */
+  html { font-size:17px; }
+    :root { --red:#BF0F0F; --ink:#444; --paper:#F7F4F2; }
+    html { scroll-behavior:smooth; }
+    html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+    html, body { overflow-x:hidden; max-width:100%; }
+    a { color:inherit; } a:hover { color:var(--red); }
+    .font-alumni { font-family:'Alumni Sans', sans-serif; }
+    .font-mincho { font-family:'Noto Serif JP', serif; }
+    .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
+    .sec-title { font-weight:900; letter-spacing:0.02em; line-height:1.25; }
+    .kari{display:inline-block;border:1px solid #d1d5db;color:#9ca3af;font-size:10px;padding:1px 7px;letter-spacing:.08em;vertical-align:middle;white-space:nowrap;}
+    .site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #f0f0f0;}
+    .head-badge{position:relative;padding-left:.85rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;white-space:nowrap;color:#444;}
+    .head-badge::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:15px;width:1px;background:currentColor;opacity:.45;}
+
+    /* Steps */
+    .steps{display:flex;align-items:center;justify-content:center;gap:0;}
+    .step{display:flex;align-items:center;gap:.6rem;color:#b8b2ac;}
+    .step .n{width:30px;height:30px;border-radius:50%;border:2px solid #d8d2cc;display:flex;align-items:center;justify-content:center;font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:.95rem;}
+    .step.on{color:var(--ink);} .step.on .n{border-color:var(--red);background:var(--red);color:#fff;}
+    .step .lbl{font-size:.78rem;font-weight:700;letter-spacing:.05em;}
+    .step-line{width:44px;height:2px;background:#d8d2cc;margin:0 .8rem;}
+
+    /* Form controls */
+    .field{margin-bottom:1.9rem;}
+    .field > label.lab{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:.92rem;margin-bottom:.7rem;}
+    .req{background:var(--red);color:#fff;font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:.12rem .45rem;border-radius:2px;}
+    .opt{border:1px solid #cfc8c2;color:#9a9a9a;font-size:.62rem;font-weight:700;letter-spacing:.06em;padding:.1rem .45rem;border-radius:2px;}
+    .inp,.sel,.ta{width:100%;border:1px solid #d6cfc9;background:#fff;padding:.85rem 1rem;font-size:.95rem;font-family:inherit;transition:border-color .2s,box-shadow .2s;}
+    .inp:focus,.sel:focus,.ta:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(191,15,15,.12);}
+    .ta{min-height:120px;resize:vertical;}
+    .sel{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.4rem;}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:520px){ .two{grid-template-columns:1fr;} }
+    .err{color:var(--red);font-size:.75rem;margin-top:.4rem;display:none;}
+    .field.invalid .inp,.field.invalid .sel,.field.invalid .ta{border-color:var(--red);}
+    .field.invalid .err{display:block;}
+
+    /* Radio / choice cards */
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    @media(max-width:520px){ .choices{grid-template-columns:1fr;} }
+    .choice{position:relative;cursor:pointer;}
+    .choice input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+    .choice .box{border:1px solid #d6cfc9;padding:1rem 1.1rem;transition:.2s;display:flex;flex-direction:column;gap:.15rem;height:100%;}
+    .choice .box .t{font-weight:700;font-size:1rem;}
+
+    /* Date scroll box */
+    .date-scroll{max-height:360px;overflow-y:auto;border:1px solid #e4ddd7;background:#fbf9f8;padding:.8rem;-webkit-overflow-scrolling:touch;}
+    .date-scroll .choices{gap:.6rem;}
+    .date-scroll::-webkit-scrollbar{width:8px;}
+    .date-scroll::-webkit-scrollbar-track{background:transparent;}
+    .date-scroll::-webkit-scrollbar-thumb{background:#d0c8c2;border-radius:4px;}
+    .date-box{flex-direction:row;align-items:center;justify-content:space-between;gap:.6rem;background:#fff;}
+    .date-box .dt{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;}
+    .date-box .fmt{font-size:.66rem;font-weight:700;letter-spacing:.04em;padding:.15rem .5rem;border-radius:2px;background:rgba(191,15,15,.08);color:var(--red);white-space:nowrap;}
+    .date-box .fmt-in{background:#444;color:#fff;}
+    .date-box .s{font-size:.75rem;color:#8a837d;white-space:nowrap;}
+    @media(max-width:520px){ .date-box{flex-direction:column;align-items:flex-start;gap:.35rem;} }
+    .choice .box .s{font-size:.75rem;color:#9a9a9a;}
+    .choice input:checked + .box{border-color:var(--red);background:#fdf5f4;box-shadow:0 0 0 1px var(--red) inset;}
+    .choice input:focus-visible + .box{box-shadow:0 0 0 3px rgba(191,15,15,.2);}
+
+    .chk{display:flex;align-items:flex-start;gap:.7rem;font-size:.85rem;line-height:1.7;cursor:pointer;}
+    .chk input{margin-top:.25rem;width:18px;height:18px;accent-color:var(--red);flex-shrink:0;}
+
+    .btn-primary{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.15rem 2.6rem;font-size:1rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,transform .15s cubic-bezier(.34,1.56,.64,1);background:var(--red);color:#fff;border:none;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
+    .btn-primary::before{content:"";position:absolute;inset:0;z-index:0;background:#444;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
+    .btn-primary:hover::before{transform:scaleX(1);}
+    .btn-primary:active{transform:scale(.96);}
+    .btn-primary:disabled{background:#cfc8c2;cursor:not-allowed;}
+    .btn-primary:disabled::before{display:none;}
+    .btn-primary:disabled:active{transform:none;}
+    .btn-primary>*{position:relative;z-index:1;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2rem;border:1px solid #444;font-weight:700;font-size:.9rem;cursor:pointer;background:transparent;transition:.3s;}
+    .btn-ghost:hover{background:#444;color:#fff;}
+    .btn-ghost:active{transform:scale(.96);}
+
+    .trust{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:#6a635d;}
+    .trust svg{width:18px;height:18px;color:var(--red);flex-shrink:0;}
+    @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;} }
+      /* 安心バッジ */
+    .ease-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.4rem;}
+    .ease-chip{display:inline-flex;align-items:center;gap:.35rem;font-size:.74rem;font-weight:700;color:#fff;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:.35rem .9rem;white-space:nowrap;}
+    .ease-chip svg{width:14px;height:14px;flex-shrink:0;color:#ff9d94;}
+    @media(max-width:520px){ .ease-row{gap:.4rem;margin-top:1.1rem;} .ease-chip{font-size:.68rem;padding:.3rem .7rem;gap:.28rem;} }
+    /* ヘッダーのSNSアイコン */
+    .head-sns{display:flex;align-items:center;gap:.65rem;padding-left:.9rem;margin-left:.1rem;position:relative;}
+    .head-sns::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:16px;width:1px;background:currentColor;opacity:.35;}
+    .head-sns a{display:flex;color:inherit;transition:color .2s,transform .2s;}
+    .head-sns a:hover{color:var(--red);transform:translateY(-1px);}
+    .head-sns svg{width:18px;height:18px;}
+    @media(max-width:1023px){.head-sns{display:none;}}
+      .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
+    .btn-apply:hover{background:#a30d0d;}
+    .btn-apply{position:relative;overflow:hidden;transition:background .25s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .btn-apply:active{transform:scale(.95);}
+    .btn-apply::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .55s ease;pointer-events:none;}
+    .btn-apply:hover::after{left:120%;}
+
+    /* ===== 質感B: 選択カードに浅い影 ===== */
+    .choice .box{border-color:#e6dfd9;background:#fff;box-shadow:0 1px 2px rgba(31,23,20,.04), 0 6px 16px -10px rgba(31,23,20,.10);}
+
+    /* type=entry / type=casual の出し分け */
+    [data-only-entry],[data-only-casual]{display:none;}
+    body.type-entry [data-only-entry]{display:block;}
+    body.type-casual [data-only-casual]{display:block;}
+    .file-drop{border:1.5px dashed #d6cfc9;background:#fbf9f8;padding:1.6rem 1.2rem;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;}
+    .file-drop:hover{border-color:var(--red);background:#fdf5f4;}
+    .file-drop svg{width:26px;height:26px;color:#b8b2ac;margin:0 auto .6rem;}
+    .file-drop .fn{font-size:.82rem;font-weight:700;margin-top:.5rem;color:var(--red);}
+  </style>
+</head>
+<body>
+  <header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <img src="../../images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" />
+      <span class="head-badge">CAREER採用</span>
+    </a>
+    <span class="head-sns"><a href="https://www.instagram.com/enjin_pr" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@Enjin-Business" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a><a href="https://note.com/enjin_hr" target="_blank" rel="noopener" aria-label="note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 19.85V4.15H15.1C18.14 4.15 20 6.61 20 10.63V19.85H15.53V10.2C15.53 8.58 14.13 8.04 13.66 8.04H8.47V19.85Z"/></svg></a></span>
+    <a href="index.html" class="text-sm text-gray-500 hover:text-red transition">← 採用TOPに戻る</a>
+  </header>
+
+  <!-- Hero band（type=entry / type=casual で文言を出し分け） -->
+  <section class="relative overflow-hidden" style="background:#444;">
+    <div class="absolute inset-0" style="background-image:linear-gradient(rgba(20,20,20,.72),rgba(20,20,20,.72)),url('../../images/members_20th.jpg');background-size:cover;background-position:center;"></div>
+    <div class="max-w-3xl mx-auto px-6 lg:px-10 py-16 lg:py-20 relative z-10 text-center">
+      <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4" id="heroEyebrow">CAREER ENTRY</p>
+      <h1 class="font-black text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3rem);" id="heroTitle">エントリーする</h1>
+      <p class="text-white/75 text-sm mt-4 leading-loose" id="heroLead">これまでの経験・スキルを、次の商談へ。<br />書類選考の前に、まずはあなたのことを教えてください。</p>
+      <div class="ease-row" id="easeRow" data-only-entry>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>職務経歴書は任意（後日メール可）</span>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>入力は約2分</span>
+      </div>
+      <div class="ease-row" data-only-casual>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>服装自由</span>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>選考ではありません</span>
+        <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>オンライン・約30分</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <div class="bg-paper py-7 px-6">
+    <div class="steps" id="steps">
+      <div class="step on"><span class="n">1</span><span class="lbl">入力</span></div>
+      <span class="step-line"></span>
+      <div class="step"><span class="n">2</span><span class="lbl">確認</span></div>
+      <span class="step-line"></span>
+      <div class="step"><span class="n">3</span><span class="lbl">完了</span></div>
+    </div>
+  </div>
+
+  <main class="max-w-2xl mx-auto px-6 lg:px-0 py-14 lg:py-20">
+    <!-- ===== FORM ===== -->
+    <form id="entryForm" novalidate>
+
+      <!-- 氏名 -->
+      <div class="field">
+        <label class="lab">お名前<span class="req">必須</span></label>
+        <div class="two">
+          <div><input class="inp" type="text" name="sei" placeholder="姓（例：本田）" autocomplete="family-name" required /></div>
+          <div><input class="inp" type="text" name="mei" placeholder="名（例：幸大）" autocomplete="given-name" required /></div>
+        </div>
+        <p class="err">お名前（姓・名）を入力してください</p>
+      </div>
+
+      <!-- フリガナ -->
+      <div class="field">
+        <label class="lab">フリガナ<span class="req">必須</span></label>
+        <div class="two">
+          <div><input class="inp" type="text" name="sei_kana" placeholder="セイ（例：ホンダ）" required /></div>
+          <div><input class="inp" type="text" name="mei_kana" placeholder="メイ（例：コウダイ）" required /></div>
+        </div>
+        <p class="err">フリガナ（全角カタカナ）を入力してください</p>
+      </div>
+
+      <!-- メール -->
+      <div class="field">
+        <label class="lab" for="email">メールアドレス<span class="req">必須</span></label>
+        <input class="inp" type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+        <p class="err">正しいメールアドレスを入力してください</p>
+      </div>
+
+      <!-- 電話 -->
+      <div class="field">
+        <label class="lab" for="tel">電話番号<span class="req">必須</span></label>
+        <input class="inp" type="tel" id="tel" name="tel" placeholder="09012345678（ハイフンなし）" autocomplete="tel" required />
+        <p class="err">電話番号を入力してください</p>
+      </div>
+
+      <!-- 現在のご状況 -->
+      <div class="field">
+        <label class="lab" for="status">現在のご状況<span class="req">必須</span></label>
+        <select class="sel" id="status" name="status" required>
+          <option value="">選択してください</option>
+          <option>在職中（転職活動中）</option>
+          <option>在職中（情報収集段階）</option>
+          <option>離職中</option>
+          <option>その他</option>
+        </select>
+        <p class="err">現在のご状況を選択してください</p>
+      </div>
+
+      <!-- 経験年数 -->
+      <div class="field">
+        <label class="lab" for="years">社会人経験年数<span class="req">必須</span></label>
+        <select class="sel" id="years" name="years" required>
+          <option value="">選択してください</option>
+          <option>第二新卒（〜2年）</option>
+          <option>3〜5年</option>
+          <option>5〜10年</option>
+          <option>10年以上</option>
+        </select>
+        <p class="err">経験年数を選択してください</p>
+      </div>
+
+      <!-- 直近のご経験 -->
+      <div class="field">
+        <label class="lab" for="experience">直近のご経験・職種<span class="req">必須</span></label>
+        <input class="inp" type="text" id="experience" name="experience" placeholder="例：広告代理店で法人営業／5年" required />
+        <p class="err">直近のご経験・職種を入力してください</p>
+      </div>
+
+      <!-- 職務経歴書（entryのみ・任意） -->
+      <div class="field" data-only-entry>
+        <label class="lab" for="resume">職務経歴書<span class="opt">任意</span></label>
+        <label class="file-drop" for="resume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg>
+          <span class="text-[13px] text-gray-500">PDF・Wordをドラッグ&ドロップ、またはクリックして選択</span>
+          <span class="fn" id="resumeFn"></span>
+        </label>
+        <input type="file" id="resume" name="resume" class="hidden" accept=".pdf,.doc,.docx" />
+        <p class="text-[11px] text-gray-400 mt-2">未提出でもエントリー可能です。後日メールでお送りいただいても構いません。</p>
+      </div>
+
+      <!-- きっかけ -->
+      <div class="field">
+        <label class="lab" for="source">Enjinを知ったきっかけ<span class="req">必須</span></label>
+        <select class="sel" id="source" name="source" required>
+          <option value="">選択してください</option>
+          <option>転職エージェントの紹介</option>
+          <option>転職サイト（ビズリーチ・Green等）</option>
+          <option>SNS（Instagram・YouTube・note）</option>
+          <option>知人・元同僚の紹介</option>
+          <option>その他</option>
+        </select>
+        <p class="err">きっかけを選択してください</p>
+      </div>
+
+      <!-- 希望日程（casualのみ） -->
+      <div class="field" data-only-casual><a id="dates"></a>
+        <label class="lab">ご希望の時間帯<span class="req">必須</span></label>
+        <p class="text-[12px] text-gray-500 mb-3">カジュアル面談は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>です。詳しい日時は追ってメールで調整します。</p>
+        <div class="date-scroll">
+          <div class="choices" style="grid-template-columns:1fr;">
+            <label class="choice"><input type="radio" name="date" value="平日 午前（10:00〜12:00）" /><span class="box date-box"><span class="dt"><span class="t">平日 午前</span><span class="fmt">オンライン</span></span><span class="s">10:00〜12:00</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="平日 午後（13:00〜18:00）" /><span class="box date-box"><span class="dt"><span class="t">平日 午後</span><span class="fmt">オンライン</span></span><span class="s">13:00〜18:00</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="平日 夜（19:00〜21:00）" /><span class="box date-box"><span class="dt"><span class="t">平日 夜</span><span class="fmt">オンライン</span></span><span class="s">19:00〜21:00・在職中の方向け</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="土日（応相談）" /><span class="box date-box"><span class="dt"><span class="t">土日</span><span class="fmt fmt-in">応相談</span></span><span class="s">個別に日程調整します</span></span></label>
+          </div>
+        </div>
+        <p class="err">ご希望の時間帯を選択してください</p>
+      </div>
+
+      <!-- ひとこと -->
+      <div class="field">
+        <label class="lab" for="msg">ひとこと・質問など<span class="opt">任意</span></label>
+        <textarea class="ta" id="msg" name="msg" placeholder="聞いてみたいこと、志望のきっかけなど自由にどうぞ。"></textarea>
+      </div>
+
+      <!-- 同意 -->
+      <div class="field" id="agreeField">
+        <label class="chk">
+          <input type="checkbox" name="agree" required />
+          <span><a href="privacy-v8.html" target="_blank" class="underline hover:text-red">プライバシーポリシー</a>に同意します<span class="req ml-1">必須</span></span>
+        </label>
+        <p class="err">プライバシーポリシーへの同意が必要です</p>
+      </div>
+
+      <div class="flex flex-col items-center gap-5 mt-10">
+        <button type="submit" class="btn-primary w-full sm:w-auto"><span id="submitLabel">この内容でエントリーする</span><span>→</span></button>
+        <div class="trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span id="trustLabel">ご入力内容は選考のご案内のみに利用します</span>
+        </div>
+      </div>
+      <p class="text-center text-[11px] text-gray-400 mt-8"><span class="kari">デモ版</span> 送信先（フォーム連携・ATS）は本番実装時に接続します</p>
+    </form>
+
+    <!-- ===== SUCCESS ===== -->
+    <div id="donePanel" style="display:none;" class="text-center py-8">
+      <div class="mx-auto mb-8 rounded-full flex items-center justify-center" style="width:88px;height:88px;background:#fdf5f4;">
+        <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#BF0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h2 class="sec-title text-2xl lg:text-3xl mb-4" id="doneTitle">エントリーありがとうございます</h2>
+      <p class="text-sm text-gray-600 leading-loose mb-8" id="doneLead">ご入力のメールアドレス宛に、確認のご連絡をお送りします。<br />内容を確認のうえ、数日以内に担当よりご連絡いたします。</p>
+      <div class="bg-paper text-left p-6 mb-10 max-w-md mx-auto text-sm" id="summary"></div>
+      <a href="index.html" class="btn-ghost">採用TOPに戻る<span>→</span></a>
+    </div>
+  </main>
+
+  <footer class="bg-white px-6 lg:px-16 py-12 border-t border-gray-200 text-center">
+    <a href="index.html" class="text-sm text-gray-500 hover:text-red transition">← 採用TOPページに戻る</a>
+    <p class="text-[10px] text-gray-400 mt-4">© Enjin Inc. All Rights Reserved.／ CAREER ENTRY v1 内部レビュー用・デモ</p>
+  </footer>
+
+  <script>
+    (function(){
+      // ?type=entry（デフォルト）/ ?type=casual で文言・必須項目を出し分け
+      var params=new URLSearchParams(location.search);
+      var type = params.get('type')==='casual' ? 'casual' : 'entry';
+      document.body.classList.add('type-'+type);
+
+      var COPY = {
+        entry:{
+          eyebrow:'CAREER ENTRY', title:'エントリーする',
+          lead:'これまでの経験・スキルを、次の商談へ。<br />書類選考の前に、まずはあなたのことを教えてください。',
+          submit:'この内容でエントリーする', trust:'ご入力内容は選考のご案内のみに利用します',
+          doneTitle:'エントリーありがとうございます',
+          doneLead:'ご入力のメールアドレス宛に、確認のご連絡をお送りします。<br />内容を確認のうえ、数日以内に担当よりご連絡いたします。'
+        },
+        casual:{
+          eyebrow:'CASUAL INTERVIEW', title:'カジュアル面談に申し込む',
+          lead:'選考ではありません。まずはEnjinを知る場です。<br />お気軽にお申し込みください。所要時間は約30分です。',
+          submit:'この内容で申し込む', trust:'ご入力内容は面談のご案内のみに利用します',
+          doneTitle:'お申し込みありがとうございます',
+          doneLead:'ご入力のメールアドレス宛に、確認と日程のご案内をお送りします。<br />数日以内に担当よりご連絡いたします。'
+        }
+      };
+      var c = COPY[type];
+      document.getElementById('heroEyebrow').textContent = c.eyebrow;
+      document.getElementById('heroTitle').textContent = c.title;
+      document.getElementById('heroLead').innerHTML = c.lead;
+      document.getElementById('submitLabel').textContent = c.submit;
+      document.getElementById('trustLabel').textContent = c.trust;
+      document.getElementById('doneTitle').textContent = c.doneTitle;
+      document.getElementById('doneLead').innerHTML = c.doneLead;
+      document.title = (type==='casual' ? 'カジュアル面談に申し込む' : 'エントリーする') + '｜中途採用LP（案）';
+
+      var form=document.getElementById('entryForm');
+      var STORE='enjin_career_entry_v1';
+
+      // restore saved
+      try{var saved=JSON.parse(localStorage.getItem(STORE)||'{}');
+        Object.keys(saved).forEach(function(k){var el=form.elements[k];
+          if(!el)return;
+          if(el.length && (el[0]&&el[0].type==='radio')){for(var i=0;i<el.length;i++){if(el[i].value===saved[k])el[i].checked=true;} }
+          else if(el.type==='checkbox'){el.checked=!!saved[k];}
+          else if(el.type!=='radio' && el.type!=='file'){el.value=saved[k];}
+        });
+      }catch(e){}
+      form.addEventListener('input',function(){
+        var data={};
+        Array.prototype.forEach.call(form.elements,function(el){
+          if(!el.name || el.type==='file')return;
+          if(el.type==='radio'){if(el.checked)data[el.name]=el.value;}
+          else if(el.type==='checkbox'){data[el.name]=el.checked;}
+          else data[el.name]=el.value;
+        });
+        try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){}
+      });
+
+      // 職務経歴書ファイル名表示（デモ：実アップロードはしない）
+      var resume=document.getElementById('resume');
+      if(resume){resume.addEventListener('change',function(){
+        document.getElementById('resumeFn').textContent = resume.files[0] ? resume.files[0].name : '';
+      });}
+
+      function fieldOf(el){return el.closest('.field');}
+      function isVisible(el){var f=fieldOf(el); return !!(f && f.offsetParent!==null);}
+      function validate(){
+        var ok=true;
+        form.querySelectorAll('.field.invalid').forEach(function(f){f.classList.remove('invalid');});
+        if(type==='casual' && !form.querySelector('input[name="date"]:checked')){markGroup('date');ok=false;}
+        ['sei','mei','sei_kana','mei_kana','email','tel','status','years','experience','source'].forEach(function(n){
+          var el=form.elements[n];
+          if(!el || !isVisible(el))return;
+          var bad=!el.value.trim();
+          if(n==='email' && el.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)) bad=true;
+          if(bad){fieldOf(el).classList.add('invalid');ok=false;}
+        });
+        var agree=form.elements['agree'];
+        if(agree && !agree.checked){document.getElementById('agreeField').classList.add('invalid');ok=false;}
+        if(!ok){var bad=form.querySelector('.field.invalid');if(bad){window.scrollTo({top:bad.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'});}}
+        return ok;
+      }
+      function markGroup(name){var el=form.querySelector('input[name="'+name+'"]');if(el)fieldOf(el).classList.add('invalid');}
+      form.addEventListener('change',function(e){var f=e.target.closest('.field');if(f)f.classList.remove('invalid');});
+
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        if(!validate())return;
+        var rows=[
+          ['お名前',form.elements['sei'].value+' '+form.elements['mei'].value],
+          ['フリガナ',form.elements['sei_kana'].value+' '+form.elements['mei_kana'].value],
+          ['メール',form.elements['email'].value],['電話',form.elements['tel'].value],
+          ['現在のご状況',form.elements['status'].value],['経験年数',form.elements['years'].value],
+          ['直近のご経験',form.elements['experience'].value],['きっかけ',form.elements['source'].value]
+        ];
+        if(type==='casual'){rows.push(['ご希望の時間帯',(form.querySelector('input[name="date"]:checked')||{}).value||'']);}
+        if(type==='entry' && resume && resume.files[0]){rows.push(['職務経歴書',resume.files[0].name]);}
+        document.getElementById('summary').innerHTML=rows.map(function(r){
+          return '<div style="display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid #e7e0da;"><span style="color:#9a9a9a;">'+r[0]+'</span><span style="font-weight:600;text-align:right;">'+(r[1]||'—')+'</span></div>';
+        }).join('');
+        var steps=document.querySelectorAll('#steps .step');
+        steps.forEach(function(s){s.classList.remove('on');});
+        steps[2].classList.add('on');
+        form.style.display='none';
+        document.getElementById('donePanel').style.display='block';
+        try{localStorage.removeItem(STORE);}catch(e){}
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    })();
+  </script>
+<script src="../../assets/anchor-fix.js"></script>
+<script src="../../assets/photo-kari.js"></script>
+<script src="../../assets/analytics.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Enjin LIFE｜中途採用LP（案）</title>
+<script src="../../assets/tailwind.js"></script>
+<link href="../../assets/fonts.css" rel="stylesheet" />
+<link href="../../assets/site-v8.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="../../images/favicon.png" />
+<style>
+  /* 360°VRツアー埋め込み：PCは16:9、モバイルは縦を確保して操作しやすく */
+  .vr-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+  .vr-frame>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+  @media (max-width:768px){ .vr-frame{aspect-ratio:3/4;min-height:420px;} }
+
+  .ben-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem;}
+  .ben-card{display:flex;flex-direction:column;text-align:left;background:#fff;border:1px solid #ece7e3;padding:0;cursor:pointer;font-family:inherit;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s;overflow:hidden;}
+  .ben-card:hover{transform:translateY(-6px);box-shadow:0 24px 46px -26px rgba(20,20,20,.4);border-color:#ddd4ce;}
+  .bc-img{aspect-ratio:16/10;overflow:hidden;}
+  .bc-img>div{width:100%;height:100%;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.22,1,.36,1);}
+  .ben-card:hover .bc-img>div{transform:scale(1.06);}
+  .bc-img.prep{display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#efeae6,#efeae6 10px,#e8e2dd 10px,#e8e2dd 20px);}
+  .bc-img.prep span{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.16em;font-size:.68rem;color:#a99f97;}
+  .bc-body{padding:1.25rem 1.35rem 1.5rem;display:flex;flex-direction:column;flex:1;}
+  .bc-axis{align-self:flex-start;white-space:nowrap;font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--red);border:1px solid rgba(191,15,15,.3);border-radius:999px;padding:.15rem .6rem;margin-bottom:.7rem;}
+  .bc-en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.6rem;letter-spacing:.2em;color:#bcb2ab;margin-bottom:.2rem;}
+  .bc-title{font-weight:700;font-size:1.05rem;margin-bottom:.5rem;}
+  .bc-short{font-size:.76rem;color:#8a8079;line-height:1.75;flex:1;}
+  .bc-more{margin-top:1rem;font-size:.7rem;font-weight:700;letter-spacing:.05em;color:var(--red);}
+  .bmodal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;visibility:hidden;transition:opacity .3s;}
+  .bmodal.open{opacity:1;visibility:visible;}
+  .bmodal-bg{position:absolute;inset:0;background:rgba(20,18,18,.72);backdrop-filter:blur(3px);}
+  .bmodal-panel{position:relative;background:#fff;max-width:640px;width:100%;max-height:90vh;overflow:auto;
+    transform:translateY(16px) scale(.98);transition:transform .35s cubic-bezier(.22,1,.36,1);box-shadow:0 40px 90px -30px rgba(0,0,0,.5);}
+  .bmodal.open .bmodal-panel{transform:translateY(0) scale(1);}
+  .bmodal-x{position:absolute;top:.9rem;right:1.1rem;z-index:3;width:34px;height:34px;border-radius:999px;
+    background:rgba(20,18,18,.45);border:none;font-size:1.35rem;line-height:1;color:#fff;cursor:pointer;transition:background .2s;}
+  .bmodal-x:hover{background:var(--red);}
+
+  /* カバー画像：見出しを写真の上に重ねる */
+  .bm-cover{position:relative;aspect-ratio:16/9;overflow:hidden;background:#efeae6;}
+  .bm-cover .bm-img{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.02);}
+  .bm-cover::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,18,18,.15) 0%,rgba(20,18,18,.05) 38%,rgba(20,18,18,.78) 100%);}
+  /* 写真が未定のカードは暗い縞模様にする（白い見出しを重ねるため明るいままだと読めない） */
+  .bm-cover.prep .bm-img{background-image:repeating-linear-gradient(45deg,#2b2523,#2b2523 10px,#342d2a 10px,#342d2a 20px)!important;}
+  .bm-cover.prep::before{content:"NOW PRINTING";position:absolute;inset:0;z-index:1;display:flex;align-items:flex-start;justify-content:center;padding-top:2.6rem;
+    font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.18em;font-size:.8rem;color:rgba(255,255,255,.42);}
+  .bm-cover .bm-en-ghost{position:absolute;right:-2%;bottom:-8%;z-index:1;pointer-events:none;user-select:none;
+    font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:5.2rem;line-height:.8;color:rgba(255,255,255,.16);white-space:nowrap;}
+  .bm-cover-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.6rem 2rem;}
+
+  .bm-axis{display:inline-block;white-space:nowrap;font-size:.66rem;font-weight:700;letter-spacing:.08em;color:#fff;
+    background:var(--red);border-radius:999px;padding:.25rem .8rem;margin-bottom:.7rem;}
+  .bm-en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.24em;color:rgba(255,255,255,.75);margin-bottom:.25rem;}
+  .bm-title{font-weight:700;font-size:clamp(1.4rem,3.4vw,1.9rem);color:#fff;line-height:1.35;text-shadow:0 2px 18px rgba(0,0,0,.35);}
+
+
+  /* 制度カードのアイコン */
+  .bc-head{display:flex;align-items:center;gap:.55rem;margin-bottom:.75rem;}
+  .bc-head .bc-axis{margin-bottom:0;}
+  .bc-ico{flex-shrink:0;width:34px;height:34px;border-radius:999px;background:#fbf8f6;border:1px solid #ece5e1;
+    display:flex;align-items:center;justify-content:center;color:var(--red);transition:.3s;}
+  .ben-card:hover .bc-ico{background:var(--red);border-color:var(--red);color:#fff;}
+  .bc-ico .sico{width:18px;height:18px;}
+  /* モーダル側（写真の上なので白抜き） */
+  .bm-ico{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.55);color:#fff;margin-right:.55rem;vertical-align:middle;}
+  .bm-ico:empty{display:none;}
+  .bm-ico .sico{width:18px;height:18px;}
+
+  /* 画像切り替え（複数枚ある制度のみ表示される） */
+  .bm-dots{position:absolute;right:1.2rem;bottom:1.2rem;z-index:3;display:flex;gap:.4rem;}
+  .bm-dots:empty{display:none;}
+  .bm-dot{width:7px;height:7px;border-radius:999px;background:rgba(255,255,255,.45);transition:background .2s;}
+  .bm-dot.on{background:#fff;}
+  .bm-thumbs{display:flex;gap:.5rem;padding:.9rem 2rem 0;overflow-x:auto;}
+  .bm-thumbs:empty{display:none;}
+  .bm-thumb{width:62px;height:44px;flex-shrink:0;background-size:cover;background-position:center;cursor:pointer;
+    border:2px solid transparent;opacity:.5;transition:opacity .2s,border-color .2s;padding:0;}
+  .bm-thumb:hover{opacity:.85;}
+  .bm-thumb.on{opacity:1;border-color:var(--red);}
+
+  /* 前後の制度へ送る：パネル幅を左右で二分し、指で押しやすい大きさにする */
+  .bm-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #efe9e5;}
+  .bm-nav-btn{display:flex;align-items:center;gap:.7rem;min-height:68px;padding:.8rem 1.1rem;
+    background:none;border:none;border-right:1px solid #efe9e5;font-family:inherit;text-align:left;
+    cursor:pointer;color:#4a423e;transition:background .2s;}
+  .bm-nav-btn:last-child{border-right:none;justify-content:flex-end;text-align:right;}
+  .bm-nav-btn:hover{background:#faf7f5;}
+  .bm-nav-btn:active{background:#f3eeea;}
+  .bm-arrow{flex-shrink:0;width:36px;height:36px;border-radius:999px;border:1px solid #ddd4ce;background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;line-height:1;color:#8a807a;transition:.2s;}
+  .bm-nav-btn:hover .bm-arrow{background:var(--red);border-color:var(--red);color:#fff;}
+  .bm-nav-txt{min-width:0;display:flex;flex-direction:column;gap:.15rem;}
+  .bm-nav-txt small{font-size:.62rem;font-weight:700;letter-spacing:.12em;color:#a99f97;}
+  .bm-nav-txt b{font-size:.85rem;font-weight:700;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  /* 現在地は写真の上に小さく重ねる */
+  .bm-count{position:absolute;top:1rem;left:1.2rem;z-index:3;
+    font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.12em;color:#fff;
+    background:rgba(20,18,18,.45);border-radius:999px;padding:.25rem .75rem;}
+  @media (max-width:480px){
+    .bm-nav-btn{gap:.5rem;padding:.7rem .8rem;min-height:62px;}
+    .bm-nav-txt b{font-size:.78rem;}
+    .bm-arrow{width:32px;height:32px;}
+  }
+
+  .bm-body{padding:2rem 2rem 2.4rem;}
+  .bm-detail{font-size:.92rem;color:#5b534e;line-height:2.05;}
+  .bm-detail:empty{display:none;}
+  @media (max-width:640px){
+    .bm-cover{aspect-ratio:4/3;}
+    .bm-cover-body{padding:1.2rem 1.3rem;}
+    .bm-cover .bm-en-ghost{font-size:3.4rem;}
+    .bm-body{padding:1.5rem 1.3rem 1.9rem;}
+  }
+
+  /* ===== 質感B: 枠線→影 ===== */
+  .ben-card{border-color:transparent;box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+  #career .grid.gap-px{gap:10px;background:transparent!important;}
+  #career .grid.gap-px>div{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+  </style>
+</head>
+<body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
+  <a href="index.html" class="flex items-center gap-3"><img src="../../images/logo_enjin.png" alt="Enjin" style="height:26px;width:auto;" /><span class="head-badge">CAREER採用</span></a>
+  <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+    <a href="../../about-v8.html" class="transition">会社を知る</a>
+    <a href="../../members-v8.html" class="transition">ひとを知る</a>
+    <a href="environment-v8.html" class="transition">Enjin LIFE</a>
+    <a href="../../recruitment-v8.html" class="transition">採用情報</a>
+    <a href="../../recruitment-v8.html#faq" class="transition">FAQ</a>
+    <span class="head-sns"><a href="https://www.instagram.com/enjin_pr" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.youtube.com/@Enjin-Business" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a><a href="https://note.com/enjin_hr" target="_blank" rel="noopener" aria-label="note"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 19.85V4.15H15.1C18.14 4.15 20 6.61 20 10.63V19.85H15.53V10.2C15.53 8.58 14.13 8.04 13.66 8.04H8.47V19.85Z"/></svg></a></span>
+      <a href="application-v8.html?type=entry" class="btn-apply bg-red text-white px-5 py-2.5 text-xs font-bold tracking-wider hover:opacity-90 transition">エントリー</a>
+  </nav>
+  <button class="lg:hidden hamburger" aria-label="メニューを開く" onclick="document.getElementById('drawer').classList.add('open')"><span></span><span></span><span></span></button>
+</header>
+  <div id="drawer" class="drawer lg:hidden">
+    <div class="drawer-bg" onclick="document.getElementById('drawer').classList.remove('open')"></div>
+    <div class="drawer-panel">
+      <div class="flex items-center justify-between mb-6">
+        <img src="../../images/logo_enjin.png" alt="Enjin" style="height:24px;width:auto;" />
+        <button aria-label="閉じる" onclick="document.getElementById('drawer').classList.remove('open')" class="text-2xl text-gray-400 leading-none">×</button>
+      </div>
+      <a href="index.html" onclick="document.getElementById('drawer').classList.remove('open')">TOP</a>
+      <a href="../../about-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">会社を知る</a>
+      <a href="../../members-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">ひとを知る</a>
+      <a href="environment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">Enjin LIFE</a>
+      <a href="../../recruitment-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">採用情報</a>
+      <a href="../../news-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">お知らせ</a>
+      <a href="application-v8.html?type=entry" onclick="document.getElementById('drawer').classList.remove('open')" class="btn-apply mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">エントリー　→</a>
+    </div>
+  </div><section id="office" class="page-hero reveal relative">
+  <!-- 旧トップの汎用ヒーロー(ENJIN LIFE見出し)を廃止し、360°VRポスターをそのままヒーローに昇格。
+       クリックで360°VRツアーをその場に読み込む（初回表示を軽くするため遅延読込） -->
+  <div id="vrPoster" class="relative">
+    <div class="bg"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,.58),rgba(10,8,8,.58)),url('../../images/office_about.jpg');"></div></div>
+    <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10 text-center">
+      <p class="font-alumni font-bold text-white/70 tracking-[0.3em] text-xs mb-4">OFFICE ／ 360° VR</p>
+      <h1 class="font-black text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3.2rem);">【360°VR体験】<br class="sm:hidden" />空間の魅力をリアルに伝える。</h1>
+      <button type="button" id="vrOpen" class="inline-flex items-center gap-3 whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition mt-9">
+        <svg viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
+        <span>VRでオフィスを見る</span>
+      </button>
+      <p class="text-[12px] text-white/60 mt-4">ドラッグで360°見渡せます</p>
+    </div>
+  </div>
+  <!-- 読み込み後のツアー本体 -->
+  <div id="vrStage" class="hidden bg-black relative z-10">
+    <div class="vr-frame"><iframe id="vrFrame" src="" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
+    <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap">
+      <button type="button" id="vrClose" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">閉じる</button>
+      <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
+    </div>
+  </div>
+  <p class="ghost">OFFICE</p>
+</section>
+<section id="culture" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+  <div class="sec-en-ghost" style="top:2%;right:-2%;">CULTURE</div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">01</span>Our Culture</p><h2 class="sec-title text-4xl lg:text-5xl mb-6">Enjinの文化 ―― <span class="text-red">OHANA</span></h2></div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="gc aspect-[4/3]"><div style="background-image:url('../../images/ohana_cafe.jpg');"></div></div>
+      <div>
+        <p class="text-2xl lg:text-3xl leading-[1.7] mb-8">私たちは会社を<br class="hidden lg:block" /><span class="text-red font-bold">「OHANA」</span>と呼んでいます。</p>
+        <p class="text-[15px] text-gray-700 leading-[2.2] mb-5">OHANAとは、ハワイ語で<span class="font-bold">「家族」</span>を意味する言葉。<br />「誰ひとり置き去りにしない」——それが、Enjinがこの言葉に込めた約束です。</p>
+        <p class="text-[15px] text-gray-700 leading-[2.2]">部署や役職を越えて支え合い、お互いの成長を本気で喜べる。同じ目的に向かう仲間だからこそ、時に厳しく、いつも温かく。そんな家族のような関係を、私たちは大切にしています。<span class="kari ml-1">文言仮</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="benefit" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+  <div class="sec-en-ghost" style="top:2%;left:-2%;">BENEFITS</div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="mb-8"><p class="eyebrow mb-4"><span class="en-num">03</span>Benefits</p><h2 class="sec-title text-4xl lg:text-5xl mb-4">制度・福利厚生</h2></div>
+    <p class="text-sm text-gray-600 mb-12 leading-relaxed"><span class="font-bold">健康・人間関係・経済</span>——3つの軸を整えながら仕事に向き合える環境を用意しております。カードをクリックすると詳細が開きます。<span class="kari ml-1">一部・仮</span></p>
+    <div class="ben-grid">
+      <button type="button" class="ben-card" data-title="科学的なオフィス設計" data-imgs="../../images/office_about.jpg,../../images/ohana_cafe.jpg" data-en="OFFICE DESIGN" data-axis="健康" data-detail="脳科学と行動心理にもとづき、香り・採光・観葉植物・デスクの向きまで設計。集中とリラックスが自然に切り替わる空間で、心身のコンディションを整えます。"><div class="bc-img"><div style="background-image:url('../../images/office_about.jpg');"></div></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></svg></span><span class="bc-axis">健康</span></div><p class="bc-en">OFFICE DESIGN</p><h3 class="bc-title">科学的なオフィス設計</h3><p class="bc-short">香り・採光・植物までこだわったオフィス設計</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="先輩メシ" data-en="SENPAI MESHI" data-axis="健康" data-detail="入社から初任給が出るまでの間、毎日先輩がランチをご馳走する制度。お金の不安も、ひとりぼっちの不安もなく、社会人の一歩目を安心して迎えられます。"><div class="bc-img"><div style="background-image:url('../../images/senpai_meshi.jpg');"></div></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v7a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3"/><path d="M6 12v9"/><path d="M17 3c-1.4 0-2.5 1.8-2.5 4.5S15.6 12 17 12s2.5-1.8 2.5-4.5S18.4 3 17 3Z"/><path d="M17 12v9"/></svg></span><span class="bc-axis">健康</span></div><p class="bc-en">SENPAI MESHI</p><h3 class="bc-title">先輩メシ</h3><p class="bc-short">初任給が出るまで、先輩が毎日ランチをご馳走</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="ジム手当" data-en="GYM" data-axis="健康" data-detail="心と身体の健康づくりのため、ジムに通う費用を会社が一部補助。まず自分が健康であることが、すべての土台だと考えています。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11"/><path d="M17.5 6.5v11"/><path d="M3 9.5v5"/><path d="M21 9.5v5"/><path d="M6.5 12h11"/></svg></span><span class="bc-axis">健康</span></div><p class="bc-en">GYM</p><h3 class="bc-title">ジム手当</h3><p class="bc-short">健康増進のためのジム費用を一部補助</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="親孝行休暇" data-en="OYAKOKO" data-axis="人間関係" data-detail="ご両親の誕生日・命日を特別休暇とし、帰省の交通費も会社が一部負担。「親孝行できること」を、立派な人間の大切な条件だと考えています。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></span><span class="bc-axis">人間関係</span></div><p class="bc-en">OYAKOKO</p><h3 class="bc-title">親孝行休暇</h3><p class="bc-short">ご両親の誕生日は特別休暇＋帰省費の一部を補助</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="カンパニー旅行" data-imgs="../../images/ohana_trip.jpg,../../images/members_20th.jpg" data-en="COMPANY TRIP" data-axis="人間関係" data-detail="チーム（カンパニー）単位で親睦を深める旅行の費用を会社が負担。仕事だけでは見えない、仲間の新しい一面に出会えます。"><div class="bc-img"><div style="background-image:url('../../images/ohana_trip.jpg');"></div></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a1 1 0 0 0-.9 1.7l6.1 4-2.5 2.5-2.4-.6a.8.8 0 0 0-.8 1.3l4.4 4.4a.8.8 0 0 0 1.3-.8l-.6-2.4 2.5-2.5 4 6.1a1 1 0 0 0 1.7-.9Z"/></svg></span><span class="bc-axis">人間関係</span></div><p class="bc-en">COMPANY TRIP</p><h3 class="bc-title">カンパニー旅行</h3><p class="bc-short">チームの親睦旅行費用を会社が負担</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="OHANA交流イベント" data-imgs="../../images/ohana_cafe.jpg,../../images/members_20th.jpg,../../images/ohana_trip.jpg" data-en="OHANA EVENT" data-axis="人間関係" data-detail="運動会や周年パーティなど、部署・役職を越えて交流するイベントを多数開催。家族のような関係が、こうした時間から生まれます。"><div class="bc-img"><div style="background-image:url('../../images/ohana_cafe.jpg');"></div></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3.5"/><path d="M12 17.5V21"/><path d="M3 12h3.5"/><path d="M17.5 12H21"/><path d="m5.9 5.9 2.5 2.5"/><path d="m15.6 15.6 2.5 2.5"/><path d="m18.1 5.9-2.5 2.5"/><path d="m8.4 15.6-2.5 2.5"/></svg></span><span class="bc-axis">人間関係</span></div><p class="bc-en">OHANA EVENT</p><h3 class="bc-title">OHANA交流イベント</h3><p class="bc-short">運動会・周年パーティなど部署を超えた交流</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="アカデミー育成制度" data-en="ACADEMY" data-axis="経済" data-detail="新卒社員で構成される「アカデミー（ACD）」で、一定期間しっかり教育。標準化された安定したプログラムで、着実に力を伸ばします。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></span><span class="bc-axis">経済</span></div><p class="bc-en">ACADEMY</p><h3 class="bc-title">アカデミー育成制度</h3><p class="bc-short">1から丁寧な教育を行う新卒組織</p><span class="bc-more">詳しく見る ＋</span></div></button>
+      <button type="button" class="ben-card" data-title="宣言制度" data-en="SENGEN" data-axis="経済" data-detail="通常より高い目標を自ら「宣言」し、達成するとご褒美がもらえる制度。同期と切磋琢磨しながら、成長のスピードを自分で上げていけます。"><div class="bc-img prep"><span>NOW PRINTING</span></div><div class="bc-body"><div class="bc-head"><span class="bc-ico"><svg class="sico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V4"/></svg></span><span class="bc-axis">経済</span></div><p class="bc-en">SENGEN</p><h3 class="bc-title">宣言制度</h3><p class="bc-short">高い目標を宣言し、達成したらご褒美</p><span class="bc-more">詳しく見る ＋</span></div></button>
+    </div>
+  </div>
+</section>
+<div id="benModal" class="bmodal" aria-hidden="true">
+  <div class="bmodal-bg" data-close></div>
+  <div class="bmodal-panel" role="dialog" aria-modal="true">
+    <button type="button" class="bmodal-x" data-close aria-label="閉じる">×</button>
+    <div class="bm-cover" id="bmCover">
+      <div class="bm-img" id="bmImg"></div>
+      <span class="bm-en-ghost" id="bmEnGhost" aria-hidden="true"></span>
+      <span class="bm-count" id="bmCount"></span>
+      <div class="bm-dots" id="bmDots" aria-hidden="true"></div>
+      <div class="bm-cover-body">
+        <span class="bm-ico" id="bmIco" aria-hidden="true"></span><span class="bm-axis" id="bmAxis"></span>
+        <p class="bm-en" id="bmEn"></p>
+        <h3 class="bm-title" id="bmTitle"></h3>
+      </div>
+    </div>
+    <div class="bm-thumbs" id="bmThumbs"></div>
+    <div class="bm-body">
+      <p class="bm-detail" id="bmDetail"></p>
+    </div>
+    <div class="bm-nav">
+      <button type="button" class="bm-nav-btn" id="bmPrev">
+        <span class="bm-arrow" aria-hidden="true">‹</span>
+        <span class="bm-nav-txt"><small>前の制度</small><b id="bmPrevName"></b></span>
+      </button>
+      <button type="button" class="bm-nav-btn" id="bmNext">
+        <span class="bm-nav-txt"><small>次の制度</small><b id="bmNextName"></b></span>
+        <span class="bm-arrow" aria-hidden="true">›</span>
+      </button>
+    </div>
+  </div>
+</div>
+<section id="career" class="bg-paper px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
+  <div class="sec-en-ghost" style="top:2%;left:-2%;">CAREER</div>
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">04</span>Career &amp; Growth</p><h2 class="sec-title text-4xl lg:text-5xl mb-4">キャリアと成長</h2><p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl">研修から独り立ち、その先の年収モデルまで。若いうちに頑張った人が、ちゃんと報われる設計です。</p></div>
+
+    <!-- 評価制度：#benefit のフェアな評価カードをここへ移設。TOP(#engine)の
+         「評価制度・福利厚生を見る」もこのセクションへ向くよう index.html 側を修正済み -->
+    <div class="mb-16 p-7 lg:p-9 bg-white border border-gray-200 max-w-3xl">
+      <h3 class="font-bold text-xl mb-1">評価制度 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">FAIR REVIEW</span></h3>
+      <p class="text-[13px] text-gray-600 leading-[2] mt-3">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、やった分だけ正当に返ってきます。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">文言仮</span></p>
+    </div>
+
+    <h3 class="font-bold text-xl mb-3">独り立ちまでの支援 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">ONBOARDING SUPPORT</span></h3>
+    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">PRコンサルティング／営業職の入社後は「アカデミー（ACD）」で基礎から段階的に育成。標準化されたプログラムと先輩の伴走で、いきなり一人にはしません。<span class="kari ml-1">内容仮</span></p>
+    <div class="day max-w-2xl mb-3">
+      <div class="day-item"><p class="t">入社</p><div><p class="font-bold text-[15px]">オンボーディング</p><p class="text-[12px] text-gray-500 mt-1">Enjinの理念・OHANA文化・仕事の進め方を共有</p></div></div>
+      <div class="day-item hot"><p class="t">〜6ヶ月</p><div><p class="font-bold text-[15px]">OJT研修</p><p class="text-[12px] text-gray-500 mt-1">先輩とともに実際の商談へ。月次1on1で振り返り</p></div></div>
+      <div class="day-item hot"><p class="t">OJT後</p><div><p class="font-bold text-[15px]">アカデミー卒業を目指して配属へ<span class="day-badge ml-1">GOAL</span></p></div></div>
+    </div>
+    <p class="text-[11px] text-gray-400 mb-16">※直近の教育フローをもとにした一例です。個人の経験や習熟度に応じて、進捗や期間は異なります。</p>
+
+    <h3 class="font-bold text-xl mb-8">配属後のキャリアステップ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">CAREER STEPS</span></h3>
+    <div class="flowline grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-16">
+      <div class="flow-node first"><span class="dot">1y</span><div><p class="font-bold text-[15px]">配属後〜</p><p class="text-[11px] text-gray-500 mt-1">OJT・先輩の伴走。<br />次は独りで商談へ。</p></div></div>
+      <div class="flow-node"><span class="dot">2y</span><div><p class="font-bold text-[15px]">2年目〜</p><p class="text-[11px] text-gray-500 mt-1">自走に向けてのチャレンジ</p></div></div>
+      <div class="flow-node"><span class="dot">3y</span><div><p class="font-bold text-[15px]">3年目</p><p class="text-[11px] text-gray-500 mt-1">主任昇格へ</p></div></div>
+      <div class="flow-node"><span class="dot">5y</span><div><p class="font-bold text-[15px]">5年目</p><p class="text-[11px] text-gray-500 mt-1">リード</p></div></div>
+    </div>
+
+    <h3 class="font-bold text-xl mb-2">営業力を活かして、次のフェーズへ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">NEXT PHASE</span></h3>
+    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">リードとして活躍した先には、3つの道を用意しています。<span class="kari ml-1">文言仮</span></p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">MANAGEMENT</p>
+        <h4 class="font-bold text-lg mb-2">マネジメント職</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">チーム・組織を率い、後進の育成と事業の成長を牽引する。<span class="kari ml-1">内容仮</span></p>
+      </div>
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">PROFESSIONAL</p>
+        <h4 class="font-bold text-lg mb-2">プロフェッショナル職</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">現場のプロとして専門性を磨き、最前線で価値を出し続ける。<span class="kari ml-1">内容仮</span></p>
+      </div>
+      <div class="bg-white p-7 border border-gray-200">
+        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">“KI”GYOKA</p>
+        <h4 class="font-bold text-lg mb-2">独立・起業家へ</h4>
+        <p class="text-[12px] text-gray-600 leading-[1.9]">Enjinで培った営業力を武器に、企業家・起業家・“奇”業家として独立する道も。<span class="kari ml-1">3つ目の案・要確認</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="relative text-white px-6 lg:px-16 py-24 text-center overflow-hidden reveal">
+  <div class="absolute inset-0" style="background-image:url('../../images/members_20th.jpg');background-size:cover;background-position:center;"></div>
+  <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(150,8,8,.93),rgba(191,15,15,.88));"></div>
+  <div class="max-w-3xl mx-auto relative z-10">
+    <p class="font-alumni font-bold text-sm tracking-[0.3em] text-white/70 mb-4">CASUAL SESSION</p>
+    <h2 class="sec-title mb-8" style="font-size:clamp(1.6rem,3.6vw,2.6rem);">まずは、話を聞きに来ませんか。</h2>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center"><a href="application-v8.html?type=casual" class="inline-block whitespace-nowrap bg-white text-red px-10 py-4 text-base font-bold tracking-wider hover:bg-gray-100 transition">カジュアル面談　→</a><a href="application-v8.html?type=entry" class="inline-block whitespace-nowrap border border-white text-white px-10 py-4 text-base font-bold tracking-wider hover:bg-white hover:text-red transition">エントリー　→</a></div>
+  </div>
+</section>
+<footer class="bg-white px-6 lg:px-16 py-12 border-t border-gray-200 text-center">
+  <a href="index.html" class="text-sm text-gray-500 hover:text-red transition">← TOPページに戻る</a>
+  <p class="text-[10px] text-gray-400 mt-4">© Enjin Inc. All Rights Reserved.／ ENVIRONMENT v8 内部レビュー用・文言一部仮</p>
+</footer>
+<script>
+(function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -60px 0px'});
+function init(){document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+var modal=document.getElementById('benModal');
+if(modal){
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.ben-card'));
+  var cur=0, imgs=[], imgIdx=0;
+  var cover=document.getElementById('bmCover'), imgEl=document.getElementById('bmImg');
+  var dotsEl=document.getElementById('bmDots'), thumbsEl=document.getElementById('bmThumbs');
+
+  // 画像は data-imgs（カンマ区切り・複数可）を優先し、無ければカードの写真1枚を使う
+  function imagesOf(c){
+    if(c.dataset.imgs){
+      return c.dataset.imgs.split(',').map(function(s){return s.trim();}).filter(Boolean);
+    }
+    var d=c.querySelector('.bc-img > div');
+    var m=d && d.style.backgroundImage.match(/url\(["']?(.*?)["']?\)/);
+    return m ? [m[1]] : [];
+  }
+
+  function showImg(i){
+    if(!imgs.length){
+      imgEl.style.backgroundImage=''; cover.classList.add('prep'); return;
+    }
+    imgIdx=(i%imgs.length+imgs.length)%imgs.length;
+    imgEl.style.backgroundImage="url('"+imgs[imgIdx]+"')";
+    cover.classList.remove('prep');
+    Array.prototype.forEach.call(dotsEl.children,function(d,n){d.classList.toggle('on',n===imgIdx);});
+    Array.prototype.forEach.call(thumbsEl.children,function(t,n){t.classList.toggle('on',n===imgIdx);});
+  }
+
+  function buildGallery(){
+    dotsEl.innerHTML=''; thumbsEl.innerHTML='';
+    if(imgs.length<2) return;               // 1枚以下なら切り替えUIは出さない
+    imgs.forEach(function(src,n){
+      var d=document.createElement('span'); d.className='bm-dot'; dotsEl.appendChild(d);
+      var t=document.createElement('button');
+      t.type='button'; t.className='bm-thumb';
+      t.style.backgroundImage="url('"+src+"')";
+      t.setAttribute('aria-label',(n+1)+'枚目の写真');
+      t.addEventListener('click',function(){showImg(n);});
+      thumbsEl.appendChild(t);
+    });
+  }
+
+  function render(i){
+    cur=(i%cards.length+cards.length)%cards.length;
+    var c=cards[cur];
+    document.getElementById('bmAxis').textContent=c.dataset.axis;
+    var ic=c.querySelector('.bc-ico');
+    document.getElementById('bmIco').innerHTML = ic ? ic.innerHTML : '';
+    document.getElementById('bmEn').textContent=c.dataset.en;
+    document.getElementById('bmEnGhost').textContent=c.dataset.en;
+    document.getElementById('bmTitle').textContent=c.dataset.title;
+    document.getElementById('bmDetail').textContent=c.dataset.detail||'';
+    document.getElementById('bmCount').textContent=(cur+1)+' / '+cards.length;
+    // 押した先がどの制度かをボタンに出す（何が起きるか分かるように）
+    var prevC=cards[(cur-1+cards.length)%cards.length], nextC=cards[(cur+1)%cards.length];
+    document.getElementById('bmPrevName').textContent=prevC.dataset.title;
+    document.getElementById('bmNextName').textContent=nextC.dataset.title;
+    imgs=imagesOf(c);
+    buildGallery();
+    showImg(0);
+    modal.querySelector('.bmodal-panel').scrollTop=0;
+  }
+
+  var openM=function(c){
+    render(cards.indexOf(c));
+    modal.classList.add('open');modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  };
+  var closeM=function(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';};
+
+  document.getElementById('bmPrev').addEventListener('click',function(){render(cur-1);});
+  document.getElementById('bmNext').addEventListener('click',function(){render(cur+1);});
+
+  // カバーを左右にスワイプすると写真が切り替わる（複数枚ある時のみ）
+  var tx=null;
+  cover.addEventListener('touchstart',function(e){tx=e.changedTouches[0].clientX;},{passive:true});
+  cover.addEventListener('touchend',function(e){
+    if(tx===null||imgs.length<2)return;
+    var dx=e.changedTouches[0].clientX-tx; tx=null;
+    if(Math.abs(dx)>40) showImg(imgIdx+(dx<0?1:-1));
+  },{passive:true});
+
+  cards.forEach(function(c){c.addEventListener('click',function(){openM(c);});});
+  modal.querySelectorAll('[data-close]').forEach(function(el){el.addEventListener('click',closeM);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){closeM();return;}
+    if(!modal.classList.contains('open'))return;
+    if(e.key==='ArrowLeft') render(cur-1);
+    if(e.key==='ArrowRight') render(cur+1);
+  });
+}
+
+/* 360°VRツアー：ボタンを押したときだけiframeを読み込む（初回表示を軽くする） */
+var VR_SRC='https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e';
+var vrOpen=document.getElementById('vrOpen'),vrStage=document.getElementById('vrStage'),
+    vrPoster=document.getElementById('vrPoster'),vrFrame=document.getElementById('vrFrame'),
+    vrClose=document.getElementById('vrClose');
+if(vrOpen&&vrStage&&vrPoster&&vrFrame){
+  vrOpen.addEventListener('click',function(){
+    if(!vrFrame.getAttribute('src')){vrFrame.setAttribute('src',VR_SRC);}
+    vrPoster.classList.add('hidden');vrStage.classList.remove('hidden');
+    vrStage.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  if(vrClose){vrClose.addEventListener('click',function(){
+    vrStage.classList.add('hidden');vrPoster.classList.remove('hidden');
+    vrPoster.scrollIntoView({behavior:'smooth',block:'center'});
+  });}
+}})();
+</script>
+<script src="../../assets/anchor-fix.js"></script>
+<script src="../../assets/photo-kari.js"></script>
+<script src="../../assets/analytics.js" defer></script>
+</body>
+</html>
