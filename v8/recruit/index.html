@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>採用トップ｜株式会社Enjin（案）</title>
+<script src="../assets/tailwind.js"></script>
+<link href="../assets/fonts.css" rel="stylesheet" />
+<link rel="icon" type="image/png" href="../images/favicon.png" />
+<style>
+  html { font-size:17px; }
+  :root { --red:#BF0F0F; --ink:#444; --paper:#FFF7F8; }
+  html { scroll-behavior:smooth; }
+  html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
+  .font-alumni { font-family:'Alumni Sans', sans-serif; }
+  .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
+  .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.14em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
+  .kari { display:inline-block; border:1px solid #d1d5db; color:#9ca3af; font-size:10px; padding:1px 7px; letter-spacing:.08em; vertical-align:middle; }
+  .hub-card { display:block; background:#fff; transition:.25s; position:relative; }
+  .hub-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+  .hub-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
+  .hub-card .ph { aspect-ratio:16/10; background:#e5e7eb center/cover no-repeat; position:relative; overflow:hidden; }
+  .hub-card .ph > div { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .5s; }
+  .hub-card:hover .ph > div { transform:scale(1.04); }
+  .hub-tag { position:absolute; top:10px; left:10px; z-index:2; background:var(--red); color:#fff; font-size:11px; font-weight:700; padding:3px 10px; letter-spacing:.1em; }
+  .hub-url { font-family:'Alumni Sans',sans-serif; font-weight:700; letter-spacing:.05em; font-size:.72rem; color:#b5aca4; }
+  /* 準備中カバー */
+  .hub-card.is-prep { cursor:default; }
+  .hub-card.is-prep:hover { transform:none; box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16); }
+  .prep-cover { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1.5rem;
+    background:linear-gradient(180deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.9) 100%); backdrop-filter:saturate(.6) blur(1px); }
+  .prep-cover .prep-en { font-family:'Alumni Sans',sans-serif; font-weight:700; letter-spacing:.22em; font-size:.85rem; color:rgba(255,255,255,.6); }
+  .prep-cover .prep-jp { font-weight:700; color:#fff; font-size:clamp(1.6rem,4vw,2.3rem); line-height:1.2; margin:.5rem 0 .9rem;
+    border-top:1px solid rgba(255,255,255,.25); border-bottom:1px solid rgba(255,255,255,.25); padding:.5rem 1.6rem; }
+  .prep-cover .prep-note { font-size:11px; color:rgba(255,255,255,.65); line-height:1.9; }
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity:1; transform:translateY(0); }
+
+  /* ===== コーポレートサイト y-enjin.co.jp のヘッダー／フッター模写（career-hub-v1と共通） ===== */
+  :root{ --rc-red:#a82b43; }
+  .rc-header{background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:50;}
+  .rc-header__in{max-width:1400px;margin:0 auto;padding:1.15rem 1.75rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+  .rc-header__logo img{height:22px;width:auto;display:block;}
+  .rc-header__nav{display:flex;align-items:center;gap:1.9rem;overflow-x:auto;scrollbar-width:none;}
+  .rc-header__nav::-webkit-scrollbar{display:none;}
+  .rc-header__nav a{font-size:.78rem;color:#444;letter-spacing:.03em;position:relative;padding-bottom:.45rem;white-space:nowrap;transition:color .2s;}
+  .rc-header__nav a:hover{color:var(--red);}
+  .rc-header__nav a.is-active{color:var(--red);}
+  .rc-header__nav a.is-active::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--red);}
+
+  .rc-cta{background:var(--rc-red);color:#fff;text-align:center;padding:clamp(3.5rem,7vw,5.5rem) 1.5rem;}
+  .rc-cta__in{max-width:640px;margin:0 auto;}
+  .rc-cta__label{font-size:.95rem;font-weight:700;letter-spacing:.08em;margin-bottom:1.4rem;}
+  .rc-cta__tel{margin-bottom:.6rem;}
+  .rc-cta__tel-badge{display:inline-block;border:1px solid rgba(255,255,255,.7);font-size:.7rem;padding:.15rem .55rem;margin-right:.7rem;vertical-align:middle;letter-spacing:.05em;}
+  .rc-cta__tel-num{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:2rem;letter-spacing:.03em;vertical-align:middle;}
+  .rc-cta__tel-note{font-size:.75rem;color:rgba(255,255,255,.8);margin-left:.5rem;vertical-align:middle;}
+  .rc-cta__note{font-size:.72rem;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:1.8rem;}
+  .rc-cta__btn{display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--rc-red);font-weight:700;font-size:.88rem;padding:.9rem 2.1rem;border-radius:99px;transition:transform .2s,box-shadow .2s;}
+  .rc-cta__btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(0,0,0,.35);}
+  .rc-cta__btn .ar{display:inline-block;transform:translateY(1px);}
+  .rc-cta__div{width:100%;max-width:420px;height:1px;background:rgba(255,255,255,.28);margin:2.6rem auto;}
+  .rc-cta__sns-label{font-size:.8rem;font-weight:700;letter-spacing:.05em;margin-bottom:1.1rem;}
+  .rc-cta__sns{display:flex;align-items:center;justify-content:center;gap:1.1rem;}
+  .rc-cta__sns a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s,color .2s;}
+  .rc-cta__sns a:hover{background:#fff;color:var(--rc-red);}
+  .rc-cta__sns svg{width:18px;height:18px;}
+  .rc-cta__sns-x{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:1rem;}
+
+  .rc-flinks{background:#fff;padding:clamp(2.6rem,5vw,3.6rem) 1.5rem 2.2rem;}
+  .rc-flinks__in{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.6rem 2rem;align-items:flex-start;padding-bottom:2.4rem;border-bottom:1px solid #eee;}
+  .rc-flinks__logo img{height:20px;width:auto;display:block;margin-top:.2rem;}
+  .rc-flinks__cols{display:flex;flex-wrap:wrap;gap:2.4rem 2.6rem;flex:1;}
+  .rc-flinks__h a{font-size:.82rem;font-weight:700;color:#444;}
+  .rc-flinks__h a:hover{color:var(--red);}
+  .rc-flinks__cols ul{margin-top:.9rem;display:grid;gap:.6rem;}
+  .rc-flinks__cols li a{font-size:.72rem;color:#777;}
+  .rc-flinks__cols li a:hover{color:var(--red);}
+  .rc-flinks__bottom{max-width:1200px;margin:1.8rem auto 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.4rem 2rem;}
+  .rc-flinks__cname{font-size:.85rem;font-weight:700;margin-bottom:.7rem;}
+  .rc-flinks__addr{font-size:.72rem;color:#777;line-height:1.9;}
+  .rc-flinks__legal{display:flex;flex-wrap:wrap;gap:1.4rem;}
+  .rc-flinks__legal a{font-size:.72rem;color:#777;}
+  .rc-flinks__legal a:hover{color:var(--red);}
+  .rc-flinks__copy{font-size:.68rem;color:#999;}
+  .rc-flinks__note{max-width:1200px;margin:1.2rem auto 0;font-size:.68rem;color:#bbb;text-align:right;}
+  @media(max-width:640px){ .rc-flinks__bottom{align-items:flex-start;} }
+</style>
+</head>
+<body>
+
+<!-- 注記バー（モック用） -->
+<div class="bg-gray-900 text-white text-center text-[11px] py-2 px-4">構成案モック：採用トップ <span class="font-alumni font-bold mx-1">y-enjin.co.jp/recruit/</span>（3分岐ファースト）。配下は /recruit/graduate（新卒）・/recruit/career（中途）・/recruit/hs（高卒）</div>
+
+<!-- Header（コーポレートサイトの実ヘッダー模写。ナビ遷移先は実URL） -->
+<header class="rc-header">
+  <div class="rc-header__in">
+    <a href="https://www.y-enjin.co.jp/" target="_blank" rel="noopener" class="rc-header__logo">
+      <img src="../images/logo_enjin.png" alt="Enjin" />
+    </a>
+    <nav class="rc-header__nav">
+      <a href="https://www.y-enjin.co.jp/company/" target="_blank" rel="noopener">企業情報</a>
+      <a href="https://www.y-enjin.co.jp/service/" target="_blank" rel="noopener">事業内容</a>
+      <a href="https://www.y-enjin.co.jp/ir/" target="_blank" rel="noopener">IR情報</a>
+      <a href="https://www.y-enjin.co.jp/career/" target="_blank" rel="noopener" class="is-active">採用情報</a>
+      <a href="https://www.y-enjin.co.jp/sustainability/esg/" target="_blank" rel="noopener">サステナビリティ</a>
+      <a href="https://www.y-enjin.co.jp/news/" target="_blank" rel="noopener">お知らせ</a>
+      <a href="https://www.y-enjin.co.jp/contact/" target="_blank" rel="noopener">お問合せ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- コンパクトヒーロー：名乗りだけして、すぐ3分岐へ -->
+<section class="bg-paper relative overflow-hidden text-center" style="padding:clamp(2.8rem,6vw,4.2rem) 1.5rem 0;">
+  <div class="relative z-10 reveal in">
+    <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;font-size:clamp(2.1rem,5.6vw,4.2rem);line-height:1.02;letter-spacing:.02em;color:#444;">OHANA<br class="sm:hidden" /> RECRUITING</p>
+    <p class="font-bold mt-5" style="font-size:clamp(1rem,2.2vw,1.3rem);color:#444;">ようこそ、Enjinの採用サイトへ。<span class="kari ml-2">文言仮</span></p>
+    <p class="text-sm text-gray-600 mt-3 leading-loose">あなたの進路に合わせて、入口を選んでください。</p>
+  </div>
+</section>
+
+<!-- 3分岐カード（ファーストビュー） -->
+<section class="bg-paper px-6 lg:px-16 pt-10 lg:pt-12 pb-16 lg:pb-20">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- 新卒（大卒） -->
+    <a href="../index-v8.html" class="hub-card reveal">
+      <div class="ph"><span class="hub-tag">NEW GRADUATE</span><div style="background-image:url('../images/hero_main.jpg');"></div></div>
+      <div class="p-6">
+        <h2 class="font-bold text-lg mb-1.5">新卒採用<span class="text-[11px] text-gray-400 font-normal ml-2">大学・大学院</span></h2>
+        <p class="hub-url mb-3">/recruit/graduate</p>
+        <p class="text-xs text-gray-500 leading-relaxed mb-5">ぜんぶ欲しいを、夢にしない。1年目から経営者と向き合う仕事へ。</p>
+        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">新卒採用サイトへ　→</span>
+      </div>
+    </a>
+
+    <!-- 中途（準備中） -->
+    <div class="hub-card is-prep reveal">
+      <div class="ph"><span class="hub-tag">CAREER</span><div style="background-image:url('../images/business.jpg');"></div></div>
+      <div class="p-6">
+        <h2 class="font-bold text-lg mb-1.5">キャリア採用<span class="text-[11px] text-gray-400 font-normal ml-2">中途</span></h2>
+        <p class="hub-url mb-3">/recruit/career</p>
+        <p class="text-xs text-gray-500 leading-relaxed mb-5">その経験を、最高峰の商談で。即戦力を待っています。<span class="kari ml-1">文言仮</span></p>
+        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">キャリア採用へ　→</span>
+      </div>
+      <div class="prep-cover">
+        <p class="prep-en">COMING SOON</p>
+        <p class="prep-jp">準備中</p>
+        <p class="prep-note">キャリア採用サイトは現在制作中です</p>
+      </div>
+    </div>
+
+    <!-- 高卒 -->
+    <a href="https://y-enjin.co.jp/recruit-hs/" target="_blank" rel="noopener" class="hub-card reveal">
+      <div class="ph"><span class="hub-tag">HIGH SCHOOL</span><div style="background-image:url('../images/career_hero.jpg');"></div></div>
+      <div class="p-6">
+        <h2 class="font-bold text-lg mb-1.5">高卒採用<span class="text-[11px] text-gray-400 font-normal ml-2">高校生</span></h2>
+        <p class="hub-url mb-3">/recruit/hs</p>
+        <p class="text-xs text-gray-500 leading-relaxed mb-5">今は夢が、なくていい。20代で何にでもなれる環境がある。</p>
+        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">高卒採用サイトへ　→</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- 世界観（社名由来・OHANA・パーパス）：分岐の下で読ませる -->
+<section id="about-ohana" class="relative overflow-hidden text-center bg-white" style="padding:clamp(4rem,9vw,6.5rem) 1.5rem;">
+  <div class="max-w-2xl mx-auto reveal">
+    <p class="text-sm text-gray-600 leading-loose">株式会社Enjinは、<br />ご縁（En）のある繋がりを大切にしたい。<br />そんな想いのある社名です。</p>
+    <p class="text-sm text-gray-600 mt-4 leading-loose hidden sm:block">ハワイ語で家族を意味する、“OHANA”のカルチャーをベースに、<br />互いに支え合い、高め合える仲間を探しています。</p>
+    <p class="text-sm text-gray-600 mt-4 leading-loose sm:hidden">ハワイ語で家族を意味する<br />“OHANA”のカルチャーをベースに、<br />互いに支え合い、高め合える<br />仲間を探しています。</p>
+
+    <div class="mt-10 lg:mt-12 pt-9 border-t border-gray-200">
+      <p class="eyebrow mb-4">Purpose</p>
+      <h1 class="font-bold leading-relaxed mb-5" style="font-size:clamp(1.4rem,2.6vw,2rem);">「社会の役に立つ立派な人間を<br />一人でも多く輩出する」</h1>
+      <p class="text-sm text-gray-700 leading-loose">Enjinの採用は、このパーパスから始まります。<br />あなたもOHANAになりませんか？</p>
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" class="inline-block mt-8 text-xs font-bold text-red border border-red px-6 py-3 tracking-wider hover:bg-red hover:text-white transition">入口を選ぶ　↑</a>
+    </div>
+  </div>
+</section>
+
+<!-- フッター（コーポレートサイトの実フッター模写。リンク先は実URL） -->
+<footer class="rc-footer">
+  <section id="contact" class="rc-cta">
+    <div class="rc-cta__in">
+      <p class="rc-cta__label">採用に関するお問合せ</p>
+      <p class="rc-cta__tel"><span class="rc-cta__tel-badge">TEL</span><span class="rc-cta__tel-num">03-4590-0808</span><span class="rc-cta__tel-note">（受付時間 9:30〜18:30※）</span></p>
+      <p class="rc-cta__note">※土・日曜日、祝日、年末年始、ゴールデンウィーク期間は翌営業日以降の対応とさせていただきます</p>
+      <a href="https://www.y-enjin.co.jp/career/contact/" target="_blank" rel="noopener" class="rc-cta__btn">メールでのお問い合せはこちら<span class="ar">›</span></a>
+      <div class="rc-cta__div"></div>
+      <p class="rc-cta__sns-label">採用SNSはこちら</p>
+      <div class="rc-cta__sns">
+        <a href="https://www.instagram.com/enjin_pr_saiyo/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://x.com/Enjin__PR" target="_blank" rel="noopener" aria-label="X" class="rc-cta__sns-x">X</a>
+        <a href="https://www.youtube.com/channel/UCh5ZyAKxKU3_-lmivgNoLFg" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-5.8 31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="rc-flinks">
+    <div class="rc-flinks__in">
+      <a href="https://www.y-enjin.co.jp/" target="_blank" rel="noopener" class="rc-flinks__logo"><img src="../images/logo_enjin.png" alt="Enjin" /></a>
+      <div class="rc-flinks__cols">
+        <div>
+          <p class="rc-flinks__h"><a href="https://www.y-enjin.co.jp/company/" target="_blank" rel="noopener">企業情報</a></p>
+          <ul>
+            <li><a href="https://www.y-enjin.co.jp/company/message/" target="_blank" rel="noopener">CEOメッセージ</a></li>
+            <li><a href="https://www.y-enjin.co.jp/company/profile/" target="_blank" rel="noopener">会社概要</a></li>
+            <li><a href="https://www.y-enjin.co.jp/company/who-we-are/" target="_blank" rel="noopener">私たちについて</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="rc-flinks__h"><a href="https://www.y-enjin.co.jp/service/" target="_blank" rel="noopener">事業内容</a></p>
+          <ul>
+            <li><a href="https://www.y-enjin.co.jp/service/pr-consulting-service/" target="_blank" rel="noopener">PRコンサルティングサービス</a></li>
+            <li><a href="https://www.y-enjin.co.jp/service/media-platform-service/" target="_blank" rel="noopener">メディアプラットフォームサービス</a></li>
+            <li><a href="https://www.y-enjin.co.jp/service/cvc/" target="_blank" rel="noopener">コーポレートベンチャーキャピタル</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="rc-flinks__h"><a href="#" onclick="return false;">採用情報</a></p>
+          <ul>
+            <li><a href="../index-v8.html">新卒採用（大卒）</a></li>
+            <li><a href="#" onclick="return false;" style="color:#bbb;cursor:default;">キャリア採用（準備中）</a></li>
+            <li><a href="https://y-enjin.co.jp/recruit-hs/" target="_blank" rel="noopener">高卒採用</a></li>
+          </ul>
+        </div>
+        <div><p class="rc-flinks__h"><a href="https://www.y-enjin.co.jp/ir/" target="_blank" rel="noopener">IR情報</a></p></div>
+        <div><p class="rc-flinks__h"><a href="https://www.y-enjin.co.jp/news/" target="_blank" rel="noopener">お知らせ</a></p></div>
+      </div>
+    </div>
+
+    <div class="rc-flinks__bottom">
+      <div class="rc-flinks__company">
+        <p class="rc-flinks__cname">株式会社Ｅｎｊｉｎ</p>
+        <p class="rc-flinks__addr">〒104-0061<br />東京都中央区銀座5-13-16 ヒューリック銀座<br />イーストビル8F（7F：スタジオ/受付）<br />TEL：03-4590-0808</p>
+      </div>
+      <div class="rc-flinks__legal">
+        <a href="https://www.y-enjin.co.jp/contact/" target="_blank" rel="noopener">お問合せ</a>
+        <a href="https://www.y-enjin.co.jp/privacy-policy/" target="_blank" rel="noopener">個人情報保護方針</a>
+        <a href="https://www.y-enjin.co.jp/site-policy/" target="_blank" rel="noopener">サイトポリシー</a>
+        <a href="https://www.y-enjin.co.jp/sitemap/" target="_blank" rel="noopener">サイトマップ</a>
+      </div>
+      <p class="rc-flinks__copy">©Enjin Co., Ltd.</p>
+    </div>
+    <p class="rc-flinks__note">／ /recruit/ 採用トップ構成案 v2（3分岐ファースト・内部レビュー用モック）</p>
+  </section>
+</footer>
+
+<script src="../assets/anchor-fix.js"></script>
+<script src="../assets/photo-kari.js"></script>
+<script>
+  (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});})();
+</script>
+<script src="../assets/analytics.js" defer></script>
+</body>
+</html>
