@@ -41,7 +41,7 @@
   <style>
   /* 文字サイズ全体を一般的な採用サイト水準へ底上げ（rem基準を16px→17px化。Tailwindのtext-sm等が連動して拡大） */
   html { font-size:17px; }
-    :root { --red:#BF0F0F; --ink:#444; --paper:#F7F4F2; }
+    :root { --red:#7A2430; --ink:#33302C; --paper:#F3EFE7; }
     html { scroll-behavior:smooth; }
     html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
     html, body { overflow-x:hidden; max-width:100%; }
@@ -57,7 +57,7 @@
     .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.22em; font-size:0.88rem; color:#9a9a9a; text-transform:uppercase; display:flex; align-items:center; gap:.6rem; }
     .eyebrow::before { content:""; width:22px; height:2px; background:var(--red); flex-shrink:0; }
     .eyebrow.center { justify-content:center; }
-    .sec-title { font-weight:900; letter-spacing:0.02em; line-height:1.25; }
+    .sec-title { font-family:'Noto Serif JP',serif; font-weight:700; letter-spacing:0.02em; line-height:1.3; }
     .sec-en-ghost {
       position:absolute; pointer-events:none; user-select:none; z-index:0;
       font-family:'Alumni Sans', sans-serif; font-weight:900;
@@ -155,7 +155,7 @@
     .step-item:last-child{padding-bottom:0;}
     .step-item::before{content:"";position:absolute;left:-2.1rem;top:4px;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--red);box-shadow:0 0 0 4px #fff;}
     .step-item.future::before{background:var(--red);}
-    .step-item .tag{display:inline-block;font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:.64rem;letter-spacing:.16em;color:var(--red);background:rgba(191,15,15,.08);padding:.2rem .55rem;border-radius:2px;margin-bottom:.5rem;}
+    .step-item .tag{display:inline-block;font-family:'Alumni Sans',sans-serif;font-weight:800;font-size:.64rem;letter-spacing:.16em;color:var(--red);background:rgba(122,36,48,.08);padding:.2rem .55rem;border-radius:2px;margin-bottom:.5rem;}
     .step-item.future .tag{color:#fff;background:var(--red);}
     .step-item .n{display:none;}
 
@@ -164,7 +164,7 @@
     .flowline::before{content:"";position:absolute;top:26px;left:10%;right:10%;height:1px;background:#d9d0ca;z-index:0;}
     .flow-node{position:relative;z-index:1;text-align:center;}
     .flow-node .dot{width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid #d9d0ca;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:1.15rem;color:#9a9a9a;transition:.3s;}
-    .flow-node.first .dot{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 20px -8px rgba(191,15,15,.5);}
+    .flow-node.first .dot{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 20px -8px rgba(122,36,48,.5);}
     @media (max-width:1023px){
       .flowline::before{top:8%;bottom:8%;left:25px;right:auto;width:1px;height:auto;}
       .flow-node{display:grid;grid-template-columns:52px 1fr;gap:1.2rem;text-align:left;align-items:center;padding:.8rem 0;}
@@ -222,7 +222,7 @@
     /* Loader — keyword cascade */
     #loader{position:fixed;inset:0;z-index:100;background:radial-gradient(120% 90% at 50% 40%, #221314 0%, #0f0d0d 55%, #090707 100%);overflow:hidden;transition:transform .8s cubic-bezier(.76,0,.24,1),visibility .8s;}
     #loader::after{content:"";position:absolute;inset:0;opacity:.07;mix-blend-mode:screen;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-    #loader .glow{position:absolute;left:50%;top:44%;width:70vmin;height:70vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.22) 0%, rgba(191,15,15,0) 62%);animation:ldGlow 5s ease-in-out infinite alternate;pointer-events:none;}
+    #loader .glow{position:absolute;left:50%;top:44%;width:70vmin;height:70vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(122,36,48,.22) 0%, rgba(122,36,48,0) 62%);animation:ldGlow 5s ease-in-out infinite alternate;pointer-events:none;}
     @keyframes ldGlow{from{transform:translate(-50%,-50%) scale(.9);}to{transform:translate(-50%,-50%) scale(1.15);}}
     #loader .rise{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em;}
     #loader .rise>span{display:inline-block;transform:translateY(115%);transition:transform .75s cubic-bezier(.22,1,.36,1);}
@@ -232,7 +232,7 @@
     .ld-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2.5rem 1.4rem;}
     /* 眉見出しは初代OPの大きさに戻す（Anton・字間が詰まりながら現れる）。
        PURPOSE / CULTURE / PHILOSOPHY の3枚で章立てを揃える */
-    .ld-eyebrow{font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;letter-spacing:.55em;text-indent:.55em;font-size:clamp(1.5rem,4vw,2.6rem);color:#ff5a5a;line-height:1.1;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
+    .ld-eyebrow{font-family:'Anton','Alumni Sans',sans-serif;font-weight:800;letter-spacing:.55em;text-indent:.55em;font-size:clamp(1.5rem,4vw,2.6rem);color:#C98A78;line-height:1.1;opacity:0;transition:opacity .7s ease,letter-spacing .9s cubic-bezier(.22,1,.36,1),text-indent .9s cubic-bezier(.22,1,.36,1);}
     .ld-ohana{font-family:'Playfair Display','Noto Serif JP',serif;font-weight:900;color:#fff;font-size:clamp(2.2rem,6.4vw,4rem);line-height:1;letter-spacing:.02em;}
     .ld-sub{font-family:'Noto Serif JP',serif;font-weight:700;color:rgba(255,255,255,.85);font-size:clamp(.95rem,2.4vw,1.25rem);margin-top:1rem;}
     .ld-mincho{font-family:'Noto Serif JP',serif;font-weight:700;color:#fff;line-height:1.7;font-size:clamp(1.3rem,3.2vw,2.5rem);}
@@ -384,7 +384,7 @@
     .tape-track p{font-family:'Alumni Sans',sans-serif;font-weight:900;font-size:clamp(2.2rem,4.5vw,4rem);line-height:1;white-space:nowrap;letter-spacing:.02em;}
     .tape .solid{color:#fff;}
     .tape .stroke{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.45);}
-    .tape .red{color:#ff5a5a;}
+    .tape .red{color:#C98A78;}
     @keyframes tape{from{transform:translateX(0);}to{transform:translateX(-50%);}}
     @media (max-width:640px){
       .tape{padding:1rem 0;}
@@ -397,7 +397,7 @@
     .cnt{font-variant-numeric:tabular-nums;}
 
     /* Buttons */
-    .btn-primary,.btn-ghost{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.05rem 2.1rem;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,border-color .35s,transform .15s cubic-bezier(.34,1.56,.64,1);text-align:center;}
+    .btn-primary,.btn-ghost{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.85rem;padding:1.05rem 2.1rem;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;overflow:hidden;transition:color .35s,border-color .35s,transform .15s cubic-bezier(.22,1,.36,1);text-align:center;}
     .btn-primary{background:var(--red);color:#fff;clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%);}
     .btn-ghost{border:1px solid #444;color:#444;background:transparent;}
     .btn-primary::before,.btn-ghost::before{content:"";position:absolute;inset:0;z-index:0;background:#444;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.76,0,.24,1);}
@@ -405,7 +405,7 @@
     .btn-primary:hover::before,.btn-ghost:hover::before{transform:scaleX(1);}
     .btn-primary:active,.btn-ghost:active{transform:scale(.96);}
     .btn-primary>*,.btn-ghost>*{position:relative;z-index:1;}
-    .btn-primary .ar,.btn-ghost .ar{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:.95rem;transition:transform .4s cubic-bezier(.34,1.56,.64,1);border:1px solid currentColor;}
+    .btn-primary .ar,.btn-ghost .ar{display:inline-flex;width:26px;height:26px;border-radius:50%;align-items:center;justify-content:center;font-size:.95rem;transition:transform .4s cubic-bezier(.22,1,.36,1);border:1px solid currentColor;}
     .btn-primary .ar{border-color:rgba(255,255,255,.5);}
     .btn-primary:hover .ar,.btn-ghost:hover .ar{transform:translateX(6px) scale(1.08);}
     /* Happiness Triangle — node diagram */
@@ -427,7 +427,7 @@
         .htri-node.hh .htri-nd{animation-duration:6.2s;animation-delay:-1.4s;}
         .htri-node.hr .htri-nd{animation-duration:5s;animation-delay:-2.6s;}
         @keyframes htriFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
-        .htri-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,#7a0909,#e0554a,var(--red),#7a0909);padding:13px;box-shadow:0 16px 36px -14px rgba(191,15,15,.55);animation:htriSpin 14s linear infinite;}
+        .htri-ring{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 210deg,#4A1620,#9C5850,var(--red),#4A1620);padding:13px;box-shadow:0 16px 36px -14px rgba(122,36,48,.55);animation:htriSpin 26s linear infinite;}
         .htri-node.hh .htri-ring{animation-duration:18s;animation-direction:reverse;}
         .htri-node.hr .htri-ring{animation-duration:16s;}
         @keyframes htriSpin{to{transform:rotate(360deg);}}
@@ -457,7 +457,7 @@
            背景はECONOMY（旧#engine）と交代：暗色にして目立たせる。
            .ht-stage から下（ムービー本体のカード）は白のまま＝暗い舞台に白いステージが浮かぶ構成 */
         .ht-wrap{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 50% 6%, #211514 0%, #130f0e 55%, #0a0808 100%);color:#c9c2bc;font-family:'Noto Sans JP',sans-serif;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px);}
-        .ht-wrap::before{content:"";position:absolute;left:50%;top:22%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.2) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
+        .ht-wrap::before{content:"";position:absolute;left:50%;top:22%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(122,36,48,.2) 0%, rgba(122,36,48,0) 62%);pointer-events:none;z-index:0;}
         .ht-wrap .sec-en-ghost{color:rgba(255,255,255,.05);}
         .ht-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto;}
         .ht-head{text-align:center;margin-bottom:clamp(40px,6vw,72px);}
@@ -468,7 +468,7 @@
 
         /* 真四角に軽い遊び心を：斜めは使わず、角丸＋平行なオフセット枠のみ */
         .ht-stage-wrap{position:relative;}
-        .ht-stage-wrap::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid rgba(200,50,42,.32);border-radius:26px;z-index:0;}
+        .ht-stage-wrap::before{content:"";position:absolute;inset:14px -14px -14px 14px;border:2px solid rgba(122,36,48,.32);border-radius:26px;z-index:0;}
         .ht-stage{position:relative;z-index:1;background:linear-gradient(160deg,#fffdf9 0%,#f8f3ea 100%);border:1px solid rgba(28,26,23,.09);border-radius:22px;box-shadow:0 50px 110px -40px rgba(0,0,0,.7),0 2px 0 rgba(255,255,255,.9) inset;overflow:hidden;}
         @media(max-width:640px){
           .ht-stage-wrap::before{inset:8px -8px -8px 8px;border-radius:18px;}
@@ -492,11 +492,11 @@
         .ht-scene.is-active .ht-lead{transition-delay:.8s;opacity:1;transform:translateY(0);}
         .ht-scene.is-active .ht-body,.ht-scene.is-active .ht-emph{transition-delay:1.1s;opacity:1;transform:translateY(0);}
         .ht-scene.is-active .ht-emph.ht-emph-2{transition-delay:1.35s;}
-        .ht-num{font-family:'Alumni Sans',sans-serif;font-weight:800;letter-spacing:.1em;font-size:clamp(38px,5.4vw,52px);line-height:1;color:#c8322a;margin:0 0 14px;}
+        .ht-num{font-family:'Alumni Sans',sans-serif;font-weight:800;letter-spacing:.1em;font-size:clamp(38px,5.4vw,52px);line-height:1;color:#7A2430;margin:0 0 14px;}
         .ht-lead{font-weight:700;font-size:clamp(23px,3vw,33px);line-height:1.7;margin:0 0 16px;color:#1c1a17;text-wrap:pretty;}
         .ht-body{font-size:clamp(17px,2.1vw,21px);line-height:1.95;color:#5d574e;margin:8px 0 0;max-width:26em;text-wrap:pretty;font-weight:400;}
         .ht-emph{font-weight:700;font-size:clamp(27px,3.9vw,42px);line-height:1.55;margin:6px 0 0;color:#1c1a17;letter-spacing:.02em;}
-        .ht-emph span, .ht-body span.ht-strong-sm{color:#c8322a;border-bottom:3px solid rgba(200,50,42,.35);padding-bottom:3px;}
+        .ht-emph span, .ht-body span.ht-strong-sm{color:#7A2430;border-bottom:3px solid rgba(122,36,48,.35);padding-bottom:3px;}
         .ht-body span.ht-strong-sm{font-weight:700;padding-bottom:2px;}
 
         .ht-figcol{order:1;display:flex;justify-content:center;align-items:center;}
@@ -513,19 +513,19 @@
         .ht-numoverlay.is-on{opacity:1;}
         .ht-numoverlay-bg{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,253,248,.97) 0%,rgba(255,253,248,.9) 48%,rgba(255,253,248,0) 74%);}
         .ht-numoverlay p.ht-hensa{position:relative;font-weight:700;letter-spacing:.22em;font-size:clamp(15px,2vw,19px);color:#1c1a17;margin:0 0 6px;}
-        .ht-numoverlay p.ht-num{position:relative;margin:0;font-family:'Alumni Sans',sans-serif;font-weight:700;line-height:.9;color:#c8322a;text-shadow:0 10px 26px rgba(200,50,42,.24);}
+        .ht-numoverlay p.ht-num{position:relative;margin:0;font-family:'Alumni Sans',sans-serif;font-weight:700;line-height:.9;color:#7A2430;text-shadow:0 10px 26px rgba(122,36,48,.24);}
         .ht-numoverlay p.ht-num span{font-size:clamp(72px,15vw,116px);}
 
         .ht-agechip{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-size:15px;font-weight:700;letter-spacing:.1em;color:#8a8378;border:1px solid rgba(28,26,23,.14);border-radius:99px;padding:5px 15px;background:#fffdf8;white-space:nowrap;line-height:1.6;box-shadow:0 3px 10px rgba(28,26,23,.07);transition:opacity .4s ease,color .3s ease,border-color .3s ease;opacity:0;}
         .ht-agechip.is-on{opacity:1;}
-        .ht-agechip.is-emph{color:#c8322a;border-color:rgba(200,50,42,.4);}
+        .ht-agechip.is-emph{color:#7A2430;border-color:rgba(122,36,48,.4);}
 
         .ht-controls{border-top:1px solid rgba(28,26,23,.09);padding:16px clamp(18px,3vw,32px);display:flex;align-items:center;gap:clamp(12px,2.5vw,24px);flex-wrap:wrap;background:linear-gradient(180deg,#faf7f1,#f4efe6);}
         .ht-play{width:40px;height:40px;flex-shrink:0;border-radius:50%;border:1px solid rgba(28,26,23,.18);background:#fffdf8;color:#1c1a17;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1;padding:0;box-shadow:0 2px 6px rgba(28,26,23,.08);}
-        .ht-play:hover{border-color:#c8322a;color:#c8322a;}
+        .ht-play:hover{border-color:#7A2430;color:#7A2430;}
         .ht-bars{display:flex;gap:8px;flex:1;min-width:180px;}
         .ht-bar{flex:1;height:4px;min-width:14px;border:0;padding:0;cursor:pointer;border-radius:2px;overflow:hidden;background:rgba(28,26,23,.13);}
-        .ht-bar-fill{display:block;height:100%;width:0%;background:#c8322a;border-radius:2px;}
+        .ht-bar-fill{display:block;height:100%;width:0%;background:#7A2430;border-radius:2px;}
         .ht-counter{margin:0;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.18em;font-size:13px;color:#8a8378;flex-shrink:0;}
 
         .ht-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .9s ease;opacity:0;pointer-events:none;}
@@ -538,18 +538,18 @@
         #htEndCard.is-on .ht-endl{transition-delay:.35s;opacity:1;transform:translateY(0);}
         #htEndCard.is-on .ht-endl-2{transition-delay:.85s;}
         #htEndCard.is-on .ht-endl-3{transition-delay:1.35s;}
-        .ht-chevron{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(200,50,42,.4);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
+        .ht-chevron{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(122,36,48,.4);display:flex;align-items:center;justify-content:center;animation:htFloat 1.8s ease-in-out infinite;}
         @keyframes htFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
         .ht-replay{margin-top:30px;display:inline-flex;align-items:center;gap:9px;background:none;border:1px solid rgba(28,26,23,.2);border-radius:99px;padding:11px 24px;font-size:15px;letter-spacing:.06em;color:#5d574e;cursor:pointer;}
         .ht-hint{text-align:center;font-size:12px;color:rgba(255,255,255,.4);margin:18px 0 0;letter-spacing:.08em;}
 
         /* THE Enjin（旧#engine）は #triangle と背景を交代し、明色セクションに戻した。
            ゴースト文字・スポットライトは既定（明色用）のまま流用でよい */
-        #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(191,15,15,.16) 0%, rgba(191,15,15,0) 62%);pointer-events:none;z-index:0;}
+        #engine::before{content:"";position:absolute;left:50%;top:26%;width:72vmin;height:72vmin;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(122,36,48,.16) 0%, rgba(122,36,48,0) 62%);pointer-events:none;z-index:0;}
 
         /* 章末の遷移リンク（横並びの楕円ボタン） */
-        .pill-link{display:inline-flex;align-items:center;gap:.7rem;border:1.5px solid rgba(28,26,23,.7);border-radius:99px;padding:1.05rem 1.9rem;font-size:14px;font-weight:700;letter-spacing:.02em;color:#2a211e;background:#fff;box-shadow:0 8px 20px -12px rgba(28,26,23,.35);transition:border-color .25s,background .25s,color .25s,box-shadow .25s,transform .15s cubic-bezier(.34,1.56,.64,1);}
-        .pill-link:hover{border-color:var(--red);background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(191,15,15,.5);}
+        .pill-link{display:inline-flex;align-items:center;gap:.7rem;border:1.5px solid rgba(28,26,23,.7);border-radius:99px;padding:1.05rem 1.9rem;font-size:14px;font-weight:700;letter-spacing:.02em;color:#2a211e;background:#fff;box-shadow:0 8px 20px -12px rgba(28,26,23,.35);transition:border-color .25s,background .25s,color .25s,box-shadow .25s,transform .15s cubic-bezier(.22,1,.36,1);}
+        .pill-link:hover{border-color:var(--red);background:var(--red);color:#fff;box-shadow:0 10px 24px -10px rgba(122,36,48,.5);}
         .pill-link:active{transform:scale(.96);}
         .pill-link .ar{display:inline-block;transform:translateY(1px);color:var(--red);font-size:16px;transition:color .25s;}
         .pill-link:hover .ar{color:#fff;}
@@ -573,12 +573,12 @@
     @media (min-width:1024px){ .mobile-cta{ display:none; } }
     @media (max-width:1023px){ body { padding-bottom:64px; } }
       .btn-apply,.btn-apply:hover{background:var(--red);color:#fff;opacity:1;}
-    .btn-apply:hover{background:#a30d0d;}
-    .btn-apply{position:relative;overflow:hidden;transition:background .25s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .btn-apply:hover{background:#5C1620;}
+    .btn-apply{position:relative;overflow:hidden;transition:background .25s,transform .15s cubic-bezier(.22,1,.36,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .btn-apply:active{transform:scale(.95);}
     .btn-apply::after{content:"";position:absolute;top:0;left:-60%;width:35%;height:100%;background:linear-gradient(115deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-18deg);transition:left .55s ease;pointer-events:none;}
     .btn-apply:hover::after{left:120%;}
-    .btn-line-cta{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);transition:transform .15s cubic-bezier(.34,1.56,.64,1),opacity .2s;}
+    .btn-line-cta{clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);transition:transform .15s cubic-bezier(.22,1,.36,1),opacity .2s;}
     .btn-line-cta:active{transform:scale(.95);}
   
     /* ===== イベントバナー（B案：サムネ付きカード。開催中のみJSが描画） ===== */
@@ -593,7 +593,7 @@
     .evb-sub{font-size:13px;color:#8a8079;}
     .evb-side{flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:0 22px;border-left:1px dashed #e5ddd6;}
     .evb-deadline{font-size:11.5px;font-weight:700;color:var(--red);}
-    .evb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:700;font-size:13px;padding:10px 22px;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);white-space:nowrap;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+    .evb-cta{display:inline-flex;align-items:center;gap:6px;background:var(--red);color:#fff;font-weight:700;font-size:13px;padding:10px 22px;clip-path:polygon(0 0,calc(100% - 7px) 0,100% 7px,100% 100%,0 100%);white-space:nowrap;transition:opacity .2s,transform .15s cubic-bezier(.22,1,.36,1);}
     .evb-cta:hover{opacity:.88;}
     .evb-cta:active{transform:scale(.95);}
     @media(max-width:700px){
@@ -621,10 +621,10 @@
     .js-title{font-weight:700;font-size:1.35rem;margin-bottom:.6rem;}
     .js-desc{font-size:.85rem;color:#8a8079;line-height:1.9;flex:1;}
     .js-btns{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.2rem;}
-    .js-more{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-more{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.22,1,.36,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .js-more:hover{opacity:.88;}
     .js-more:active{transform:scale(.95);}
-    .js-entry{display:inline-flex;align-items:center;gap:.5rem;background:#444;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.34,1.56,.64,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
+    .js-entry{display:inline-flex;align-items:center;gap:.5rem;background:#444;color:#fff;font-weight:700;font-size:.82rem;letter-spacing:.06em;padding:.7rem 1.5rem;transition:opacity .2s,transform .15s cubic-bezier(.22,1,.36,1);clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);}
     .js-entry:hover{opacity:.85;}
     .js-entry:active{transform:scale(.95);}
     .js-right{padding:1.6rem 1.8rem 1.8rem;background:#fdfbf8;}
@@ -638,7 +638,7 @@
     .js-dico{width:13px;height:13px;display:inline-block;vertical-align:-2px;margin-right:5px;color:var(--red);opacity:.7;}
     .js-req dd{color:#3f3a36;}
     .js-controls{display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-top:1.4rem;}
-    .js-nav{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(28,26,23,.25);background:#fff;color:#3f3a36;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;padding:0 0 3px;box-shadow:0 4px 12px -6px rgba(28,26,23,.25);transition:background .2s,color .2s,border-color .2s,transform .15s cubic-bezier(.34,1.56,.64,1);}
+    .js-nav{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(28,26,23,.25);background:#fff;color:#3f3a36;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;line-height:1;padding:0 0 3px;box-shadow:0 4px 12px -6px rgba(28,26,23,.25);transition:background .2s,color .2s,border-color .2s,transform .15s cubic-bezier(.22,1,.36,1);}
     .js-nav:hover{background:var(--red);border-color:var(--red);color:#fff;}
     .js-nav:active{transform:scale(.92);}
     .js-dots{display:flex;gap:.55rem;}
@@ -661,7 +661,7 @@
     #data .grid.gap-px>div{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
     #cta .grid>*{box-shadow:0 18px 44px -18px rgba(0,0,0,.55);}
     #cta .grid>*:hover{box-shadow:0 30px 62px -20px rgba(0,0,0,.7);}
-    .cbot-fab{position:fixed;right:16px;bottom:84px;z-index:45;width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;box-shadow:0 12px 28px -8px rgba(191,15,15,.55);display:flex;align-items:center;justify-content:center;}
+    .cbot-fab{position:fixed;right:16px;bottom:84px;z-index:45;width:56px;height:56px;border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;box-shadow:0 12px 28px -8px rgba(122,36,48,.55);display:flex;align-items:center;justify-content:center;}
     .cbot-fab svg{width:26px;height:26px;}
     @media(min-width:1024px){.cbot-fab{bottom:22px;right:22px;}}
     .cbot-panel{position:fixed;right:16px;bottom:152px;z-index:46;width:min(320px,calc(100vw - 32px));background:#fff;box-shadow:0 24px 60px -18px rgba(0,0,0,.4);border-top:3px solid var(--red);display:none;flex-direction:column;overflow:hidden;}
@@ -708,8 +708,8 @@
       <div class="ld-cap">
         <p class="cap c-purpose ld-mincho"><span class="rise"><span>社会の役に立つ立派な人間を、</span></span><span class="rise"><span>一人でも多く輩出する。</span></span></p>
         <div class="cap c-culture"><p class="ld-ohana">“OHANA”</p><p class="ld-sub">互いに結びつき、高みへ向かう。</p></div>
-        <p class="cap c-philo ld-mincho">ぜんぶ<span style="color:#ff5a5a;">大事</span>。</p>
-        <p class="cap c-final"><span class="ld-mincho">ぜんぶ欲しいを、<span style="color:#ff5a5a;">夢にしない。</span></span></p>
+        <p class="cap c-philo ld-mincho">ぜんぶ<span style="color:#C98A78;">大事</span>。</p>
+        <p class="cap c-final"><span class="ld-mincho">ぜんぶ欲しいを、<span style="color:#C98A78;">夢にしない。</span></span></p>
       </div>
     </div>
     <button class="ld-skip" type="button">SKIP →</button>
@@ -885,37 +885,37 @@
                   <line x1="200" y1="200" x2="321.2" y2="270" stroke="rgba(28,26,23,.1)" stroke-width="1"></line>
                   <line x1="200" y1="200" x2="200" y2="60" stroke="rgba(28,26,23,.1)" stroke-width="1"></line>
                   <g id="htCirc" opacity="0">
-                    <circle cx="200" cy="200" r="140" fill="none" stroke="#c8322a" stroke-width="1.1" stroke-opacity=".55" stroke-dasharray="2 7"></circle>
-                    <circle cx="200" cy="200" r="152" fill="none" stroke="#c8322a" stroke-width=".8" stroke-opacity=".22"></circle>
+                    <circle cx="200" cy="200" r="140" fill="none" stroke="#7A2430" stroke-width="1.1" stroke-opacity=".55" stroke-dasharray="2 7"></circle>
+                    <circle cx="200" cy="200" r="152" fill="none" stroke="#7A2430" stroke-width=".8" stroke-opacity=".22"></circle>
                   </g>
                   <polygon id="htGlow" points="78.8,270 321.2,270 200,60" fill="#d8352a" opacity=".22" filter="url(#htBlurG)"></polygon>
-                  <polygon id="htE2" points="78.8,270 321.2,270 200,60" fill="none" stroke="#c8322a" stroke-opacity=".14" stroke-width="1"></polygon>
-                  <polygon id="htE1" points="78.8,270 321.2,270 200,60" fill="none" stroke="#c8322a" stroke-opacity=".26" stroke-width="1"></polygon>
+                  <polygon id="htE2" points="78.8,270 321.2,270 200,60" fill="none" stroke="#7A2430" stroke-opacity=".14" stroke-width="1"></polygon>
+                  <polygon id="htE1" points="78.8,270 321.2,270 200,60" fill="none" stroke="#7A2430" stroke-opacity=".26" stroke-width="1"></polygon>
                   <polygon id="htPoly" points="78.8,270 321.2,270 200,60" fill="url(#htFillG)" stroke="url(#htEdgeG)" stroke-width="2.4" stroke-linejoin="round" filter="url(#htShadowG)"></polygon>
                   <g id="htDots">
-                    <circle id="htD0" cx="78.8" cy="270" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
-                    <circle id="htD1" cx="321.2" cy="270" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
-                    <circle id="htD2" cx="200" cy="60" r="6.5" fill="#fffdf8" stroke="#c8322a" stroke-width="3"></circle>
+                    <circle id="htD0" cx="78.8" cy="270" r="6.5" fill="#fffdf8" stroke="#7A2430" stroke-width="3"></circle>
+                    <circle id="htD1" cx="321.2" cy="270" r="6.5" fill="#fffdf8" stroke="#7A2430" stroke-width="3"></circle>
+                    <circle id="htD2" cx="200" cy="60" r="6.5" fill="#fffdf8" stroke="#7A2430" stroke-width="3"></circle>
                   </g>
                   <g transform="translate(200,-46)">
-                    <circle cx="0" cy="-13" r="17" fill="none" stroke="#c8322a" stroke-width="2"></circle>
-                    <text x="0" y="-3" text-anchor="middle" font-size="20" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#c8322a">¥</text>
+                    <circle cx="0" cy="-13" r="17" fill="none" stroke="#7A2430" stroke-width="2"></circle>
+                    <text x="0" y="-3" text-anchor="middle" font-size="20" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#7A2430">¥</text>
                     <text id="htEco" x="0" y="34" text-anchor="middle" font-size="30" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">経済</text>
                   </g>
                   <g transform="translate(-6,340)">
-                    <path d="M0,-8 c0,-12 16,-12 16,0 c0,10 -16,18 -16,26 c0,-8 -16,-16 -16,-26 c0,-12 16,-12 16,0 z" fill="none" stroke="#c8322a" stroke-width="2"></path>
+                    <path d="M0,-8 c0,-12 16,-12 16,0 c0,10 -16,18 -16,26 c0,-8 -16,-16 -16,-26 c0,-12 16,-12 16,0 z" fill="none" stroke="#7A2430" stroke-width="2"></path>
                     <text id="htHel" x="0" y="58" text-anchor="middle" font-size="30" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">健康</text>
                   </g>
                   <g transform="translate(406,340)">
-                    <circle cx="-8" cy="-18" r="7" fill="none" stroke="#c8322a" stroke-width="1.8"></circle>
-                    <path d="M-18,6 c0,-13 20,-13 20,0" fill="none" stroke="#c8322a" stroke-width="1.8"></path>
-                    <circle cx="10" cy="-18" r="7" fill="none" stroke="#c8322a" stroke-width="1.8"></circle>
-                    <path d="M0,6 c0,-13 20,-13 20,0" fill="none" stroke="#c8322a" stroke-width="1.8"></path>
+                    <circle cx="-8" cy="-18" r="7" fill="none" stroke="#7A2430" stroke-width="1.8"></circle>
+                    <path d="M-18,6 c0,-13 20,-13 20,0" fill="none" stroke="#7A2430" stroke-width="1.8"></path>
+                    <circle cx="10" cy="-18" r="7" fill="none" stroke="#7A2430" stroke-width="1.8"></circle>
+                    <path d="M0,6 c0,-13 20,-13 20,0" fill="none" stroke="#7A2430" stroke-width="1.8"></path>
                     <text id="htRel" x="0" y="58" text-anchor="middle" font-size="30" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#1c1a17" paint-order="stroke" stroke="#fbf8f2" stroke-width="7" stroke-linejoin="round">人間関係</text>
                   </g>
                   <g id="htArrow" opacity="0">
-                    <line x1="258" y1="104" x2="258" y2="46" stroke="#c8322a" stroke-width="2.4"></line>
-                    <polygon points="258,32 266,50 250,50" fill="#c8322a"></polygon>
+                    <line x1="258" y1="104" x2="258" y2="46" stroke="#7A2430" stroke-width="2.4"></line>
+                    <polygon points="258,32 266,50 250,50" fill="#7A2430"></polygon>
                   </g>
                 </g>
 
@@ -932,7 +932,7 @@
                     <text x="200" y="222" text-anchor="middle" font-size="18" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#fffdf8">人間関係</text>
                   </g>
                   <g id="htPyr2" opacity="0">
-                    <polygon points="200,70 158,160 200,160" fill="#c8322a"></polygon>
+                    <polygon points="200,70 158,160 200,160" fill="#7A2430"></polygon>
                     <polygon points="200,70 200,160 242,160" fill="#9e231c"></polygon>
                     <text x="200" y="146" text-anchor="middle" font-size="17" font-family="'Noto Sans JP',sans-serif" font-weight="700" fill="#fffdf8">経済</text>
                   </g>
@@ -964,19 +964,19 @@
         </div>
 
         <div class="ht-card" id="htStartCard">
-          <svg width="180" height="156" viewBox="0 0 200 174" style="position:absolute;opacity:.16;"><polygon points="100,10 190,164 10,164" fill="none" stroke="#c8322a" stroke-width="3"></polygon></svg>
-          <p style="position:relative;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 10px;">PHILOSOPHY MOVIE</p>
+          <svg width="180" height="156" viewBox="0 0 200 174" style="position:absolute;opacity:.16;"><polygon points="100,10 190,164 10,164" fill="none" stroke="#7A2430" stroke-width="3"></polygon></svg>
+          <p style="position:relative;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#7A2430;margin:0 0 10px;">PHILOSOPHY MOVIE</p>
           <p style="position:relative;font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#1c1a17;margin:0;">幸せに、順番がある。</p>
         </div>
 
         <div class="ht-card" id="htEndCard" style="padding:0 6vw;">
-          <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:clamp(15px,1.9vw,19px);color:#c8322a;margin:0 0 22px;">SCROLL ON</p>
+          <p style="font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.34em;font-size:clamp(15px,1.9vw,19px);color:#7A2430;margin:0 0 22px;">SCROLL ON</p>
           <div style="margin:0 0 38px;">
             <p class="ht-endl" style="font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">学生時代の偏差値は関係ない。</p>
             <p class="ht-endl ht-endl-2" style="font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">社会人としての「偏差値60」を、</p>
             <p class="ht-endl ht-endl-3" style="font-weight:700;font-size:clamp(26px,4.6vw,46px);line-height:1.6;color:#1c1a17;">Enjinで一緒に目指そう。</p>
           </div>
-          <div class="ht-chevron"><svg width="26" height="26" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#c8322a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+          <div class="ht-chevron"><svg width="26" height="26" viewBox="0 0 20 20"><path d="M4,7 L10,14 L16,7" fill="none" stroke="#7A2430" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
           <button class="ht-replay" id="htReplay"><svg width="16" height="16" viewBox="0 0 20 20"><path d="M4,4 v6 h6 M4,10 a8,8 0 1 0 2-6" fill="none" stroke="#8a8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>もう一度見る</button>
         </div>
       </div>
@@ -1339,19 +1339,19 @@
       <div class="text-center mb-20">
         <p class="eyebrow center mb-4" style="color:#777;"><span class="en-num">06</span>Who We Want</p>
         <h2 class="sec-title text-white mb-6" style="font-size:clamp(2rem,4.6vw,3.6rem);">求める人物像</h2>
-        <p class="font-bold mb-6" style="color:#ff5a5a;font-size:clamp(1.1rem,2.4vw,1.5rem);">求む、未完の人格者。</p>
+        <p class="font-bold mb-6" style="color:#C98A78;font-size:clamp(1.1rem,2.4vw,1.5rem);">求む、未完の人格者。</p>
         <p class="text-sm text-gray-400 leading-[2.1]">スキルも経験も、いまは無くていい。<br />Enjinが見ているのは「これから」の伸びしろです。<span class="kari ml-2" style="border-color:#3a3a3a;color:#666;">文言仮</span></p>
       </div>
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
         <div class="text-center lg:border-r lg:pr-8" style="border-color:rgba(255,255,255,.25);">
-          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4.2" r="1.5" fill="currentColor" stroke="none"/><path d="M4 17l5 1 .75-1.5"/><path d="M15 21v-4l-4-3 1-6"/><path d="M7 12V9l5-1 3 3 3 1"/></svg></span>
-          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">01</p><h3 class="font-bold text-xl mb-3 text-white">まず、動ける人</h3><p class="text-[13px] text-gray-400 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#C98A78;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="4.2" r="1.5" fill="currentColor" stroke="none"/><path d="M4 17l5 1 .75-1.5"/><path d="M15 21v-4l-4-3 1-6"/><path d="M7 12V9l5-1 3 3 3 1"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#C98A78;">01</p><h3 class="font-bold text-xl mb-3 text-white">まず、動ける人</h3><p class="text-[13px] text-gray-400 leading-[2]">完璧じゃなくていい。考えながら走り、打席に立ち続けられる人。</p></div>
         <div class="text-center lg:border-r lg:pr-8" style="border-color:rgba(255,255,255,.25);">
-          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></svg></span>
-          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">02</p><h3 class="font-bold text-xl mb-3 text-white">気前の良い人</h3><p class="text-[13px] text-gray-400 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#C98A78;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#C98A78;">02</p><h3 class="font-bold text-xl mb-3 text-white">気前の良い人</h3><p class="text-[13px] text-gray-400 leading-[2]">見返りを求めず、仲間にもクライアントにも先に与えられる人。</p></div>
         <div class="text-center">
-          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#ff5a5a;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="3"/><path d="M2.5 20v-1.2A5 5 0 0 1 7.5 14h1a5 5 0 0 1 5 4.8V20"/><circle cx="17" cy="8.5" r="2.6"/><path d="M15.8 13.7a5 5 0 0 1 5.7 4.9V20"/></svg></span>
-          <p class="font-alumni font-black text-6xl mb-5" style="color:#ff5a5a;">03</p><h3 class="font-bold text-xl mb-3 text-white">共に、走れる人</h3><p class="text-[13px] text-gray-400 leading-[2]">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
+          <span class="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4" style="background:rgba(255,90,90,.1);border:1.5px solid rgba(255,90,90,.35);color:#C98A78;"><svg viewBox="0 0 24 24" class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8.5" r="3"/><path d="M2.5 20v-1.2A5 5 0 0 1 7.5 14h1a5 5 0 0 1 5 4.8V20"/><circle cx="17" cy="8.5" r="2.6"/><path d="M15.8 13.7a5 5 0 0 1 5.7 4.9V20"/></svg></span>
+          <p class="font-alumni font-black text-6xl mb-5" style="color:#C98A78;">03</p><h3 class="font-bold text-xl mb-3 text-white">共に、走れる人</h3><p class="text-[13px] text-gray-400 leading-[2]">価値観を共有し、チームで大きな成果を出すことを楽しめる人。</p></div>
       </div>
     </div>
   </section>
@@ -1445,7 +1445,7 @@
   <!-- ============ CTA（写真×赤オーバーレイ） ============ -->
   <section id="cta" class="relative text-white px-6 lg:px-16 py-28 lg:py-36 text-center reveal overflow-hidden">
     <div class="absolute inset-0" style="background-image:url('../../images/members_20th.jpg');background-size:cover;background-position:center;"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(150,8,8,.93), rgba(191,15,15,.88));"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(74,22,32,.93), rgba(122,36,48,.88));"></div>
     <div class="max-w-4xl mx-auto relative z-10">
       <p class="font-alumni font-bold text-sm tracking-[0.3em] text-white/70 mb-4">JOIN US</p>
       <h2 class="sec-title leading-tight mb-4" style="font-size:clamp(1.8rem, 4vw, 3rem);">まずは、話を聞きに来ませんか。</h2>
@@ -1454,7 +1454,7 @@
         <a href="application-v8.html?type=casual" data-cta="casual" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#444;">
           <div class="flex items-center justify-between mb-2">
             <p class="font-alumni font-black text-red text-2xl">01</p>
-            <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(191,15,15,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1 0-2-.17-2.9-.5L5 21l1.1-3.3A8.46 8.46 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z"/></svg></span>
+            <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(122,36,48,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1 0-2-.17-2.9-.5L5 21l1.1-3.3A8.46 8.46 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5Z"/></svg></span>
           </div>
           <h3 class="font-bold text-lg mb-1">カジュアル面談</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">選考の前に、まずはラフに話しませんか。オンライン可。</p>
@@ -1463,7 +1463,7 @@
         <a href="application-v8.html?type=entry" data-cta="entry" class="group bg-white rounded-2xl p-7 shadow-[0_20px_40px_-16px_rgba(0,0,0,.45)] hover:shadow-[0_26px_50px_-14px_rgba(0,0,0,.55)] hover:-translate-y-1.5 transition-all duration-300" style="color:#444;">
           <div class="flex items-center justify-between mb-2">
             <p class="font-alumni font-black text-red text-2xl">02</p>
-            <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(191,15,15,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span>
+            <span class="w-11 h-11 rounded-full flex items-center justify-center" style="background:rgba(122,36,48,.08);color:var(--red);"><svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></span>
           </div>
           <h3 class="font-bold text-lg mb-1">エントリー</h3>
           <p class="text-xs text-gray-500 leading-relaxed mb-4">選考に進みたい方はこちら。募集要項もご確認ください。</p>
@@ -1619,7 +1619,7 @@
             var a=A[jx]*Math.PI/180;
             r.setAttribute('cx',(200+140*cur[jx]*Math.cos(a)).toFixed(1));
             r.setAttribute('cy',(200+140*cur[jx]*Math.sin(a)).toFixed(1));
-            r.setAttribute('stroke', dim?'#9c9488':'#c8322a');
+            r.setAttribute('stroke', dim?'#9c9488':'#7A2430');
             r.setAttribute('r', (i===2&&jx===0)||(big&&jx===2) ? '8.5':'6.5');
           });
           dots.setAttribute('opacity', isLast?'.45':'1');
