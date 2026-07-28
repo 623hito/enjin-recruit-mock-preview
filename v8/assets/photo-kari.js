@@ -36,13 +36,18 @@
 
   function badge() {
     var b = document.createElement('span');
-    b.textContent = '写真仮';
     b.setAttribute('aria-hidden', 'true');
     b.style.cssText =
-      'position:absolute;top:8px;left:8px;z-index:6;pointer-events:none;' +
-      'background:rgba(255,255,255,.9);border:1px solid #d1d5db;color:#6b7280;' +
-      'font-size:10px;line-height:1.6;padding:1px 7px;letter-spacing:.08em;' +
-      'font-family:"Noto Sans JP",sans-serif;font-weight:500;white-space:nowrap;';
+      'position:absolute;top:8px;left:8px;z-index:20;pointer-events:none;' +
+      'display:inline-flex;align-items:center;gap:4px;' +
+      'background:#BF0F0F;color:#fff;' +
+      'font-size:11px;line-height:1.8;padding:2px 9px;letter-spacing:.1em;' +
+      'font-family:"Noto Sans JP",sans-serif;font-weight:700;white-space:nowrap;' +
+      'box-shadow:0 3px 10px -2px rgba(0,0,0,.45);border-radius:2px;';
+    b.innerHTML =
+      '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;">' +
+      '<path d="M4 8h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.4"/></svg>' +
+      '写真仮';
     return b;
   }
 
