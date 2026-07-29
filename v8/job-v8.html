@@ -44,14 +44,14 @@
   <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10">
     <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4" id="jobEyebrow">JOB ／ 01</p>
     <h1 class="font-black text-white leading-[1.4]" id="jobH1" style="font-size:clamp(2rem,4.6vw,3.4rem);">企画／プランナー</h1>
-    <p class="text-white/70 text-sm mt-4 leading-loose max-w-xl" id="jobLead">伝わるカタチを、設計する。PR戦略・メディア企画を組み立て、クライアントの価値を最大化する仕事です。<span class="kari ml-1" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.6);">仮</span></p>
+    <p class="text-white/70 text-sm mt-4 leading-loose max-w-xl" id="jobLead">伝わるカタチを、設計する。PR戦略・メディア企画を組み立て、クライアントの価値を最大化する仕事です。</p>
   </div>
   <p class="ghost" id="jobGhost">PLANNER</p>
 </section>
 <section class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
   <div class="sec-en-ghost" style="top:3%;right:-2%;">MISSION</div>
   <div class="max-w-5xl mx-auto relative z-10">
-    <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">01</span>Mission</p><h2 class="sec-title text-3xl lg:text-4xl mb-6">この仕事のミッション</h2><p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl" id="jobMission">クライアントの強みを、どう伝えれば一番刺さるか。戦略を設計し、メディアや企画に落とし込む。届け方そのものを作る仕事です。<span class="kari">仮</span></p></div>
+    <div class="mb-14"><p class="eyebrow mb-4"><span class="en-num">01</span>Mission</p><h2 class="sec-title text-3xl lg:text-4xl mb-6">この仕事のミッション</h2><p class="text-[15px] text-gray-700 leading-[2.1] max-w-2xl" id="jobMission">クライアントの強みを、どう伝えれば一番刺さるか。戦略を設計し、メディアや企画に落とし込む。届け方そのものを作る仕事です。</p></div>
     <div class="grid sm:grid-cols-3 gap-6 mb-20" id="jobSteps">
       <div class="p-6 bg-paper"><p class="font-alumni font-black text-4xl text-red mb-3">01</p><h3 class="font-bold mb-2 js-t">企画立案</h3><p class="text-xs text-gray-600 leading-relaxed js-d">経営者への取材をもとに、伝えるべき切り口を見つける。</p></div>
       <div class="p-6 bg-paper"><p class="font-alumni font-black text-4xl text-red mb-3">02</p><h3 class="font-bold mb-2 js-t">メディア設計</h3><p class="text-xs text-gray-600 leading-relaxed js-d">テレビ・Web・SNSなど、最適な届け方を組み立てる。</p></div>
@@ -105,8 +105,8 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   document.getElementById('jobH1').textContent=d.label;
   document.getElementById('jobGhost').textContent=d.ghost;
   document.getElementById('jobBg').style.backgroundImage="linear-gradient(rgba(20,20,20,.6),rgba(20,20,20,.6)),url('"+d.bg+"')";
-  document.getElementById('jobLead').innerHTML=d.lead+'<span class="kari ml-1" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.6);">仮</span>';
-  document.getElementById('jobMission').innerHTML=d.mission+'<span class="kari">仮</span>';
+  document.getElementById('jobLead').innerHTML=d.lead;
+  document.getElementById('jobMission').innerHTML=d.mission;
   var stepEls=document.querySelectorAll('#jobSteps > div');
   d.steps.forEach(function(s,i){
     stepEls[i].querySelector('.js-t').textContent=s[0];
