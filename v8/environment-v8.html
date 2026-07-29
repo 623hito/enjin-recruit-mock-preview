@@ -121,6 +121,21 @@
   .ben-card{border-color:transparent;box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
   #career .grid.gap-px{gap:10px;background:transparent!important;}
   #career .grid.gap-px>div{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
+
+  /* ===== キャリアステップ：階段ビジュアル ===== */
+  .stair-wrap{display:flex;align-items:flex-end;gap:0;overflow-x:auto;padding-top:70px;filter:drop-shadow(0 18px 24px rgba(60,20,10,.1));}
+  .stair-step{position:relative;flex:1 0 150px;min-width:150px;display:flex;flex-direction:column;align-items:center;}
+  .stair-step+.stair-step{margin-left:-1px;}
+  .stair-figure{position:absolute;left:50%;transform:translateX(-50%);bottom:100%;margin-bottom:8px;width:34px;height:44px;}
+  .stair-tread{position:relative;width:100%;background:linear-gradient(180deg,#d33330,var(--red) 55%,#7c0d0d);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.02em;border-right:3px solid rgba(0,0,0,.22);box-shadow:inset -6px 0 10px -6px rgba(0,0,0,.3);}
+  .stair-tread::before{content:"";position:absolute;top:0;left:0;right:0;height:12px;background:linear-gradient(120deg,#f19490,#e2453f);clip-path:polygon(0 100%,10% 0,100% 0,100% 100%);}
+  .stair-tread.gold::before{background:linear-gradient(120deg,#f5deA0,#d4a935);}
+  .stair-tread.gold{border-right-color:rgba(0,0,0,.28);}
+  .stair-desc{width:100%;background:#fff;border:1px solid #e5ddd8;border-top:none;padding:.9rem .7rem;font-size:11px;color:#8a8079;line-height:1.7;text-align:center;flex:1;box-shadow:inset -3px 0 6px -4px rgba(0,0,0,.08);}
+  @media (max-width:1023px){ .stair-step{flex:1 0 120px;min-width:120px;} }
+  #career .day-item .t{font-family:inherit;font-weight:700;font-size:1.05rem;letter-spacing:.04em;}
+  #career details[open] .det-icon{transform:rotate(45deg);}
+  #career details summary::-webkit-details-marker{display:none;}
   </style>
 </head>
 <body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
@@ -250,45 +265,72 @@
       <p class="text-[13px] text-gray-600 leading-[2] mt-3">評価は「真面目にやった人がバカをみない」ように設計。年齢も学歴も関係なく、やった分だけ正当に返ってきます。若いうちの頑張りが、将来の安心に変わります。<span class="kari ml-1">文言仮</span></p>
     </div>
 
-    <h3 class="font-bold text-xl mb-3">独り立ちまでの支援 <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">ONBOARDING SUPPORT</span></h3>
-    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">入社後は「アカデミー（ACD）」で基礎から段階的に育成。標準化されたプログラムと先輩の伴走で、いきなり一人にはしません。<span class="kari ml-1">内容仮</span></p>
-    <div class="day max-w-2xl mb-3">
-      <div class="day-item"><p class="t">4/1</p><div><p class="font-bold text-[15px]">入社式</p></div></div>
-      <div class="day-item"><p class="t">4/2-3</p><div><p class="font-bold text-[15px]">外部の研修会場で社会人基礎を学ぶ</p><p class="text-[12px] text-gray-500 mt-1">報連相の仕方、名刺交換など</p></div></div>
-      <div class="day-item hot"><p class="t">4/4〜</p><div><p class="font-bold text-[15px]">アカデミー（ACD）開始</p></div></div>
-      <div class="day-item"><p class="t">〜2週</p><div><p class="font-bold text-[15px]">社内ルールやビジネス基礎を学ぶ</p></div></div>
-      <div class="day-item"><p class="t">〜3週</p><div><p class="font-bold text-[15px]">業界や商材について学び、自社内で演習</p></div></div>
-      <div class="day-item"><p class="t">〜4週</p><div><p class="font-bold text-[15px]">徐々に実践＋フィードバック研修</p></div></div>
-      <div class="day-item"><p class="t">GW明け</p><div><p class="font-bold text-[15px]">一通りの1日業務に慣れる</p><p class="text-[12px] text-gray-500 mt-1">GW明け〜は実践数を増やしながら仮配属へ</p></div></div>
-      <div class="day-item hot"><p class="t">8月末</p><div><p class="font-bold text-[15px]">アカデミー卒業を目指して配属へ<span class="day-badge ml-1">GOAL</span></p></div></div>
-    </div>
-    <p class="text-[11px] text-gray-400 mb-16"><span class="kari">※直近年度の新人教育の例</span></p>
-
-    <h3 class="font-bold text-xl mb-8">配属後のキャリアステップ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">CAREER STEPS</span></h3>
-    <div class="flowline grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-16">
-      <div class="flow-node first"><span class="dot">1y</span><div><p class="font-bold text-[15px]">配属後〜</p><p class="text-[11px] text-gray-500 mt-1">OJT・先輩の伴走。<br />次は独りで商談へ。</p></div></div>
-      <div class="flow-node"><span class="dot">2y</span><div><p class="font-bold text-[15px]">2年目〜</p><p class="text-[11px] text-gray-500 mt-1">自走に向けてのチャレンジ</p></div></div>
-      <div class="flow-node"><span class="dot">3y</span><div><p class="font-bold text-[15px]">3年目</p><p class="text-[11px] text-gray-500 mt-1">主任昇格へ</p></div></div>
-      <div class="flow-node"><span class="dot">5y</span><div><p class="font-bold text-[15px]">5年目</p><p class="text-[11px] text-gray-500 mt-1">リード</p></div></div>
-    </div>
-
-    <h3 class="font-bold text-xl mb-2">営業力を活かして、次のフェーズへ <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">NEXT PHASE</span></h3>
-    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">リードとして活躍した先には、3つの道を用意しています。<span class="kari ml-1">文言仮</span></p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-      <div class="bg-white p-7 border border-gray-200">
-        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">MANAGEMENT</p>
-        <h4 class="font-bold text-lg mb-2">マネジメント職</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">チーム・組織を率い、後進の育成と事業の成長を牽引する。<span class="kari ml-1">内容仮</span></p>
+    <p class="font-alumni font-bold text-xs tracking-[0.2em] text-red mb-2">GROWTH ―― 成長</p>
+    <h3 class="font-bold text-xl mb-2">独り立ちから、その先のキャリアまで <span class="font-alumni font-bold text-xs tracking-[0.2em] text-gray-400 ml-1">CAREER STEPS</span></h3>
+    <p class="text-[13px] text-gray-600 leading-[2] mb-8 max-w-2xl">入社後は「アカデミー（ACD）」で基礎から段階的に育成。その先は年次に縛られず、実力次第でステップアップできます。<span class="kari ml-1">文言仮</span></p>
+    <div class="stair-wrap mb-2">
+      <div class="stair-step">
+        <svg class="stair-figure" viewBox="0 0 34 44" fill="#3a342e" style="width:28px;height:36px;"><circle cx="17" cy="9" r="7"></circle><path d="M17 17c-7.2 0-13 5.6-13 13v3h26v-3c0-7.4-5.8-13-13-13z"></path></svg>
+        <div class="stair-tread" style="height:44px;background:linear-gradient(180deg,#f0a9a1,#dd6a5f 55%,#c04940);">入社</div>
+        <div class="stair-desc">入社式・オリエンテーションで<br>OHANA文化を共有</div>
       </div>
-      <div class="bg-white p-7 border border-gray-200">
-        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">PROFESSIONAL</p>
-        <h4 class="font-bold text-lg mb-2">プロフェッショナル職</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">現場のプロとして専門性を磨き、最前線で価値を出し続ける。<span class="kari ml-1">内容仮</span></p>
+      <div class="stair-step">
+        <svg class="stair-figure" viewBox="0 0 34 44" fill="#3a342e" style="width:31px;height:40px;"><circle cx="17" cy="9" r="7"></circle><path d="M17 17c-7.2 0-13 5.6-13 13v3h26v-3c0-7.4-5.8-13-13-13z"></path></svg>
+        <div class="stair-tread" style="height:76px;background:linear-gradient(180deg,#e37f73,#c94940 55%,#a3352c);">アカデミー</div>
+        <div class="stair-desc">社会人基礎から商材知識まで、<br>段階的にインプット</div>
       </div>
-      <div class="bg-white p-7 border border-gray-200">
-        <p class="font-alumni font-bold text-[11px] text-red tracking-[0.2em] mb-3">“KI”GYOKA</p>
-        <h4 class="font-bold text-lg mb-2">独立・起業家へ</h4>
-        <p class="text-[12px] text-gray-600 leading-[1.9]">Enjinで培った営業力を武器に、企業家・起業家・“奇”業家として独立する道も。<span class="kari ml-1">3つ目の案・要確認</span></p>
+      <div class="stair-step">
+        <svg class="stair-figure" viewBox="0 0 34 44" fill="#3a342e" style="width:34px;height:44px;"><circle cx="17" cy="9" r="7"></circle><path d="M17 17c-7.2 0-13 5.6-13 13v3h26v-3c0-7.4-5.8-13-13-13z"></path></svg>
+        <div class="stair-tread" style="height:108px;background:linear-gradient(180deg,#d35d4f,#b02f24 55%,#861f17);">メンバー</div>
+        <div class="stair-desc">アカデミー卒業。<br>独り立ちして自走</div>
+      </div>
+      <div class="stair-step">
+        <svg class="stair-figure" viewBox="0 0 34 44" fill="#3a342e" style="width:37px;height:48px;"><circle cx="17" cy="9" r="7"></circle><path d="M17 17c-7.2 0-13 5.6-13 13v3h26v-3c0-7.4-5.8-13-13-13z"></path></svg>
+        <div class="stair-tread" style="height:140px;background:linear-gradient(180deg,#c73c2e,#93190f 55%,#630f09);">主任</div>
+        <div class="stair-desc">3年目を目安に<br>主任昇格へ</div>
+      </div>
+      <div class="stair-step">
+        <svg class="stair-figure" viewBox="0 0 34 44" fill="#3a342e" style="width:40px;height:52px;"><circle cx="17" cy="9" r="7"></circle><path d="M17 17c-7.2 0-13 5.6-13 13v3h26v-3c0-7.4-5.8-13-13-13z"></path></svg>
+        <div class="stair-tread" style="height:172px;background:linear-gradient(180deg,#b8281a,#7c0d0a 55%,#4a0705);">リーダー</div>
+        <div class="stair-desc">チームを牽引し、<br>次のフェーズへ</div>
+      </div>
+    </div>
+
+    <details style="max-width:640px;margin:0 0 3rem;">
+      <summary style="cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:.4rem;color:var(--red);font-weight:700;font-size:13px;">
+        <span class="det-label">オンボーディングの詳しい流れを見る</span><span class="det-icon" style="transition:transform .25s;">＋</span>
+      </summary>
+      <div class="day max-w-2xl" style="margin-top:1.75rem;">
+        <div class="day-item"><p class="t">4/1</p><div><p class="font-bold text-[15px]">入社式</p></div></div>
+        <div class="day-item"><p class="t">4/2-3</p><div><p class="font-bold text-[15px]">外部の研修会場で社会人基礎を学ぶ</p><p class="text-[12px] text-gray-500 mt-1">報連相の仕方、名刺交換など</p></div></div>
+        <div class="day-item hot"><p class="t">4/4〜</p><div><p class="font-bold text-[15px]">アカデミー（ACD）開始</p></div></div>
+        <div class="day-item"><p class="t">〜2週</p><div><p class="font-bold text-[15px]">社内ルールやビジネス基礎を学ぶ</p></div></div>
+        <div class="day-item"><p class="t">〜3週</p><div><p class="font-bold text-[15px]">業界や商材について学び、自社内で演習</p></div></div>
+        <div class="day-item"><p class="t">〜4週</p><div><p class="font-bold text-[15px]">徐々に実践＋フィードバック研修</p></div></div>
+        <div class="day-item"><p class="t">GW明け</p><div><p class="font-bold text-[15px]">一通りの1日業務に慣れる</p><p class="text-[12px] text-gray-500 mt-1">GW明け〜は実践数を増やしながら仮配属へ</p></div></div>
+        <div class="day-item hot"><p class="t">8月末</p><div><p class="font-bold text-[15px]">アカデミー卒業を目指して配属へ<span class="day-badge ml-1">GOAL</span></p></div></div>
+      </div>
+      <p class="text-[11px] text-gray-400 mt-3"><span class="kari">※直近年度の新人教育の例</span></p>
+    </details>
+    <div style="display:flex;justify-content:flex-end;">
+      <div style="flex:1 0 150px;min-width:150px;display:flex;flex-direction:column;align-items:center;">
+        <svg width="28" height="40" viewBox="0 0 28 40" fill="none" stroke="var(--red)" stroke-width="3" stroke-linecap="round"><line x1="14" y1="0" x2="14" y2="24"></line><path d="M4 20l10 13 10-13"></path></svg>
+      </div>
+    </div>
+    <p class="font-bold text-[17px] lg:text-[19px] text-center mb-8" style="color:var(--red);">リーダーとして活躍した先には、<br class="sm:hidden">3つのキャリアへ分岐します<span class="kari ml-1">文言仮</span></p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px mb-16" style="background:#e5ddd8;">
+      <div>
+        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#e6c874,#b8912f 55%,#8a6a1c);">マネジメント職</div>
+        <div class="stair-desc" style="min-height:96px;">チーム・組織を率い、後進の育成と事業の成長を牽引する。<span class="kari ml-1">内容仮</span></div>
+      </div>
+      <div>
+        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#e6c874,#b8912f 55%,#8a6a1c);">プロフェッショナル職</div>
+        <div class="stair-desc" style="min-height:96px;">現場のプロとして専門性を磨き、最前線で価値を出し続ける。<span class="kari ml-1">内容仮</span></div>
+      </div>
+      <div>
+        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#e6c874,#b8912f 55%,#8a6a1c);">独立・起業家へ</div>
+        <div class="stair-desc" style="min-height:96px;">Enjinで培った営業力を武器に、企業家・起業家・"奇"業家として独立する道も。<span class="kari ml-1">3つ目の案・要確認</span></div>
       </div>
     </div>
   </div>
