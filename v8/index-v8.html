@@ -1722,10 +1722,7 @@
           ['福利厚生','OHANAカフェ／カンパニー旅行／研修制度／近距離手当／ジム代補助 ほか']
         ];
         var JOBS=[
-          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサル／営業',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'},
-          {num:'02',catch:'伝わるカタチを、設計する。',title:'企画／プランナー',desc:'PR戦略・メディア企画を組み立て、クライアントの価値を最大化する。',href:'job-v8.html?role=planner'},
-          {num:'03',catch:'未来の仲間を、つくる。',title:'HR',desc:'採用・組織づくりを通して、Enjinの次の20年を担う人と文化を育てる。',href:'job-v8.html?role=hr'},
-          {num:'04',catch:'挑戦を、数字で支える。',title:'経理',desc:'上場企業の経営基盤をコーポレートの立場から支えるプロフェッショナル。',href:'job-v8.html?role=accounting'}
+          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサル／営業',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'}
         ];
         // 行アイコン（recruitment-v8.html 旧・募集要項の .dico と同じ絵柄）
         var ICO={
@@ -1781,6 +1778,8 @@
         document.getElementById('jsPrev').addEventListener('click',function(){show(cur-1,true);});
         document.getElementById('jsNext').addEventListener('click',function(){show(cur+1,false);});
         for(var k=0;k<dots.length;k++){(function(n){dots[n].addEventListener('click',function(){show(n,n<cur);});})(k);}
+        // 職種が1件のみの間はPrev/Next・ドットを隠す（切り替える相手がいないため）
+        if(JOBS.length<=1){var ctrl=document.querySelector('.js-controls');if(ctrl)ctrl.style.display='none';}
         show(0);
       })();
 
