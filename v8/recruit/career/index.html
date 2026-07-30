@@ -245,7 +245,7 @@
        商談シーン(business.jpg)は「仕事の一場面」で理念の画ではなかったため差し替え。
        人物が左1/4に立つので、明るさを残しつつ下部だけ締める */
     .ld-photo.p-purpose{background-image:url('../../images/purpose_summit.jpg');background-position:center 30%;filter:grayscale(.4) brightness(.62);}
-    #loader[data-step="0"] .ld-photo.p-purpose::after{background:linear-gradient(180deg,rgba(9,7,7,.34) 0%,rgba(9,7,7,.52) 48%,rgba(9,7,7,.88) 100%);}
+    #loader[data-step="0"] .ld-photo.p-purpose::after{background:linear-gradient(180deg,rgba(9,7,7,.34) 0%,rgba(9,7,7,.52) 48%,rgba(9,7,7,1) 100%);}
     /* モバイルの縦長クロップでは中央基準だと人物(左1/4)が画面外に切れるため、左寄せで人物を残す */
     @media(max-width:640px){ .ld-photo.p-purpose{background-position:24% 30%;} }
     /* OHANA＝青空へ跳ぶ仲間たち（AdobeStock 454114585・仮=透かし入りスクショ。
@@ -1031,7 +1031,7 @@
               <li class="flex items-start gap-3 text-[15px]"><span class="font-alumni font-bold text-red mt-[2px]">03</span><span class="text-gray-700">年齢・学歴不問。成果の分だけ評価される。</span></li>
             </ul>
           </div>
-          <a href="environment-v8.html#career" class="relative aspect-[4/3] block rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,rgba(122,36,48,.82),rgba(74,22,32,.88)),url('../../images/wanted_person.jpg') center/cover;box-shadow:-24px 24px 0 #fff;">
+          <a href="environment-v8.html#career" class="relative aspect-[4/3] block rounded-2xl overflow-hidden" style="background:linear-gradient(135deg,rgba(122,36,48,.82),rgba(74,22,32,1)),url('../../images/wanted_person.jpg') center/cover;box-shadow:-24px 24px 0 #fff;">
             <span class="absolute inset-0 flex flex-col items-center justify-center text-white font-alumni font-black text-4xl lg:text-5xl leading-none text-center">FAIR<br />REVIEW</span>
             <span class="absolute right-0 bottom-0 bg-white text-red text-[12px] font-bold px-4 py-2 tracking-wider">やった分だけ、正当に。</span>
           </a>
@@ -1329,7 +1329,7 @@
   </section>
 
   <!-- ============ 求める人物像 ============ -->
-  <section id="person" class="noise px-6 lg:px-16 py-16 lg:py-20 reveal relative overflow-hidden" style="background:linear-gradient(rgba(20,20,20,.8),rgba(20,20,20,.88)),url('../../images/wanted_person.jpg') center/cover;color:#fff;">
+  <section id="person" class="noise px-6 lg:px-16 py-16 lg:py-20 reveal relative overflow-hidden" style="background:linear-gradient(rgba(20,20,20,.8),rgba(20,20,20,1)),url('../../images/wanted_person.jpg') center/cover;color:#fff;">
     <div class="sec-en-ghost" style="top:2%;left:-2%;color:rgba(255,255,255,.05);">WANTED</div>
     <div class="max-w-5xl mx-auto relative z-10">
       <div class="text-center mb-12">
@@ -1448,9 +1448,7 @@
   </section>
 
   <!-- ============ CTA（写真×赤オーバーレイ） ============ -->
-  <section id="cta" class="relative text-white px-6 lg:px-16 py-28 lg:py-36 text-center reveal overflow-hidden">
-    <div class="absolute inset-0" style="background-image:url('../../images/members_20th.jpg');background-size:cover;background-position:center;"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(74,22,32,.93), rgba(122,36,48,.88));"></div>
+  <section id="cta" class="relative text-white px-6 lg:px-16 py-28 lg:py-36 text-center reveal overflow-hidden">    <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(74,22,32,1), rgba(122,36,48,1));"></div>
     <div class="max-w-4xl mx-auto relative z-10">
       <p class="font-alumni font-bold text-sm tracking-[0.3em] text-white/70 mb-4">JOIN US</p>
       <h2 class="sec-title leading-tight mb-4" style="font-size:clamp(1.8rem, 4vw, 3rem);">まずは、話を聞きに来ませんか。</h2>
