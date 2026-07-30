@@ -166,30 +166,17 @@
       <a href="../../news-v8.html" onclick="document.getElementById('drawer').classList.remove('open')">お知らせ</a>
       <a href="application-v8.html?type=entry" onclick="document.getElementById('drawer').classList.remove('open')" class="btn-apply mt-4 bg-red text-white text-center font-bold py-3" style="border:none;">エントリー　→</a>
     </div>
-  </div><section id="office" class="page-hero reveal relative">
-  <!-- 旧トップの汎用ヒーロー(ENJIN LIFE見出し)を廃止し、360°VRポスターをそのままヒーローに昇格。
-       クリックで360°VRツアーをその場に読み込む（初回表示を軽くするため遅延読込） -->
-  <div id="vrPoster" class="relative">
-    <div class="bg"><div class="kb-img" style="background-image:linear-gradient(rgba(10,8,8,.58),rgba(10,8,8,.58)),url('../../images/office_about.jpg');"></div></div>
-    <div class="max-w-6xl mx-auto px-6 lg:px-16 py-24 lg:py-32 relative z-10 text-center">
-      <p class="font-alumni font-bold text-white/70 tracking-[0.3em] text-xs mb-4">OFFICE ／ 360° VR</p>
-      <h1 class="font-black text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3.2rem);">【360°VR体験】<br class="sm:hidden" />空間の魅力をリアルに伝える。</h1>
-      <button type="button" id="vrOpen" class="inline-flex items-center gap-3 whitespace-nowrap border border-white text-white px-10 py-3.5 text-sm font-bold tracking-wider hover:bg-white hover:text-red transition mt-9">
-        <svg viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18Z"/></svg>
-        <span>VRでオフィスを見る</span>
-      </button>
-      <p class="text-[12px] text-white/60 mt-4">ドラッグで360°見渡せます</p>
-    </div>
+  </div><section id="office" class="reveal relative bg-white">
+  <!-- 360°VRツアーは常時表示（クリックゲートを廃止し、初めから全幅で埋め込む） -->
+  <div class="max-w-6xl mx-auto px-6 lg:px-16 pt-16 lg:pt-20 pb-10">
+    <h1 class="font-black leading-[1.1]" style="font-size:clamp(2.4rem,6vw,4.5rem);">OFFICE</h1>
+    <p class="text-[15px] text-gray-600 mt-3">【360°VR体験】空間の魅力をリアルに伝える。</p>
   </div>
-  <!-- 読み込み後のツアー本体 -->
-  <div id="vrStage" class="hidden bg-black relative z-10">
-    <div class="vr-frame"><iframe id="vrFrame" src="" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
-    <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap">
-      <button type="button" id="vrClose" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">閉じる</button>
-      <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
-    </div>
+  <div class="vr-frame"><iframe id="vrFrame" src="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" title="株式会社Enjin オフィス360°VRツアー" frameborder="0" allowfullscreen allow="clipboard-write; fullscreen; xr-spatial-tracking" loading="lazy"></iframe></div>
+  <div class="flex items-center justify-center gap-6 py-4 px-6 text-center flex-wrap bg-black">
+    <p class="text-[11px] text-white/60">ドラッグで360°見渡せます</p>
+    <a href="https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e" target="_blank" rel="noopener" class="text-[11px] text-white/60 hover:text-white transition underline underline-offset-4">別ウィンドウで大きく見る　›</a>
   </div>
-  <p class="ghost">OFFICE</p>
 </section>
 <section id="culture" class="bg-white px-6 lg:px-16 py-28 lg:py-32 reveal relative overflow-hidden">
   <div class="sec-en-ghost" style="top:2%;right:-2%;">CULTURE</div>
@@ -411,23 +398,7 @@ if(modal){
     if(e.key==='ArrowRight') render(cur+1);
   });
 }
-
-/* 360°VRツアー：ボタンを押したときだけiframeを読み込む（初回表示を軽くする） */
-var VR_SRC='https://tour.vachanavi.net/tour-485cb2971bc64c04ac9425e02827289e';
-var vrOpen=document.getElementById('vrOpen'),vrStage=document.getElementById('vrStage'),
-    vrPoster=document.getElementById('vrPoster'),vrFrame=document.getElementById('vrFrame'),
-    vrClose=document.getElementById('vrClose');
-if(vrOpen&&vrStage&&vrPoster&&vrFrame){
-  vrOpen.addEventListener('click',function(){
-    if(!vrFrame.getAttribute('src')){vrFrame.setAttribute('src',VR_SRC);}
-    vrPoster.classList.add('hidden');vrStage.classList.remove('hidden');
-    vrStage.scrollIntoView({behavior:'smooth',block:'center'});
-  });
-  if(vrClose){vrClose.addEventListener('click',function(){
-    vrStage.classList.add('hidden');vrPoster.classList.remove('hidden');
-    vrPoster.scrollIntoView({behavior:'smooth',block:'center'});
-  });}
-}})();
+})();
 </script>
 <script src="../../assets/anchor-fix.js"></script>
 <script src="../../assets/photo-kari.js"></script>
