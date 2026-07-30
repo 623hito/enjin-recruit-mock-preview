@@ -1837,6 +1837,7 @@
       // loader — cinematic opening (band cuts / count-up / curtain exit)
       (function(){
         var l=document.getElementById('loader'); if(!l)return;
+        try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
         // リロードは「もう一度見たい」の意思表示とみなし、既視でも必ず再生する。
         // ※ソフト/ハードリロードはブラウザが同じ 'reload' として報告するため区別できない。
         //   ロゴクリックやサブページからの復帰は 'navigate' なので再生されない。
@@ -1858,6 +1859,7 @@
           if(i>=2 && triBox) triBox.classList.add('drawn');
         }
         function finish(){ if(finished)return; finished=true;
+          try{ window.scrollTo(0,0); }catch(e){}
           l.classList.add('done'); document.body.style.overflow='';
         }
         function skip(){timers.forEach(clearTimeout);step(LAST);setTimeout(finish,250);}
