@@ -19,7 +19,7 @@
     :root { --red:#BF0F0F; --ink:#444; --paper:#F7F4F2; }
     html { scroll-behavior:smooth; }
     html, body { font-family:'Noto Sans JP', sans-serif; background:#fff; color:var(--ink); }
-    html, body { overflow-x:hidden; max-width:100%; }
+    html, body { overflow-x:clip; max-width:100%; }
     a { color:inherit; }
     .font-alumni { font-family:'Alumni Sans', sans-serif; }
     .font-mincho { font-family:'Noto Serif JP', serif; }
@@ -94,6 +94,19 @@
     /* ===== 質感B: 影で立体感 ===== */
     .biz-card{box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
     .biz-card:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
+
+    /* ===== ハンバーガー・ドロワー（site-v8.css相当。このページは同CSSを読み込んでいないため個別定義） ===== */
+    .hamburger { width:26px; height:20px; position:relative; }
+    .hamburger span { position:absolute; left:0; width:100%; height:2px; background:#444; transition:.3s; }
+    .hamburger span:nth-child(1){ top:0; } .hamburger span:nth-child(2){ top:9px; } .hamburger span:nth-child(3){ top:18px; }
+    .drawer { position:fixed; inset:0; z-index:60; visibility:hidden; }
+    .drawer.open { visibility:visible; }
+    .drawer-bg { position:absolute; inset:0; background:rgba(0,0,0,.45); opacity:0; transition:opacity .3s; }
+    .drawer.open .drawer-bg { opacity:1; }
+    .drawer-panel { position:absolute; top:0; right:0; height:100%; width:78%; max-width:320px; background:#fff; transform:translateX(100%); transition:transform .3s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; padding:1.5rem; overflow-y:auto; }
+    .drawer.open .drawer-panel { transform:translateX(0); }
+    .drawer-panel a { display:block; padding:.9rem .2rem; border-bottom:1px solid #f0f0f0; font-size:.95rem; }
+    .drawer-panel a:active { color:var(--red); }
   </style>
 </head>
 <body>
