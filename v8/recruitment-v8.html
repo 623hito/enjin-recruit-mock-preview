@@ -202,7 +202,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     ['福利厚生','OHANAカフェ／カンパニー旅行／研修制度／近距離手当／ジム代補助 ほか']
   ];
   var JOBS=[
-    {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'}
+    {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html',photo:'images/business.jpg'}
   ];
   var ICO={
     '募集職種':'<path d="M4 7.5h16v12.5H4z"/><path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2"/><path d="M4 12.5h16"/>',
@@ -223,7 +223,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     el.className='js-slide';
     el.innerHTML=
       '<div class="js-left">'+
-        '<div class="js-ph prep"><span>NOW PRINTING</span></div>'+
+        (j.photo?'<div class="js-ph"><div style="background-image:url(\''+j.photo+'\');"></div></div>':'<div class="js-ph prep"><span>NOW PRINTING</span></div>')+
         '<div class="js-info">'+
           '<p class="js-num">'+j.num+'</p>'+
           '<p class="js-catch">'+j.catch+'</p>'+
