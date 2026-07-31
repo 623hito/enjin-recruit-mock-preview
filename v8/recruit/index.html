@@ -30,15 +30,9 @@
   .hub-card .ph > div { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .5s; }
   .hub-card:hover .ph > div { transform:scale(1.04); }
   .hub-tag { position:absolute; top:10px; left:10px; z-index:2; background:var(--red); color:#fff; font-size:11px; font-weight:700; padding:3px 10px; letter-spacing:.1em; }
-  /* ヒーロー：写真の人物は右、コピーは左の余白（空）へ置く */
-  .hero-photo { background-size:cover; background-position:center bottom; background-repeat:no-repeat; }
-  .hero-scrim { background:linear-gradient(100deg,rgba(255,255,255,.9) 0%,rgba(255,255,255,.82) 38%,rgba(255,255,255,.42) 62%,rgba(255,255,255,.18) 100%); }
-  .hero-copy { max-width:34rem; margin-left:max(1.5rem,6vw); text-align:left; }
-  @media (max-width:900px){
-    .hero-photo { background-position:72% bottom; }
-    .hero-scrim { background:linear-gradient(180deg,rgba(255,255,255,.78) 0%,rgba(255,255,255,.86) 45%,rgba(255,255,255,.62) 100%); }
-    .hero-copy { max-width:100%; margin-left:auto; margin-right:auto; text-align:center; }
-  }
+  /* ヒーロー：無地（写真なし）。中央にコピーを置くシンプル構成 */
+  #welcome { background:radial-gradient(120% 100% at 85% 10%, rgba(191,15,15,.07) 0%, rgba(191,15,15,0) 55%), var(--paper); }
+  .hero-copy { max-width:36rem; margin:0 auto; text-align:center; }
   /* 準備中カバー（既存カードの上に被せる） */
   .hub-card.is-prep { cursor:default; }
   .hub-card.is-prep:hover { border-color:#e5e7eb; transform:none; box-shadow:none; }
@@ -137,9 +131,7 @@
 </header>
 
 <!-- OHANA RECRUITING ようこそバナー（仮） -->
-<section id="welcome" class="bg-paper relative overflow-hidden text-center" style="padding:clamp(4.5rem,11vw,8rem) 1.5rem;">
-  <div class="absolute inset-0 hero-photo" style="background-image:url('../images/career_hero.jpg');"></div>
-  <div class="absolute inset-0 hero-scrim"></div>
+<section id="welcome" class="relative overflow-hidden text-center" style="padding:clamp(4.5rem,11vw,8rem) 1.5rem;">
   <div class="hero-copy relative z-10 reveal in">
     <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.02;letter-spacing:.02em;color:#444;">OHANA<br class="sm:hidden" /> RECRUITING</p>
     <p class="font-bold mt-6" style="font-size:clamp(1rem,2.2vw,1.35rem);color:#444;">ようこそ、Enjinの採用サイトへ。<span class="kari ml-2">文言仮</span></p>
@@ -150,7 +142,7 @@
 </section>
 
 <!-- Purpose（hero写真の上に被せず、独立したエリアとして表示） -->
-<section class="bg-white text-center reveal" style="padding:clamp(3.5rem,8vw,5.5rem) 1.5rem;">
+<section class="bg-white text-center reveal" style="padding:clamp(3.5rem,8vw,5.5rem) 1.5rem clamp(1.5rem,4vw,2.5rem);">
   <div class="max-w-2xl mx-auto">
     <p class="eyebrow mb-4">Purpose</p>
     <h1 class="font-bold leading-relaxed mb-5" style="font-size:clamp(1.4rem,2.6vw,2rem);">「社会の役に立つ立派な人間を<br />一人でも多く輩出する」</h1>
@@ -159,7 +151,7 @@
 </section>
 
 <!-- 3区分カード -->
-<section class="px-6 lg:px-16 py-16 lg:py-20">
+<section class="px-6 lg:px-16 pt-6 pb-16 lg:pt-8 lg:pb-20 bg-white">
   <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
     <!-- 新卒 -->
