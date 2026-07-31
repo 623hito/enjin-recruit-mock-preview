@@ -345,6 +345,14 @@
     .head-sns::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:16px;width:1px;background:currentColor;opacity:.35;}
     .head-sns a{display:flex;color:inherit;transition:color .2s,transform .2s;}
     .head-sns a:hover{color:var(--red);transform:translateY(-1px);}
+    /* ヘッダーナビ：ホバードロップダウン */
+    .nav-item{position:relative;}
+    .nav-caret{font-size:8px;margin-left:3px;opacity:.45;position:relative;top:-1px;}
+    .nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:12px;opacity:0;visibility:hidden;transition:opacity .15s ease,visibility .15s ease;z-index:60;}
+    .nav-item:hover .nav-dropdown,.nav-item:focus-within .nav-dropdown{opacity:1;visibility:visible;}
+    .nav-dropdown-box{min-width:190px;background:#fff;box-shadow:0 16px 40px -12px rgba(31,23,20,.28),0 2px 8px rgba(31,23,20,.08);padding:8px 0;}
+    .nav-item .nav-dropdown a{display:block;padding:9px 20px;font-size:12px;color:#555;white-space:nowrap;font-weight:500;transition:color .15s,background .15s;}
+    .nav-item .nav-dropdown a:hover{color:var(--red);background:#faf8f5;}
     .head-sns svg{width:18px;height:18px;}
     .apply-menu{position:relative;}
     .apply-caret{font-size:.6rem;margin-left:.4rem;opacity:1;color:#fff;}
@@ -726,10 +734,37 @@
       <span class="head-badge">CAREER採用</span>
     </a>
     <nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
-      <a href="#about" class="hover:text-red transition">会社を知る</a>
-      <a href="#members" class="hover:text-red transition">ひとを知る</a>
-      <a href="#env" class="hover:text-red transition">Enjin LIFE</a>
-      <a href="#recruit" class="hover:text-red transition">採用情報</a>
+            <div class="nav-item">
+        <a href="#about" class="hover:text-red transition">会社を知る<span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-box">
+          <a href="../../about-v8.html#business">事業紹介</a>
+          <a href="../../about-v8.html#message">代表メッセージ</a>
+          <a href="../../about-v8.html#company">会社概要・アクセス</a>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a href="#members" class="hover:text-red transition">ひとを知る<span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-box">
+          <a href="../../members-v8.html#interviews">社員インタビュー</a>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a href="#env" class="hover:text-red transition">Enjin LIFE<span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-box">
+          <a href="environment-v8.html#culture">OHANA文化</a>
+          <a href="environment-v8.html#office">オフィス</a>
+          <a href="environment-v8.html#benefit">福利厚生</a>
+          <a href="environment-v8.html#career">キャリアと成長</a>
+        </div></div>
+      </div>
+      <div class="nav-item">
+        <a href="#recruit" class="hover:text-red transition">採用情報<span class="nav-caret">▾</span></a>
+        <div class="nav-dropdown"><div class="nav-dropdown-box">
+          <a href="../../recruitment-v8.html#requirements">募集要項</a>
+          <a href="../../recruitment-v8.html#flow">選考フロー</a>
+          <a href="../../recruitment-v8.html#faq">FAQ</a>
+        </div></div>
+      </div>
       <a href="#recruit" class="hover:text-red transition" data-open-acc="accFaq">FAQ</a>
       <span class="head-sns">
         <a href="https://www.instagram.com/enjin_pr" target="_blank" rel="noopener" aria-label="Instagram" data-cta="sns_head_ig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
