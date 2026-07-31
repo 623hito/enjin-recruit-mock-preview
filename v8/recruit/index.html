@@ -22,32 +22,46 @@
   .font-alumni { font-family:'Alumni Sans', sans-serif; }
   .font-mincho { font-family:'Noto Serif JP', serif; }
   .text-red { color:var(--red); } .bg-red { background:var(--red); } .bg-paper { background:var(--paper); }
-  .eyebrow { font-family:'Alumni Sans', sans-serif; font-weight:700; letter-spacing:0.14em; font-size:0.8rem; color:var(--red); text-transform:uppercase; }
   .kari { display:inline-block; border:1px solid #d1d5db; color:#9ca3af; font-size:10px; padding:1px 7px; letter-spacing:.08em; vertical-align:middle; }
-  .hub-card { display:block; background:#fff; border:1px solid #e5e7eb; transition:.25s; }
-  .hub-card:hover { border-color:var(--red); transform:translateY(-4px); box-shadow:0 18px 40px -18px rgba(0,0,0,.18); }
-  .hub-card .ph { aspect-ratio:16/10; background:#e5e7eb center/cover no-repeat; position:relative; overflow:hidden; }
-  .hub-card .ph > div { position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .5s; }
-  .hub-card:hover .ph > div { transform:scale(1.04); }
-  .hub-tag { position:absolute; top:10px; left:10px; z-index:2; background:var(--red); color:#fff; font-size:11px; font-weight:700; padding:3px 10px; letter-spacing:.1em; }
-  /* ヒーロー：無地（写真なし）。中央にコピーを置くシンプル構成 */
-  #welcome { background:radial-gradient(120% 100% at 85% 10%, rgba(191,15,15,.07) 0%, rgba(191,15,15,0) 55%), var(--paper); }
-  .hero-copy { max-width:36rem; margin:0 auto; text-align:center; }
-  /* 準備中カバー（既存カードの上に被せる） */
-  .hub-card.is-prep { cursor:default; }
-  .hub-card.is-prep:hover { border-color:#e5e7eb; transform:none; box-shadow:none; }
-  .prep-cover { position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:1.5rem;
-    background:linear-gradient(180deg,rgba(20,20,20,.82) 0%,rgba(20,20,20,.9) 100%); backdrop-filter:saturate(.6) blur(1px); }
-  .prep-cover .prep-en { font-family:'Alumni Sans',sans-serif; font-weight:700; letter-spacing:.22em; font-size:.85rem; color:rgba(255,255,255,.6); }
-  .prep-cover .prep-jp { font-weight:700; color:#fff; font-size:clamp(1.8rem,4.5vw,2.6rem); line-height:1.2; margin:.5rem 0 .9rem;
-    border-top:1px solid rgba(255,255,255,.25); border-bottom:1px solid rgba(255,255,255,.25); padding:.5rem 1.6rem; }
-  .prep-cover .prep-note { font-size:11px; color:rgba(255,255,255,.65); line-height:1.9; }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .9s cubic-bezier(.22,1,.36,1), transform .9s cubic-bezier(.22,1,.36,1); }
   .reveal.in { opacity:1; transform:translateY(0); }
 
-  /* ===== 質感B: 枠線→影 ===== */
-  .hub-card{border-color:transparent;box-shadow:0 1px 2px rgba(31,23,20,.05), 0 12px 32px -18px rgba(31,23,20,.16);}
-  .hub-card:hover{border-color:transparent;box-shadow:0 2px 4px rgba(31,23,20,.06), 0 28px 52px -22px rgba(31,23,20,.28);}
+  /* ===== コーポレートサイト y-enjin.co.jp のサブページ（企業情報など）テンプレートを模写 ===== */
+  .rc-pagehead{background:#f2f2f2;text-align:center;padding:clamp(3.5rem,9vw,6rem) 1.5rem;}
+  .rc-pagehead__title{color:var(--rc-red);font-weight:700;font-size:clamp(2rem,4.5vw,2.8rem);letter-spacing:.06em;}
+  .rc-pagehead__en{color:var(--rc-red);font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.12em;font-size:1rem;margin-top:.7rem;}
+  .rc-crumbs{background:#fff;border-bottom:1px solid #eee;}
+  .rc-crumbs__in{max-width:1200px;margin:0 auto;padding:.9rem 1.5rem;font-size:.75rem;color:#999;}
+  .rc-crumbs__in a{color:#999;transition:color .2s;} .rc-crumbs__in a:hover{color:var(--rc-red);}
+  .rc-crumbs__sep{margin:0 .6rem;}
+
+  .rc-lead{background:#fff;text-align:center;padding:clamp(3rem,7vw,4.5rem) 1.5rem clamp(1.5rem,4vw,2.5rem);}
+  .rc-lead__in{max-width:640px;margin:0 auto;}
+  .rc-lead__h{font-weight:700;font-size:clamp(1.3rem,2.6vw,1.7rem);color:#333;margin-bottom:1.2rem;}
+  .rc-lead__p{font-size:.85rem;color:#666;line-height:2;}
+
+  .rc-cardgrid{background:#fff;padding:0 1.5rem clamp(3.5rem,8vw,5.5rem);}
+  .rc-cardgrid__in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:2.8rem;}
+  @media(min-width:768px){.rc-cardgrid__in{grid-template-columns:repeat(3,1fr);gap:2.2rem;}}
+  .rc-card{display:block;color:inherit;}
+  .rc-card__ph{aspect-ratio:4/3;overflow:hidden;position:relative;background:#eee;}
+  .rc-card__ph>div{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s;}
+  a.rc-card:hover .rc-card__ph>div{transform:scale(1.04);}
+  .rc-card__body{padding:1.4rem 0 0;}
+  .rc-card__num{color:var(--rc-red);font-weight:700;font-size:.8rem;letter-spacing:.03em;margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem;}
+  .rc-card__num::before{content:"";width:18px;height:2px;background:var(--rc-red);display:inline-block;flex-shrink:0;}
+  .rc-card__title{font-weight:700;font-size:1.1rem;margin-bottom:.7rem;color:#222;}
+  .rc-card__tag{font-size:.7rem;color:#999;font-weight:400;margin-left:.5rem;}
+  .rc-card__desc{font-size:.82rem;color:#777;line-height:1.9;margin-bottom:1rem;}
+  .rc-card__more{font-size:.8rem;color:var(--rc-red);font-weight:700;text-align:right;}
+  .rc-card__more .ar{display:inline-block;margin-left:.2rem;}
+  /* 準備中カード */
+  .rc-card.is-prep .rc-card__ph{position:relative;}
+  .rc-prepcover{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.2rem;
+    background:linear-gradient(180deg,rgba(20,20,20,.8) 0%,rgba(20,20,20,.88) 100%);}
+  .rc-prepcover .prep-en{font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.2em;font-size:.75rem;color:rgba(255,255,255,.6);}
+  .rc-prepcover .prep-jp{font-weight:700;color:#fff;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.2;margin-top:.5rem;
+    border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);padding:.4rem 1.2rem;}
 
   /* ===== コーポレートサイト y-enjin.co.jp のヘッダー／フッターを模写 =====
      実サイトはWAAP系の複雑なビルドで組まれているため、完全な再現ではなく
@@ -130,55 +144,62 @@
   </div>
 </header>
 
-<!-- RECRUITING ようこそバナー -->
-<section id="welcome" class="relative overflow-hidden text-center" style="padding:clamp(4.5rem,11vw,7rem) 1.5rem clamp(2.5rem,6vw,4rem);">
-  <div class="hero-copy relative z-10 reveal in">
-    <p style="font-family:'Anton','Alumni Sans',sans-serif;font-weight:400;font-size:clamp(2.4rem,7vw,5.4rem);line-height:1.02;letter-spacing:.02em;color:#444;">RECRUITING</p>
-    <p class="font-bold mt-7" style="font-size:clamp(1rem,2.2vw,1.35rem);color:#444;">ようこそ、Enjinの採用サイトへ。</p>
-    <p class="text-xs text-gray-600 mt-4 leading-loose">ご縁（En）のある繋がりを大切に、<br />社会の役に立つ立派な人間を<br />共に目指せる仲間を探しています。</p>
-    <p class="text-xs text-gray-600 mt-4 leading-loose">下の入口から、Enjinを覗いてみてください。</p>
+<!-- ページヘッダー（企業情報などの実サブページと同じ構成） -->
+<section class="rc-pagehead">
+  <h1 class="rc-pagehead__title">採用情報</h1>
+  <p class="rc-pagehead__en">Recruit</p>
+</section>
+<div class="rc-crumbs">
+  <div class="rc-crumbs__in"><a href="https://www.y-enjin.co.jp/" target="_blank" rel="noopener">トップページ</a><span class="rc-crumbs__sep">›</span><span>採用情報</span></div>
+</div>
+
+<!-- リード -->
+<section class="rc-lead reveal in">
+  <div class="rc-lead__in">
+    <h2 class="rc-lead__h">ご縁ある仲間と、共に高みへ。</h2>
+    <p class="rc-lead__p">新卒・キャリア・高卒、それぞれの入口から。<br />あなたに合った採用サイトへご案内します。</p>
   </div>
 </section>
 
 <!-- 3区分カード -->
-<section class="px-6 lg:px-16 pt-6 pb-16 lg:pt-8 lg:pb-20 bg-white">
-  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+<section class="rc-cardgrid">
+  <div class="rc-cardgrid__in">
 
     <!-- 新卒 -->
-    <a href="../index-v8.html" class="hub-card reveal">
-      <div class="ph"><span class="hub-tag">NEW GRADUATE</span><div style="background-image:url('../images/hero_main.jpg');"></div></div>
-      <div class="p-6">
-        <h2 class="font-bold text-lg mb-2">新卒採用<span class="text-[11px] text-gray-400 font-normal ml-2">大学・大学院</span></h2>
-        <p class="text-xs text-gray-500 leading-relaxed mb-5">ぜんぶ欲しいを、夢にしない。1年目から経営者と向き合う仕事へ。</p>
-        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">新卒採用サイトへ　→</span>
-        <p class="text-[10px] text-gray-400 mt-3">※本番URL: y-enjin.co.jp/recruit/graduate/（現在はv8モック）</p>
+    <a href="../index-v8.html" class="rc-card reveal in">
+      <div class="rc-card__ph"><div style="background-image:url('../images/hero_main.jpg');"></div></div>
+      <div class="rc-card__body">
+        <p class="rc-card__num">Recruit ⎯ 01</p>
+        <h3 class="rc-card__title">新卒採用<span class="rc-card__tag">大学・大学院</span></h3>
+        <p class="rc-card__desc">ぜんぶ欲しいを、夢にしない。1年目から経営者と向き合う仕事へ。</p>
+        <p class="rc-card__more">詳しく見る<span class="ar">›</span></p>
       </div>
     </a>
 
     <!-- 中途（準備中） -->
-    <div class="hub-card is-prep reveal relative">
-      <div class="ph"><span class="hub-tag">CAREER</span><div style="background-image:url('../images/career_prep.jpg');filter:grayscale(1);"></div></div>
-      <div class="p-6">
-        <h2 class="font-bold text-lg mb-2">キャリア採用<span class="text-[11px] text-gray-400 font-normal ml-2">中途</span></h2>
-        <p class="text-xs text-gray-500 leading-relaxed mb-5">その経験を、最高峰の商談で。即戦力を待っています。<span class="kari ml-1">文言仮</span></p>
-        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">キャリア採用サイトへ　→</span>
-        <p class="text-[10px] text-gray-400 mt-3">※本番URL: y-enjin.co.jp/recruit/career/（現在はv8モック）</p>
+    <div class="rc-card is-prep reveal in">
+      <div class="rc-card__ph">
+        <div style="background-image:url('../images/career_prep.jpg');filter:grayscale(1);"></div>
+        <div class="rc-prepcover">
+          <p class="prep-en">COMING SOON</p>
+          <p class="prep-jp">サイト準備中</p>
+        </div>
       </div>
-      <div class="prep-cover">
-        <p class="prep-en">COMING SOON</p>
-        <p class="prep-jp">サイト準備中</p>
-        <p class="prep-note">キャリア採用サイトは現在制作中です</p>
+      <div class="rc-card__body">
+        <p class="rc-card__num">Recruit ⎯ 02</p>
+        <h3 class="rc-card__title">キャリア採用<span class="rc-card__tag">中途</span></h3>
+        <p class="rc-card__desc">キャリア採用サイトは現在制作中です。<span class="kari ml-1">文言仮</span></p>
       </div>
     </div>
 
     <!-- 高卒 -->
-    <a href="https://y-enjin.co.jp/recruit-hs/" target="_blank" rel="noopener" class="hub-card reveal">
-      <div class="ph"><span class="hub-tag">HIGH SCHOOL</span><div style="background-image:url('../images/hero_hs.jpg');"></div></div>
-      <div class="p-6">
-        <h2 class="font-bold text-lg mb-2">高卒採用<span class="text-[11px] text-gray-400 font-normal ml-2">高校生</span></h2>
-        <p class="text-xs text-gray-500 leading-relaxed mb-5">今は夢が、なくていい。20代で何にでもなれる環境がある。</p>
-        <span class="inline-block bg-red text-white text-xs font-bold px-5 py-2.5 tracking-wider">高卒採用サイトへ　→</span>
-        <p class="text-[10px] text-gray-400 mt-3">※本番URL: y-enjin.co.jp/recruit/hs/（既存サイトへ接続）</p>
+    <a href="https://y-enjin.co.jp/recruit-hs/" target="_blank" rel="noopener" class="rc-card reveal in">
+      <div class="rc-card__ph"><div style="background-image:url('../images/hero_hs.jpg');"></div></div>
+      <div class="rc-card__body">
+        <p class="rc-card__num">Recruit ⎯ 03</p>
+        <h3 class="rc-card__title">高卒採用<span class="rc-card__tag">高校生</span></h3>
+        <p class="rc-card__desc">今は夢が、なくていい。20代で何にでもなれる環境がある。</p>
+        <p class="rc-card__more">詳しく見る<span class="ar">›</span></p>
       </div>
     </a>
 
