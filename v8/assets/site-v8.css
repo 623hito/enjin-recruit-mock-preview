@@ -75,6 +75,13 @@ a { color:inherit; }
 .hub-link .en{font-family:'Alumni Sans',sans-serif;font-weight:700;font-size:.72rem;color:#b5b5b5;letter-spacing:.14em;}
 .hub-link:hover .en{color:var(--red);}
 
+/* footer util links */
+.util-link{display:inline-flex;align-items:center;gap:.4rem;color:#555;transition:color .2s;}
+.util-link:hover{color:var(--red);}
+.util-link svg{opacity:.55;}
+.util-link.is-disabled{color:#bbb;cursor:default;pointer-events:none;}
+.util-link.is-disabled svg{opacity:.3;}
+
 /* info table */
 .info-row{display:grid;grid-template-columns:170px 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid #eee;font-size:.9rem;line-height:1.9;}
 .info-row dt{color:#9a9a9a;font-weight:600;font-size:.8rem;letter-spacing:.05em;padding-top:.15rem;}
