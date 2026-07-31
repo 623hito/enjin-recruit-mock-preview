@@ -1512,7 +1512,6 @@
           <span class="font-alumni font-bold text-xs tracking-widest text-red group-hover:tracking-[.2em] transition">ENTRY →</span>
         </a>
       </div>
-      <p class="text-[10px] text-white/60 mt-8">※ 説明会申込・マイナビ等の連携先リンクは仮（ダミー）です（LINEは実リンク）</p>
     </div>
   </section>
 
@@ -1854,7 +1853,16 @@
         wrap.addEventListener('mouseenter',function(){hovering=true;});
         wrap.addEventListener('click',function(e){if(moved){e.preventDefault();}},true);
         wrap.addEventListener('scroll',function(){/*keep loop*/},{passive:true});
-        wrap.addEventListener('wheel',function(){idle=0;},{passive:true});
+        // トラックパッドの横スワイプはブラウザ側の軸判定が不安定で無反応になることがあるため、
+        // wheelイベントを自前でscrollLeftへ変換して常に確実に反応させる
+        wrap.addEventListener('wheel',function(e){
+          idle=0;
+          var delta=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+          if(Math.abs(delta)<0.5)return;
+          wrap.scrollLeft+=delta;
+          norm();
+          e.preventDefault();
+        },{passive:false});
         var last=performance.now();
         function tick(t){
           var dt=t-last; last=t;
