@@ -138,7 +138,13 @@
   .stair-tread.gold{border-right-color:rgba(0,0,0,.28);}
   .stair-desc{width:100%;background:#fff;border:1px solid #e5ddd8;border-top:none;padding:.9rem .7rem;font-size:11px;color:#8a8079;line-height:1.7;text-align:center;flex:1;box-shadow:inset -3px 0 6px -4px rgba(0,0,0,.08);}
   @media (max-width:1023px){ .stair-step{flex:1 0 120px;min-width:120px;} }
-  #career .day-item .t{font-family:inherit;font-weight:700;font-size:1.05rem;letter-spacing:.04em;}
+  #career .day-item{grid-template-columns:82px 1fr;}
+  #career .day-item::before{left:92px;}
+  #career .day-item .t{font-family:inherit;font-weight:700;font-size:1.05rem;letter-spacing:.04em;white-space:nowrap;}
+  @media(max-width:640px){
+    #career .day-item{grid-template-columns:70px 1fr;}
+    #career .day-item::before{left:78px;}
+  }
   #career details[open] .det-icon{transform:rotate(45deg);}
   #career details summary::-webkit-details-marker{display:none;}
   /* ===== 3つのキャリア分岐カード ===== */
@@ -325,10 +331,10 @@
       <div class="day max-w-2xl" style="margin-top:1.75rem;">
         <div class="day-item"><p class="t">4/1</p><div><p class="font-bold text-[15px]">入社式</p></div></div>
         <div class="day-item hot"><p class="t">4/2〜</p><div><p class="font-bold text-[15px]">アカデミー開始</p></div></div>
-        <div class="day-item"><p class="t">Week 1</p><div><p class="font-bold text-[15px]">社会人基礎研修</p></div></div>
+        <div class="day-item"><p class="t">Week1</p><div><p class="font-bold text-[15px]">社会人基礎研修</p></div></div>
         <div class="day-item"><p class="t">Week2</p><div><p class="font-bold text-[15px]">社内ルール／ビジネス基礎研修</p></div></div>
-        <div class="day-item"><p class="t">Week3-4</p><div><p class="font-bold text-[15px]">実践トレーニング初級編</p></div></div>
-        <div class="day-item"><p class="t">Month2</p><div><p class="font-bold text-[15px]">実践トレーニング</p></div></div>
+        <div class="day-item"><p class="t">Week3-4</p><div><p class="font-bold text-[15px]">実践トレーニング（初級編）</p></div></div>
+        <div class="day-item"><p class="t">5月〜</p><div><p class="font-bold text-[15px]">OJT開始</p></div></div>
         <div class="day-item hot"><p class="t">8月末</p><div><p class="font-bold text-[15px]">アカデミー卒業を目指して配属へ<span class="day-badge ml-1">GOAL</span></p></div></div>
       </div>
       <p class="text-[11px] text-gray-400 mt-3"><span class="kari">※直近年度の新人教育の例</span></p>
