@@ -211,9 +211,8 @@
 
       <!-- 学部 -->
       <div class="field">
-        <label class="lab" for="faculty">学部<span class="req">必須</span></label>
-        <input class="inp" type="text" id="faculty" name="faculty" placeholder="例：経済学部" required />
-        <p class="err">学部を入力してください</p>
+        <label class="lab" for="faculty">学部<span class="opt">任意</span></label>
+        <input class="inp" type="text" id="faculty" name="faculty" placeholder="例：経済学部" />
       </div>
 
       <!-- きっかけ -->
@@ -234,15 +233,25 @@
       <div class="field">
         <label class="lab">希望日程<span class="req">必須</span></label>
         <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>で、私服でお気軽にご参加いただけます。対面をご希望の場合は「日程の相談をしたい」からお知らせください。</p>
+        <p id="dateHint" class="text-[12px] text-gray-400 mb-3">※上の「対象（卒業年度）」を選ぶと、日程候補が表示されます</p>
         <div class="date-scroll">
-          <div class="choices" style="grid-template-columns:1fr;">
-            <label class="choice"><input type="radio" name="date" value="2026年8月18日（火）14:00〜 ／ オンライン" required /><span class="box date-box"><span class="dt"><span class="t">8/18（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+          <div id="dateGroup2027" class="choices" data-grad-group="2027" style="grid-template-columns:1fr;display:none;">
+            <label class="choice"><input type="radio" name="date" value="2026年8月18日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">8/18（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年8月25日（火）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">8/25（火） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年9月1日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/1（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年9月8日（火）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/8（火） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年9月15日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/15（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年9月24日（木）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/24（木） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
             <label class="choice"><input type="radio" name="date" value="2026年9月27日（土）11:00〜 ／ 対面（銀座本社）" /><span class="box date-box"><span class="dt"><span class="t">9/27（土） 11:00〜</span><span class="fmt fmt-in">対面</span></span><span class="s">銀座本社・オフィス見学あり</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="日程の相談をしたい（オンライン／対面）" /><span class="box date-box"><span class="dt"><span class="t">日程の相談をしたい</span></span><span class="s">上記に合う日程がない方・対面希望の方はこちら。個別に調整します</span></span></label>
+          </div>
+          <div id="dateGroup2028" class="choices" data-grad-group="2028" style="grid-template-columns:1fr;display:none;">
+            <label class="choice"><input type="radio" name="date" value="2026年10月6日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/6（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="2026年10月14日（水）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/14（水） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="2026年10月21日（水）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/21（水） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="2026年10月28日（水）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/28（水） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="2026年11月4日（水）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">11/4（水） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
+            <label class="choice"><input type="radio" name="date" value="2026年11月11日（水）18:00〜 ／ 対面（銀座本社）" /><span class="box date-box"><span class="dt"><span class="t">11/11（水） 18:00〜</span><span class="fmt fmt-in">対面</span></span><span class="s">銀座本社・オフィス見学あり</span></span></label>
             <label class="choice"><input type="radio" name="date" value="日程の相談をしたい（オンライン／対面）" /><span class="box date-box"><span class="dt"><span class="t">日程の相談をしたい</span></span><span class="s">上記に合う日程がない方・対面希望の方はこちら。個別に調整します</span></span></label>
           </div>
         </div>
@@ -322,6 +331,22 @@
         try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){}
       });
 
+      // 希望日程：卒業年度(27卒/28卒)ごとに日程候補を出し分ける
+      var dateGroups={'2027':document.getElementById('dateGroup2027'),'2028':document.getElementById('dateGroup2028')};
+      var dateHint=document.getElementById('dateHint');
+      function syncDateGroups(){
+        var checked=(form.querySelector('input[name="grad"]:checked')||{}).value;
+        Object.keys(dateGroups).forEach(function(gradYear){
+          var el=dateGroups[gradYear];if(!el)return;
+          var show=(gradYear===checked);
+          el.style.display=show?'':'none';
+          el.querySelectorAll('input[name="date"]').forEach(function(r){if(!show)r.checked=false;});
+        });
+        if(dateHint)dateHint.style.display=checked?'none':'';
+      }
+      form.querySelectorAll('input[name="grad"]').forEach(function(r){r.addEventListener('change',syncDateGroups);});
+      syncDateGroups();
+
       function fieldOf(el){return el.closest('.field');}
       function validate(){
         var ok=true, firstBad=null;
@@ -330,7 +355,7 @@
         // grad
         if(!form.querySelector('input[name="grad"]:checked')){markGroup('grad');ok=false;}
         if(!form.querySelector('input[name="date"]:checked')){markGroup('date');ok=false;}
-        ['sei','mei','sei_kana','mei_kana','email','tel','school','faculty','source'].forEach(function(n){
+        ['sei','mei','sei_kana','mei_kana','email','tel','school','source'].forEach(function(n){
           var el=form.elements[n];
           if(!el)return;
           var bad=!el.value.trim();
