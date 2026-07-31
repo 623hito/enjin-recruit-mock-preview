@@ -23,7 +23,7 @@
   (function(){try{
     var ne=performance.getEntriesByType('navigation')[0];
     var isReload=ne?ne.type==='reload':(performance.navigation||{}).type===1;
-    var seen=sessionStorage.getItem('enjinIntroSeen')==='1';
+    var seen=sessionStorage.getItem('enjinIntroSeen_career')==='1';
     if(seen&&!isReload)return;
     ['../../images/purpose_summit.jpg','../../images/culture_sky.jpg','../../images/philosophy_triangle.jpg'].forEach(function(u,i){
       var l=document.createElement('link');
@@ -1886,9 +1886,9 @@
           var ne=performance.getEntriesByType('navigation')[0];
           isReload = ne ? ne.type==='reload' : (performance.navigation||{}).type===1;
         }catch(e){}
-        var seen=false; try{ seen=sessionStorage.getItem('enjinIntroSeen')==='1'; }catch(e){}
+        var seen=false; try{ seen=sessionStorage.getItem('enjinIntroSeen_career')==='1'; }catch(e){}
         if(seen && !isReload){ l.classList.add('done'); l.style.display='none'; return; }
-        try{ sessionStorage.setItem('enjinIntroSeen','1'); }catch(e){}
+        try{ sessionStorage.setItem('enjinIntroSeen_career','1'); }catch(e){}
         var triBox=l.querySelector('.ld-tri-box');
         var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var timers=[], finished=false, LAST=3;

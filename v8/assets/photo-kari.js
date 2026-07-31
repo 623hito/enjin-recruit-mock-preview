@@ -5,9 +5,9 @@
  */
 (function () {
   // 確定済みとして扱う画像（バッジを出さない）。確定したらここに追記する。
-  var CONFIRMED = ['hero_main', 'honda_ceo', 'hero_female', 'office_about', 'interview_0', 'ohana_wall', 'wanted_person', 'business', 'office_lounge'];   // 確定素材（interview_0 は 01〜06 全部に前方一致）
+  var CONFIRMED = ['hero_main', 'honda_ceo', 'hero_female', 'office_about', 'interview_0', 'ohana_wall', 'wanted_person', 'business', 'office_lounge', 'hero_hs'];   // 確定素材（interview_0 は 01〜06 全部に前方一致）
   // バッジ対象外（ロゴ・アイコン類）
-  var IGNORE = ['logo_enjin', 'favicon'];
+  var IGNORE = ['logo_enjin', 'favicon', 'career_prep'];   // career_prep は「サイト準備中」カバーで別途状態を示すため対象外
 
   function isTarget(url) {
     if (!url) return false;
