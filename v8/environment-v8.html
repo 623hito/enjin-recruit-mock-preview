@@ -141,6 +141,16 @@
   #career .day-item .t{font-family:inherit;font-weight:700;font-size:1.05rem;letter-spacing:.04em;}
   #career details[open] .det-icon{transform:rotate(45deg);}
   #career details summary::-webkit-details-marker{display:none;}
+  /* ===== 3つのキャリア分岐カード ===== */
+  .fork-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+  @media(min-width:768px){ .fork-grid{grid-template-columns:repeat(3,1fr);gap:1.5rem;} }
+  .fork-card{position:relative;background:#fff;border:1px solid #e9e2dc;border-radius:4px;padding:2.2rem 1.8rem 2rem;text-align:center;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s ease,border-color .3s ease;}
+  .fork-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:4px 4px 0 0;background:var(--fork-c);}
+  .fork-card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -22px rgba(31,23,20,.28);border-color:transparent;}
+  .fork-icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;background:color-mix(in srgb, var(--fork-c) 14%, #fff);color:var(--fork-c);}
+  .fork-icon svg{width:26px;height:26px;}
+  .fork-title{font-weight:700;font-size:1.05rem;margin-bottom:.9rem;color:var(--ink);}
+  .fork-desc{font-size:13px;color:#8a8079;line-height:1.9;}
   </style>
 </head>
 <body><header class="site-head px-6 lg:px-10 py-4 flex items-center justify-between">
@@ -331,18 +341,21 @@
     </div>
     <p class="font-bold text-[17px] lg:text-[19px] text-center mb-8" style="color:var(--ink);">リーダーとして活躍した先には、<br class="sm:hidden">3つのキャリアへ分岐します</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-px mb-16" style="background:#e5ddd8;">
-      <div>
-        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#d98c5f,#b5643a 55%,#8a4726);">マネジメント職</div>
-        <div class="stair-desc" style="min-height:96px;font-size:15px;line-height:1.8;">チーム・組織を率い、<br>後進の育成と事業の成長を牽引する。</div>
+    <div class="fork-grid mb-16">
+      <div class="fork-card" style="--fork-c:#b5643a;">
+        <div class="fork-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 20v-1a5.5 5.5 0 0 1 5.5-5.5h2a5.5 5.5 0 0 1 5.5 5.5v1"/><circle cx="17.5" cy="7.5" r="2.4"/><path d="M15.8 12a5.2 5.2 0 0 1 5.7 5.2V19"/></svg></div>
+        <h4 class="fork-title">マネジメント職</h4>
+        <p class="fork-desc">チーム・組織を率い、<br>後進の育成と事業の成長を牽引する。</p>
       </div>
-      <div>
-        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#5f9c94,#3d746c 55%,#28524c);">プロフェッショナル職</div>
-        <div class="stair-desc" style="min-height:96px;font-size:15px;line-height:1.8;">現場のプロとして専門性を磨き、<br>最前線で価値を出し続ける。</div>
+      <div class="fork-card" style="--fork-c:#3d746c;">
+        <div class="fork-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 14.6 9l6 .9-4.3 4.2 1 6-5.3-2.8-5.3 2.8 1-6-4.3-4.2 6-.9z"/></svg></div>
+        <h4 class="fork-title">プロフェッショナル職</h4>
+        <p class="fork-desc">現場のプロとして専門性を磨き、<br>最前線で価値を出し続ける。</p>
       </div>
-      <div>
-        <div class="stair-tread gold" style="height:56px;background:linear-gradient(180deg,#7b8cc4,#5468a3 55%,#394a7a);">新たな領域へ</div>
-        <div class="stair-desc" style="min-height:96px;font-size:15px;line-height:1.8;">培った営業力を武器に、<br>ほかの部署や新規事業開拓の道も。</div>
+      <div class="fork-card" style="--fork-c:#5468a3;">
+        <div class="fork-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.3 8.7 13 13l-4.3 2.3L11 11z"/></svg></div>
+        <h4 class="fork-title">新たな領域へ</h4>
+        <p class="fork-desc">培った営業力を武器に、<br>ほかの部署や新規事業開拓の道も。</p>
       </div>
     </div>
 
