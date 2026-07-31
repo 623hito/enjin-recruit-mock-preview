@@ -99,6 +99,14 @@ a { color:inherit; }
   .flow-node .dot{margin:0;}
 }
 
+/* step cards connected by arrows (grid, row-wrap aware) */
+.flow-step{position:relative;}
+.flow-step:not(:nth-child(3n))::after{content:"";position:absolute;top:50%;right:-1.5rem;transform:translate(-50%,-50%);width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:10px solid var(--red);z-index:2;}
+@media(max-width:639px){
+  .flow-step:not(:nth-child(3n))::after{display:none;}
+  .flow-step:not(:last-child)::before{content:"";position:absolute;bottom:-1.5rem;left:50%;transform:translate(-50%,0);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid var(--red);z-index:2;}
+}
+
 /* faq */
 .faq{border-bottom:1px solid #e2e2e2;}
 .faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:1.1rem;padding:1.4rem .2rem;font-weight:600;font-size:.95rem;transition:color .2s;}
