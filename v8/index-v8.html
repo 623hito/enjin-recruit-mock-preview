@@ -1759,7 +1759,7 @@
           ['福利厚生','OHANAカフェ／カンパニー旅行／研修制度／近距離手当／ジム代補助 ほか']
         ];
         var JOBS=[
-          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'}
+          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html',photo:'images/business.jpg'}
         ];
         // 行アイコン（recruitment-v8.html 旧・募集要項の .dico と同じ絵柄）
         var ICO={
@@ -1781,7 +1781,7 @@
           el.className='js-slide';
           el.innerHTML=
             '<div class="js-left">'+
-              '<div class="js-ph prep"><span>NOW PRINTING</span></div>'+
+              (j.photo?'<div class="js-ph"><div style="background-image:url(\''+j.photo+'\');"></div></div>':'<div class="js-ph prep"><span>NOW PRINTING</span></div>')+
               '<div class="js-info">'+
                 '<p class="js-num">'+j.num+'</p>'+
                 '<p class="js-catch">'+j.catch+'</p>'+

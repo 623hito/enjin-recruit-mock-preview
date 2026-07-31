@@ -1761,7 +1761,7 @@
           ['福利厚生','OHANAカフェ／OHANA旅／研修制度／家賃補助／ジム代補助 ほか']
         ];
         var JOBS=[
-          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html'},
+          {num:'01',catch:'経営者と、直接向き合う。',title:'PRコンサルティング（営業）',desc:'1年目から経営者に対峙し、その会社の魅力を世に送り出す。',href:'sales-v8.html',photo:'../../images/business.jpg'},
           {num:'02',catch:'伝わるカタチを、設計する。',title:'企画／プランナー',desc:'PR戦略・メディア企画を組み立て、クライアントの価値を最大化する。',href:'../../job-v8.html?role=planner'},
           {num:'03',catch:'未来の仲間を、つくる。',title:'HR',desc:'採用・組織づくりを通して、Enjinの次の20年を担う人と文化を育てる。',href:'../../job-v8.html?role=hr'},
           {num:'04',catch:'挑戦を、数字で支える。',title:'経理',desc:'上場企業の経営基盤をコーポレートの立場から支えるプロフェッショナル。',href:'../../job-v8.html?role=accounting'}
@@ -1786,7 +1786,7 @@
           el.className='js-slide';
           el.innerHTML=
             '<div class="js-left">'+
-              '<div class="js-ph prep"><span>NOW PRINTING</span></div>'+
+              (j.photo?'<div class="js-ph"><div style="background-image:url(\''+j.photo+'\');"></div></div>':'<div class="js-ph prep"><span>NOW PRINTING</span></div>')+
               '<div class="js-info">'+
                 '<p class="js-num">'+j.num+'</p>'+
                 '<p class="js-catch">'+j.catch+'</p>'+
