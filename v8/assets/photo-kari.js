@@ -5,7 +5,7 @@
  */
 (function () {
   // 確定済みとして扱う画像（バッジを出さない）。確定したらここに追記する。
-  var CONFIRMED = ['hero_main', 'honda_ceo', 'hero_female', 'office_about', 'interview_0', 'ohana_wall', 'wanted_person', 'business', 'office_lounge', 'hero_hs', 'platform_biz', 'estate_biz', 'finance_biz', 'tourism_biz', 'pr_biz', 'gym_biz', 'company_trip', 'ohana_event', 'senpai_meshi', 'academy', 'sengen', 'oyakoko', 'career_growth'];   // 確定素材（interview_0 は 01〜06 全部に前方一致）
+  var CONFIRMED = ['hero_main', 'honda_ceo', 'hero_female', 'office_about', 'interview_0', 'ohana_wall', 'wanted_person', 'business', 'office_lounge', 'hero_hs', 'platform_biz', 'estate_biz', 'finance_biz', 'tourism_biz', 'pr_biz', 'gym_biz', 'company_trip', 'ohana_event', 'senpai_meshi', 'academy', 'sengen', 'oyakoko', 'career_growth', 'fair_review', 'benefit_hub'];   // 確定素材（interview_0 は 01〜06 全部に前方一致）
   // バッジ対象外（ロゴ・アイコン類）
   var IGNORE = ['logo_enjin', 'favicon', 'career_prep'];   // career_prep は「サイト準備中」カバーで別途状態を示すため対象外
 
