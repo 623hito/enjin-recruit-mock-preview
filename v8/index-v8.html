@@ -544,7 +544,7 @@
 
         .ht-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:opacity .9s ease;opacity:0;pointer-events:none;}
         #htStartCard{z-index:6;background:#fbf8f2;}
-        #htStartCard.is-on{opacity:1;}
+        #htStartCard.is-on{opacity:1;pointer-events:auto;cursor:pointer;}
         #htEndCard{z-index:5;background:#fbf8f2;cursor:pointer;transition:opacity .3s ease;}
         #htEndCard.is-on{opacity:1;pointer-events:auto;}
         /* 終了カードの3行は1行ずつ順番に出す */
@@ -999,8 +999,11 @@
 
         <div class="ht-card" id="htStartCard">
           <svg width="180" height="156" viewBox="0 0 200 174" style="position:absolute;opacity:.16;"><polygon points="100,10 190,164 10,164" fill="none" stroke="#c8322a" stroke-width="3"></polygon></svg>
-          <p style="position:relative;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 10px;">PHILOSOPHY MOVIE</p>
-          <p style="position:relative;font-weight:700;font-size:clamp(20px,2.6vw,28px);color:#1c1a17;margin:0;">幸せに、順番がある。</p>
+          <p style="position:relative;font-family:'Alumni Sans',sans-serif;font-weight:700;letter-spacing:.3em;font-size:12px;color:#c8322a;margin:0 0 22px;">PHILOSOPHY MOVIE</p>
+          <div class="ht-chevron" style="position:relative;animation:none;">
+            <svg width="18" height="20" viewBox="0 0 20 22"><path d="M2,2 L2,20 L18,11 Z" fill="#c8322a"></path></svg>
+          </div>
+          <p style="position:relative;margin:16px 0 0;font-size:13px;color:#8a8378;">タップして再生</p>
         </div>
 
         <div class="ht-card" id="htEndCard" style="padding:0 6vw;">
@@ -1556,7 +1559,7 @@
         var AGE=['','','20代','30代〜','20代のうちに',''];
         var N=6;
         var state={i:0,playing:false,ended:false,showStart:true};
-        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, pending=null, seen=false, raf=null;
+        var cur=[1,1,1], target=[1,1,1], el=0, last=0, num=0, pending=null, raf=null;
 
         var $=function(id){return document.getElementById(id);};
         var stage=$('htStage'), poly=$('htPoly'), circ=$('htCirc'), d0=$('htD0'), d1=$('htD1'), d2=$('htD2'),
@@ -1699,12 +1702,10 @@
         endCard.addEventListener('click', function(){ window.scrollBy({top:window.innerHeight*0.85, behavior:'smooth'}); });
         replayBtn.addEventListener('click', function(e){ e.stopPropagation(); cur=[1,1,1]; num=0; state.playing=true; state.ended=false; setScene(0); });
 
-        var io=new IntersectionObserver(function(es){
-          es.forEach(function(en){
-            if(en.isIntersecting && !seen){ seen=true; setTimeout(function(){ state.showStart=false; state.playing=true; renderScenes(); }, 1100); }
-          });
-        }, {threshold:.15});
-        io.observe(stage);
+        startCard.addEventListener('click', function(){
+          if(!state.showStart) return;
+          state.showStart=false; state.playing=true; renderScenes();
+        });
 
         renderScenes();
         raf=requestAnimationFrame(tick);
