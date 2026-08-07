@@ -245,27 +245,11 @@
         <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>で、私服でお気軽にご参加いただけます。対面をご希望の場合は「日程の相談をしたい」からお知らせください。</p>
         <p id="dateHint" class="text-[12px] text-gray-400 mb-3">※上の「対象（卒業年度）」を選ぶと、日程候補が表示されます</p>
         <div class="date-scroll">
-          <div id="dateGroup2027" class="choices" data-grad-group="2027" style="grid-template-columns:1fr;display:none;">
-            <label class="choice"><input type="radio" name="date" value="2026年8月18日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">8/18（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年8月25日（火）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">8/25（火） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年9月1日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/1（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年9月8日（火）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/8（火） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年9月15日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/15（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年9月24日（木）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">9/24（木） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年9月27日（土）11:00〜 ／ 対面（銀座本社）" /><span class="box date-box"><span class="dt"><span class="t">9/27（土） 11:00〜</span><span class="fmt fmt-in">対面</span></span><span class="s">銀座本社・オフィス見学あり</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="日程の相談をしたい（オンライン／対面）" /><span class="box date-box"><span class="dt"><span class="t">日程の相談をしたい</span></span><span class="s">上記に合う日程がない方・対面希望の方はこちら。個別に調整します</span></span></label>
-          </div>
-          <div id="dateGroup2028" class="choices" data-grad-group="2028" style="grid-template-columns:1fr;display:none;">
-            <label class="choice"><input type="radio" name="date" value="2026年10月6日（火）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/6（火） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年10月14日（水）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/14（水） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年10月21日（水）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/21（水） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年10月28日（水）18:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">10/28（水） 18:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年11月4日（水）14:00〜 ／ オンライン" /><span class="box date-box"><span class="dt"><span class="t">11/4（水） 14:00〜</span><span class="fmt">オンライン</span></span><span class="s">WEB・約30分</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="2026年11月11日（水）18:00〜 ／ 対面（銀座本社）" /><span class="box date-box"><span class="dt"><span class="t">11/11（水） 18:00〜</span><span class="fmt fmt-in">対面</span></span><span class="s">銀座本社・オフィス見学あり</span></span></label>
-            <label class="choice"><input type="radio" name="date" value="日程の相談をしたい（オンライン／対面）" /><span class="box date-box"><span class="dt"><span class="t">日程の相談をしたい</span></span><span class="s">上記に合う日程がない方・対面希望の方はこちら。個別に調整します</span></span></label>
-          </div>
+          <!-- 日程は ATS（イベント予約管理）から取得して描画します。静的な選択肢は置きません -->
+          <div id="dateGroup" class="choices" style="grid-template-columns:1fr;display:none;"></div>
+          <p id="dateLoading" class="text-[13px] text-gray-500 py-3" style="display:none;">日程を読み込んでいます…</p>
         </div>
-        <p class="text-[11px] text-gray-400 mt-2"><span class="kari">日程は仮</span> 確定日程・会場はメールでご案内します</p>
+        <p class="text-[11px] text-gray-400 mt-2">確定日程・会場はメールでご案内します</p>
         <p class="err">希望日程を選択してください</p>
       </div>
 
@@ -291,7 +275,7 @@
           <span>ご入力内容は説明会のご案内のみに利用します</span>
         </div>
       </div>
-      <p class="text-center text-[11px] text-gray-400 mt-8"><span class="kari">デモ版</span> 送信先（フォーム連携・ATS）は本番実装時に接続します</p>
+      <p id="submitError" class="text-center text-sm font-bold mt-6" style="display:none;color:var(--red);"></p>
     </form>
 
     <!-- ===== SUCCESS ===== -->
@@ -300,7 +284,7 @@
         <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#BF0F0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       </div>
       <h2 class="sec-title text-2xl lg:text-3xl mb-4">お申し込みありがとうございます</h2>
-      <p class="text-sm text-gray-600 leading-loose mb-8">ご入力のメールアドレス宛に、確認と日程のご案内をお送りします。<br />数日以内に担当よりご連絡いたします。</p>
+      <p id="doneLead" class="text-sm text-gray-600 leading-loose mb-8">ご入力のメールアドレス宛に、確認と日程のご案内をお送りします。<br />数日以内に担当よりご連絡いたします。</p>
       <div class="bg-paper text-left p-6 mb-10 max-w-md mx-auto text-sm" id="summary"></div>
       <a href="index-v8.html" class="btn-ghost">採用TOPに戻る<span>→</span></a>
     </div>
@@ -359,21 +343,92 @@
         try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){}
       });
 
-      // 希望日程：卒業年度(27卒/28卒)ごとに日程候補を出し分ける
-      var dateGroups={'2027':document.getElementById('dateGroup2027'),'2028':document.getElementById('dateGroup2028')};
+      // ============================================================
+      // 希望日程：ATS（イベント予約管理）から取得して描画する
+      //   日程の正本は ATS 側。人事が公開トグルをONにした説明会だけがここに出る。
+      //   このLPには日程を持たせない（ここを直す必要はない）。
+      // ============================================================
+      var ATS_BASE='https://enjin-ats.vercel.app';
+      var CATEGORY={'2027':'新卒2027','2028':'新卒2028'};
+
+      var dateGroup=document.getElementById('dateGroup');
       var dateHint=document.getElementById('dateHint');
-      function syncDateGroups(){
-        var checked=(form.querySelector('input[name="grad"]:checked')||{}).value;
-        Object.keys(dateGroups).forEach(function(gradYear){
-          var el=dateGroups[gradYear];if(!el)return;
-          var show=(gradYear===checked);
-          el.style.display=show?'':'none';
-          el.querySelectorAll('input[name="date"]').forEach(function(r){if(!show)r.checked=false;});
-        });
-        if(dateHint)dateHint.style.display=checked?'none':'';
+      var dateLoading=document.getElementById('dateLoading');
+      var eventsByCategory=null;   // 取得後に {'新卒2027':[...], '新卒2028':[...]}
+      var eventsError=false;
+
+      var WD=['日','月','火','水','木','金','土'];
+      function jst(iso){
+        // 端末のタイムゾーンに関係なく日本時間で表示する
+        var p={};
+        new Intl.DateTimeFormat('ja-JP',{timeZone:'Asia/Tokyo',month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})
+          .formatToParts(new Date(iso)).forEach(function(x){p[x.type]=x.value;});
+        return {md:p.month+'/'+p.day,wd:p.weekday,hm:p.hour+':'+p.minute};
       }
-      form.querySelectorAll('input[name="grad"]').forEach(function(r){r.addEventListener('change',syncDateGroups);});
-      syncDateGroups();
+      function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+      function optionHTML(value,label,title,sub,opts){
+        opts=opts||{};
+        return '<label class="choice">'
+          +'<input type="radio" name="date" value="'+esc(value)+'" data-label="'+esc(label)+'"'+(opts.disabled?' disabled':'')+' />'
+          +'<span class="box date-box"'+(opts.disabled?' style="opacity:.45;"':'')+'>'
+          +'<span class="dt"><span class="t">'+title+'</span>'+(opts.badge||'')+'</span>'
+          +'<span class="s">'+esc(sub)+'</span></span></label>';
+      }
+
+      // どの卒業年度でも常に出す「日程の相談をしたい」
+      function consultHTML(){
+        return optionHTML('consult','日程の相談をしたい（オンライン／対面）','日程の相談をしたい',
+          '上記に合う日程がない方・対面希望の方はこちら。個別に調整します');
+      }
+
+      function renderDates(){
+        var grad=(form.querySelector('input[name="grad"]:checked')||{}).value;
+        if(dateHint)dateHint.style.display=grad?'none':'';
+        if(!grad){dateGroup.style.display='none';dateGroup.innerHTML='';return;}
+        if(!eventsByCategory && !eventsError){dateGroup.style.display='none';return;}
+
+        var list=(eventsByCategory||{})[CATEGORY[grad]]||[];
+        var html='';
+        if(eventsError){
+          html+='<p class="text-[13px] text-gray-500 py-2">日程の読み込みに失敗しました。お手数ですが「日程の相談をしたい」からお申し込みください。</p>';
+        }else if(list.length===0){
+          html+='<p class="text-[13px] text-gray-500 py-2">現在ご案内できる日程がありません。下記からご連絡いただければ、個別に調整いたします。</p>';
+        }
+        list.forEach(function(e){
+          var d=jst(e.start_at);
+          var online=(e.venue_type!=='対面');
+          var badge='<span class="fmt'+(online?'':' fmt-in')+'">'+esc(online?'オンライン':'対面')+'</span>';
+          var title=esc(d.md+'（'+d.wd+'） '+d.hm+'〜')+(e.is_full?' <span style="color:#9a9a9a;">（満席）</span>':'');
+          var sub=online?'WEB・約30分':(e.location||'対面');
+          if(e.description)sub=e.description;
+          if(e.remaining!=null && !e.is_full && e.remaining<=5)sub+='　残り'+e.remaining+'席';
+          var label=d.md+'（'+d.wd+'） '+d.hm+'〜 ／ '+(online?'オンライン':'対面');
+          html+=optionHTML(e.id,label,title,sub,{badge:badge,disabled:!!e.is_full});
+        });
+        html+=consultHTML();
+        dateGroup.innerHTML=html;
+        dateGroup.style.display='';
+      }
+
+      function loadEvents(){
+        if(dateLoading)dateLoading.style.display='';
+        fetch(ATS_BASE+'/api/public-events/open?type=説明会',{method:'GET'})
+          .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+          .then(function(j){
+            eventsByCategory={};
+            (j.events||[]).forEach(function(e){
+              (eventsByCategory[e.recruitment_category]=eventsByCategory[e.recruitment_category]||[]).push(e);
+            });
+          })
+          .catch(function(err){eventsError=true;console.error('[ATS] 日程の取得に失敗',err);})
+          .then(function(){
+            if(dateLoading)dateLoading.style.display='none';
+            renderDates();
+          });
+      }
+      form.querySelectorAll('input[name="grad"]').forEach(function(r){r.addEventListener('change',renderDates);});
+      loadEvents();
 
       function fieldOf(el){return el.closest('.field');}
       function validate(){
@@ -399,30 +454,89 @@
       // live-clear invalid
       form.addEventListener('change',function(e){var f=e.target.closest('.field');if(f)f.classList.remove('invalid');});
 
+      var submitBtn=form.querySelector('button[type="submit"]');
+      var submitError=document.getElementById('submitError');
+      function showSubmitError(msg){
+        submitError.textContent=msg;
+        submitError.style.display='';
+        submitError.scrollIntoView({block:'center',behavior:'smooth'});
+      }
+
       form.addEventListener('submit',function(e){
         e.preventDefault();
+        submitError.style.display='none';
         if(!validate())return;
-        // build summary
+
         var grad=(form.querySelector('input[name="grad"]:checked')||{}).value||'';
-        var rows=[
-          ['卒業年度',grad+'年卒'],
-          ['お名前',form.elements['sei'].value+' '+form.elements['mei'].value],
-          ['フリガナ',form.elements['sei_kana'].value+' '+form.elements['mei_kana'].value],
-          ['メール',form.elements['email'].value],['電話',form.elements['tel'].value],
-          ['大学',form.elements['school'].value],['学部',form.elements['faculty'].value],
-          ['きっかけ',form.elements['source'].value],['希望日程',(form.querySelector('input[name="date"]:checked')||{}).value||'']
-        ];
-        document.getElementById('summary').innerHTML=rows.map(function(r){
-          return '<div style="display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid #e7e0da;"><span style="color:#9a9a9a;">'+r[0]+'</span><span style="font-weight:600;text-align:right;">'+(r[1]||'—')+'</span></div>';
-        }).join('');
-        // steps → done
-        var steps=document.querySelectorAll('#steps .step');
-        steps.forEach(function(s){s.classList.remove('on');});
-        steps[2].classList.add('on');
-        form.style.display='none';
-        document.getElementById('donePanel').style.display='block';
-        try{localStorage.removeItem(STORE);}catch(e){}
-        window.scrollTo({top:0,behavior:'smooth'});
+        var picked=form.querySelector('input[name="date"]:checked');
+        var isConsult=(picked.value==='consult');
+
+        // ATS（/api/join）へ送る。日程を選んだ場合は event_id、相談の場合は no_event。
+        var payload={
+          last_name:form.elements['sei'].value.trim(),
+          first_name:form.elements['mei'].value.trim(),
+          last_name_kana:form.elements['sei_kana'].value.trim(),
+          first_name_kana:form.elements['mei_kana'].value.trim(),
+          email:form.elements['email'].value.trim(),
+          phone:form.elements['tel'].value.trim(),
+          school_name:form.elements['school'].value.trim(),
+          faculty:form.elements['faculty'].value.trim(),
+          source:form.elements['source'].value,
+          memo:form.elements['msg'].value.trim()
+        };
+        if(isConsult){payload.no_event=true;payload.recruitment_category=CATEGORY[grad];}
+        else{payload.event_id=picked.value;}
+
+        submitBtn.disabled=true;
+        var btnLabel=submitBtn.querySelector('span');
+        var btnLabelOrig=btnLabel?btnLabel.textContent:'';
+        if(btnLabel)btnLabel.textContent='送信中…';
+
+        fetch(ATS_BASE+'/api/join',{
+          method:'POST',
+          headers:{'content-type':'application/json'},
+          body:JSON.stringify(payload)
+        })
+        .then(function(r){return r.json().then(function(j){return {ok:r.ok,body:j};});})
+        .then(function(res){
+          if(!res.ok){
+            // 満席・二重予約・開催済みなどはATSが日本語メッセージを返す
+            showSubmitError(res.body&&res.body.error?res.body.error:'送信に失敗しました。お手数ですが時間をおいて再度お試しください。');
+            if(res.body&&/満席|開催済み/.test(res.body.error||''))loadEvents();  // 一覧を取り直す
+            return;
+          }
+          // ===== 完了画面 =====
+          var rows=[
+            ['卒業年度',grad+'年卒'],
+            ['お名前',form.elements['sei'].value+' '+form.elements['mei'].value],
+            ['フリガナ',form.elements['sei_kana'].value+' '+form.elements['mei_kana'].value],
+            ['メール',form.elements['email'].value],['電話',form.elements['tel'].value],
+            ['大学',form.elements['school'].value],['学部',form.elements['faculty'].value],
+            ['きっかけ',form.elements['source'].value],
+            ['希望日程',picked.getAttribute('data-label')||'']
+          ];
+          document.getElementById('summary').innerHTML=rows.map(function(r){
+            return '<div style="display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px solid #e7e0da;"><span style="color:#9a9a9a;">'+r[0]+'</span><span style="font-weight:600;text-align:right;">'+esc(r[1]||'—')+'</span></div>';
+          }).join('');
+          if(isConsult){
+            document.getElementById('doneLead').innerHTML='ご入力のメールアドレス宛に、確認のご連絡をお送りします。<br />ご希望に合う日程を、担当より個別にご案内いたします。';
+          }
+          var steps=document.querySelectorAll('#steps .step');
+          steps.forEach(function(s){s.classList.remove('on');});
+          steps[2].classList.add('on');
+          form.style.display='none';
+          document.getElementById('donePanel').style.display='block';
+          try{localStorage.removeItem(STORE);}catch(e){}
+          window.scrollTo({top:0,behavior:'smooth'});
+        })
+        .catch(function(err){
+          console.error('[ATS] 送信に失敗',err);
+          showSubmitError('通信に失敗しました。電波状況をご確認のうえ、再度お試しください。');
+        })
+        .then(function(){
+          submitBtn.disabled=false;
+          if(btnLabel)btnLabel.textContent=btnLabelOrig;
+        });
       });
     })();
   </script>
