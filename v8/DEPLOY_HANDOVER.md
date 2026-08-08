@@ -10,11 +10,12 @@
 
 | # | 項目 | 内容 | 状態 |
 |---|---|---|---|
-| 1 | 本番URL決定 | recruit.y-enjin.co.jp 案の合意→DNS設定→配置 | 未 |
+| 1 | 本番URL決定 | **`www.y-enjin.co.jp/recruit/`（パス方式）**。既存の `/career/` `/recruit-hs/` と同じ運用に揃える。※初期の「recruit.y-enjin.co.jp（サブドメイン）案」は不採用。サブドメインにするとDNS設定とATSのCORS登録が増える | 済（方式） |
+| 1-2 | ATSのCORS | `www.y-enjin.co.jp` は**登録済み**なのでパス方式なら追加作業なし。CORSはパスを見ないため `/recruit/` でもオリジンは `https://www.y-enjin.co.jp` | 済 |
 | 2 | noindex解除 | 全ページの `<meta name="robots" content="noindex,nofollow" />` を削除。privacy-v8.html には逆に**追加**する | 未 |
 | 3 | 計測タグの有効化 | 下記「2. アクセス解析」参照。**IDを2つ記入するだけ** | 未 |
 | 4 | プライバシーポリシー | 法務レビュー→制定日確定。**計測ツール利用の追記が必要**（下記5.） | 未 |
-| 5 | フォーム接続 | 説明会申込フォーム（application-v8.html）は現在未送信（画面演出のみ）。FormSubmit か ATS 連携に接続 | 未 |
+| 5 | フォーム接続 | 説明会申込フォーム（application-v8.html）を**ATSに接続済み**（2026-08-07）。日程は `GET /api/public-events/open`、送信は `POST /api/join`。日程の正本はATSの「イベント予約管理」 | 済 |
 | 6 | ダミーリンク差し替え | マイナビ等のエントリー連携先。接続後、CTA下の「※リンクは仮」注記を削除 | 未 |
 | 7 | 残コンテンツ | 給与（データ収集中）・平均年齢・男女比・写真仮 など詰めタスク一覧v5参照 | 未 |
 | 8 | 旧サイト | jsupport.info から新URLへのリダイレクト依頼（田原さん） | 未 |
