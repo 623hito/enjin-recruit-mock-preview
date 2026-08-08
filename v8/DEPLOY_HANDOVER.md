@@ -10,8 +10,11 @@
 
 | # | 項目 | 内容 | 状態 |
 |---|---|---|---|
-| 1 | 本番URL決定 | **`www.y-enjin.co.jp/recruit/`（パス方式）**。既存の `/career/` `/recruit-hs/` と同じ運用に揃える。※初期の「recruit.y-enjin.co.jp（サブドメイン）案」は不採用。サブドメインにするとDNS設定とATSのCORS登録が増える | 済（方式） |
-| 1-2 | ATSのCORS | `www.y-enjin.co.jp` は**登録済み**なのでパス方式なら追加作業なし。CORSはパスを見ないため `/recruit/` でもオリジンは `https://www.y-enjin.co.jp` | 済 |
+| 1 | 本番URL決定 | **`/recruit/` をハブに、対象別に3分岐**（2026-08-07 Hiro決定）<br>`/recruit/` ハブ ／ `/recruit/new-graduate/` 新卒（本サイト）／ `/recruit/career/` 中途 ／ `/recruit/hs/` 高卒<br>※初期の「recruit.y-enjin.co.jp（サブドメイン）案」は不採用 | 済（方式） |
+| 1-2 | ATSのCORS | `www.y-enjin.co.jp` / `recruit.y-enjin.co.jp` とも**登録済み**。CORSはパスを見ないため設置パスが変わっても作業不要 | 済 |
+| 1-3 | **`/recruit/` の既存302** | 現在 `/recruit/` は `recruit.y-enjin.co.jp`（パスワード保護WordPress・title「Enjin Recruit」）へ302。**解除しないと配下に何も置けない**。田原さんに確認中 | 未 |
+| 1-4 | `/recruit/` ハブページ | `career-hub-v1.html` が原型（NEW GRADUATE / CAREER / HIGH SCHOOL の3カード）。**v8より前の旧デザイン＋リンク先が旧構成前提なので改修が必要**。間に合わなければ `/recruit/` → `/recruit/new-graduate/` の暫定301 | 未 |
+| 1-5 | 高卒サイトの移設 | `/recruit-hs/` → `/recruit/hs/`。`NEXT_PUBLIC_BASE_PATH=/recruit/hs npm run build` で再ビルドが必要（basePath/assetPrefixが変わるため単純移動では動かない）。リポ `kehonda-spec/enjin-recruit` ／ ローカル `Code/enjin-recruit-lp/`。Firebase版 `enjin-recruit.web.app` と旧版 `testpj-ec3f8.web.app` の二重公開も整理対象 | 未 |
 | 2 | noindex解除 | 全ページの `<meta name="robots" content="noindex,nofollow" />` を削除。privacy-v8.html には逆に**追加**する | 未 |
 | 3 | 計測タグの有効化 | 下記「2. アクセス解析」参照。**IDを2つ記入するだけ** | 未 |
 | 4 | プライバシーポリシー | 法務レビュー→制定日確定。**計測ツール利用の追記が必要**（下記5.） | 未 |
