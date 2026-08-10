@@ -82,8 +82,10 @@
 | `hero_main.jpg` / `honda_ceo.jpg` / `members_20th.jpg` | 実写・確定 |
 | `purpose_summit.jpg` | 2026-08-03 Hiro承認（透かし視認できず・差し替え不要） |
 | `culture_sky.jpg` | 2026-07-26 最終確定 ／ 2026-08-03 透かし視認できず・差し替え不要 |
-| `philosophy_triangle.jpg` | 2026-08-07 確定扱い（透かし視認できず）。**AdobeStock 182818051 のライセンス取得状況は要確認** |
+| `philosophy_triangle.jpg` | 2026-08-07 Hiro確定（AdobeStock 182818051） |
 | その他 | AI生成 or 実写で確定済み |
+
+**掲載画像35点すべて確定。差し替え予定なし。**
 
 **2026-08-07: 使用画像35点すべてCONFIRMED済み → `photo-kari.js` は実質何もしない状態。**
 本番公開時は各HTMLから `<script src="assets/photo-kari.js"></script>` を外してよい。
