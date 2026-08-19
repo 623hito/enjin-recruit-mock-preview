@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>会社説明会に申し込む｜新卒採用LP（案）</title>
+  <title>説明会・イベントに申し込む｜新卒採用LP（案）</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="会社説明会に申し込む｜Enjin 新卒採用" />
-  <meta property="og:description" content="Enjinの会社説明会・選考エントリーはこちらから。" />
+  <meta property="og:title" content="説明会・イベントに申し込む｜Enjin 新卒採用" />
+  <meta property="og:description" content="Enjinの会社説明会・イベントのお申し込みはこちらから。" />
   <meta property="og:image" content="images/hero_main.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <script src="assets/tailwind.js"></script>
@@ -71,6 +71,8 @@
     .date-box .dt{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;}
     .date-box .fmt{font-size:.66rem;font-weight:700;letter-spacing:.04em;padding:.15rem .5rem;border-radius:2px;background:rgba(191,15,15,.08);color:var(--red);white-space:nowrap;}
     .date-box .fmt-in{background:#444;color:#fff;}
+    /* 種別チップ（説明会以外のときだけ出す。開催形式のバッジとは別物なので配色を分ける） */
+    .date-box .evtype{font-size:.66rem;font-weight:700;letter-spacing:.04em;padding:.15rem .5rem;border-radius:2px;background:#efe9e4;color:#6a635d;white-space:nowrap;margin-right:.15rem;}
     .date-box .s{font-size:.75rem;color:#8a837d;white-space:nowrap;}
     @media(max-width:520px){ .date-box{flex-direction:column;align-items:flex-start;gap:.35rem;} }
     .choice .box .s{font-size:.75rem;color:#9a9a9a;}
@@ -144,7 +146,7 @@
     <div class="absolute inset-0" style="background-image:linear-gradient(rgba(20,20,20,.72),rgba(20,20,20,.72)),url('images/office_lounge.jpg');background-size:cover;background-position:center;"></div>
     <div class="max-w-3xl mx-auto px-6 lg:px-10 py-16 lg:py-20 relative z-10 text-center">
       <p class="font-alumni font-bold text-white/60 tracking-[0.3em] text-xs mb-4">SEMINAR ENTRY</p>
-      <h1 class="font-black text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3rem);">会社説明会に申し込む</h1>
+      <h1 class="font-black text-white leading-[1.4]" style="font-size:clamp(1.9rem,4.4vw,3rem);">説明会・イベントに申し込む</h1>
       <p class="text-white/75 text-sm mt-4 leading-loose">選考ではありません。まずはEnjinを知る場です。<br />お気軽にお申し込みください。入力は約1分です。</p>
       <div class="ease-row">
         <span class="ease-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>服装自由</span>
@@ -242,7 +244,7 @@
       <!-- 希望日程 --><a id="dates"></a>
       <div class="field">
         <label class="lab">希望日程<span class="req">必須</span></label>
-        <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>で、私服でお気軽にご参加いただけます。対面をご希望の場合は「日程の相談をしたい」からお知らせください。</p>
+        <p class="text-[12px] text-gray-500 mb-3">説明会は<span class="font-bold text-ink">オンライン（WEB・約30分）・服装自由</span>で、私服でお気軽にご参加いただけます。合う日程がない場合は「日程の相談をしたい」からお知らせください。</p>
         <p id="dateHint" class="text-[12px] text-gray-400 mb-3">※上の「対象（卒業年度）」を選ぶと、日程候補が表示されます</p>
         <div class="date-scroll">
           <!-- 日程は ATS（イベント予約管理）から取得して描画します。静的な選択肢は置きません -->
@@ -272,7 +274,7 @@
         <button type="submit" class="btn-primary w-full sm:w-auto"><span>この内容で申し込む</span><span>→</span></button>
         <div class="trust">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-          <span>ご入力内容は説明会のご案内のみに利用します</span>
+          <span>ご入力内容はご案内のみに利用します</span>
         </div>
       </div>
       <p id="submitError" class="text-center text-sm font-bold mt-6" style="display:none;color:var(--red);"></p>
@@ -399,11 +401,14 @@
           var d=jst(e.start_at);
           var online=(e.venue_type!=='対面');
           var badge='<span class="fmt'+(online?'':' fmt-in')+'">'+esc(online?'オンライン':'対面')+'</span>';
-          var title=esc(d.md+'（'+d.wd+'） '+d.hm+'〜')+(e.is_full?' <span style="color:#9a9a9a;">（満席）</span>':'');
+          // 種別チップ。説明会は既定なので付けず、座談会・インターン等のときだけ出す
+          var type=e.event_type||'説明会';
+          var typeChip=(type==='説明会')?'':'<span class="evtype">'+esc(type)+'</span>';
+          var title=typeChip+esc(d.md+'（'+d.wd+'） '+d.hm+'〜')+(e.is_full?' <span style="color:#9a9a9a;">（満席）</span>':'');
           var sub=online?'WEB・約30分':(e.location||'対面');
           if(e.description)sub=e.description;
           if(e.remaining!=null && !e.is_full && e.remaining<=5)sub+='　残り'+e.remaining+'席';
-          var label=d.md+'（'+d.wd+'） '+d.hm+'〜 ／ '+(online?'オンライン':'対面');
+          var label=(type==='説明会'?'':'['+type+'] ')+d.md+'（'+d.wd+'） '+d.hm+'〜 ／ '+(online?'オンライン':'対面');
           html+=optionHTML(e.id,label,title,sub,{badge:badge,disabled:!!e.is_full});
         });
         html+=consultHTML();
@@ -413,7 +418,9 @@
 
       function loadEvents(){
         if(dateLoading)dateLoading.style.display='';
-        fetch(ATS_BASE+'/api/public-events/open?type=説明会',{method:'GET'})
+        // 種別で絞らない。ATSで公開ONにした説明会・座談会・インターン・その他が出る
+        // （一次面接・二次面接は選考枠なのでAPI側で除外されている）
+        fetch(ATS_BASE+'/api/public-events/open',{method:'GET'})
           .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
           .then(function(j){
             eventsByCategory={};
